@@ -15,8 +15,6 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		// Disable right-click context menu
-		document.addEventListener('contextmenu', event => event.preventDefault());
 
 	</head>
 	<body class="is-loading">
@@ -55,6 +53,9 @@
 			</div>
 
 		<!-- Scripts -->
+			// Disable right-click context menu
+		document.addEventListener('contextmenu', event => event.preventDefault());
+			
 			<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
 			<script>
 				if ('addEventListener' in window) {
