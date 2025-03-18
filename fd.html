@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Firewall Defender</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF00;
+            font-family: "Courier New", monospace;
+            text-align: center;
+            padding: 20px;
+        }
+        #gameArea {
+            border: 2px solid #00FF00;
+            padding: 20px;
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .attack {
+            color: #FF0000;
+        }
+        .success {
+            color: #00FF00;
+        }
+        .failure {
+            color: #FFA500;
+        }
+        input {
+            background-color: #000;
+            color: #00FF00;
+            border: 1px solid #00FF00;
+            padding: 5px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛡️ Firewall Defender 🛡️</h1>
+    <p>Type the correct command to block attacks!</p>
+
+    <div id="gameArea"></div>
+
+    <input type="text" id="commandInput" placeholder="Type command here..." autofocus>
+
+    <script>
+        const gameArea = document.getElementById("gameArea");
+        const commandInput = document.getElementById("commandInput");
+
+        const attacks = [
+            { name: "SQL_INJECTION", command: "ENCODE_INPUT" },
+            { name: "XSS_ATTACK", command: "CSP_ENABLE" },
+            { name: "DDoS_FLOOD", command: "RATE_LIMIT" },
+            { name: "RANSOMWARE", command: "BACKUP_DATA" },
+            { name: "RCE_EXPLOIT", command: "WAF_ENABLE" }
+        ];
+
+        let activeAttack = null;
+        let score = 0;
+
+        function generateAttack() {
+            const attack = attacks[Math.floor(Math.random() * attacks.length)];
+            activeAttack = attack;
+
+            const attackElement = document.createElement("div");
+            attackElement.className = "attack";
+            attackElement.innerText = `[!] ${attack.name} detected! Type "${attack.command}" to block it!`;
+            gameArea.appendChild(attackElement);
+
+            setTimeout(() => {
+                if (activeAttack === attack) {
+                    const failureMessage = document.createElement("div");
+                    failureMessage.className = "failure";
+                    failureMessage.innerText = `🔥 ${attack.name} breached the firewall!`;
+                    gameArea.appendChild(failureMessage);
+                    endGame();
+                }
+            }, 5000);
+        }
+
+        function handleCommand(event) {
+            if (event.key === "Enter" && activeAttack) {
+                const input = commandInput.value.trim().toUpperCase();
+                if (input === activeAttack.command) {
+                    const successMessage = document.createElement("div");
+                    successMessage.className = "success";
+                    successMessage.innerText = `✅ ${activeAttack.name} blocked successfully!`;
+                    gameArea.appendChild(successMessage);
+                    score++;
+                } else {
+                    const failureMessage = document.createElement("div");
+                    failureMessage.className = "failure";
+                    failureMessage.innerText = `❌ Incorrect command! ${activeAttack.name} breached the firewall.`;
+                    gameArea.appendChild(failureMessage);
+                    endGame();
+                }
+
+                commandInput.value = "";
+                activeAttack = null;
+
+                if (score < 5) {
+                    setTimeout(generateAttack, 2000);
+                }
+            }
+        }
+
+        function endGame() {
+            const endMessage = document.createElement("div");
+            endMessage.className = "failure";
+            endMessage.innerHTML = `💀 GAME OVER 💀<br>Score: ${score}`;
+            gameArea.appendChild(endMessage);
+
+            commandInput.disabled = true;
+        }
+
+        commandInput.addEventListener("keydown", handleCommand);
+
+        // Start the game!
+        generateAttack();
+    </script>
+</body>
+</html>
