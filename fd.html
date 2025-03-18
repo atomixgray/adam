@@ -27,6 +27,10 @@
         .failure {
             color: #FFA500;
         }
+        #score {
+            margin-top: 10px;
+            font-weight: bold;
+        }
         input {
             background-color: #000;
             color: #00FF00;
@@ -44,9 +48,12 @@
 
     <input type="text" id="commandInput" placeholder="Type command here..." autofocus>
 
+    <div id="score">Score: 0</div>
+
     <script>
         const gameArea = document.getElementById("gameArea");
         const commandInput = document.getElementById("commandInput");
+        const scoreDisplay = document.getElementById("score");
 
         const attacks = [
             { name: "SQL_INJECTION", command: "ENCODE_INPUT" },
@@ -54,6 +61,14 @@
             { name: "DDoS_FLOOD", command: "RATE_LIMIT" },
             { name: "RANSOMWARE", command: "BACKUP_DATA" },
             { name: "RCE_EXPLOIT", command: "WAF_ENABLE" }
+        ];
+
+        const victoryMessages = [
+            "🔥 Attack stopped! Good work, firewall warrior.",
+            "🛑 Nice try, script kiddie.",
+            "✅ You stopped the attack... this time.",
+            "🧠 Big brain move! Attack blocked.",
+            "🎯 Nailed it! Firewall still standing."
         ];
 
         let activeAttack = null;
@@ -76,7 +91,7 @@
                     gameArea.appendChild(failureMessage);
                     endGame();
                 }
-            }, 15000);
+            }, 9000);
         }
 
         function handleCommand(event) {
@@ -85,9 +100,11 @@
                 if (input === activeAttack.command) {
                     const successMessage = document.createElement("div");
                     successMessage.className = "success";
-                    successMessage.innerText = `✅ ${activeAttack.name} blocked successfully!`;
+                    const randomCongrats = victoryMessages[Math.floor(Math.random() * victoryMessages.length)];
+                    successMessage.innerText = `✅ ${activeAttack.name} blocked successfully! ${randomCongrats}`;
                     gameArea.appendChild(successMessage);
                     score++;
+                    scoreDisplay.innerText = `Score: ${score}`;
                 } else {
                     const failureMessage = document.createElement("div");
                     failureMessage.className = "failure";
