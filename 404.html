@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Intrusion Detected</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF00;
+            font-family: "Courier New", Courier, monospace;
+            text-align: center;
+            padding: 50px;
+        }
+        .glitch {
+            font-size: 3rem;
+            animation: glitch 1s infinite;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #FF0000; }
+            25% { text-shadow: -2px -2px #00FFFF; }
+            50% { text-shadow: 2px -2px #FF00FF; }
+            75% { text-shadow: -2px 2px #FFFF00; }
+            100% { text-shadow: 2px 2px #FF0000; }
+        }
+        .message {
+            margin-top: 20px;
+        }
+        a {
+            color: #00FF00;
+            text-decoration: none;
+            border-bottom: 1px dashed #00FF00;
+        }
+        a:hover {
+            color: #FF0000;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="glitch">404 - INTRUSION DETECTED</h1>
+    <p class="message">Looks like you've stumbled into restricted territory...<br>
+    <a href="/">Return to Safety</a> or <a href="/admin">Try your luck again</a>.</p>
+
+    <pre>
+[+] Attempting to bypass security... FAILED
+[+] Searching for backdoor access... DENIED
+[+] Initiating reverse shell... BLOCKED
+[!] SYSTEM ADMINISTRATOR ALERTED
+    </pre>
+</body>
+</html>
