@@ -73,6 +73,7 @@
 
         let activeAttack = null;
         let score = 0;
+        let attackTimeout; // Variable to store the timeout ID
 
         function generateAttack() {
             const attack = attacks[Math.floor(Math.random() * attacks.length)];
@@ -83,7 +84,7 @@
             attackElement.innerText = `[!] ${attack.name} detected! Type "${attack.command}" to block it!`;
             gameArea.appendChild(attackElement);
 
-            setTimeout(() => {
+            attackTimeout = setTimeout(() => { // Store timeout ID
                 if (activeAttack === attack) {
                     const failureMessage = document.createElement("div");
                     failureMessage.className = "failure";
@@ -96,6 +97,8 @@
 
         function handleCommand(event) {
             if (event.key === "Enter" && activeAttack) {
+                clearTimeout(attackTimeout); // Clear the timeout once the user inputs a command
+
                 const input = commandInput.value.trim().toUpperCase();
                 if (input === activeAttack.command) {
                     const successMessage = document.createElement("div");
@@ -125,7 +128,8 @@
         function endGame() {
             const endMessage = document.createElement("div");
             endMessage.className = "failure";
-            endMessage.innerText = `💀 GAME OVER 💀\nScore: ${score}`;
+          endMessage.innerText = `💀 GAME OVER 💀\nScore: ${score}`;
+
 
             gameArea.appendChild(endMessage);
 
@@ -139,3 +143,4 @@
     </script>
 </body>
 </html>
+
