@@ -125,7 +125,7 @@
         function endGame() {
             const endMessage = document.createElement("div");
             endMessage.className = "failure";
-            endMessage.innerHTML = `💀 GAME OVER 💀<br>Score: ${score}`;
+            endMessage.innerText = `💀 GAME OVER 💀<br>Score: ${score}`;
             gameArea.appendChild(endMessage);
 
             commandInput.disabled = true;
