@@ -30,7 +30,7 @@
 
         async function fetchPhrase() {
             try {
-                const response = await fetch(`https://fraze.it/api/phrase/random/it/1/0/${apiKey}`);
+                const response = await fetch(`https://fraze.it/api/phrase/random/it/1/0/${bb6b7164-1232-4e72-8f62-6b9a21827300}`);
                 const data = await response.json();
                 if (data && data.length > 0) {
                     document.getElementById('phrase').textContent = data[0].phrase;
