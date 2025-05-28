@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Italian Phrase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #phrase {
+            font-size: 24px;
+            margin: 20px;
+        }
+        #fetchPhrase {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="phrase">Click the button to get an Italian phrase!</div>
+    <button id="fetchPhrase">Get Phrase</button>
+
+    <script>
+        const apiKey = 'YOUR_API_KEY'; // Replace with your FrazeIt API key
+        document.getElementById('fetchPhrase').addEventListener('click', fetchPhrase);
+
+        async function fetchPhrase() {
+            try {
+                const response = await fetch(`https://fraze.it/api/phrase/random/it/1/0/${apiKey}`);
+                const data = await response.json();
+                if (data && data.length > 0) {
+                    document.getElementById('phrase').textContent = data[0].phrase;
+                } else {
+                    document.getElementById('phrase').textContent = 'No phrase found. Please try again.';
+                }
+            } catch (error) {
+                console.error('Error fetching the Italian phrase:', error);
+                document.getElementById('phrase').textContent = 'Failed to load phrase. Please try again.';
+            }
+        }
+
+        // Fetch a phrase on initial load
+        fetchPhrase();
+    </script>
+</body>
+</html>
