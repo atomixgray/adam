@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Splash Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pO2e9npZUNsB5IczQMuY2fOibEBKHADPzTqlz4dxC88Jt5qLGl1ovdrtvWnC0cUmc8dxG1vvDnPI3yjzTI7S9Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0f0f0f;
+      color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #555;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #00bcd4;
+    }
+
+    p {
+      max-width: 400px;
+      margin-bottom: 2rem;
+      color: #aaa;
+    }
+
+    .socials {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .socials a {
+      text-decoration: none;
+      color: #f1f1f1;
+      font-size: 2rem;
+      transition: color 0.3s ease;
+    }
+
+    .socials a:hover {
+      color: #00bcd4;
+    }
+  </style>
+</head>
+<body>
+  <!-- Replace with your own image -->
+  <img src="your-photo.jpg" alt="Your Name" class="profile-pic" />
+
+  <h1>Your Name</h1>
+  <h2>SecOps Engineering Leader</h2>
+
+  <p>Welcome to my digital corner. Connect with me on my socials below!</p>
+
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://github.com/yourprofile" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+</body>
+</html>
