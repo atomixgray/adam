@@ -1,4 +1,3 @@
-styles.css
 * {
     margin: 0;
     padding: 0;
@@ -94,6 +93,7 @@ header h1 {
     transition: transform 0.6s;
     backface-visibility: hidden;
     border: 3px solid transparent;
+    transform-style: preserve-3d;
 }
 
 .card-content:hover {
@@ -102,18 +102,22 @@ header h1 {
 
 .front {
     transform: rotateY(0deg);
+    z-index: 2;
 }
 
 .back {
     transform: rotateY(180deg);
+    z-index: 1;
 }
 
 .flashcard.flipped .front {
     transform: rotateY(-180deg);
+    z-index: 1;
 }
 
 .flashcard.flipped .back {
     transform: rotateY(0deg);
+    z-index: 2;
 }
 
 .italian-text {
