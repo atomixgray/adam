@@ -3,49 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Intrusion Detected</title>
+    <title>404 - Page Not Found | Adam Larkin</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #000;
-            color: #00FF00;
-            font-family: "Courier New", Courier, monospace;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
             text-align: center;
-            padding: 50px;
+            padding: 2rem;
+            max-width: 600px;
         }
-        .glitch {
-            font-size: 3rem;
-            animation: glitch 1s infinite;
+
+        .error-code {
+            font-size: clamp(6rem, 20vw, 12rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+            animation: glitch 3s infinite;
+            position: relative;
         }
+
         @keyframes glitch {
-            0% { text-shadow: 2px 2px #FF0000; }
-            25% { text-shadow: -2px -2px #00FFFF; }
-            50% { text-shadow: 2px -2px #FF00FF; }
-            75% { text-shadow: -2px 2px #FFFF00; }
-            100% { text-shadow: 2px 2px #FF0000; }
+            0%, 100% {
+                transform: translate(0);
+            }
+            20% {
+                transform: translate(-2px, 2px);
+            }
+            40% {
+                transform: translate(-2px, -2px);
+            }
+            60% {
+                transform: translate(2px, 2px);
+            }
+            80% {
+                transform: translate(2px, -2px);
+            }
         }
-        .message {
-            margin-top: 20px;
+
+        .error-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #a0a0b0;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out 0.3s both;
         }
-        a {
-            color: #00FF00;
+
+        .error-message {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #808090;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .terminal {
+            background: rgba(20, 20, 30, 0.8);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: left;
+            margin-bottom: 3rem;
+            font-family: 'Courier New', monospace;
+            animation: fadeIn 1s ease-out 0.9s both;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .terminal-line {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .terminal-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .terminal-prompt {
+            color: #f093fb;
+        }
+
+        .terminal-error {
+            color: #ff6b6b;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #667eea;
+            animation: blink 1s infinite;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            border-radius: 50px;
+            color: #667eea;
             text-decoration: none;
-            border-bottom: 1px dashed #00FF00;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(102, 126, 234, 0.1);
+            font-weight: 600;
         }
-        a:hover {
-            color: #FF0000;
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #7688f0 0%, #8557b2 100%);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .floating-icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .icon {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .icon:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .icon:nth-child(2) {
+            top: 70%;
+            left: 80%;
+            animation-delay: 1s;
+        }
+
+        .icon:nth-child(3) {
+            top: 30%;
+            left: 85%;
+            animation-delay: 2s;
+        }
+
+        .icon:nth-child(4) {
+            top: 80%;
+            left: 15%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <h1 class="glitch">404 - INTRUSION DETECTED</h1>
-    <p class="message">Looks like you've stumbled into restricted territory...<br>
-    <a href="/">Return to Safety</a> or <a href="/admin">Try your luck again</a>.</p>
+    <canvas id="particles"></canvas>
+    
+    <div class="floating-icons">
+        <div class="icon">🔒</div>
+        <div class="icon">🛡️</div>
+        <div class="icon">⚠️</div>
+        <div class="icon">🔐</div>
+    </div>
+    
+    <div class="content">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Access Denied</h1>
+        <p class="error-message">
+            Looks like this endpoint doesn't exist in our security perimeter. 
+            The requested resource has been quarantined or never existed.
+        </p>
+        
+        <div class="terminal">
+            <div class="terminal-line"><span class="terminal-prompt">$</span> locate page.html</div>
+            <div class="terminal-line terminal-error">Error: Resource not found in database</div>
+            <div class="terminal-line"><span class="terminal-prompt">$</span> status check</div>
+            <div class="terminal-line">Status: <span class="terminal-error">404 NOT_FOUND</span></div>
+            <div class="terminal-line"><span class="terminal-prompt">$</span> recommend_action<span class="cursor"></span></div>
+        </div>
+        
+        <div class="btn-group">
+            <a href="/" class="btn btn-primary">Return to Base</a>
+            <a href="javascript:history.back()" class="btn">Go Back</a>
+        </div>
+    </div>
 
-    <pre>
-[+] Attempting to bypass security... FAILED
-[+] Searching for backdoor access... DENIED
-[+] Initiating reverse shell... BLOCKED
-[!] SYSTEM ADMINISTRATOR ALERTED
-    </pre>
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const particles = [];
+        const particleCount = 80;
+        const connectionDistance = 150;
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(102, 126, 234, 0.5)';
+                ctx.fill();
+            }
+        }
+        
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(102, 126, 234, ${0.2 * (1 - distance / connectionDistance)})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
