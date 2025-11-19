@@ -25,6 +25,7 @@ class FlashcardApp {
         try {
             const response = await fetch('phrases.json');
             this.phrases = await response.json();
+            this.shufflePhrases(); // Randomize the order
             this.totalCards.textContent = this.phrases.length;
             this.displayCurrentCard();
             this.updateNavigation();
@@ -32,6 +33,14 @@ class FlashcardApp {
             console.error('Error loading phrases:', error);
             this.italianText.textContent = 'Error loading phrases';
             this.pronunciation.textContent = '';
+        }
+    }
+    
+    // Fisher-Yates shuffle algorithm for random order
+    shufflePhrases() {
+        for (let i = this.phrases.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.phrases[i], this.phrases[j]] = [this.phrases[j], this.phrases[i]];
         }
     }
     
