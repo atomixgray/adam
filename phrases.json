@@ -1,0 +1,27 @@
+[
+  {
+    "italian": "Io sono americano",
+    "pronunciation": "EE-oh SOH-noh ah-meh-ree-KAH-noh",
+    "english": "I am American"
+  },
+  {
+    "italian": "Tu hai ragione",
+    "pronunciation": "too AH-ee rah-JOH-neh",
+    "english": "You are right"
+  },
+  {
+    "italian": "Lui fa colazione",
+    "pronunciation": "loo-EE fah koh-lah-tsee-OH-neh",
+    "english": "He has breakfast"
+  },
+  {
+    "italian": "Noi andiamo al cinema",
+    "pronunciation": "noh-EE ahn-dee-AH-moh ahl CHEE-neh-mah",
+    "english": "We go to the cinema"
+  },
+  {
+    "italian": "Voi dite la verità",
+    "pronunciation": "voh-EE DEE-teh lah veh-ree-TAH",
+    "english": "You (plural) tell the truth"
+  }
+]
