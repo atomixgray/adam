@@ -23,5 +23,511 @@
     "italian": "Voi dite la verità",
     "pronunciation": "voh-EE DEE-teh lah veh-ree-TAH",
     "english": "You (plural) tell the truth"
+  },
+  {
+    "italian": "Loro vengono domani",
+    "pronunciation": "LOH-roh VEN-goh-noh doh-MAH-nee",
+    "english": "They come tomorrow"
+  },
+  {
+    "italian": "Io voglio un caffè",
+    "pronunciation": "EE-oh VOH-lyoh oon kah-FEH",
+    "english": "I want a coffee"
+  },
+  {
+    "italian": "Tu puoi aiutarmi",
+    "pronunciation": "too poo-OH-ee ah-yoo-TAR-mee",
+    "english": "You can help me"
+  },
+  {
+    "italian": "Lei deve partire",
+    "pronunciation": "lay DEH-veh par-TEE-reh",
+    "english": "She must leave"
+  },
+  {
+    "italian": "Noi sappiamo l'italiano",
+    "pronunciation": "noh-EE sah-pee-AH-moh lee-tah-lee-AH-noh",
+    "english": "We know Italian"
+  },
+  {
+    "italian": "Io sto bene",
+    "pronunciation": "EE-oh stoh BEH-neh",
+    "english": "I am doing well"
+  },
+  {
+    "italian": "Tu stai studiando",
+    "pronunciation": "too stah-ee stoo-dee-AHN-doh",
+    "english": "You are studying"
+  },
+  {
+    "italian": "Lui sta mangiando",
+    "pronunciation": "loo-EE stah man-JAHN-doh",
+    "english": "He is eating"
+  },
+  {
+    "italian": "Noi stiamo lavorando",
+    "pronunciation": "noh-EE stee-AH-moh lah-voh-RAHN-doh",
+    "english": "We are working"
+  },
+  {
+    "italian": "Voi state parlando",
+    "pronunciation": "voh-EE STAH-teh par-LAHN-doh",
+    "english": "You (plural) are talking"
+  },
+  {
+    "italian": "Loro stanno dormendo",
+    "pronunciation": "LOH-roh STAHN-noh dor-MEN-doh",
+    "english": "They are sleeping"
+  },
+  {
+    "italian": "Io ho fame",
+    "pronunciation": "EE-oh oh FAH-meh",
+    "english": "I am hungry"
+  },
+  {
+    "italian": "Tu hai sete",
+    "pronunciation": "too AH-ee SEH-teh",
+    "english": "You are thirsty"
+  },
+  {
+    "italian": "Lei ha fretta",
+    "pronunciation": "lay ah FREHT-tah",
+    "english": "She is in a hurry"
+  },
+  {
+    "italian": "Noi abbiamo tempo",
+    "pronunciation": "noh-EE ah-bee-AH-moh TEM-poh",
+    "english": "We have time"
+  },
+  {
+    "italian": "Voi avete fortuna",
+    "pronunciation": "voh-EE ah-VEH-teh for-TOO-nah",
+    "english": "You (plural) are lucky"
+  },
+  {
+    "italian": "Loro hanno problemi",
+    "pronunciation": "LOH-roh AHN-noh proh-BLEH-mee",
+    "english": "They have problems"
+  },
+  {
+    "italian": "Io faccio sport",
+    "pronunciation": "EE-oh FAH-choh sport",
+    "english": "I do sports"
+  },
+  {
+    "italian": "Tu fai shopping",
+    "pronunciation": "too fah-ee SHOP-ping",
+    "english": "You go shopping"
+  },
+  {
+    "italian": "Lei fa la spesa",
+    "pronunciation": "lay fah lah SPEH-sah",
+    "english": "She does the grocery shopping"
+  },
+  {
+    "italian": "Noi facciamo una pausa",
+    "pronunciation": "noh-EE fah-CHAH-moh OO-nah pah-OO-sah",
+    "english": "We take a break"
+  },
+  {
+    "italian": "Voi fate rumore",
+    "pronunciation": "voh-EE FAH-teh roo-MOH-reh",
+    "english": "You (plural) make noise"
+  },
+  {
+    "italian": "Loro fanno festa",
+    "pronunciation": "LOH-roh FAHN-noh FEH-stah",
+    "english": "They have a party"
+  },
+  {
+    "italian": "Io vado a casa",
+    "pronunciation": "EE-oh VAH-doh ah KAH-sah",
+    "english": "I go home"
+  },
+  {
+    "italian": "Tu vai al lavoro",
+    "pronunciation": "too vah-ee ahl lah-VOH-roh",
+    "english": "You go to work"
+  },
+  {
+    "italian": "Lei va in vacanza",
+    "pronunciation": "lay vah een vah-KAHN-tsah",
+    "english": "She goes on vacation"
+  },
+  {
+    "italian": "Noi andiamo al mare",
+    "pronunciation": "noh-EE ahn-dee-AH-moh ahl MAH-reh",
+    "english": "We go to the sea"
+  },
+  {
+    "italian": "Voi andate in centro",
+    "pronunciation": "voh-EE ahn-DAH-teh een CHEN-troh",
+    "english": "You (plural) go downtown"
+  },
+  {
+    "italian": "Loro vanno via",
+    "pronunciation": "LOH-roh VAHN-noh VEE-ah",
+    "english": "They go away"
+  },
+  {
+    "italian": "Io dico sempre la verità",
+    "pronunciation": "EE-oh DEE-koh SEM-preh lah veh-ree-TAH",
+    "english": "I always tell the truth"
+  },
+  {
+    "italian": "Tu dici cose interessanti",
+    "pronunciation": "too DEE-chee KOH-seh een-teh-reh-SAHN-tee",
+    "english": "You say interesting things"
+  },
+  {
+    "italian": "Lei dice di sì",
+    "pronunciation": "lay DEE-cheh dee see",
+    "english": "She says yes"
+  },
+  {
+    "italian": "Noi diciamo ciao",
+    "pronunciation": "noh-EE dee-CHAH-moh chah-oh",
+    "english": "We say hello"
+  },
+  {
+    "italian": "Voi dite di no",
+    "pronunciation": "voh-EE DEE-teh dee noh",
+    "english": "You (plural) say no"
+  },
+  {
+    "italian": "Loro dicono bugie",
+    "pronunciation": "LOH-roh DEE-koh-noh boo-JEE-eh",
+    "english": "They tell lies"
+  },
+  {
+    "italian": "Io vengo con te",
+    "pronunciation": "EE-oh VEN-goh kohn teh",
+    "english": "I come with you"
+  },
+  {
+    "italian": "Tu vieni da Roma",
+    "pronunciation": "too vee-EH-nee dah ROH-mah",
+    "english": "You come from Rome"
+  },
+  {
+    "italian": "Lei viene spesso",
+    "pronunciation": "lay vee-EH-neh SPEH-soh",
+    "english": "She comes often"
+  },
+  {
+    "italian": "Noi veniamo insieme",
+    "pronunciation": "noh-EE veh-nee-AH-moh een-see-EH-meh",
+    "english": "We come together"
+  },
+  {
+    "italian": "Voi venite presto",
+    "pronunciation": "voh-EE veh-NEE-teh PREH-stoh",
+    "english": "You (plural) come early"
+  },
+  {
+    "italian": "Loro vengono tardi",
+    "pronunciation": "LOH-roh VEN-goh-noh TAR-dee",
+    "english": "They come late"
+  },
+  {
+    "italian": "Io voglio imparare",
+    "pronunciation": "EE-oh VOH-lyoh eem-pah-RAH-reh",
+    "english": "I want to learn"
+  },
+  {
+    "italian": "Tu vuoi mangiare",
+    "pronunciation": "too voo-OH-ee man-JAH-reh",
+    "english": "You want to eat"
+  },
+  {
+    "italian": "Lei vuole dormire",
+    "pronunciation": "lay voo-OH-leh dor-MEE-reh",
+    "english": "She wants to sleep"
+  },
+  {
+    "italian": "Noi vogliamo viaggiare",
+    "pronunciation": "noh-EE voh-LYAH-moh vee-ah-JAH-reh",
+    "english": "We want to travel"
+  },
+  {
+    "italian": "Voi volete aiuto",
+    "pronunciation": "voh-EE voh-LEH-teh ah-YOO-toh",
+    "english": "You (plural) want help"
+  },
+  {
+    "italian": "Loro vogliono partire",
+    "pronunciation": "LOH-roh VOH-lyoh-noh par-TEE-reh",
+    "english": "They want to leave"
+  },
+  {
+    "italian": "Io posso venire",
+    "pronunciation": "EE-oh POHS-soh veh-NEE-reh",
+    "english": "I can come"
+  },
+  {
+    "italian": "Tu puoi restare",
+    "pronunciation": "too poo-OH-ee reh-STAH-reh",
+    "english": "You can stay"
+  },
+  {
+    "italian": "Lei può guidare",
+    "pronunciation": "lay poo-OH gwee-DAH-reh",
+    "english": "She can drive"
+  },
+  {
+    "italian": "Noi possiamo aspettare",
+    "pronunciation": "noh-EE pohs-see-AH-moh ah-speht-TAH-reh",
+    "english": "We can wait"
+  },
+  {
+    "italian": "Voi potete scegliere",
+    "pronunciation": "voh-EE poh-TEH-teh SHEL-yeh-reh",
+    "english": "You (plural) can choose"
+  },
+  {
+    "italian": "Loro possono pagare",
+    "pronunciation": "LOH-roh POHS-soh-noh pah-GAH-reh",
+    "english": "They can pay"
+  },
+  {
+    "italian": "Io devo lavorare",
+    "pronunciation": "EE-oh DEH-voh lah-voh-RAH-reh",
+    "english": "I must work"
+  },
+  {
+    "italian": "Tu devi studiare",
+    "pronunciation": "too DEH-vee stoo-dee-AH-reh",
+    "english": "You must study"
+  },
+  {
+    "italian": "Lei deve tornare",
+    "pronunciation": "lay DEH-veh tor-NAH-reh",
+    "english": "She must return"
+  },
+  {
+    "italian": "Noi dobbiamo partire",
+    "pronunciation": "noh-EE doh-bee-AH-moh par-TEE-reh",
+    "english": "We must leave"
+  },
+  {
+    "italian": "Voi dovete decidere",
+    "pronunciation": "voh-EE doh-VEH-teh deh-CHEE-deh-reh",
+    "english": "You (plural) must decide"
+  },
+  {
+    "italian": "Loro devono finire",
+    "pronunciation": "LOH-roh DEH-voh-noh fee-NEE-reh",
+    "english": "They must finish"
+  },
+  {
+    "italian": "Io so guidare",
+    "pronunciation": "EE-oh soh gwee-DAH-reh",
+    "english": "I know how to drive"
+  },
+  {
+    "italian": "Tu sai cucinare",
+    "pronunciation": "too sah-ee koo-chee-NAH-reh",
+    "english": "You know how to cook"
+  },
+  {
+    "italian": "Lei sa cantare",
+    "pronunciation": "lay sah kan-TAH-reh",
+    "english": "She knows how to sing"
+  },
+  {
+    "italian": "Noi sappiamo nuotare",
+    "pronunciation": "noh-EE sah-pee-AH-moh noo-oh-TAH-reh",
+    "english": "We know how to swim"
+  },
+  {
+    "italian": "Voi sapete ballare",
+    "pronunciation": "voh-EE sah-PEH-teh bah-LAH-reh",
+    "english": "You (plural) know how to dance"
+  },
+  {
+    "italian": "Loro sanno parlare inglese",
+    "pronunciation": "LOH-roh SAHN-noh par-LAH-reh een-GLEH-seh",
+    "english": "They know how to speak English"
+  },
+  {
+    "italian": "Io mangio la pizza",
+    "pronunciation": "EE-oh MAN-joh lah PEET-tsah",
+    "english": "I eat pizza"
+  },
+  {
+    "italian": "Tu mangi troppo",
+    "pronunciation": "too MAN-jee TROHP-poh",
+    "english": "You eat too much"
+  },
+  {
+    "italian": "Lei mangia poco",
+    "pronunciation": "lay MAN-jah POH-koh",
+    "english": "She eats little"
+  },
+  {
+    "italian": "Noi mangiamo insieme",
+    "pronunciation": "noh-EE man-JAH-moh een-see-EH-meh",
+    "english": "We eat together"
+  },
+  {
+    "italian": "Voi mangiate bene",
+    "pronunciation": "voh-EE man-JAH-teh BEH-neh",
+    "english": "You (plural) eat well"
+  },
+  {
+    "italian": "Loro mangiano fuori",
+    "pronunciation": "LOH-roh MAN-jah-noh foo-OH-ree",
+    "english": "They eat out"
+  },
+  {
+    "italian": "Io bevo acqua",
+    "pronunciation": "EE-oh BEH-voh AH-kwah",
+    "english": "I drink water"
+  },
+  {
+    "italian": "Tu bevi vino",
+    "pronunciation": "too BEH-vee VEE-noh",
+    "english": "You drink wine"
+  },
+  {
+    "italian": "Lei beve caffè",
+    "pronunciation": "lay BEH-veh kah-FEH",
+    "english": "She drinks coffee"
+  },
+  {
+    "italian": "Noi beviamo birra",
+    "pronunciation": "noh-EE beh-vee-AH-moh BEER-rah",
+    "english": "We drink beer"
+  },
+  {
+    "italian": "Voi bevete tè",
+    "pronunciation": "voh-EE beh-VEH-teh teh",
+    "english": "You (plural) drink tea"
+  },
+  {
+    "italian": "Loro bevono succo",
+    "pronunciation": "LOH-roh BEH-voh-noh SOOK-koh",
+    "english": "They drink juice"
+  },
+  {
+    "italian": "Io parlo italiano",
+    "pronunciation": "EE-oh PAR-loh ee-tah-lee-AH-noh",
+    "english": "I speak Italian"
+  },
+  {
+    "italian": "Tu parli velocemente",
+    "pronunciation": "too PAR-lee veh-loh-cheh-MEN-teh",
+    "english": "You speak quickly"
+  },
+  {
+    "italian": "Lei parla piano",
+    "pronunciation": "lay PAR-lah pee-AH-noh",
+    "english": "She speaks slowly"
+  },
+  {
+    "italian": "Noi parliamo al telefono",
+    "pronunciation": "noh-EE par-lee-AH-moh ahl teh-LEH-foh-noh",
+    "english": "We talk on the phone"
+  },
+  {
+    "italian": "Voi parlate forte",
+    "pronunciation": "voh-EE par-LAH-teh FOR-teh",
+    "english": "You (plural) speak loudly"
+  },
+  {
+    "italian": "Loro parlano sempre",
+    "pronunciation": "LOH-roh PAR-lah-noh SEM-preh",
+    "english": "They always talk"
+  },
+  {
+    "italian": "Io sento musica",
+    "pronunciation": "EE-oh SEN-toh MOO-see-kah",
+    "english": "I hear music"
+  },
+  {
+    "italian": "Tu senti freddo",
+    "pronunciation": "too SEN-tee FRED-doh",
+    "english": "You feel cold"
+  },
+  {
+    "italian": "Lei sente caldo",
+    "pronunciation": "lay SEN-teh KAL-doh",
+    "english": "She feels hot"
+  },
+  {
+    "italian": "Noi sentiamo la mancanza",
+    "pronunciation": "noh-EE sen-tee-AH-moh lah man-KAHN-tsah",
+    "english": "We miss (someone/something)"
+  },
+  {
+    "italian": "Voi sentite dolore",
+    "pronunciation": "voh-EE sen-TEE-teh doh-LOH-reh",
+    "english": "You (plural) feel pain"
+  },
+  {
+    "italian": "Loro sentono rumore",
+    "pronunciation": "LOH-roh SEN-toh-noh roo-MOH-reh",
+    "english": "They hear noise"
+  },
+  {
+    "italian": "Io vedo tutto",
+    "pronunciation": "EE-oh VEH-doh TOOT-toh",
+    "english": "I see everything"
+  },
+  {
+    "italian": "Tu vedi bene",
+    "pronunciation": "too VEH-dee BEH-neh",
+    "english": "You see well"
+  },
+  {
+    "italian": "Lei vede male",
+    "pronunciation": "lay VEH-deh MAH-leh",
+    "english": "She sees poorly"
+  },
+  {
+    "italian": "Noi vediamo un film",
+    "pronunciation": "noh-EE veh-dee-AH-moh oon film",
+    "english": "We watch a movie"
+  },
+  {
+    "italian": "Voi vedete la differenza",
+    "pronunciation": "voh-EE veh-DEH-teh lah dee-feh-REN-tsah",
+    "english": "You (plural) see the difference"
+  },
+  {
+    "italian": "Loro vedono spesso",
+    "pronunciation": "LOH-roh VEH-doh-noh SPEH-soh",
+    "english": "They see each other often"
+  },
+  {
+    "italian": "Io dormo bene",
+    "pronunciation": "EE-oh DOR-moh BEH-neh",
+    "english": "I sleep well"
+  },
+  {
+    "italian": "Tu dormi poco",
+    "pronunciation": "too DOR-mee POH-koh",
+    "english": "You sleep little"
+  },
+  {
+    "italian": "Lei dorme molto",
+    "pronunciation": "lay DOR-meh MOL-toh",
+    "english": "She sleeps a lot"
+  },
+  {
+    "italian": "Noi dormiamo tardi",
+    "pronunciation": "noh-EE dor-mee-AH-moh TAR-dee",
+    "english": "We sleep late"
+  },
+  {
+    "italian": "Voi dormite presto",
+    "pronunciation": "voh-EE dor-MEE-teh PREH-stoh",
+    "english": "You (plural) sleep early"
+  },
+  {
+    "italian": "Loro dormono insieme",
+    "pronunciation": "LOH-roh DOR-moh-noh een-see-EH-meh",
+    "english": "They sleep together"
   }
 ]
+Now your app will have 100 diverse phrases that will really help with Italian conversation skills!
