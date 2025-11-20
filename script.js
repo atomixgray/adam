@@ -1,7 +1,7 @@
 class FlashcardApp {
     constructor() {
         this.phrases = [];
-        this.currentIndex = 0;
+        this.currentIndex = this.loadProgress(); // Load last viewed index
         this.isFlipped = false;
         
         this.initializeElements();
@@ -21,12 +21,49 @@ class FlashcardApp {
         this.nextBtn = document.getElementById('nextBtn');
     }
     
+    // New methods for progress persistence
+    saveProgress() {
+        try {
+            localStorage.setItem('italianFlashcardIndex', this.currentIndex);
+            localStorage.setItem('italianFlashcardDate', new Date().toISOString());
+        } catch (e) {
+            console.warn('Local storage not available');
+        }
+    }
+    
+    loadProgress() {
+        try {
+            const savedIndex = localStorage.getItem('italianFlashcardIndex');
+            return savedIndex ? parseInt(savedIndex, 10) : 0;
+        } catch (e) {
+            return 0;
+        }
+    }
+    
+    resetProgress() {
+        try {
+            localStorage.removeItem('italianFlashcardIndex');
+            localStorage.removeItem('italianFlashcardDate');
+            this.currentIndex = 0;
+            this.displayCurrentCard();
+            this.updateNavigation();
+        } catch (e) {
+            console.warn('Could not reset progress');
+        }
+    }
+    
     async loadPhrases() {
         try {
             const response = await fetch('phrases.json');
             this.phrases = await response.json();
             this.shufflePhrases(); // Randomize the order
             this.totalCards.textContent = this.phrases.length;
+            
+            // Ensure loaded index is within phrase range
+            if (this.currentIndex >= this.phrases.length) {
+                this.currentIndex = 0;
+            }
+            
             this.displayCurrentCard();
             this.updateNavigation();
         } catch (error) {
@@ -74,6 +111,9 @@ class FlashcardApp {
         // Reset flip state
         this.isFlipped = false;
         this.flashcard.classList.remove('flipped');
+        
+        // Save progress after displaying
+        this.saveProgress();
     }
     
     flipCard() {
