@@ -19,9 +19,10 @@ class FlashcardApp {
         this.progressFill = document.getElementById('progressFill');
         this.prevBtn = document.getElementById('prevBtn');
         this.nextBtn = document.getElementById('nextBtn');
+        this.resetBtn = document.getElementById('resetBtn');
     }
     
-    // New methods for progress persistence
+    // Progress persistence methods
     saveProgress() {
         try {
             localStorage.setItem('italianFlashcardIndex', this.currentIndex);
@@ -85,6 +86,7 @@ class FlashcardApp {
         this.flashcard.addEventListener('click', () => this.flipCard());
         this.prevBtn.addEventListener('click', () => this.previousCard());
         this.nextBtn.addEventListener('click', () => this.nextCard());
+        this.resetBtn.addEventListener('click', () => this.resetProgress());
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
