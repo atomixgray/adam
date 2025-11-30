@@ -57,8 +57,10 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     margin-bottom: 2rem;
     animation: fadeInUp 0.8s ease-out 0.2s both;
+    flex-wrap: wrap;
 }
 
 .control-btn {
