@@ -3,6 +3,9 @@ let phrases = [];
 let currentIndex = 0;
 let isFlipped = false;
 
+// Storage key for progress
+const STORAGE_KEY = 'parla_progress';
+
 const flashcard = document.getElementById('flashcard');
 const englishText = document.getElementById('englishText');
 const italianText = document.getElementById('italianText');
@@ -12,6 +15,7 @@ const totalCardsSpan = document.getElementById('totalCards');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const shuffleBtn = document.getElementById('shuffleBtn');
+const resetBtn = document.getElementById('resetBtn');
 
 // Load phrases from JSON file
 async function loadPhrases() {
@@ -24,6 +28,9 @@ async function loadPhrases() {
         phrases = await response.json();
         console.log(`Loaded ${phrases.length} phrases`);
         totalCardsSpan.textContent = phrases.length;
+        
+        // Load saved progress
+        loadProgress();
         displayCard();
     } catch (error) {
         console.error('Error loading phrases:', error);
@@ -48,6 +55,47 @@ function displayCard() {
     // Update button states
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex === phrases.length - 1;
+    
+    // Save progress
+    saveProgress();
+}
+
+// Save progress to localStorage
+function saveProgress() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            currentIndex: currentIndex,
+            timestamp: new Date().toISOString()
+        }));
+    } catch (error) {
+        console.warn('Could not save progress:', error);
+    }
+}
+
+// Load progress from localStorage
+function loadProgress() {
+    try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            const data = JSON.parse(saved);
+            if (data.currentIndex >= 0 && data.currentIndex < phrases.length) {
+                currentIndex = data.currentIndex;
+                console.log(`Restored progress: card ${currentIndex + 1}`);
+            }
+        }
+    } catch (error) {
+        console.warn('Could not load progress:', error);
+    }
+}
+
+// Reset progress
+function resetProgress() {
+    if (confirm('Reset your progress and start from the beginning?')) {
+        currentIndex = 0;
+        localStorage.removeItem(STORAGE_KEY);
+        displayCard();
+        console.log('Progress reset');
+    }
 }
 
 // Flip card
@@ -81,6 +129,9 @@ shuffleBtn.addEventListener('click', () => {
     currentIndex = 0;
     displayCard();
 });
+
+// Reset progress
+resetBtn.addEventListener('click', resetProgress);
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
