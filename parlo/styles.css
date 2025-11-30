@@ -310,8 +310,35 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+    
+    header {
+        margin-bottom: 2rem;
+    }
+    
+    .mode-selector {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .mode-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
     .flashcard {
         height: 350px;
+    }
+    
+    .card-face {
+        padding: 2rem 1.5rem;
+    }
+    
+    .phrase-text {
+        font-size: clamp(1.3rem, 5vw, 2rem);
     }
     
     .navigation {
@@ -324,12 +351,26 @@ footer {
     }
     
     .controls {
-        flex-direction: column;
-        gap: 1rem;
+        flex-direction: row;
+        gap: 0.75rem;
     }
     
     .control-btn {
-        width: 100%;
-        justify-content: center;
+        flex: 1;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .control-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .progress {
+        font-size: 1rem;
+        flex-basis: 100%;
+        text-align: center;
+        order: -1;
+        margin-bottom: 0.5rem;
     }
 }
