@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parla - Italian Flashcards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Parla</h1>
+            <p class="subtitle">Learn Italian, one phrase at a time</p>
+        </header>
+
+        <div class="controls">
+            <button id="shuffleBtn" class="control-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+                </svg>
+                Shuffle
+            </button>
+            <div class="progress">
+                <span id="currentCard">0</span> / <span id="totalCards">0</span>
+            </div>
+        </div>
+
+        <div class="flashcard-container">
+            <div id="flashcard" class="flashcard">
+                <div class="card-face card-front">
+                    <div class="card-content">
+                        <div class="language-label">English</div>
+                        <div id="englishText" class="phrase-text"></div>
+                        <div class="flip-hint">Click to reveal Italian</div>
+                    </div>
+                </div>
+                <div class="card-face card-back">
+                    <div class="card-content">
+                        <div class="language-label">Italiano</div>
+                        <div id="italianText" class="phrase-text"></div>
+                        <div id="pronunciationText" class="pronunciation"></div>
+                        <div class="flip-hint">Click to see English</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button id="prevBtn" class="nav-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                Previous
+            </button>
+            <button id="nextBtn" class="nav-btn nav-btn-primary">
+                Next
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+        </div>
+
+        <footer>
+            <a href="/" class="back-link">← Back to adamlarkin.com</a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
