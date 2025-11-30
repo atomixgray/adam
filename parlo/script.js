@@ -1,6 +1,13 @@
+// Wait for DOM to load
+document.addEventListener('DOMContentLoaded', () => {
+    initParticles();
+    initFlashcards();
+});
+
 // Particle background animation
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
+function initParticles() {
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -68,12 +75,14 @@ function animate() {
 
 animate();
 
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
 
 // Flashcard functionality
+function initFlashcards() {
 let phrases = [];
 let currentIndex = 0;
 let isFlipped = false;
@@ -165,7 +174,8 @@ document.addEventListener('keydown', (e) => {
         isFlipped = !isFlipped;
         flashcard.classList.toggle('flipped');
     }
-});
+    });
 
-// Initialize
-loadPhrases();
+    // Initialize
+    loadPhrases();
+}
