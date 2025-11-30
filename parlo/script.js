@@ -2,9 +2,11 @@
 let phrases = [];
 let currentIndex = 0;
 let isFlipped = false;
+let studyMode = 'italian-to-english'; // 'italian-to-english', 'english-to-italian', 'mixed'
 
-// Storage key for progress
+// Storage keys
 const STORAGE_KEY = 'parla_progress';
+const MODE_STORAGE_KEY = 'parla_study_mode';
 
 const flashcard = document.getElementById('flashcard');
 const englishText = document.getElementById('englishText');
@@ -16,6 +18,7 @@ const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const shuffleBtn = document.getElementById('shuffleBtn');
 const resetBtn = document.getElementById('resetBtn');
+const modeButtons = document.querySelectorAll('.mode-btn');
 
 // Load phrases from JSON file
 async function loadPhrases() {
@@ -29,7 +32,8 @@ async function loadPhrases() {
         console.log(`Loaded ${phrases.length} phrases`);
         totalCardsSpan.textContent = phrases.length;
         
-        // Load saved progress
+        // Load saved mode and progress
+        loadStudyMode();
         loadProgress();
         displayCard();
     } catch (error) {
@@ -43,9 +47,39 @@ function displayCard() {
     if (phrases.length === 0) return;
     
     const phrase = phrases[currentIndex];
-    englishText.textContent = phrase.english;
-    italianText.textContent = phrase.italian;
-    pronunciationText.textContent = phrase.pronunciation;
+    
+    // Determine what to show based on study mode
+    let showItalianFirst = studyMode === 'italian-to-english';
+    if (studyMode === 'mixed') {
+        showItalianFirst = Math.random() < 0.5;
+    }
+    
+    if (showItalianFirst) {
+        // Italian on front, English on back
+        italianText.textContent = phrase.italian;
+        pronunciationText.textContent = phrase.pronunciation;
+        englishText.textContent = phrase.english;
+        document.querySelector('.card-front .language-label').textContent = 'Italiano';
+        document.querySelector('.card-back .language-label').textContent = 'English';
+        document.querySelector('.card-front .flip-hint').textContent = 'Click to reveal English';
+        document.querySelector('.card-back .flip-hint').textContent = 'Click to see Italian';
+    } else {
+        // English on front, Italian on back
+        italianText.textContent = phrase.english;
+        pronunciationText.textContent = '';
+        englishText.textContent = phrase.italian;
+        document.querySelector('.card-front .language-label').textContent = 'English';
+        document.querySelector('.card-back .language-label').textContent = 'Italiano';
+        document.querySelector('.card-front .flip-hint').textContent = 'Click to reveal Italian';
+        document.querySelector('.card-back .flip-hint').textContent = 'Click to see English';
+        
+        // Show pronunciation on back for English-to-Italian mode
+        const backPronunciation = document.querySelector('.card-back .pronunciation');
+        if (backPronunciation) {
+            backPronunciation.textContent = phrase.pronunciation;
+        }
+    }
+    
     currentCardSpan.textContent = currentIndex + 1;
     
     // Reset flip state
@@ -86,6 +120,40 @@ function loadProgress() {
     } catch (error) {
         console.warn('Could not load progress:', error);
     }
+}
+
+// Save study mode
+function saveStudyMode() {
+    try {
+        localStorage.setItem(MODE_STORAGE_KEY, studyMode);
+    } catch (error) {
+        console.warn('Could not save study mode:', error);
+    }
+}
+
+// Load study mode
+function loadStudyMode() {
+    try {
+        const saved = localStorage.getItem(MODE_STORAGE_KEY);
+        if (saved) {
+            studyMode = saved;
+            updateModeButtons();
+            console.log(`Restored study mode: ${studyMode}`);
+        }
+    } catch (error) {
+        console.warn('Could not load study mode:', error);
+    }
+}
+
+// Update mode button states
+function updateModeButtons() {
+    modeButtons.forEach(btn => {
+        if (btn.dataset.mode === studyMode) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
 
 // Reset progress
@@ -132,6 +200,16 @@ shuffleBtn.addEventListener('click', () => {
 
 // Reset progress
 resetBtn.addEventListener('click', resetProgress);
+
+// Study mode selection
+modeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        studyMode = btn.dataset.mode;
+        updateModeButtons();
+        saveStudyMode();
+        displayCard();
+    });
+});
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
