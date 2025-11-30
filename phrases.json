@@ -1,68 +1,742 @@
 [
-  { "italian": "Io vado al lavoro presto", "pronunciation": "EE-oh VAH-doh ahl lah-VOH-roh PREH-stoh", "english": "I go to work early" },
-  { "italian": "Lui dice sempre la verità", "pronunciation": "loo-EE DEE-cheh SEHM-preh lah veh-ree-TAH", "english": "He always tells the truth" },
-  { "italian": "Noi possiamo entrare", "pronunciation": "NOH-ee pohs-SYAH-mo ehn-TRAH-reh", "english": "We can come in" },
-  { "italian": "Lei vede tutto", "pronunciation": "lay VEH-deh TOOT-toh", "english": "She sees everything" },
-  { "italian": "Posso parlare con te", "pronunciation": "POHS-soh par-LAH-reh kohn teh", "english": "Can I talk with you" },
-  { "italian": "Devi studiare di più", "pronunciation": "DEH-vee stoo-dee-AH-reh dee pyoo", "english": "You need to study more" },
-  { "italian": "Loro vogliono uscire", "pronunciation": "LOH-roh VOHL-lyoh-no oo-SHEE-reh", "english": "They want to go out" },
-  { "italian": "Sto aspettando l’autobus", "pronunciation": "stoh ah-speht-TAHN-doh LAH-oo-too-boos", "english": "I am waiting for the bus" },
-  { "italian": "Puoi prendere questo", "pronunciation": "pwoy PREHN-deh-reh KWEH-stoh", "english": "You can take this" },
-  { "italian": "Lei lavora in banca", "pronunciation": "lay lah-VOH-rah een BAHN-kah", "english": "She works in a bank" },
-  { "italian": "Io so la risposta", "pronunciation": "EE-oh soh lah ree-SPOHS-tah", "english": "I know the answer" },
-  { "italian": "Lui trova la chiave", "pronunciation": "loo-EE TROH-vah lah KYAH-veh", "english": "He finds the key" },
-  { "italian": "Vieni con me", "pronunciation": "VYEH-nee kohn meh", "english": "Come with me" },
-  { "italian": "Metto il libro sul tavolo", "pronunciation": "MEHT-toh eel LEE-broh sool TAH-voh-loh", "english": "I put the book on the table" },
-  { "italian": "Tieni il resto", "pronunciation": "TYEH-nee eel REH-stoh", "english": "Keep the change" },
-  { "italian": "Noi diamo una mano", "pronunciation": "NOH-ee DYAH-moh OO-nah MAH-noh", "english": "We give a hand" },
-  { "italian": "Loro arrivano domani", "pronunciation": "LOH-roh ar-REE-vah-no doh-MAH-nee", "english": "They arrive tomorrow" },
-  { "italian": "Capisco quello che dici", "pronunciation": "kah-PEE-skoh KWEH-loh keh DEE-chee", "english": "I understand what you say" },
-  { "italian": "La bambina dorme bene", "pronunciation": "lah bahm-BEE-nah DOR-meh BEH-neh", "english": "The little girl sleeps well" },
-  { "italian": "Troviamo una soluzione", "pronunciation": "troh-VYAH-moh OO-nah soh-loo-tsyoh-NEH", "english": "We find a solution" },
-  { "italian": "Porto il cane fuori", "pronunciation": "POR-toh eel KAH-neh FWOH-ree", "english": "I take the dog outside" },
-  { "italian": "Scrivo un messaggio", "pronunciation": "SKREE-voh oon meh-SAHJ-joh", "english": "I write a message" },
-  { "italian": "Tu leggi velocemente", "pronunciation": "too LEHJ-jee veh-loh-cheh-MEN-teh", "english": "You read quickly" },
-  { "italian": "Lei sente un rumore", "pronunciation": "lay SEHN-teh oon roo-MOH-reh", "english": "She hears a noise" },
-  { "italian": "Io prendo un caffè", "pronunciation": "EE-oh PREHN-doh oon kah-FEH", "english": "I am having a coffee" },
-  { "italian": "Quando vieni a casa", "pronunciation": "KWAN-doh VYEH-nee ah KAH-sah", "english": "When are you coming home" },
-  { "italian": "Mia madre lascia un messaggio", "pronunciation": "MEE-ah MAH-dreh LAH-shah oon meh-SAHJ-joh", "english": "My mother leaves a message" },
-  { "italian": "Io tengo tutto in ordine", "pronunciation": "EE-oh TEHN-goh TOOT-toh een OR-dee-neh", "english": "I keep everything in order" },
-  { "italian": "Rimani qui per favore", "pronunciation": "ree-MAH-nee kwee pehr fah-VOH-reh", "english": "Stay here please" },
-  { "italian": "Ti conosco bene", "pronunciation": "tee koh-NOH-skoh BEH-neh", "english": "I know you well" },
-  { "italian": "Torniamo più tardi", "pronunciation": "tor-NYAH-moh pyoo TAR-dee", "english": "We will come back later" },
-  { "italian": "Mi sento meglio oggi", "pronunciation": "mee SEHN-toh MEHL-yoh OHJ-jee", "english": "I feel better today" },
-  { "italian": "Metti le chiavi sul tavolo", "pronunciation": "MEHT-tee leh KYAH-vee sool TAH-voh-loh", "english": "Put the keys on the table" },
-  { "italian": "Io do sempre il massimo", "pronunciation": "EE-oh doh SEHM-preh eel MAH-see-moh", "english": "I always give my best" },
-  { "italian": "Può aiutarmi", "pronunciation": "pwah ah-yoo-TAR-mee", "english": "Can you help me" },
-  { "italian": "Io vedo la differenza", "pronunciation": "EE-oh VEH-doh lah dee-feh-REHN-tsah", "english": "I see the difference" },
-  { "italian": "Loro prendono il treno", "pronunciation": "LOH-roh PREHN-doh-no eel TREH-noh", "english": "They take the train" },
-  { "italian": "Tu dormi ancora", "pronunciation": "too DOR-mee ahn-KOH-rah", "english": "You are still sleeping" },
-  { "italian": "Trovo difficile capire", "pronunciation": "TROH-voh dee-FEE-chee-leh kah-PEE-reh", "english": "I find it hard to understand" },
-  { "italian": "Lei torna subito", "pronunciation": "lay TOR-nah SOO-bee-toh", "english": "She will be right back" },
-  { "italian": "Capisci la domanda", "pronunciation": "kah-PEE-shee lah doh-MAHN-dah", "english": "Do you understand the question" },
-  { "italian": "Scriviamo ogni giorno", "pronunciation": "skree-VYAH-moh OH-nyee JOR-noh", "english": "We write every day" },
-  { "italian": "Porti i documenti", "pronunciation": "POR-tee ee doh-koo-MEN-tee", "english": "Bring the documents" },
-  { "italian": "Lei sente freddo", "pronunciation": "lay SEHN-teh FREHD-doh", "english": "She feels cold" },
-  { "italian": "Tieni aperta la porta", "pronunciation": "TYEH-nee ah-PEHR-tah lah POR-tah", "english": "Keep the door open" },
-  { "italian": "Vengo subito", "pronunciation": "VEHN-goh SOO-bee-toh", "english": "I am coming right away" },
-  { "italian": "Lui esce ogni sera", "pronunciation": "loo-EE EH-sheh OH-nyee SEH-rah", "english": "He goes out every evening" },
-  { "italian": "Noi lasciamo tutto così", "pronunciation": "NOH-ee lah-SHYAH-moh TOOT-toh koh-ZEE", "english": "We leave everything as it is" },
-  { "italian": "Io tengo la porta chiusa", "pronunciation": "EE-oh TEHN-goh lah POR-tah KYOO-zah", "english": "I keep the door closed" },
-  { "italian": "Rimango a casa oggi", "pronunciation": "ree-MAHN-goh ah KAH-sah OHJ-jee", "english": "I am staying home today" },
-  { "italian": "Conosco questa città", "pronunciation": "koh-NOH-skoh KWEH-stah chee-TAH", "english": "I know this city" },
-  { "italian": "Torni presto", "pronunciation": "TOR-nee PREH-stoh", "english": "Come back soon" },
-  { "italian": "Io posso farlo", "pronunciation": "EE-oh POHS-soh FAR-loh", "english": "I can do it" },
-  { "italian": "Lei va spesso in palestra", "pronunciation": "lay vah SPEHS-soh een pah-LEHS-trah", "english": "She often goes to the gym" },
-  { "italian": "Dobbiamo partire", "pronunciation": "dohb-BYAH-moh par-TEE-reh", "english": "We need to leave" },
-  { "italian": "Loro dicono la stessa cosa", "pronunciation": "LOH-roh DEE-koh-no lah STEH-sah KOH-sah", "english": "They say the same thing" },
-  { "italian": "Vedi quella casa", "pronunciation": "VEH-dee KWEH-lah KAH-sah", "english": "Do you see that house" },
-  { "italian": "Io do un consiglio", "pronunciation": "EE-oh doh oon kohn-SEEL-yoh", "english": "I give some advice" },
-  { "italian": "Puoi venire domani", "pronunciation": "pwoy veh-NEE-reh doh-MAH-nee", "english": "Can you come tomorrow" },
-  { "italian": "Trovi quello che cerchi", "pronunciation": "TROH-vee KWEH-loh keh CHEHR-kee", "english": "You find what you are looking for" },
-  { "italian": "Metti l’acqua sul fuoco", "pronunciation": "MEHT-tee LAH-kwah sool FWOH-koh", "english": "Put the water on the stove" },
-  { "italian": "Io arrivo tardi", "pronunciation": "EE-oh ar-REE-voh TAR-dee", "english": "I am arriving late" },
-  { "italian": "Lei capisce subito", "pronunciation": "lay kah-PEE-sheh SOO-bee-toh", "english": "She understands right away" },
-  { "italian": "Dormiamo qui stanotte", "pronunciation": "dor-MYAH-moh kwee stah-NOHT-teh", "english": "We will sleep here tonight" },
-  { "italian": "Tieni questo per me", "pronunciation": "TYEH-nee KWEH-stoh pehr meh", "english": "Hold this for me" },
-  { "italian": "Io scrivo spesso", "pronunciation": "EE-oh SKREE-voh SPEHS-soh", "english": "I write often" }
+  {
+    "italian": "Io sono italiano",
+    "pronunciation": "EE-oh SOH-noh ee-tah-lee-AH-noh",
+    "english": "I am Italian"
+  },
+  {
+    "italian": "Tu hai fame",
+    "pronunciation": "too AH-ee FAH-meh",
+    "english": "You are hungry"
+  },
+  {
+    "italian": "Lui fa una passeggiata",
+    "pronunciation": "loo-EE fah OO-nah pahs-sehd-JAH-tah",
+    "english": "He takes a walk"
+  },
+  {
+    "italian": "Noi andiamo al cinema",
+    "pronunciation": "noh-EE ahn-dee-AH-moh ahl CHEE-neh-mah",
+    "english": "We go to the cinema"
+  },
+  {
+    "italian": "Voi venite domani",
+    "pronunciation": "voh-EE veh-NEE-teh doh-MAH-nee",
+    "english": "You (plural) come tomorrow"
+  },
+  {
+    "italian": "Loro dicono la verità",
+    "pronunciation": "LOH-roh DEE-koh-noh lah veh-ree-TAH",
+    "english": "They tell the truth"
+  },
+  {
+    "italian": "Io vedo un gatto",
+    "pronunciation": "EE-oh VEH-doh oon GAHT-toh",
+    "english": "I see a cat"
+  },
+  {
+    "italian": "Tu sai parlare inglese",
+    "pronunciation": "too SAH-ee pahr-LAH-reh een-GLEH-zeh",
+    "english": "You know how to speak English"
+  },
+  {
+    "italian": "Lei vuole un caffè",
+    "pronunciation": "leh-EE voo-OH-leh oon kahf-FEH",
+    "english": "She wants a coffee"
+  },
+  {
+    "italian": "Noi possiamo aiutare",
+    "pronunciation": "noh-EE pohs-see-AH-moh ah-yoo-TAH-reh",
+    "english": "We can help"
+  },
+  {
+    "italian": "Voi dovete studiare",
+    "pronunciation": "voh-EE doh-VEH-teh stoo-dee-AH-reh",
+    "english": "You (plural) must study"
+  },
+  {
+    "italian": "Io mangio la pizza",
+    "pronunciation": "EE-oh MAHN-joh lah PEET-tsah",
+    "english": "I eat pizza"
+  },
+  {
+    "italian": "Tu bevi acqua",
+    "pronunciation": "too BEH-vee AH-kwah",
+    "english": "You drink water"
+  },
+  {
+    "italian": "Lui lavora in ufficio",
+    "pronunciation": "loo-EE lah-VOH-rah een oof-FEE-choh",
+    "english": "He works in the office"
+  },
+  {
+    "italian": "Noi abitiamo a Roma",
+    "pronunciation": "noh-EE ah-bee-tee-AH-moh ah ROH-mah",
+    "english": "We live in Rome"
+  },
+  {
+    "italian": "Loro partono stasera",
+    "pronunciation": "LOH-roh PAHR-toh-noh stah-SEH-rah",
+    "english": "They leave tonight"
+  },
+  {
+    "italian": "Io esco con gli amici",
+    "pronunciation": "EE-oh EH-skoh kohn lyee ah-MEE-chee",
+    "english": "I go out with friends"
+  },
+  {
+    "italian": "Tu stai bene",
+    "pronunciation": "too stah-EE BEH-neh",
+    "english": "You are well"
+  },
+  {
+    "italian": "Lei dà un regalo",
+    "pronunciation": "leh-EE dah oon reh-GAH-loh",
+    "english": "She gives a gift"
+  },
+  {
+    "italian": "Noi facciamo la spesa",
+    "pronunciation": "noh-EE fah-chee-AH-moh lah SPEH-zah",
+    "english": "We do the shopping"
+  },
+  {
+    "italian": "Voi conoscete questa città",
+    "pronunciation": "voh-EE koh-noh-SHEH-teh KWEH-stah cheet-TAH",
+    "english": "You (plural) know this city"
+  },
+  {
+    "italian": "Io prendo il treno",
+    "pronunciation": "EE-oh PREHN-doh eel TREH-noh",
+    "english": "I take the train"
+  },
+  {
+    "italian": "Tu metti la giacca",
+    "pronunciation": "too MEHT-tee lah JAH-kah",
+    "english": "You put on the jacket"
+  },
+  {
+    "italian": "Lei sente la musica",
+    "pronunciation": "leh-EE SEHN-teh lah MOO-zee-kah",
+    "english": "She hears the music"
+  },
+  {
+    "italian": "Noi torniamo a casa",
+    "pronunciation": "noh-EE tohr-nee-AH-moh ah KAH-zah",
+    "english": "We return home"
+  },
+  {
+    "italian": "Io dormo otto ore",
+    "pronunciation": "EE-oh DOHR-moh OHT-toh OH-reh",
+    "english": "I sleep eight hours"
+  },
+  {
+    "italian": "Tu leggi un libro",
+    "pronunciation": "too LEHD-jee oon LEE-broh",
+    "english": "You read a book"
+  },
+  {
+    "italian": "Lui scrive una lettera",
+    "pronunciation": "loo-EE SKREE-veh OO-nah leht-TEH-rah",
+    "english": "He writes a letter"
+  },
+  {
+    "italian": "Noi parliamo italiano",
+    "pronunciation": "noh-EE pahr-lee-AH-moh ee-tah-lee-AH-noh",
+    "english": "We speak Italian"
+  },
+  {
+    "italian": "Voi ascoltate la radio",
+    "pronunciation": "voh-EE ah-skohl-TAH-teh lah RAH-dee-oh",
+    "english": "You (plural) listen to the radio"
+  },
+  {
+    "italian": "Loro aprono la porta",
+    "pronunciation": "LOH-roh AH-proh-noh lah POHR-tah",
+    "english": "They open the door"
+  },
+  {
+    "italian": "Io chiudo la finestra",
+    "pronunciation": "EE-oh kee-OO-doh lah fee-NEH-strah",
+    "english": "I close the window"
+  },
+  {
+    "italian": "Tu guardi la televisione",
+    "pronunciation": "too gwahr-DAH-ree lah teh-leh-vee-zee-OH-neh",
+    "english": "You watch television"
+  },
+  {
+    "italian": "Lei compra il pane",
+    "pronunciation": "leh-EE KOHM-prah eel PAH-neh",
+    "english": "She buys bread"
+  },
+  {
+    "italian": "Noi vendiamo la casa",
+    "pronunciation": "noh-EE vehn-dee-AH-moh lah KAH-zah",
+    "english": "We sell the house"
+  },
+  {
+    "italian": "Voi cercate il gatto",
+    "pronunciation": "voh-EE cher-KAH-teh eel GAHT-toh",
+    "english": "You (plural) look for the cat"
+  },
+  {
+    "italian": "Io trovo le chiavi",
+    "pronunciation": "EE-oh TROH-voh leh kee-AH-vee",
+    "english": "I find the keys"
+  },
+  {
+    "italian": "Tu perdi il telefono",
+    "pronunciation": "too PEHR-dee eel teh-LEH-foh-noh",
+    "english": "You lose the phone"
+  },
+  {
+    "italian": "Lui porta la valigia",
+    "pronunciation": "loo-EE POHR-tah lah vah-LEE-jah",
+    "english": "He carries the suitcase"
+  },
+  {
+    "italian": "Noi arriviamo in ritardo",
+    "pronunciation": "noh-EE ahr-ree-vee-AH-moh een ree-TAHR-doh",
+    "english": "We arrive late"
+  },
+  {
+    "italian": "Loro restano a cena",
+    "pronunciation": "LOH-roh REH-stah-noh ah CHEH-nah",
+    "english": "They stay for dinner"
+  },
+  {
+    "italian": "Io cammino nel parco",
+    "pronunciation": "EE-oh kahm-MEE-noh nehl PAHR-koh",
+    "english": "I walk in the park"
+  },
+  {
+    "italian": "Tu corri ogni mattina",
+    "pronunciation": "too KOHR-ree OH-nyee maht-TEE-nah",
+    "english": "You run every morning"
+  },
+  {
+    "italian": "Lei nuota in piscina",
+    "pronunciation": "leh-EE noo-OH-tah een pee-SHEE-nah",
+    "english": "She swims in the pool"
+  },
+  {
+    "italian": "Noi giochiamo a calcio",
+    "pronunciation": "noh-EE joh-kee-AH-moh ah KAHL-choh",
+    "english": "We play soccer"
+  },
+  {
+    "italian": "Voi cantate una canzone",
+    "pronunciation": "voh-EE kahn-TAH-teh OO-nah kahn-TSOH-neh",
+    "english": "You (plural) sing a song"
+  },
+  {
+    "italian": "Io ballo con Maria",
+    "pronunciation": "EE-oh BAHL-loh kohn mah-REE-ah",
+    "english": "I dance with Maria"
+  },
+  {
+    "italian": "Tu cucini la pasta",
+    "pronunciation": "too koo-CHEE-nee lah PAH-stah",
+    "english": "You cook pasta"
+  },
+  {
+    "italian": "Lui pulisce la casa",
+    "pronunciation": "loo-EE poo-LEE-sheh lah KAH-zah",
+    "english": "He cleans the house"
+  },
+  {
+    "italian": "Noi laviamo i piatti",
+    "pronunciation": "noh-EE lah-vee-AH-moh ee pee-AHT-tee",
+    "english": "We wash the dishes"
+  },
+  {
+    "italian": "Loro stirano i vestiti",
+    "pronunciation": "LOH-roh stee-RAH-noh ee veh-STEE-tee",
+    "english": "They iron the clothes"
+  },
+  {
+    "italian": "Io mi sveglio presto",
+    "pronunciation": "EE-oh mee SVEH-lyoh PREH-stoh",
+    "english": "I wake up early"
+  },
+  {
+    "italian": "Tu ti lavi i denti",
+    "pronunciation": "too tee LAH-vee ee DEHN-tee",
+    "english": "You brush your teeth"
+  },
+  {
+    "italian": "Lei si veste elegante",
+    "pronunciation": "leh-EE see VEH-steh eh-leh-GAHN-teh",
+    "english": "She dresses elegantly"
+  },
+  {
+    "italian": "Noi ci riposiamo",
+    "pronunciation": "noh-EE chee ree-poh-zee-AH-moh",
+    "english": "We rest"
+  },
+  {
+    "italian": "Voi vi divertite",
+    "pronunciation": "voh-EE vee dee-vehr-TEE-teh",
+    "english": "You (plural) have fun"
+  },
+  {
+    "italian": "Io mi chiamo Marco",
+    "pronunciation": "EE-oh mee kee-AH-moh MAHR-koh",
+    "english": "My name is Marco"
+  },
+  {
+    "italian": "Tu ti siedi qui",
+    "pronunciation": "too tee see-EH-dee kwee",
+    "english": "You sit here"
+  },
+  {
+    "italian": "Lui si alza tardi",
+    "pronunciation": "loo-EE see AHL-tsah TAHR-dee",
+    "english": "He gets up late"
+  },
+  {
+    "italian": "Noi ci incontriamo domani",
+    "pronunciation": "noh-EE chee een-kohn-tree-AH-moh doh-MAH-nee",
+    "english": "We meet tomorrow"
+  },
+  {
+    "italian": "Loro si sposano a giugno",
+    "pronunciation": "LOH-roh see SPOH-zah-noh ah JOO-nyoh",
+    "english": "They get married in June"
+  },
+  {
+    "italian": "Io ho mangiato bene",
+    "pronunciation": "EE-oh oh mahn-JAH-toh BEH-neh",
+    "english": "I ate well"
+  },
+  {
+    "italian": "Tu hai studiato molto",
+    "pronunciation": "too AH-ee stoo-dee-AH-toh MOHL-toh",
+    "english": "You studied a lot"
+  },
+  {
+    "italian": "Lei è andata al mare",
+    "pronunciation": "leh-EE eh ahn-DAH-tah ahl MAH-reh",
+    "english": "She went to the sea"
+  },
+  {
+    "italian": "Noi abbiamo visto il film",
+    "pronunciation": "noh-EE ahb-bee-AH-moh VEE-stoh eel feelm",
+    "english": "We saw the movie"
+  },
+  {
+    "italian": "Voi siete partiti ieri",
+    "pronunciation": "voh-EE see-EH-teh pahr-TEE-tee ee-EH-ree",
+    "english": "You (plural) left yesterday"
+  },
+  {
+    "italian": "Loro hanno dormito poco",
+    "pronunciation": "LOH-roh AHN-noh dohr-MEE-toh POH-koh",
+    "english": "They slept little"
+  },
+  {
+    "italian": "Io stavo leggendo",
+    "pronunciation": "EE-oh STAH-voh lehd-JEHN-doh",
+    "english": "I was reading"
+  },
+  {
+    "italian": "Tu stavi cucinando",
+    "pronunciation": "too STAH-vee koo-chee-NAHN-doh",
+    "english": "You were cooking"
+  },
+  {
+    "italian": "Lei stava parlando",
+    "pronunciation": "leh-EE STAH-vah pahr-LAHN-doh",
+    "english": "She was talking"
+  },
+  {
+    "italian": "Noi stavamo aspettando",
+    "pronunciation": "noh-EE stah-VAH-moh ah-speht-TAHN-doh",
+    "english": "We were waiting"
+  },
+  {
+    "italian": "Voi stavate ridendo",
+    "pronunciation": "voh-EE stah-VAH-teh ree-DEHN-doh",
+    "english": "You (plural) were laughing"
+  },
+  {
+    "italian": "Io mangerò la pizza",
+    "pronunciation": "EE-oh mahn-jeh-ROH lah PEET-tsah",
+    "english": "I will eat pizza"
+  },
+  {
+    "italian": "Tu andrai in vacanza",
+    "pronunciation": "too ahn-drah-EE een vah-KAHN-tsah",
+    "english": "You will go on vacation"
+  },
+  {
+    "italian": "Lei verrà alla festa",
+    "pronunciation": "leh-EE vehr-RAH AHL-lah FEH-stah",
+    "english": "She will come to the party"
+  },
+  {
+    "italian": "Noi faremo i compiti",
+    "pronunciation": "noh-EE fah-REH-moh ee kohm-PEE-tee",
+    "english": "We will do homework"
+  },
+  {
+    "italian": "Voi partirete domani",
+    "pronunciation": "voh-EE pahr-tee-REH-teh doh-MAH-nee",
+    "english": "You (plural) will leave tomorrow"
+  },
+  {
+    "italian": "Loro torneranno presto",
+    "pronunciation": "LOH-roh tohr-neh-RAHN-noh PREH-stoh",
+    "english": "They will return soon"
+  },
+  {
+    "italian": "Io vorrei un gelato",
+    "pronunciation": "EE-oh vohr-REH-ee oon jeh-LAH-toh",
+    "english": "I would like an ice cream"
+  },
+  {
+    "italian": "Tu dovresti studiare",
+    "pronunciation": "too doh-VRE-stee stoo-dee-AH-reh",
+    "english": "You should study"
+  },
+  {
+    "italian": "Lei potrebbe venire",
+    "pronunciation": "leh-EE poh-TREH-beh veh-NEE-reh",
+    "english": "She could come"
+  },
+  {
+    "italian": "Noi saremmo felici",
+    "pronunciation": "noh-EE sah-REHM-moh feh-LEE-chee",
+    "english": "We would be happy"
+  },
+  {
+    "italian": "Voi avreste tempo",
+    "pronunciation": "voh-EE ah-VRE-steh TEHM-poh",
+    "english": "You (plural) would have time"
+  },
+  {
+    "italian": "Io spero che tu venga",
+    "pronunciation": "EE-oh SPEH-roh keh too VEHN-gah",
+    "english": "I hope you come"
+  },
+  {
+    "italian": "Tu pensi che sia vero",
+    "pronunciation": "too PEHN-see keh SEE-ah VEH-roh",
+    "english": "You think it's true"
+  },
+  {
+    "italian": "Lei crede che piova",
+    "pronunciation": "leh-EE KREH-deh keh pee-OH-vah",
+    "english": "She believes it will rain"
+  },
+  {
+    "italian": "Noi dubitiamo che arrivi",
+    "pronunciation": "noh-EE doo-bee-tee-AH-moh keh ahr-REE-vee",
+    "english": "We doubt he arrives"
+  },
+  {
+    "italian": "Voi volete che studia",
+    "pronunciation": "voh-EE voh-LEH-teh keh STOO-dee-ah",
+    "english": "You (plural) want him to study"
+  },
+  {
+    "italian": "Io mi ricordo di te",
+    "pronunciation": "EE-oh mee ree-KOHR-doh dee teh",
+    "english": "I remember you"
+  },
+  {
+    "italian": "Tu ti dimentichi sempre",
+    "pronunciation": "too tee dee-mehn-TEE-kee SEHM-preh",
+    "english": "You always forget"
+  },
+  {
+    "italian": "Lei si preoccupa troppo",
+    "pronunciation": "leh-EE see preh-ohk-KOO-pah TROHP-poh",
+    "english": "She worries too much"
+  },
+  {
+    "italian": "Noi ci sbagliamo spesso",
+    "pronunciation": "noh-EE chee zbah-lyee-AH-moh SPEHS-soh",
+    "english": "We make mistakes often"
+  },
+  {
+    "italian": "Voi vi arrabbiate facilmente",
+    "pronunciation": "voh-EE vee ahr-rahb-bee-AH-teh fah-cheel-MEHN-teh",
+    "english": "You (plural) get angry easily"
+  },
+  {
+    "italian": "Io mi sono perso",
+    "pronunciation": "EE-oh mee SOH-noh PEHR-soh",
+    "english": "I got lost"
+  },
+  {
+    "italian": "Tu ti sei divertito",
+    "pronunciation": "too tee seh-EE dee-vehr-TEE-toh",
+    "english": "You had fun"
+  },
+  {
+    "italian": "Lei si è sposata",
+    "pronunciation": "leh-EE see eh spoh-ZAH-tah",
+    "english": "She got married"
+  },
+  {
+    "italian": "Noi ci siamo conosciuti",
+    "pronunciation": "noh-EE chee see-AH-moh koh-noh-SHOO-tee",
+    "english": "We met each other"
+  },
+  {
+    "italian": "Voi vi siete laureati",
+    "pronunciation": "voh-EE vee see-EH-teh lah-oo-reh-AH-tee",
+    "english": "You (plural) graduated"
+  },
+  {
+    "italian": "Io sto imparando l'italiano",
+    "pronunciation": "EE-oh stoh eem-pah-RAHN-doh lee-tah-lee-AH-noh",
+    "english": "I am learning Italian"
+  },
+  {
+    "italian": "Tu stai lavorando sodo",
+    "pronunciation": "too stah-EE lah-voh-RAHN-doh SOH-doh",
+    "english": "You are working hard"
+  },
+  {
+    "italian": "Lei sta migliorando",
+    "pronunciation": "leh-EE stah mee-lyoh-RAHN-doh",
+    "english": "She is improving"
+  },
+  {
+    "italian": "Noi stiamo aspettando",
+    "pronunciation": "noh-EE stee-AH-moh ah-speht-TAHN-doh",
+    "english": "We are waiting"
+  },
+  {
+    "italian": "Voi state crescendo",
+    "pronunciation": "voh-EE STAH-teh kreh-SHEHN-doh",
+    "english": "You (plural) are growing"
+  },
+  {
+    "italian": "Io ho appena finito",
+    "pronunciation": "EE-oh oh ahp-PEH-nah fee-NEE-toh",
+    "english": "I have just finished"
+  },
+  {
+    "italian": "Tu hai già mangiato",
+    "pronunciation": "too AH-ee jah mahn-JAH-toh",
+    "english": "You have already eaten"
+  },
+  {
+    "italian": "Lei non è ancora arrivata",
+    "pronunciation": "leh-EE nohn eh ahn-KOH-rah ahr-ree-VAH-tah",
+    "english": "She hasn't arrived yet"
+  },
+  {
+    "italian": "Noi abbiamo sempre saputo",
+    "pronunciation": "noh-EE ahb-bee-AH-moh SEHM-preh sah-POO-toh",
+    "english": "We have always known"
+  },
+  {
+    "italian": "Voi non avete mai visto",
+    "pronunciation": "voh-EE nohn ah-VEH-teh mah-EE VEE-stoh",
+    "english": "You (plural) have never seen"
+  },
+  {
+    "italian": "Io avevo fame",
+    "pronunciation": "EE-oh ah-VEH-voh FAH-meh",
+    "english": "I was hungry"
+  },
+  {
+    "italian": "Tu eri stanco",
+    "pronunciation": "too EH-ree STAHN-koh",
+    "english": "You were tired"
+  },
+  {
+    "italian": "Lei aveva ragione",
+    "pronunciation": "leh-EE ah-VEH-vah rah-JOH-neh",
+    "english": "She was right"
+  },
+  {
+    "italian": "Noi eravamo giovani",
+    "pronunciation": "noh-EE eh-rah-VAH-moh JOH-vah-nee",
+    "english": "We were young"
+  },
+  {
+    "italian": "Voi avevate fretta",
+    "pronunciation": "voh-EE ah-veh-VAH-teh FREHT-tah",
+    "english": "You (plural) were in a hurry"
+  },
+  {
+    "italian": "Io avevo già mangiato",
+    "pronunciation": "EE-oh ah-VEH-voh jah mahn-JAH-toh",
+    "english": "I had already eaten"
+  },
+  {
+    "italian": "Tu eri appena arrivato",
+    "pronunciation": "too EH-ree ahp-PEH-nah ahr-ree-VAH-toh",
+    "english": "You had just arrived"
+  },
+  {
+    "italian": "Lei aveva studiato molto",
+    "pronunciation": "leh-EE ah-VEH-vah stoo-dee-AH-toh MOHL-toh",
+    "english": "She had studied a lot"
+  },
+  {
+    "italian": "Noi eravamo già partiti",
+    "pronunciation": "noh-EE eh-rah-VAH-moh jah pahr-TEE-tee",
+    "english": "We had already left"
+  },
+  {
+    "italian": "Voi avevate finito tutto",
+    "pronunciation": "voh-EE ah-veh-VAH-teh fee-NEE-toh TOOT-toh",
+    "english": "You (plural) had finished everything"
+  },
+  {
+    "italian": "Io avrò finito entro sera",
+    "pronunciation": "EE-oh ah-VROH fee-NEE-toh EHN-troh SEH-rah",
+    "english": "I will have finished by evening"
+  },
+  {
+    "italian": "Tu sarai arrivato a casa",
+    "pronunciation": "too sah-RAH-ee ahr-ree-VAH-toh ah KAH-zah",
+    "english": "You will have arrived home"
+  },
+  {
+    "italian": "Lei avrà già cenato",
+    "pronunciation": "leh-EE ah-VRAH jah cheh-NAH-toh",
+    "english": "She will have already had dinner"
+  },
+  {
+    "italian": "Noi saremo partiti presto",
+    "pronunciation": "noh-EE sah-REH-moh pahr-TEE-tee PREH-stoh",
+    "english": "We will have left early"
+  },
+  {
+    "italian": "Voi avrete capito tutto",
+    "pronunciation": "voh-EE ah-VREH-teh kah-PEE-toh TOOT-toh",
+    "english": "You (plural) will have understood everything"
+  },
+  {
+    "italian": "Io mi sono abituato",
+    "pronunciation": "EE-oh mee SOH-noh ah-bee-too-AH-toh",
+    "english": "I got used to it"
+  },
+  {
+    "italian": "Tu ti sei reso conto",
+    "pronunciation": "too tee seh-EE REHN-doh KOHN-toh",
+    "english": "You realized"
+  },
+  {
+    "italian": "Lei si è accorta",
+    "pronunciation": "leh-EE see eh ahk-KOHR-tah",
+    "english": "She noticed"
+  },
+  {
+    "italian": "Noi ci siamo preparati",
+    "pronunciation": "noh-EE chee see-AH-moh preh-pah-RAH-tee",
+    "english": "We prepared ourselves"
+  },
+  {
+    "italian": "Voi vi siete comportati bene",
+    "pronunciation": "voh-EE vee see-EH-teh kohm-pohr-TAH-tee BEH-neh",
+    "english": "You (plural) behaved well"
+  },
+  {
+    "italian": "Io mi ero già svegliato",
+    "pronunciation": "EE-oh mee EH-roh jah zveh-lyee-AH-toh",
+    "english": "I had already woken up"
+  },
+  {
+    "italian": "Tu ti eri vestito elegante",
+    "pronunciation": "too tee EH-ree veh-STEE-toh eh-leh-GAHN-teh",
+    "english": "You had dressed elegantly"
+  },
+  {
+    "italian": "Lei si era preparata bene",
+    "pronunciation": "leh-EE see EH-rah preh-pah-RAH-tah BEH-neh",
+    "english": "She had prepared well"
+  },
+  {
+    "italian": "Noi ci eravamo innamorati",
+    "pronunciation": "noh-EE chee eh-rah-VAH-moh een-nah-moh-RAH-tee",
+    "english": "We had fallen in love"
+  },
+  {
+    "italian": "Voi vi eravate divertiti",
+    "pronunciation": "voh-EE vee eh-rah-VAH-teh dee-vehr-TEE-tee",
+    "english": "You (plural) had had fun"
+  },
+  {
+    "italian": "Io mi sarò laureato",
+    "pronunciation": "EE-oh mee sah-ROH lah-oo-reh-AH-toh",
+    "english": "I will have graduated"
+  },
+  {
+    "italian": "Tu ti sarai sposato",
+    "pronunciation": "too tee sah-RAH-ee spoh-ZAH-toh",
+    "english": "You will have gotten married"
+  },
+  {
+    "italian": "Lei si sarà trasferita",
+    "pronunciation": "leh-EE see sah-RAH trahs-feh-REE-tah",
+    "english": "She will have moved"
+  },
+  {
+    "italian": "Noi ci saremo riposati",
+    "pronunciation": "noh-EE chee sah-REH-moh ree-poh-ZAH-tee",
+    "english": "We will have rested"
+  },
+  {
+    "italian": "Voi vi sarete sistemati",
+    "pronunciation": "voh-EE vee sah-REH-teh see-steh-MAH-tee",
+    "english": "You (plural) will have settled"
+  },
+  {
+    "italian": "Se io fossi ricco",
+    "pronunciation": "seh EE-oh FOHS-see REEK-koh",
+    "english": "If I were rich"
+  },
+  {
+    "italian": "Se tu avessi tempo",
+    "pronunciation": "seh too ah-VEH-see TEHM-poh",
+    "english": "If you had time"
+  },
+  {
+    "italian": "Se lei venisse qui",
+    "pronunciation": "seh leh-EE veh-NEES-seh kwee",
+    "english": "If she came here"
+  },
+  {
+    "italian": "Se noi potessimo partire",
+    "pronunciation": "seh noh-EE poh-TEHS-see-moh pahr-TEE-reh",
+    "english": "If we could leave"
+  },
+  {
+    "italian": "Se voi sapeste la verità",
+    "pronunciation": "seh voh-EE sah-PEH-steh lah veh-ree-TAH",
+    "english": "If you (plural) knew the truth"
+  },
+  {
+    "italian": "Benché sia difficile",
+    "pronunciation": "behn-KEH SEE-ah dee-FEE-chee-leh",
+    "english": "Although it's difficult"
+  },
+  {
+    "italian": "Prima che tu parta",
+    "pronunciation": "PREE-mah keh too PAHR-tah",
+    "english": "Before you leave"
+  },
+  {
+    "italian": "Senza che lei lo sappia",
+    "pronunciation": "SEHN-tsah keh leh-EE loh SAHP-pee-ah",
+    "english": "Without her knowing it"
+  },
+  {
+    "italian": "Purché voi veniate",
+    "pronunciation": "poor-KEH voh-EE veh-nee-AH-teh",
+    "english": "Provided that you (plural) come"
+  },
+  {
+    "italian": "Affinché tutto vada bene",
+    "pronunciation": "ahf-feen-KEH TOOT-toh VAH-dah BEH-neh",
+    "english": "So that everything goes well"
+  }
 ]
