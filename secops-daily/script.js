@@ -3,7 +3,10 @@ const RSS_FEEDS = {
     krebs: 'https://krebsonsecurity.com/feed/',
     bleeping: 'https://www.bleepingcomputer.com/feed/',
     hackernews: 'https://feeds.feedburner.com/TheHackersNews',
-    reddit: 'https://www.reddit.com/r/netsec/.rss'
+    darkreading: 'https://www.darkreading.com/rss.xml',
+    threatpost: 'https://threatpost.com/feed/',
+    securityweek: 'https://www.securityweek.com/feed/',
+    sans: 'https://isc.sans.edu/rssfeed.xml'
 };
 
 let allArticles = [];
