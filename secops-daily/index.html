@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecOps Daily - Security News Feed</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <span class="btn-close"></span>
+                <span class="btn-minimize"></span>
+                <span class="btn-maximize"></span>
+            </div>
+            <div class="terminal-title">secops-daily@security-feed: ~</div>
+        </div>
+        
+        <div class="terminal-body">
+            <div class="terminal-prompt">
+                <span class="prompt-user">root@secops</span>
+                <span class="prompt-separator">:</span>
+                <span class="prompt-path">~/security-news</span>
+                <span class="prompt-symbol">$</span>
+                <span class="prompt-command">cat latest_threats.feed</span>
+            </div>
+
+            <div class="feed-header">
+                <div class="feed-info">
+                    <span class="feed-label">[FEED STATUS]</span>
+                    <span id="feedStatus" class="status-loading">LOADING...</span>
+                    <span class="feed-label">|</span>
+                    <span class="feed-label">[LAST UPDATE]</span>
+                    <span id="lastUpdate">--:--:--</span>
+                </div>
+                <button id="refreshBtn" class="refresh-btn">[REFRESH]</button>
+            </div>
+
+            <div class="feed-sources">
+                <span class="source-label">[SOURCES]</span>
+                <button class="source-btn active" data-source="all">ALL</button>
+                <button class="source-btn" data-source="krebs">KREBS</button>
+                <button class="source-btn" data-source="bleeping">BLEEPING</button>
+                <button class="source-btn" data-source="hackernews">HACKERNEWS</button>
+                <button class="source-btn" data-source="reddit">REDDIT</button>
+            </div>
+
+            <div id="newsFeed" class="news-feed">
+                <div class="loading-indicator">
+                    <div class="spinner">[████████████████████] 100%</div>
+                    <div class="loading-text">Fetching security intelligence...</div>
+                </div>
+            </div>
+
+            <div class="terminal-footer">
+                <a href="/" class="back-link">← cd /home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
