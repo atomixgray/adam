@@ -18,9 +18,11 @@ const sourceButtons = document.querySelectorAll('.source-btn');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('SecOps Daily initialized');
     loadFeeds();
     
     refreshBtn.addEventListener('click', () => {
+        console.log('Refresh button clicked');
         loadFeeds();
     });
     
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Load RSS feeds
 async function loadFeeds() {
+    console.log('Loading feeds...');
     feedStatus.textContent = 'LOADING...';
     feedStatus.className = 'status-loading';
     allArticles = [];
@@ -52,30 +55,47 @@ async function loadFeeds() {
     );
     
     try {
-        await Promise.all(feedPromises);
+        const results = await Promise.allSettled(feedPromises);
+        console.log('Feed results:', results);
+        
+        const successCount = results.filter(r => r.status === 'fulfilled').length;
+        console.log(`Successfully loaded ${successCount}/${results.length} feeds`);
+        
+        if (allArticles.length === 0) {
+            throw new Error('No articles loaded from any source');
+        }
         
         // Sort by date (newest first)
         allArticles.sort((a, b) => b.date - a.date);
         
-        feedStatus.textContent = 'ACTIVE';
+        feedStatus.textContent = `ACTIVE (${successCount}/${results.length})`;
         feedStatus.className = 'status-active';
         updateTimestamp();
         displayArticles();
     } catch (error) {
+        console.error('Error loading feeds:', error);
         feedStatus.textContent = 'ERROR';
         feedStatus.className = 'status-error';
-        showError('Failed to load feeds. Please try again.');
+        showError('Failed to load feeds. Check console for details. RSS2JSON API may be rate-limited or down.');
     }
 }
 
 // Fetch individual RSS feed using rss2json API
 async function fetchFeed(source, feedUrl) {
     try {
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+        console.log(`Fetching ${source}...`);
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&api_key=YOUR_API_KEY&count=20`;
         
-        if (data.status === 'ok' && data.items) {
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log(`${source} response:`, data);
+        
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
             data.items.forEach(item => {
                 allArticles.push({
                     title: item.title,
@@ -85,9 +105,13 @@ async function fetchFeed(source, feedUrl) {
                     source: source.toUpperCase()
                 });
             });
+            console.log(`${source}: Loaded ${data.items.length} articles`);
+        } else {
+            console.warn(`${source}: No items or invalid status`, data);
         }
     } catch (error) {
         console.error(`Error fetching ${source}:`, error);
+        throw error;
     }
 }
 
@@ -104,6 +128,8 @@ function displayArticles() {
     const filtered = currentFilter === 'all' 
         ? allArticles 
         : allArticles.filter(a => a.source.toLowerCase() === currentFilter);
+    
+    console.log(`Displaying ${filtered.length} articles (filter: ${currentFilter})`);
     
     if (filtered.length === 0) {
         newsFeed.innerHTML = `
@@ -157,6 +183,9 @@ function showError(message) {
     newsFeed.innerHTML = `
         <div class="error-message">
             [ERROR] ${message}
+        </div>
+        <div class="loading-indicator">
+            <div class="loading-text">Try clicking [REFRESH] or check the browser console (F12) for details.</div>
         </div>
     `;
 }
