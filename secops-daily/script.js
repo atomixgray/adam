@@ -76,38 +76,61 @@ async function loadFeeds() {
         console.error('Error loading feeds:', error);
         feedStatus.textContent = 'ERROR';
         feedStatus.className = 'status-error';
-        showError('Failed to load feeds. Check console for details. RSS2JSON API may be rate-limited or down.');
+        showError('Unable to load feeds due to CORS restrictions. This app requires a backend proxy to work reliably. See console for details.');
     }
 }
 
-// Fetch individual RSS feed using rss2json API
+// Fetch individual RSS feed using AllOrigins as CORS proxy
 async function fetchFeed(source, feedUrl) {
     try {
         console.log(`Fetching ${source}...`);
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&api_key=YOUR_API_KEY&count=20`;
         
-        const response = await fetch(apiUrl);
+        // Try AllOrigins CORS proxy
+        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`;
+        
+        const response = await fetch(proxyUrl);
         
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         
         const data = await response.json();
-        console.log(`${source} response:`, data);
+        console.log(`${source} response received`);
         
-        if (data.status === 'ok' && data.items && data.items.length > 0) {
-            data.items.forEach(item => {
-                allArticles.push({
-                    title: item.title,
-                    link: item.link,
-                    description: stripHtml(item.description || item.content || ''),
-                    date: new Date(item.pubDate),
-                    source: source.toUpperCase()
-                });
+        if (data.contents) {
+            // Parse XML RSS feed
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
+            
+            // Check for parsing errors
+            const parseError = xmlDoc.querySelector('parsererror');
+            if (parseError) {
+                throw new Error('XML parsing error');
+            }
+            
+            const items = xmlDoc.querySelectorAll('item');
+            console.log(`${source}: Found ${items.length} items`);
+            
+            items.forEach((item, index) => {
+                if (index < 20) { // Limit to 20 items per feed
+                    const title = item.querySelector('title')?.textContent || 'No title';
+                    const link = item.querySelector('link')?.textContent || '#';
+                    const description = item.querySelector('description')?.textContent || '';
+                    const pubDate = item.querySelector('pubDate')?.textContent || new Date().toISOString();
+                    
+                    allArticles.push({
+                        title: title.trim(),
+                        link: link.trim(),
+                        description: stripHtml(description),
+                        date: new Date(pubDate),
+                        source: source.toUpperCase()
+                    });
+                }
             });
-            console.log(`${source}: Loaded ${data.items.length} articles`);
+            
+            console.log(`${source}: Loaded ${Math.min(items.length, 20)} articles`);
         } else {
-            console.warn(`${source}: No items or invalid status`, data);
+            console.warn(`${source}: No contents in response`, data);
         }
     } catch (error) {
         console.error(`Error fetching ${source}:`, error);
@@ -185,7 +208,7 @@ function showError(message) {
             [ERROR] ${message}
         </div>
         <div class="loading-indicator">
-            <div class="loading-text">Try clicking [REFRESH] or check the browser console (F12) for details.</div>
+            <div class="loading-text">This is a limitation of client-side RSS fetching. The app works as a proof-of-concept but needs a backend proxy for production use.</div>
         </div>
     `;
 }
