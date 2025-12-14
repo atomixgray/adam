@@ -64,6 +64,39 @@ body {
     background: #0f0f14;
 }
 
+/* Sticky header - desktop only */
+@media (min-width: 769px) {
+    .feed-header,
+    .stats-dashboard,
+    .view-selector,
+    .feed-sources,
+    .search-container {
+        position: sticky;
+        top: 0;
+        background: #0f0f14;
+        z-index: 10;
+    }
+    
+    .feed-header {
+        top: 0;
+        padding-top: 0;
+    }
+    
+    .stats-dashboard {
+        top: 4rem;
+    }
+    
+    .feed-sources {
+        top: 7rem;
+        padding-bottom: 1rem;
+    }
+    
+    .search-container {
+        top: 10rem;
+        padding-bottom: 1rem;
+    }
+}
+
 .terminal-prompt {
     margin-bottom: 2rem;
     font-size: 1rem;
@@ -424,6 +457,87 @@ body {
 
 .back-link:hover {
     color: #00d4ff;
+}
+
+/* Keyboard Shortcuts Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: #1a1a1f;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.5);
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: #8a8a9a;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #ff5f56;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.shortcuts-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.shortcut-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(102, 126, 234, 0.05);
+    border: 1px solid #2a2a2f;
+    border-radius: 4px;
+}
+
+.shortcut-item kbd {
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid #667eea;
+    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #00ff9f;
+    min-width: 40px;
+    text-align: center;
+}
+
+.shortcut-item span {
+    color: #a0a0b0;
+    font-size: 0.95rem;
 }
 
 .error-message {
