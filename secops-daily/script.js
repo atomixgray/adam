@@ -4,7 +4,8 @@ const RSS_FEEDS = {
     bleeping: 'https://www.bleepingcomputer.com/feed/',
     hackernews: 'https://feeds.feedburner.com/TheHackersNews',
     darkreading: 'https://www.darkreading.com/rss.xml',
-    threatpost: 'https://threatpost.com/feed/',
+    register: 'https://www.theregister.com/security/headlines.atom',
+    arstechnica: 'https://feeds.arstechnica.com/arstechnica/security',
     securityweek: 'https://www.securityweek.com/feed/',
     sans: 'https://isc.sans.edu/rssfeed.xml'
 };
