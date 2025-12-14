@@ -122,6 +122,9 @@ document.addEventListener('DOMContentLoaded', () => {
             updateStats();
         });
     });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', handleKeyboardShortcuts);
 });
 
 // Load RSS feeds
