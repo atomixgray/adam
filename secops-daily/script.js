@@ -57,6 +57,57 @@ const intelSourcesContainer = document.querySelector('.intel-sources');
 const shortcutsModal = document.getElementById('shortcutsModal');
 const closeModal = document.querySelector('.close-modal');
 
+// Keyboard shortcuts handler
+function handleKeyboardShortcuts(e) {
+    // Don't trigger if user is typing in search
+    if (document.activeElement === searchInput) {
+        // Allow Esc to blur search
+        if (e.key === 'Escape') {
+            searchInput.blur();
+            searchInput.value = '';
+            displayArticles();
+        }
+        return;
+    }
+    
+    // Keyboard shortcuts
+    switch(e.key.toLowerCase()) {
+        case 'n':
+            // Switch to NEWS
+            document.querySelector('[data-view="news"]').click();
+            break;
+        case 'i':
+            // Switch to INTEL
+            document.querySelector('[data-view="intel"]').click();
+            break;
+        case 'r':
+            // Refresh
+            e.preventDefault();
+            refreshBtn.click();
+            break;
+        case '/':
+            // Focus search
+            e.preventDefault();
+            if (searchInput) {
+                searchInput.focus();
+            }
+            break;
+        case '?':
+            // Show shortcuts
+            e.preventDefault();
+            if (shortcutsModal) {
+                shortcutsModal.style.display = 'flex';
+            }
+            break;
+        case 'escape':
+            // Close modal
+            if (shortcutsModal) {
+                shortcutsModal.style.display = 'none';
+            }
+            break;
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     console.log('SecOps Daily initialized');
