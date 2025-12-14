@@ -10,7 +10,7 @@ const RSS_FEEDS = {
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
-const PROXY_URL = 'https://rss-proxy.adamlarkin.workers.dev;
+const PROXY_URL = 'https://rss-proxy.adamlarkin.workers.dev';
 
 // Critical security keywords to highlight
 const CRITICAL_KEYWORDS = [
