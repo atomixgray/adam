@@ -39,6 +39,11 @@
 
             <div id="stats" class="stats-dashboard"></div>
 
+            <div class="view-selector">
+                <button class="view-btn active" data-view="news">NEWS</button>
+                <button class="view-btn" data-view="intel">⚠️ INTEL FEEDS</button>
+            </div>
+
             <div class="search-container">
                 <input 
                     type="text" 
@@ -49,7 +54,7 @@
                 <div id="searchCount" class="search-results-count"></div>
             </div>
 
-            <div class="feed-sources">
+            <div class="feed-sources news-sources">
                 <span class="source-label">[SOURCES]</span>
                 <button class="source-btn active" data-source="all">ALL</button>
                 <button class="source-btn" data-source="krebs">KREBS</button>
@@ -60,6 +65,14 @@
                 <button class="source-btn" data-source="cso">CSO</button>
                 <button class="source-btn" data-source="securityweek">SECURITYWEEK</button>
                 <button class="source-btn" data-source="sans">SANS ISC</button>
+            </div>
+
+            <div class="feed-sources intel-sources" style="display: none;">
+                <span class="source-label">[SOURCES]</span>
+                <button class="source-btn active" data-source="all">ALL</button>
+                <button class="source-btn" data-source="cisa_alerts">CISA ALERTS</button>
+                <button class="source-btn" data-source="cisa_kev">CISA KEV</button>
+                <button class="source-btn" data-source="mitre">MITRE</button>
             </div>
 
             <div id="newsFeed" class="news-feed">
