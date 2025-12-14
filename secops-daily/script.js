@@ -54,6 +54,8 @@ const searchCount = document.getElementById('searchCount');
 const viewButtons = document.querySelectorAll('.view-btn');
 const newsSourcesContainer = document.querySelector('.news-sources');
 const intelSourcesContainer = document.querySelector('.intel-sources');
+const shortcutsModal = document.getElementById('shortcutsModal');
+const closeModal = document.querySelector('.close-modal');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -80,6 +82,20 @@ document.addEventListener('DOMContentLoaded', () => {
             displayArticles();
         });
     }
+    
+    // Shortcuts modal
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            shortcutsModal.style.display = 'none';
+        });
+    }
+    
+    // Click outside modal to close
+    window.addEventListener('click', (e) => {
+        if (e.target === shortcutsModal) {
+            shortcutsModal.style.display = 'none';
+        }
+    });
     
     // View switching (NEWS vs INTEL FEEDS)
     viewButtons.forEach(btn => {
