@@ -191,31 +191,32 @@ body {
 }
 
 .stats-dashboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
     background: rgba(102, 126, 234, 0.05);
     border: 1px solid #2a2a2f;
     border-radius: 4px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .stat-item {
     display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    align-items: baseline;
+    gap: 0.5rem;
 }
 
 .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #667eea;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .stat-value {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #00ff9f;
     font-weight: bold;
 }
