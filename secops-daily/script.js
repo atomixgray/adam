@@ -9,6 +9,9 @@ const RSS_FEEDS = {
     sans: 'https://isc.sans.edu/rssfeed.xml'
 };
 
+// IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
+const PROXY_URL = 'https://rss-proxy.adamlarkin.workers.dev/';
+
 let allArticles = [];
 let currentFilter = 'all';
 
@@ -83,13 +86,13 @@ async function loadFeeds() {
     }
 }
 
-// Fetch individual RSS feed using AllOrigins as CORS proxy
+// Fetch individual RSS feed via Cloudflare Worker proxy
 async function fetchFeed(source, feedUrl) {
     try {
         console.log(`Fetching ${source}...`);
         
-        // Try AllOrigins CORS proxy
-        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(feedUrl)}`;
+        // Use Cloudflare Worker proxy
+        const proxyUrl = `${PROXY_URL}?url=${encodeURIComponent(feedUrl)}`;
         
         const response = await fetch(proxyUrl);
         
@@ -97,44 +100,39 @@ async function fetchFeed(source, feedUrl) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         
-        const data = await response.json();
-        console.log(`${source} response received`);
+        const xmlText = await response.text();
         
-        if (data.contents) {
-            // Parse XML RSS feed
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
-            
-            // Check for parsing errors
-            const parseError = xmlDoc.querySelector('parsererror');
-            if (parseError) {
-                throw new Error('XML parsing error');
-            }
-            
-            const items = xmlDoc.querySelectorAll('item');
-            console.log(`${source}: Found ${items.length} items`);
-            
-            items.forEach((item, index) => {
-                if (index < 20) { // Limit to 20 items per feed
-                    const title = item.querySelector('title')?.textContent || 'No title';
-                    const link = item.querySelector('link')?.textContent || '#';
-                    const description = item.querySelector('description')?.textContent || '';
-                    const pubDate = item.querySelector('pubDate')?.textContent || new Date().toISOString();
-                    
-                    allArticles.push({
-                        title: title.trim(),
-                        link: link.trim(),
-                        description: stripHtml(description),
-                        date: new Date(pubDate),
-                        source: source.toUpperCase()
-                    });
-                }
-            });
-            
-            console.log(`${source}: Loaded ${Math.min(items.length, 20)} articles`);
-        } else {
-            console.warn(`${source}: No contents in response`, data);
+        // Parse XML RSS feed
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        
+        // Check for parsing errors
+        const parseError = xmlDoc.querySelector('parsererror');
+        if (parseError) {
+            throw new Error('XML parsing error');
         }
+        
+        const items = xmlDoc.querySelectorAll('item');
+        console.log(`${source}: Found ${items.length} items`);
+        
+        items.forEach((item, index) => {
+            if (index < 20) { // Limit to 20 items per feed
+                const title = item.querySelector('title')?.textContent || 'No title';
+                const link = item.querySelector('link')?.textContent || '#';
+                const description = item.querySelector('description')?.textContent || '';
+                const pubDate = item.querySelector('pubDate')?.textContent || new Date().toISOString();
+                
+                allArticles.push({
+                    title: title.trim(),
+                    link: link.trim(),
+                    description: stripHtml(description),
+                    date: new Date(pubDate),
+                    source: source.toUpperCase()
+                });
+            }
+        });
+        
+        console.log(`${source}: Loaded ${Math.min(items.length, 20)} articles`);
     } catch (error) {
         console.error(`Error fetching ${source}:`, error);
         throw error;
