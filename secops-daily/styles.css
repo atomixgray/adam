@@ -64,16 +64,6 @@ body {
     background: #0f0f14;
 }
 
-/* Sticky header - desktop only */
-@media (min-width: 769px) {
-    .terminal-header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: #2a2a2f;
-    }
-}
-
 .terminal-prompt {
     margin-bottom: 2rem;
     font-size: 1rem;
