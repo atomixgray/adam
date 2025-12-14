@@ -10,7 +10,7 @@ const RSS_FEEDS = {
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
-const PROXY_URL = 'https://rss-proxy.adamlarkin.workers.dev';
+const PROXY_URL = 'https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev';
 
 // Critical security keywords to highlight
 const CRITICAL_KEYWORDS = [
@@ -39,6 +39,8 @@ const lastUpdate = document.getElementById('lastUpdate');
 const refreshBtn = document.getElementById('refreshBtn');
 const sourceButtons = document.querySelectorAll('.source-btn');
 const statsContainer = document.getElementById('stats');
+const searchInput = document.getElementById('searchInput');
+const searchCount = document.getElementById('searchCount');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -57,6 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
             currentFilter = btn.dataset.source;
             displayArticles();
         });
+    });
+    
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+        displayArticles();
     });
 });
 
@@ -231,11 +238,11 @@ function updateStats() {
             <span class="stat-value">${allArticles.length}</span>
         </div>
         <div class="stat-item">
-            <span class="stat-label">LAST HOUR:</span>
+            <span class="stat-label">1H:</span>
             <span class="stat-value">${lastHour}</span>
         </div>
         <div class="stat-item">
-            <span class="stat-label">LAST 24H:</span>
+            <span class="stat-label">24H:</span>
             <span class="stat-value">${last24h}</span>
         </div>
         <div class="stat-item">
@@ -247,24 +254,41 @@ function updateStats() {
             <span class="stat-value stat-critical">${criticalCount}</span>
         </div>
         <div class="stat-item">
-            <span class="stat-label">TOP SOURCE:</span>
-            <span class="stat-value">${mostActive[0]} (${mostActive[1]})</span>
+            <span class="stat-label">TOP:</span>
+            <span class="stat-value">${mostActive[0]}</span>
         </div>
     `;
 }
 
-// Display articles based on current filter
+// Display articles based on current filter and search
 function displayArticles() {
-    const filtered = currentFilter === 'all' 
+    // Filter by source
+    let filtered = currentFilter === 'all' 
         ? allArticles 
         : allArticles.filter(a => a.source.toLowerCase() === currentFilter);
     
-    console.log(`Displaying ${filtered.length} articles (filter: ${currentFilter})`);
+    // Filter by search term
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    if (searchTerm) {
+        filtered = filtered.filter(article => {
+            const searchableText = (article.title + ' ' + article.description).toLowerCase();
+            return searchableText.includes(searchTerm);
+        });
+    }
+    
+    console.log(`Displaying ${filtered.length} articles (filter: ${currentFilter}, search: "${searchTerm}")`);
+    
+    // Update search count
+    if (searchTerm) {
+        searchCount.textContent = `Found ${filtered.length} article${filtered.length !== 1 ? 's' : ''} matching "${searchTerm}"`;
+    } else {
+        searchCount.textContent = '';
+    }
     
     if (filtered.length === 0) {
         newsFeed.innerHTML = `
             <div class="loading-indicator">
-                <div class="loading-text">No articles found for this source.</div>
+                <div class="loading-text">No articles found${searchTerm ? ` matching "${searchTerm}"` : ' for this source'}.</div>
             </div>
         `;
         return;
