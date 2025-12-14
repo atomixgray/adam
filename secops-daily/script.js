@@ -151,7 +151,7 @@ async function loadFeeds() {
         console.error('Error loading feeds:', error);
         feedStatus.textContent = 'ERROR';
         feedStatus.className = 'status-error';
-        showError('Unable to load feeds due to CORS restrictions. This app requires a backend proxy to work reliably. See console for details.');
+        showError('Failed to load feeds. Check console for details or try refreshing.');
     }
 }
 
@@ -402,7 +402,7 @@ function showError(message) {
             [ERROR] ${message}
         </div>
         <div class="loading-indicator">
-            <div class="loading-text">This is a limitation of client-side RSS fetching. The app works as a proof-of-concept but needs a backend proxy for production use.</div>
+            <div class="loading-text">Try clicking [REFRESH] or check your connection.</div>
         </div>
     `;
 }
