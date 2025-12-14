@@ -1,5 +1,5 @@
-// RSS Feed sources
-const RSS_FEEDS = {
+// RSS Feed sources - NEWS
+const NEWS_FEEDS = {
     krebs: 'https://krebsonsecurity.com/feed/',
     bleeping: 'https://www.bleepingcomputer.com/feed/',
     hackernews: 'https://feeds.feedburner.com/TheHackersNews',
@@ -8,6 +8,13 @@ const RSS_FEEDS = {
     cso: 'https://www.csoonline.com/feed/',
     securityweek: 'https://www.securityweek.com/feed/',
     sans: 'https://isc.sans.edu/rssfeed.xml'
+};
+
+// RSS Feed sources - INTEL FEEDS
+const INTEL_FEEDS = {
+    cisa_alerts: 'https://www.cisa.gov/cybersecurity-advisories/all.xml',
+    cisa_kev: 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.xml',
+    mitre: 'https://medium.com/feed/mitre-attack'
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
@@ -32,6 +39,7 @@ const HIGH_KEYWORDS = [
 
 let allArticles = [];
 let currentFilter = 'all';
+let currentView = 'news'; // 'news' or 'intel'
 
 // DOM elements
 const newsFeed = document.getElementById('newsFeed');
@@ -42,6 +50,9 @@ const sourceButtons = document.querySelectorAll('.source-btn');
 const statsContainer = document.getElementById('stats');
 const searchInput = document.getElementById('searchInput');
 const searchCount = document.getElementById('searchCount');
+const viewButtons = document.querySelectorAll('.view-btn');
+const newsSourcesContainer = document.querySelector('.news-sources');
+const intelSourcesContainer = document.querySelector('.intel-sources');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -68,6 +79,32 @@ document.addEventListener('DOMContentLoaded', () => {
             displayArticles();
         });
     }
+    
+    // View switching (NEWS vs INTEL FEEDS)
+    viewButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            viewButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentView = btn.dataset.view;
+            currentFilter = 'all';
+            
+            // Show/hide appropriate source filters
+            if (currentView === 'news') {
+                newsSourcesContainer.style.display = 'flex';
+                intelSourcesContainer.style.display = 'none';
+            } else {
+                newsSourcesContainer.style.display = 'none';
+                intelSourcesContainer.style.display = 'flex';
+            }
+            
+            // Reset ALL button
+            document.querySelectorAll('.source-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`[data-source="all"]`).classList.add('active');
+            
+            displayArticles();
+            updateStats();
+        });
+    });
 });
 
 // Load RSS feeds
@@ -84,7 +121,9 @@ async function loadFeeds() {
         </div>
     `;
     
-    const feedPromises = Object.entries(RSS_FEEDS).map(([source, url]) => 
+    // Load both NEWS and INTEL feeds
+    const allFeeds = { ...NEWS_FEEDS, ...INTEL_FEEDS };
+    const feedPromises = Object.entries(allFeeds).map(([source, url]) => 
         fetchFeed(source, url)
     );
     
@@ -209,28 +248,37 @@ function updateStats() {
         return;
     }
     
+    // Filter by current view
+    const viewArticles = allArticles.filter(article => {
+        if (currentView === 'news') {
+            return Object.keys(NEWS_FEEDS).includes(article.source.toLowerCase());
+        } else {
+            return Object.keys(INTEL_FEEDS).includes(article.source.toLowerCase());
+        }
+    });
+    
     // Count articles by time
     const now = new Date();
     const oneHourAgo = new Date(now - 60 * 60 * 1000);
     const oneDayAgo = new Date(now - 24 * 60 * 60 * 1000);
     
-    const lastHour = allArticles.filter(a => a.date >= oneHourAgo).length;
-    const last24h = allArticles.filter(a => a.date >= oneDayAgo).length;
+    const lastHour = viewArticles.filter(a => a.date >= oneHourAgo).length;
+    const last24h = viewArticles.filter(a => a.date >= oneDayAgo).length;
     
     // Count CVEs
-    const cveCount = allArticles.filter(a => 
+    const cveCount = viewArticles.filter(a => 
         /CVE-\d{4}-\d{4,}/i.test(a.title + ' ' + a.description)
     ).length;
     
     // Count critical articles
-    const criticalCount = allArticles.filter(a => {
+    const criticalCount = viewArticles.filter(a => {
         const text = (a.title + ' ' + a.description).toLowerCase();
         return CRITICAL_KEYWORDS.some(kw => text.includes(kw.toLowerCase()));
     }).length;
     
     // Most active source
     const sourceCounts = {};
-    allArticles.forEach(a => {
+    viewArticles.forEach(a => {
         sourceCounts[a.source] = (sourceCounts[a.source] || 0) + 1;
     });
     const mostActive = Object.entries(sourceCounts).sort((a, b) => b[1] - a[1])[0];
@@ -238,7 +286,7 @@ function updateStats() {
     statsContainer.innerHTML = `
         <div class="stat-item">
             <span class="stat-label">TOTAL:</span>
-            <span class="stat-value">${allArticles.length}</span>
+            <span class="stat-value">${viewArticles.length}</span>
         </div>
         <div class="stat-item">
             <span class="stat-label">1H:</span>
@@ -258,17 +306,26 @@ function updateStats() {
         </div>
         <div class="stat-item">
             <span class="stat-label">TOP:</span>
-            <span class="stat-value">${mostActive[0]}</span>
+            <span class="stat-value">${mostActive ? mostActive[0] : 'N/A'}</span>
         </div>
     `;
 }
 
 // Display articles based on current filter and search
 function displayArticles() {
+    // Filter by view (news or intel)
+    const viewArticles = allArticles.filter(article => {
+        if (currentView === 'news') {
+            return Object.keys(NEWS_FEEDS).includes(article.source.toLowerCase());
+        } else {
+            return Object.keys(INTEL_FEEDS).includes(article.source.toLowerCase());
+        }
+    });
+    
     // Filter by source
     let filtered = currentFilter === 'all' 
-        ? allArticles 
-        : allArticles.filter(a => a.source.toLowerCase() === currentFilter);
+        ? viewArticles 
+        : viewArticles.filter(a => a.source.toLowerCase() === currentFilter);
     
     // Filter by search term (only if search input exists)
     const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
@@ -279,7 +336,7 @@ function displayArticles() {
         });
     }
     
-    console.log(`Displaying ${filtered.length} articles (filter: ${currentFilter}, search: "${searchTerm}")`);
+    console.log(`Displaying ${filtered.length} articles (view: ${currentView}, filter: ${currentFilter}, search: "${searchTerm}")`);
     
     // Update search count (only if search count element exists)
     if (searchCount) {
