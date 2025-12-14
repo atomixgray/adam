@@ -102,6 +102,12 @@ body {
     gap: 1rem;
 }
 
+.header-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
 .feed-info {
     display: flex;
     gap: 0.75rem;
@@ -146,6 +152,30 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.85rem;
+}
+
+.view-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(102, 126, 234, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    color: #8a8a9a;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+    color: #00d4ff;
+}
+
+.view-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
 }
 
 .refresh-btn:hover {
@@ -227,44 +257,6 @@ body {
 
 .stat-critical {
     color: #ff5f56;
-}
-
-.view-selector {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    justify-content: center;
-}
-
-.view-btn {
-    padding: 0.75rem 2rem;
-    background: rgba(102, 126, 234, 0.1);
-    border: 2px solid rgba(102, 126, 234, 0.3);
-    border-radius: 50px;
-    color: #8a8a9a;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.view-btn:hover {
-    background: rgba(102, 126, 234, 0.2);
-    border-color: #667eea;
-    color: #00d4ff;
-}
-
-.view-btn.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: 2px solid transparent;
-    color: white;
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
-}
-
-.view-btn.active:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
 }
 
 .keyword-critical {
@@ -460,6 +452,15 @@ body {
     .feed-header {
         flex-direction: column;
         align-items: flex-start;
+    }
+    
+    .header-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .view-btn {
+        flex: 1;
     }
     
     .feed-sources {
