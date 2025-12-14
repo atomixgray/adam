@@ -10,7 +10,7 @@ const RSS_FEEDS = {
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
-const PROXY_URL = 'https://rss-proxy.adamlarkin.workers.dev';
+const PROXY_URL = 'https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev';
 
 // Critical security keywords to highlight
 const CRITICAL_KEYWORDS = [
@@ -61,10 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Search functionality
-    searchInput.addEventListener('input', (e) => {
-        displayArticles();
-    });
+    // Search functionality - check if element exists
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            displayArticles();
+        });
+    }
 });
 
 // Load RSS feeds
@@ -267,8 +269,8 @@ function displayArticles() {
         ? allArticles 
         : allArticles.filter(a => a.source.toLowerCase() === currentFilter);
     
-    // Filter by search term
-    const searchTerm = searchInput.value.toLowerCase().trim();
+    // Filter by search term (only if search input exists)
+    const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
     if (searchTerm) {
         filtered = filtered.filter(article => {
             const searchableText = (article.title + ' ' + article.description).toLowerCase();
@@ -278,11 +280,13 @@ function displayArticles() {
     
     console.log(`Displaying ${filtered.length} articles (filter: ${currentFilter}, search: "${searchTerm}")`);
     
-    // Update search count
-    if (searchTerm) {
-        searchCount.textContent = `Found ${filtered.length} article${filtered.length !== 1 ? 's' : ''} matching "${searchTerm}"`;
-    } else {
-        searchCount.textContent = '';
+    // Update search count (only if search count element exists)
+    if (searchCount) {
+        if (searchTerm) {
+            searchCount.textContent = `Found ${filtered.length} article${filtered.length !== 1 ? 's' : ''} matching "${searchTerm}"`;
+        } else {
+            searchCount.textContent = '';
+        }
     }
     
     if (filtered.length === 0) {
