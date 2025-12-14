@@ -10,7 +10,24 @@ const RSS_FEEDS = {
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
-const PROXY_URL = 'https://rss-proxy.adamlarkin.workers.dev/';
+const PROXY_URL = 'https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev';
+
+// Critical security keywords to highlight
+const CRITICAL_KEYWORDS = [
+    'zero-day', 'zero day', '0day', '0-day',
+    'RCE', 'remote code execution',
+    'critical vulnerability', 'critical flaw',
+    'ransomware', 'data breach', 'breach',
+    'actively exploited', 'in the wild',
+    'emergency patch', 'critical patch'
+];
+
+const HIGH_KEYWORDS = [
+    'vulnerability', 'exploit', 'malware',
+    'backdoor', 'trojan', 'botnet',
+    'phishing', 'attack', 'compromised',
+    'threat actor', 'APT', 'targeted attack'
+];
 
 let allArticles = [];
 let currentFilter = 'all';
@@ -21,6 +38,7 @@ const feedStatus = document.getElementById('feedStatus');
 const lastUpdate = document.getElementById('lastUpdate');
 const refreshBtn = document.getElementById('refreshBtn');
 const sourceButtons = document.querySelectorAll('.source-btn');
+const statsContainer = document.getElementById('stats');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -77,6 +95,7 @@ async function loadFeeds() {
         feedStatus.textContent = `ACTIVE (${successCount}/${results.length})`;
         feedStatus.className = 'status-active';
         updateTimestamp();
+        updateStats();
         displayArticles();
     } catch (error) {
         console.error('Error loading feeds:', error);
@@ -147,6 +166,93 @@ function stripHtml(html) {
     return text.length > 200 ? text.substring(0, 200) + '...' : text;
 }
 
+// Highlight critical keywords and CVEs
+function highlightKeywords(text) {
+    let highlighted = text;
+    
+    // Highlight CVEs and make them clickable
+    highlighted = highlighted.replace(/CVE-\d{4}-\d{4,}/gi, (match) => {
+        const cveId = match.toUpperCase();
+        const nvdUrl = `https://nvd.nist.gov/vuln/detail/${cveId}`;
+        return `<a href="${nvdUrl}" target="_blank" rel="noopener" class="cve-link" title="View on NVD">${cveId}</a>`;
+    });
+    
+    // Highlight critical keywords in red
+    CRITICAL_KEYWORDS.forEach(keyword => {
+        const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+        highlighted = highlighted.replace(regex, (match) => `<span class="keyword-critical">${match}</span>`);
+    });
+    
+    // Highlight high keywords in orange
+    HIGH_KEYWORDS.forEach(keyword => {
+        const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+        highlighted = highlighted.replace(regex, (match) => `<span class="keyword-high">${match}</span>`);
+    });
+    
+    return highlighted;
+}
+
+// Calculate statistics
+function updateStats() {
+    if (allArticles.length === 0) {
+        statsContainer.innerHTML = '';
+        return;
+    }
+    
+    // Count articles by time
+    const now = new Date();
+    const oneHourAgo = new Date(now - 60 * 60 * 1000);
+    const oneDayAgo = new Date(now - 24 * 60 * 60 * 1000);
+    
+    const lastHour = allArticles.filter(a => a.date >= oneHourAgo).length;
+    const last24h = allArticles.filter(a => a.date >= oneDayAgo).length;
+    
+    // Count CVEs
+    const cveCount = allArticles.filter(a => 
+        /CVE-\d{4}-\d{4,}/i.test(a.title + ' ' + a.description)
+    ).length;
+    
+    // Count critical articles
+    const criticalCount = allArticles.filter(a => {
+        const text = (a.title + ' ' + a.description).toLowerCase();
+        return CRITICAL_KEYWORDS.some(kw => text.includes(kw.toLowerCase()));
+    }).length;
+    
+    // Most active source
+    const sourceCounts = {};
+    allArticles.forEach(a => {
+        sourceCounts[a.source] = (sourceCounts[a.source] || 0) + 1;
+    });
+    const mostActive = Object.entries(sourceCounts).sort((a, b) => b[1] - a[1])[0];
+    
+    statsContainer.innerHTML = `
+        <div class="stat-item">
+            <span class="stat-label">TOTAL:</span>
+            <span class="stat-value">${allArticles.length}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">LAST HOUR:</span>
+            <span class="stat-value">${lastHour}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">LAST 24H:</span>
+            <span class="stat-value">${last24h}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">CVEs:</span>
+            <span class="stat-value stat-cve">${cveCount}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">CRITICAL:</span>
+            <span class="stat-value stat-critical">${criticalCount}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">TOP SOURCE:</span>
+            <span class="stat-value">${mostActive[0]} (${mostActive[1]})</span>
+        </div>
+    `;
+}
+
 // Display articles based on current filter
 function displayArticles() {
     const filtered = currentFilter === 'all' 
@@ -171,9 +277,9 @@ function displayArticles() {
                 <span class="news-source">[${article.source}]</span>
             </div>
             <div class="news-title">
-                <a href="${article.link}" target="_blank" rel="noopener">${article.title}</a>
+                <a href="${article.link}" target="_blank" rel="noopener">${highlightKeywords(article.title)}</a>
             </div>
-            ${article.description ? `<div class="news-description">${article.description}</div>` : ''}
+            ${article.description ? `<div class="news-description">${highlightKeywords(article.description)}</div>` : ''}
         </div>
     `).join('');
 }
