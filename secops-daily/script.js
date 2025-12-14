@@ -56,6 +56,27 @@ const newsSourcesContainer = document.querySelector('.news-sources');
 const intelSourcesContainer = document.querySelector('.intel-sources');
 const shortcutsModal = document.getElementById('shortcutsModal');
 const closeModal = document.querySelector('.close-modal');
+const terminalTitle = document.getElementById('terminalTitle');
+
+// Set dynamic greeting based on time of day
+function setGreeting() {
+    const hour = new Date().getHours();
+    let greeting;
+    
+    if (hour >= 5 && hour < 12) {
+        greeting = 'Good morning, threat hunters.';
+    } else if (hour >= 12 && hour < 17) {
+        greeting = 'Good afternoon, threat hunters.';
+    } else if (hour >= 17 && hour < 24) {
+        greeting = 'Good evening, threat hunters.';
+    } else {
+        greeting = 'Still hunting? Get some rest.';
+    }
+    
+    if (terminalTitle) {
+        terminalTitle.textContent = greeting;
+    }
+}
 
 // Keyboard shortcuts handler
 function handleKeyboardShortcuts(e) {
