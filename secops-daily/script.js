@@ -13,6 +13,7 @@ const NEWS_FEEDS = {
 // RSS Feed sources - INTEL FEEDS
 const INTEL_FEEDS = {
     cisa_alerts: 'https://www.cisa.gov/cybersecurity-advisories/all.xml',
+    uscert: 'https://www.cisa.gov/uscert/ncas/current-activity.xml',
     mitre: 'https://medium.com/feed/mitre-attack'
 };
 
