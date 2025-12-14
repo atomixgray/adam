@@ -5,7 +5,7 @@ const RSS_FEEDS = {
     hackernews: 'https://feeds.feedburner.com/TheHackersNews',
     darkreading: 'https://www.darkreading.com/rss.xml',
     register: 'https://www.theregister.com/security/headlines.atom',
-    arstechnica: 'https://feeds.arstechnica.com/arstechnica/security',
+    cso: 'https://www.csoonline.com/feed/',
     securityweek: 'https://www.securityweek.com/feed/',
     sans: 'https://isc.sans.edu/rssfeed.xml'
 };
