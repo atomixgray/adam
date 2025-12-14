@@ -14,7 +14,7 @@ const NEWS_FEEDS = {
 const INTEL_FEEDS = {
     cisa_alerts: 'https://www.cisa.gov/cybersecurity-advisories/all.xml',
     uscert: 'https://www.cisa.gov/uscert/ncas/current-activity.xml',
-    talos: 'https://blog.talosintelligence.com/feeds/posts/default',
+    talos: 'https://feeds.feedburner.com/feedburner/Talos',
     mitre: 'https://medium.com/feed/mitre-attack'
 };
 
