@@ -64,11 +64,11 @@ function setGreeting() {
     let greeting;
     
     if (hour >= 5 && hour < 12) {
-        greeting = 'Good morning, threat hunters.';
+        greeting = 'Good morning, SecOps.';
     } else if (hour >= 12 && hour < 17) {
-        greeting = 'Good afternoon, threat hunters.';
+        greeting = 'Good afternoon, SecOps.';
     } else if (hour >= 17 && hour < 24) {
-        greeting = 'Good evening, threat hunters.';
+        greeting = 'Good evening, SecOps.';
     } else {
         greeting = 'Still hunting? Get some rest.';
     }
@@ -76,6 +76,8 @@ function setGreeting() {
     if (terminalTitle) {
         terminalTitle.textContent = greeting;
     }
+    
+    console.log(`Current hour: ${hour}, Greeting: ${greeting}`); // Debug
 }
 
 // Keyboard shortcuts handler
