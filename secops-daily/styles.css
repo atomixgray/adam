@@ -386,6 +386,26 @@ body {
     color: #f093fb;
 }
 
+.article-type-badge {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+
+.article-type-news {
+    background: rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(102, 126, 234, 0.5);
+    color: #667eea;
+}
+
+.article-type-intel {
+    background: rgba(255, 189, 46, 0.2);
+    border: 1px solid rgba(255, 189, 46, 0.5);
+    color: #ffbd2e;
+}
+
 .news-title {
     font-size: 1.1rem;
     margin-bottom: 0.75rem;
