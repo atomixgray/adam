@@ -411,27 +411,31 @@ function updateStats() {
 
 // Display articles based on current filter and search
 function displayArticles() {
-    // Filter by view (news or intel)
-    const viewArticles = allArticles.filter(article => {
-        if (currentView === 'news') {
-            return Object.keys(NEWS_FEEDS).includes(article.source.toLowerCase());
-        } else {
-            return Object.keys(INTEL_FEEDS).includes(article.source.toLowerCase());
-        }
-    });
-    
-    // Filter by source
-    let filtered = currentFilter === 'all' 
-        ? viewArticles 
-        : viewArticles.filter(a => a.source.toLowerCase() === currentFilter);
-    
-    // Filter by search term (only if search input exists)
+    // Filter by view (news or intel) - UNLESS there's a search term
     const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    
+    let filtered;
+    
     if (searchTerm) {
-        filtered = filtered.filter(article => {
+        // Search across ALL articles regardless of view
+        filtered = allArticles.filter(article => {
             const searchableText = (article.title + ' ' + article.description).toLowerCase();
             return searchableText.includes(searchTerm);
         });
+    } else {
+        // No search - filter by current view
+        const viewArticles = allArticles.filter(article => {
+            if (currentView === 'news') {
+                return Object.keys(NEWS_FEEDS).includes(article.source.toLowerCase());
+            } else {
+                return Object.keys(INTEL_FEEDS).includes(article.source.toLowerCase());
+            }
+        });
+        
+        // Then filter by source
+        filtered = currentFilter === 'all' 
+            ? viewArticles 
+            : viewArticles.filter(a => a.source.toLowerCase() === currentFilter);
     }
     
     console.log(`Displaying ${filtered.length} articles (view: ${currentView}, filter: ${currentFilter}, search: "${searchTerm}")`);
@@ -439,7 +443,9 @@ function displayArticles() {
     // Update search count (only if search count element exists)
     if (searchCount) {
         if (searchTerm) {
-            searchCount.textContent = `Found ${filtered.length} article${filtered.length !== 1 ? 's' : ''} matching "${searchTerm}"`;
+            const newsCount = filtered.filter(a => Object.keys(NEWS_FEEDS).includes(a.source.toLowerCase())).length;
+            const intelCount = filtered.filter(a => Object.keys(INTEL_FEEDS).includes(a.source.toLowerCase())).length;
+            searchCount.textContent = `Found ${filtered.length} article${filtered.length !== 1 ? 's' : ''} matching "${searchTerm}" (${newsCount} NEWS, ${intelCount} INTEL)`;
         } else {
             searchCount.textContent = '';
         }
@@ -454,18 +460,24 @@ function displayArticles() {
         return;
     }
     
-    newsFeed.innerHTML = filtered.map(article => `
+    newsFeed.innerHTML = filtered.map(article => {
+        // Determine article type for badge
+        const articleType = Object.keys(NEWS_FEEDS).includes(article.source.toLowerCase()) ? 'NEWS' : 'INTEL';
+        const typeBadge = searchTerm ? `<span class="article-type-badge article-type-${articleType.toLowerCase()}">${articleType}</span>` : '';
+        
+        return `
         <div class="news-item">
             <div class="news-meta">
                 <span class="news-time">[${formatTime(article.date)}]</span>
                 <span class="news-source">[${article.source}]</span>
+                ${typeBadge}
             </div>
             <div class="news-title">
                 <a href="${article.link}" target="_blank" rel="noopener">${highlightKeywords(article.title)}</a>
             </div>
             ${article.description ? `<div class="news-description">${highlightKeywords(article.description)}</div>` : ''}
         </div>
-    `).join('');
+    `}).join('');
 }
 
 // Format timestamp
