@@ -134,6 +134,10 @@ function handleKeyboardShortcuts(e) {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     console.log('SecOps Daily initialized');
+    
+    // Set greeting immediately
+    setGreeting();
+    
     loadFeeds();
     
     refreshBtn.addEventListener('click', () => {
