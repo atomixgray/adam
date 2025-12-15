@@ -57,6 +57,32 @@ const intelSourcesContainer = document.querySelector('.intel-sources');
 const shortcutsModal = document.getElementById('shortcutsModal');
 const closeModal = document.querySelector('.close-modal');
 const terminalTitle = document.getElementById('terminalTitle');
+const backToTopBtn = document.getElementById('backToTop');
+
+// Back to top button functionality
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Update timestamps every minute
+setInterval(() => {
+    const items = document.querySelectorAll('.news-time');
+    items.forEach(item => {
+        // Find the corresponding article and update its timestamp
+        // This is a simplified version - you'd need to store article data to do this properly
+    });
+}, 60000); // Update every minute
 
 // Set dynamic greeting based on time of day
 function setGreeting() {
@@ -183,10 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
             currentView = btn.dataset.view;
             currentFilter = 'all';
             
-            // Show/hide appropriate source filters
+            // Show/hide appropriate source filters with fade
             if (currentView === 'news') {
-                newsSourcesContainer.style.display = 'flex';
                 intelSourcesContainer.style.display = 'none';
+                newsSourcesContainer.style.display = 'flex';
             } else {
                 newsSourcesContainer.style.display = 'none';
                 intelSourcesContainer.style.display = 'flex';
@@ -212,10 +238,22 @@ async function loadFeeds() {
     feedStatus.className = 'status-loading';
     allArticles = [];
     
+    // Show loading skeleton
     newsFeed.innerHTML = `
-        <div class="loading-indicator">
-            <div class="spinner">[████████████████████] 100%</div>
-            <div class="loading-text">Fetching security intelligence...</div>
+        <div class="skeleton-item">
+            <div class="skeleton skeleton-meta"></div>
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-description"></div>
+        </div>
+        <div class="skeleton-item">
+            <div class="skeleton skeleton-meta"></div>
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-description"></div>
+        </div>
+        <div class="skeleton-item">
+            <div class="skeleton skeleton-meta"></div>
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-description"></div>
         </div>
     `;
     
