@@ -11,7 +11,7 @@ const NEWS_FEEDS = {
     // NEW SOURCES ADDED
     sophos: 'https://news.sophos.com/en-us/category/threat-research/feed/',
     threatpost: 'https://threatpost.com/feed/',
-    netsec: 'https://www.reddit.com/r/netsec/.rss'
+    netsec: 'https://www.reddit.com/r/netsec.rss'  // FIXED: No slash before .rss
 };
 
 // RSS Feed sources - INTEL FEEDS
@@ -23,7 +23,7 @@ const INTEL_FEEDS = {
     // NEW SOURCES ADDED
     crowdstrike: 'https://www.crowdstrike.com/blog/feed/',
     unit42: 'https://unit42.paloaltonetworks.com/feed/',
-    exploitdb: 'https://www.exploit-db.com/rss.xml'
+    cisa_kev: 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.xml'  // CISA Known Exploited Vulnerabilities - HIGH PRIORITY
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
