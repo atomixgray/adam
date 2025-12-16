@@ -426,6 +426,31 @@ body {
     margin-bottom: 0.5rem;
     font-size: 0.85rem;
     flex-wrap: wrap;
+    align-items: center;
+}
+
+.bookmark-btn {
+    background: transparent;
+    border: none;
+    color: #8a8a9a;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+
+.bookmark-btn:hover {
+    color: #ffbd2e;
+    transform: scale(1.2);
+}
+
+.bookmark-btn.bookmarked {
+    color: #ffbd2e;
+}
+
+.bookmark-btn.bookmarked:hover {
+    color: #ff5f56;
 }
 
 .news-time {
