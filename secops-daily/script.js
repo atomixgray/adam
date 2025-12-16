@@ -48,6 +48,7 @@ const HIGH_KEYWORDS = [
 let allArticles = [];
 let currentFilter = 'all';
 let currentView = 'news'; // 'news' or 'intel'
+let showTrends = false; // Toggle for trends panel
 
 // Bookmark management
 function getBookmarks() {
@@ -80,6 +81,128 @@ function toggleBookmark(article) {
     
     localStorage.setItem('secops_bookmarks', JSON.stringify(bookmarks));
     displayArticles(); // Refresh display to update bookmark icons
+}
+
+// Trends analysis
+function analyzeTrends() {
+    if (allArticles.length === 0) return null;
+    
+    // Extract all CVEs
+    const cvePattern = /CVE-\d{4}-\d{4,}/gi;
+    const cveCount = {};
+    
+    allArticles.forEach(article => {
+        const text = article.title + ' ' + article.description;
+        const matches = text.match(cvePattern);
+        if (matches) {
+            matches.forEach(cve => {
+                const normalized = cve.toUpperCase();
+                cveCount[normalized] = (cveCount[normalized] || 0) + 1;
+            });
+        }
+    });
+    
+    // Count critical keywords
+    const keywordCount = {};
+    const trackKeywords = [
+        'ransomware', 'zero-day', '0-day', 'RCE', 'data breach', 
+        'critical vulnerability', 'exploit', 'malware', 'APT',
+        'phishing', 'supply chain', 'backdoor'
+    ];
+    
+    allArticles.forEach(article => {
+        const text = (article.title + ' ' + article.description).toLowerCase();
+        trackKeywords.forEach(keyword => {
+            if (text.includes(keyword.toLowerCase())) {
+                keywordCount[keyword] = (keywordCount[keyword] || 0) + 1;
+            }
+        });
+    });
+    
+    // Get top items
+    const topCVEs = Object.entries(cveCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
+    
+    const topKeywords = Object.entries(keywordCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 8);
+    
+    return { topCVEs, topKeywords };
+}
+
+function toggleTrendsPanel() {
+    showTrends = !showTrends;
+    const trendsPanel = document.getElementById('trendsPanel');
+    const toggleBtn = document.getElementById('toggleTrendsBtn');
+    
+    if (showTrends) {
+        trendsPanel.style.display = 'block';
+        toggleBtn.textContent = '[HIDE TRENDS]';
+        updateTrendsPanel();
+    } else {
+        trendsPanel.style.display = 'none';
+        toggleBtn.textContent = '[SHOW TRENDS]';
+    }
+}
+
+function updateTrendsPanel() {
+    const trends = analyzeTrends();
+    const trendsContent = document.getElementById('trendsContent');
+    
+    if (!trends || (trends.topCVEs.length === 0 && trends.topKeywords.length === 0)) {
+        trendsContent.innerHTML = '<div class="trends-empty">No trend data available yet. Refresh feeds to analyze.</div>';
+        return;
+    }
+    
+    const maxCount = Math.max(
+        trends.topCVEs.length > 0 ? trends.topCVEs[0][1] : 0,
+        trends.topKeywords.length > 0 ? trends.topKeywords[0][1] : 0
+    );
+    
+    let html = '';
+    
+    // Top CVEs section
+    if (trends.topCVEs.length > 0) {
+        html += '<div class="trends-section"><h3 class="trends-title">[TOP CVEs TODAY]</h3>';
+        trends.topCVEs.forEach(([cve, count]) => {
+            const percentage = (count / maxCount) * 100;
+            html += `
+                <div class="trend-item">
+                    <div class="trend-label">
+                        <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" class="trend-cve-link">${cve}</a>
+                        <span class="trend-count">${count}</span>
+                    </div>
+                    <div class="trend-bar-container">
+                        <div class="trend-bar trend-bar-cve" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+            `;
+        });
+        html += '</div>';
+    }
+    
+    // Top Keywords section
+    if (trends.topKeywords.length > 0) {
+        html += '<div class="trends-section"><h3 class="trends-title">[TRENDING THREATS]</h3>';
+        trends.topKeywords.forEach(([keyword, count]) => {
+            const percentage = (count / maxCount) * 100;
+            html += `
+                <div class="trend-item">
+                    <div class="trend-label">
+                        <span class="trend-keyword">${keyword.toUpperCase()}</span>
+                        <span class="trend-count">${count}</span>
+                    </div>
+                    <div class="trend-bar-container">
+                        <div class="trend-bar trend-bar-keyword" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+            `;
+        });
+        html += '</div>';
+    }
+    
+    trendsContent.innerHTML = html;
 }
 
 // DOM elements
@@ -322,6 +445,11 @@ async function loadFeeds() {
         updateTimestamp();
         updateStats();
         displayArticles();
+        
+        // Update trends panel if visible
+        if (showTrends) {
+            updateTrendsPanel();
+        }
     } catch (error) {
         console.error('Error loading feeds:', error);
         feedStatus.textContent = 'ERROR';
