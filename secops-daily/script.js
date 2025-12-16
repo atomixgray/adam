@@ -10,8 +10,7 @@ const NEWS_FEEDS = {
     sans: 'https://isc.sans.edu/rssfeed.xml',
     // NEW SOURCES ADDED
     sophos: 'https://news.sophos.com/en-us/category/threat-research/feed/',
-    threatpost: 'https://threatpost.com/feed/',
-    netsec: 'https://www.reddit.com/r/netsec.rss'  // FIXED: No slash before .rss
+    threatpost: 'https://threatpost.com/feed/'
 };
 
 // RSS Feed sources - INTEL FEEDS
