@@ -7,7 +7,11 @@ const NEWS_FEEDS = {
     register: 'https://www.theregister.com/security/headlines.atom',
     cso: 'https://www.csoonline.com/feed/',
     securityweek: 'https://www.securityweek.com/feed/',
-    sans: 'https://isc.sans.edu/rssfeed.xml'
+    sans: 'https://isc.sans.edu/rssfeed.xml',
+    // NEW SOURCES ADDED
+    sophos: 'https://news.sophos.com/en-us/category/threat-research/feed/',
+    threatpost: 'https://threatpost.com/feed/',
+    netsec: 'https://www.reddit.com/r/netsec/.rss'
 };
 
 // RSS Feed sources - INTEL FEEDS
@@ -15,7 +19,11 @@ const INTEL_FEEDS = {
     cisa_alerts: 'https://www.cisa.gov/cybersecurity-advisories/all.xml',
     uscert: 'https://www.cisa.gov/uscert/ncas/current-activity.xml',
     talos: 'https://feeds.feedburner.com/feedburner/Talos',
-    mitre: 'https://medium.com/feed/mitre-attack'
+    mitre: 'https://medium.com/feed/mitre-attack',
+    // NEW SOURCES ADDED
+    crowdstrike: 'https://www.crowdstrike.com/blog/feed/',
+    unit42: 'https://unit42.paloaltonetworks.com/feed/',
+    exploitdb: 'https://www.exploit-db.com/rss.xml'
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
