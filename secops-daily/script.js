@@ -8,10 +8,10 @@ const NEWS_FEEDS = {
     cso: 'https://www.csoonline.com/feed/',
     securityweek: 'https://www.securityweek.com/feed/',
     sans: 'https://isc.sans.edu/rssfeed.xml',
+    // NEW SOURCES ADDED
     sophos: 'https://news.sophos.com/en-us/category/threat-research/feed/',
     threatpost: 'https://threatpost.com/feed/',
-    netsec: 'https://www.reddit.com/r/netsec.rss'
-    
+    netsec: 'https://www.reddit.com/r/netsec/.rss'
 };
 
 // RSS Feed sources - INTEL FEEDS
@@ -324,15 +324,37 @@ async function fetchFeed(source, feedUrl) {
             throw new Error('XML parsing error');
         }
         
-        const items = xmlDoc.querySelectorAll('item');
+        // Handle both RSS (item) and Atom (entry) formats
+        let items = xmlDoc.querySelectorAll('item');
+        if (items.length === 0) {
+            items = xmlDoc.querySelectorAll('entry'); // Atom format (Reddit, etc.)
+        }
+        
         console.log(`${source}: Found ${items.length} items`);
         
         items.forEach((item, index) => {
             if (index < 20) { // Limit to 20 items per feed
+                // Get title (same for both RSS and Atom)
                 const title = item.querySelector('title')?.textContent || 'No title';
-                const link = item.querySelector('link')?.textContent || '#';
-                const description = item.querySelector('description')?.textContent || '';
-                const pubDate = item.querySelector('pubDate')?.textContent || new Date().toISOString();
+                
+                // Get link (different for RSS vs Atom)
+                let link = item.querySelector('link')?.textContent?.trim();
+                if (!link || link === '') {
+                    // Atom format uses href attribute
+                    link = item.querySelector('link')?.getAttribute('href');
+                }
+                if (!link) link = '#';
+                
+                // Get description/content (different names in RSS vs Atom)
+                let description = item.querySelector('description')?.textContent || 
+                                 item.querySelector('summary')?.textContent ||
+                                 item.querySelector('content')?.textContent || '';
+                
+                // Get date (different names in RSS vs Atom)
+                let pubDate = item.querySelector('pubDate')?.textContent || 
+                             item.querySelector('published')?.textContent ||
+                             item.querySelector('updated')?.textContent ||
+                             new Date().toISOString();
                 
                 allArticles.push({
                     title: title.trim(),
