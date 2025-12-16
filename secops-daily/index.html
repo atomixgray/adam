@@ -37,11 +37,17 @@
                 <div class="header-controls">
                     <button class="view-btn active" data-view="news">📰 NEWS</button>
                     <button class="view-btn" data-view="intel">⚠️ INTEL</button>
+                    <button id="toggleTrendsBtn" class="refresh-btn" onclick="toggleTrendsPanel()">[SHOW TRENDS]</button>
                     <button id="refreshBtn" class="refresh-btn">[REFRESH]</button>
                 </div>
             </div>
 
             <div id="stats" class="stats-dashboard"></div>
+
+            <!-- Trends Panel -->
+            <div id="trendsPanel" class="trends-panel" style="display: none;">
+                <div id="trendsContent" class="trends-content"></div>
+            </div>
 
             <div class="search-container">
                 <input 
