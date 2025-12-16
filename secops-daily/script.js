@@ -22,8 +22,7 @@ const INTEL_FEEDS = {
     mitre: 'https://medium.com/feed/mitre-attack',
     // NEW SOURCES ADDED
     crowdstrike: 'https://www.crowdstrike.com/blog/feed/',
-    unit42: 'https://unit42.paloaltonetworks.com/feed/',
-    cisa_kev: 'https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.xml'  // CISA Known Exploited Vulnerabilities - HIGH PRIORITY
+    unit42: 'https://unit42.paloaltonetworks.com/feed/'
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
