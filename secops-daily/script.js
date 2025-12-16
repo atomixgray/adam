@@ -10,7 +10,7 @@ const NEWS_FEEDS = {
     sans: 'https://isc.sans.edu/rssfeed.xml',
     sophos: 'https://news.sophos.com/en-us/category/threat-research/feed/',
     threatpost: 'https://threatpost.com/feed/',
-    netsec: 'https://old.reddit.com/r/netsec/.rss'
+    netsec: 'https://www.reddit.com/r/netsec.rss'
     
 };
 
