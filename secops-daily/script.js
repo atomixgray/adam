@@ -49,6 +49,39 @@ let allArticles = [];
 let currentFilter = 'all';
 let currentView = 'news'; // 'news' or 'intel'
 
+// Bookmark management
+function getBookmarks() {
+    const bookmarks = localStorage.getItem('secops_bookmarks');
+    return bookmarks ? JSON.parse(bookmarks) : [];
+}
+
+function isBookmarked(articleLink) {
+    const bookmarks = getBookmarks();
+    return bookmarks.some(b => b.link === articleLink);
+}
+
+function toggleBookmark(article) {
+    const bookmarks = getBookmarks();
+    const existingIndex = bookmarks.findIndex(b => b.link === article.link);
+    
+    if (existingIndex >= 0) {
+        // Remove bookmark
+        bookmarks.splice(existingIndex, 1);
+    } else {
+        // Add bookmark
+        bookmarks.push({
+            title: article.title,
+            link: article.link,
+            source: article.source,
+            date: article.date.toISOString(),
+            bookmarkedAt: new Date().toISOString()
+        });
+    }
+    
+    localStorage.setItem('secops_bookmarks', JSON.stringify(bookmarks));
+    displayArticles(); // Refresh display to update bookmark icons
+}
+
 // DOM elements
 const newsFeed = document.getElementById('newsFeed');
 const feedStatus = document.getElementById('feedStatus');
@@ -406,52 +439,62 @@ function highlightKeywords(text) {
     return highlighted;
 }
 
-// Calculate statistics
+// Calculate statistics - COMBINED across ALL feeds
 function updateStats() {
     if (allArticles.length === 0) {
         statsContainer.innerHTML = '';
         return;
     }
     
-    // Filter by current view
-    const viewArticles = allArticles.filter(article => {
-        if (currentView === 'news') {
-            return Object.keys(NEWS_FEEDS).includes(article.source.toLowerCase());
-        } else {
-            return Object.keys(INTEL_FEEDS).includes(article.source.toLowerCase());
-        }
-    });
+    // CHANGED: Use ALL articles instead of filtering by view
+    // This gives a complete threat landscape across both NEWS and INTEL
     
     // Count articles by time
     const now = new Date();
     const oneHourAgo = new Date(now - 60 * 60 * 1000);
     const oneDayAgo = new Date(now - 24 * 60 * 60 * 1000);
     
-    const lastHour = viewArticles.filter(a => a.date >= oneHourAgo).length;
-    const last24h = viewArticles.filter(a => a.date >= oneDayAgo).length;
+    const lastHour = allArticles.filter(a => a.date >= oneHourAgo).length;
+    const last24h = allArticles.filter(a => a.date >= oneDayAgo).length;
     
-    // Count CVEs
-    const cveCount = viewArticles.filter(a => 
+    // Count CVEs across all feeds
+    const cveCount = allArticles.filter(a => 
         /CVE-\d{4}-\d{4,}/i.test(a.title + ' ' + a.description)
     ).length;
     
-    // Count critical articles
-    const criticalCount = viewArticles.filter(a => {
+    // Count critical articles across all feeds
+    const criticalCount = allArticles.filter(a => {
         const text = (a.title + ' ' + a.description).toLowerCase();
         return CRITICAL_KEYWORDS.some(kw => text.includes(kw.toLowerCase()));
     }).length;
     
-    // Most active source
+    // Most active source across all feeds
     const sourceCounts = {};
-    viewArticles.forEach(a => {
+    allArticles.forEach(a => {
         sourceCounts[a.source] = (sourceCounts[a.source] || 0) + 1;
     });
     const mostActive = Object.entries(sourceCounts).sort((a, b) => b[1] - a[1])[0];
     
+    // Count by category (NEWS vs INTEL)
+    const newsCount = allArticles.filter(a => 
+        Object.keys(NEWS_FEEDS).includes(a.source.toLowerCase())
+    ).length;
+    const intelCount = allArticles.filter(a => 
+        Object.keys(INTEL_FEEDS).includes(a.source.toLowerCase())
+    ).length;
+    
     statsContainer.innerHTML = `
         <div class="stat-item">
             <span class="stat-label">TOTAL:</span>
-            <span class="stat-value">${viewArticles.length}</span>
+            <span class="stat-value">${allArticles.length}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">NEWS:</span>
+            <span class="stat-value">${newsCount}</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">INTEL:</span>
+            <span class="stat-value">${intelCount}</span>
         </div>
         <div class="stat-item">
             <span class="stat-label">1H:</span>
@@ -532,12 +575,20 @@ function displayArticles() {
         const articleType = Object.keys(NEWS_FEEDS).includes(article.source.toLowerCase()) ? 'NEWS' : 'INTEL';
         const typeBadge = searchTerm ? `<span class="article-type-badge article-type-${articleType.toLowerCase()}">${articleType}</span>` : '';
         
+        // Check if article is bookmarked
+        const bookmarked = isBookmarked(article.link);
+        const bookmarkIcon = bookmarked ? '★' : '☆';
+        const bookmarkClass = bookmarked ? 'bookmarked' : '';
+        
         return `
-        <div class="news-item">
+        <div class="news-item" data-link="${article.link}">
             <div class="news-meta">
                 <span class="news-time">[${formatTime(article.date)}]</span>
                 <span class="news-source">[${article.source}]</span>
                 ${typeBadge}
+                <button class="bookmark-btn ${bookmarkClass}" onclick="handleBookmarkClick('${article.link.replace(/'/g, "\\'")}', event)" title="${bookmarked ? 'Remove bookmark' : 'Bookmark this article'}">
+                    ${bookmarkIcon}
+                </button>
             </div>
             <div class="news-title">
                 <a href="${article.link}" target="_blank" rel="noopener">${highlightKeywords(article.title)}</a>
@@ -545,6 +596,15 @@ function displayArticles() {
             ${article.description ? `<div class="news-description">${highlightKeywords(article.description)}</div>` : ''}
         </div>
     `}).join('');
+    
+    // Make bookmark buttons functional (need to attach after HTML is inserted)
+    window.handleBookmarkClick = function(link, event) {
+        event.stopPropagation();
+        const article = allArticles.find(a => a.link === link);
+        if (article) {
+            toggleBookmark(article);
+        }
+    };
 }
 
 // Format timestamp
