@@ -8,10 +8,10 @@ const NEWS_FEEDS = {
     cso: 'https://www.csoonline.com/feed/',
     securityweek: 'https://www.securityweek.com/feed/',
     sans: 'https://isc.sans.edu/rssfeed.xml',
-    // NEW SOURCES ADDED
     sophos: 'https://news.sophos.com/en-us/category/threat-research/feed/',
     threatpost: 'https://threatpost.com/feed/',
-    netsec: 'https://www.reddit.com/r/netsec/.rss'
+    netsec: 'https://old.reddit.com/r/netsec/.rss'
+    
 };
 
 // RSS Feed sources - INTEL FEEDS
