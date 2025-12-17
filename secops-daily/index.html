@@ -35,9 +35,9 @@
                     <span id="lastUpdate">--:--:--</span>
                 </div>
                 <div class="header-controls">
-                    <button class="view-btn active" data-view="news">📰 NEWS</button>
-                    <button class="view-btn" data-view="intel">⚠️ INTEL</button>
-                    <button id="toggleTrendsBtn" class="refresh-btn" onclick="toggleTrendsPanel()">[SHOW TRENDS]</button>
+                    <button class="view-btn active" data-view="all">ALL FEEDS</button>
+                    <button class="view-btn" data-view="bookmarks">BOOKMARKS</button>
+                    <button id="toggleTrendsBtn" class="refresh-btn" onclick="toggleTrendsPanel()">TRENDING</button>
                     <button id="refreshBtn" class="refresh-btn">[REFRESH]</button>
                 </div>
             </div>
@@ -59,9 +59,10 @@
                 <div id="searchCount" class="search-results-count"></div>
             </div>
 
-            <div class="feed-sources news-sources">
+            <div class="feed-sources">
                 <span class="source-label">[SOURCES]</span>
                 <button class="source-btn active" data-source="all">ALL</button>
+                <!-- NEWS SOURCES -->
                 <button class="source-btn" data-source="krebs">KREBS</button>
                 <button class="source-btn" data-source="bleeping">BLEEPING</button>
                 <button class="source-btn" data-source="hackernews">HACKERNEWS</button>
@@ -72,11 +73,7 @@
                 <button class="source-btn" data-source="sans">SANS ISC</button>
                 <button class="source-btn" data-source="sophos">SOPHOS</button>
                 <button class="source-btn" data-source="threatpost">THREATPOST</button>
-            </div>
-
-            <div class="feed-sources intel-sources" style="display: none;">
-                <span class="source-label">[SOURCES]</span>
-                <button class="source-btn active" data-source="all">ALL</button>
+                <!-- INTEL SOURCES -->
                 <button class="source-btn" data-source="cisa_alerts">CISA ALERTS</button>
                 <button class="source-btn" data-source="uscert">US-CERT</button>
                 <button class="source-btn" data-source="talos">TALOS</button>
@@ -112,33 +109,6 @@
             <h2 class="modal-title">[KEYBOARD SHORTCUTS]</h2>
             <div class="shortcuts-grid">
                 <div class="shortcut-item">
-                    <kbd>N</kbd>
-                    <span>Switch to NEWS view</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>I</kbd>
-                    <span>Switch to INTEL view</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>R</kbd>
-                    <span>Refresh feeds</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>/</kbd>
-                    <span>Focus search</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>ESC</kbd>
-                    <span>Clear search / Close modal</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>?</kbd>
-                    <span>Show this help</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                    <kbd>A</kbd>
+                    <span>Switch to ALL FEEDS view</span>
+                </div
