@@ -46,7 +46,7 @@ const HIGH_KEYWORDS = [
 
 let allArticles = [];
 let currentFilter = 'all';
-let currentView = 'news'; // 'news' or 'intel'
+let currentView = 'all'; // 'all' or 'bookmarks'
 let showTrends = false; // Toggle for trends panel
 
 // Bookmark management
@@ -137,11 +137,11 @@ function toggleTrendsPanel() {
     
     if (showTrends) {
         trendsPanel.style.display = 'block';
-        toggleBtn.textContent = '[HIDE TRENDS]';
+        toggleBtn.textContent = 'HIDE TRENDS';
         updateTrendsPanel();
     } else {
         trendsPanel.style.display = 'none';
-        toggleBtn.textContent = '[SHOW TRENDS]';
+        toggleBtn.textContent = 'TRENDING';
     }
 }
 
@@ -214,8 +214,6 @@ const statsContainer = document.getElementById('stats');
 const searchInput = document.getElementById('searchInput');
 const searchCount = document.getElementById('searchCount');
 const viewButtons = document.querySelectorAll('.view-btn');
-const newsSourcesContainer = document.querySelector('.news-sources');
-const intelSourcesContainer = document.querySelector('.intel-sources');
 const shortcutsModal = document.getElementById('shortcutsModal');
 const closeModal = document.querySelector('.close-modal');
 const terminalTitle = document.getElementById('terminalTitle');
@@ -283,13 +281,13 @@ function handleKeyboardShortcuts(e) {
     
     // Keyboard shortcuts
     switch(e.key.toLowerCase()) {
-        case 'n':
-            // Switch to NEWS
-            document.querySelector('[data-view="news"]').click();
+        case 'a':
+            // Switch to ALL FEEDS
+            document.querySelector('[data-view="all"]')?.click();
             break;
-        case 'i':
-            // Switch to INTEL
-            document.querySelector('[data-view="intel"]').click();
+        case 'b':
+            // Switch to BOOKMARKS
+            document.querySelector('[data-view="bookmarks"]')?.click();
             break;
         case 'r':
             // Refresh
@@ -363,29 +361,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // View switching (NEWS vs INTEL FEEDS)
+    // View switching (ALL FEEDS vs BOOKMARKS)
     viewButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             viewButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentView = btn.dataset.view;
+            
+            // Reset source filter to ALL when switching views
             currentFilter = 'all';
-            
-            // Show/hide appropriate source filters with fade
-            if (currentView === 'news') {
-                intelSourcesContainer.style.display = 'none';
-                newsSourcesContainer.style.display = 'flex';
-            } else {
-                newsSourcesContainer.style.display = 'none';
-                intelSourcesContainer.style.display = 'flex';
-            }
-            
-            // Reset ALL button
             document.querySelectorAll('.source-btn').forEach(b => b.classList.remove('active'));
             document.querySelector(`[data-source="all"]`).classList.add('active');
             
             displayArticles();
-            updateStats();
         });
     });
     
@@ -648,36 +636,61 @@ function updateStats() {
 
 // Display articles based on current filter and search
 function displayArticles() {
-    // Filter by view (news or intel) - UNLESS there's a search term
     const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : '';
     
     let filtered;
     
-    if (searchTerm) {
-        // Search across ALL articles regardless of view
+    // Handle bookmarks view
+    if (currentView === 'bookmarks') {
+        const bookmarks = getBookmarks();
+        if (bookmarks.length === 0) {
+            newsFeed.innerHTML = `
+                <div class="loading-indicator">
+                    <div class="loading-text">No bookmarked articles yet. Click the ★ star icon on any article to save it!</div>
+                </div>
+            `;
+            if (searchCount) searchCount.textContent = '';
+            return;
+        }
+        
+        // Convert bookmarks back to article format
+        filtered = bookmarks.map(b => ({
+            title: b.title,
+            link: b.link,
+            source: b.source,
+            description: '',
+            date: new Date(b.date)
+        }));
+        
+        // Apply search if present
+        if (searchTerm) {
+            filtered = filtered.filter(article => {
+                const searchableText = (article.title + ' ' + article.description).toLowerCase();
+                return searchableText.includes(searchTerm);
+            });
+        }
+        
+        // Apply source filter
+        if (currentFilter !== 'all') {
+            filtered = filtered.filter(a => a.source.toLowerCase() === currentFilter);
+        }
+        
+    } else if (searchTerm) {
+        // Search across ALL articles when in 'all' view
         filtered = allArticles.filter(article => {
             const searchableText = (article.title + ' ' + article.description).toLowerCase();
             return searchableText.includes(searchTerm);
         });
     } else {
-        // No search - filter by current view
-        const viewArticles = allArticles.filter(article => {
-            if (currentView === 'news') {
-                return Object.keys(NEWS_FEEDS).includes(article.source.toLowerCase());
-            } else {
-                return Object.keys(INTEL_FEEDS).includes(article.source.toLowerCase());
-            }
-        });
-        
-        // Then filter by source
+        // No search - show all articles, filtered by source if needed
         filtered = currentFilter === 'all' 
-            ? viewArticles 
-            : viewArticles.filter(a => a.source.toLowerCase() === currentFilter);
+            ? allArticles 
+            : allArticles.filter(a => a.source.toLowerCase() === currentFilter);
     }
     
     console.log(`Displaying ${filtered.length} articles (view: ${currentView}, filter: ${currentFilter}, search: "${searchTerm}")`);
     
-    // Update search count (only if search count element exists)
+    // Update search count
     if (searchCount) {
         if (searchTerm) {
             const newsCount = filtered.filter(a => Object.keys(NEWS_FEEDS).includes(a.source.toLowerCase())).length;
