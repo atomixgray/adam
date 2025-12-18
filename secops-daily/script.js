@@ -170,6 +170,7 @@ function updateTrendsPanel() {
                 <div class="trend-item">
                     <div class="trend-label">
                         <span class="trend-cve-filter" onclick="filterByCVE('${cve}')" title="Click to filter articles">${cve}</span>
+                        <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" class="trend-nvd-link" title="View on NVD">[NVD]</a>
                         <span class="trend-count">${count}</span>
                     </div>
                     <div class="trend-bar-container">
