@@ -204,8 +204,9 @@ function updateTrendsPanel() {
     trendsContent.innerHTML = html;
 }
 
-// Filter articles by CVE
-function filterByCVE(cve) {
+// Filter articles by CVE (global for onclick)
+window.filterByCVE = function(cve) {
+    const searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.value = cve;
         searchInput.focus();
@@ -216,8 +217,9 @@ function filterByCVE(cve) {
     }
 }
 
-// Filter articles by keyword
-function filterByKeyword(keyword) {
+// Filter articles by keyword (global for onclick)
+window.filterByKeyword = function(keyword) {
+    const searchInput = document.getElementById('searchInput');
     if (searchInput) {
         searchInput.value = keyword;
         searchInput.focus();
