@@ -163,13 +163,13 @@ function updateTrendsPanel() {
     
     // Top CVEs section
     if (trends.topCVEs.length > 0) {
-        html += '<div class="trends-section"><h3 class="trends-title">[TOP CVEs TODAY]</h3>';
+        html += '<div class="trends-section"><h3 class="trends-title">[TOP CVEs TODAY - CLICK TO FILTER]</h3>';
         trends.topCVEs.forEach(([cve, count]) => {
             const percentage = (count / maxCount) * 100;
             html += `
                 <div class="trend-item">
                     <div class="trend-label">
-                        <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" class="trend-cve-link">${cve}</a>
+                        <span class="trend-cve-filter" onclick="filterByCVE('${cve}')" title="Click to filter articles">${cve}</span>
                         <span class="trend-count">${count}</span>
                     </div>
                     <div class="trend-bar-container">
@@ -183,13 +183,13 @@ function updateTrendsPanel() {
     
     // Top Keywords section
     if (trends.topKeywords.length > 0) {
-        html += '<div class="trends-section"><h3 class="trends-title">[TRENDING THREATS]</h3>';
+        html += '<div class="trends-section"><h3 class="trends-title">[TRENDING THREATS - CLICK TO FILTER]</h3>';
         trends.topKeywords.forEach(([keyword, count]) => {
             const percentage = (count / maxCount) * 100;
             html += `
                 <div class="trend-item">
                     <div class="trend-label">
-                        <span class="trend-keyword">${keyword.toUpperCase()}</span>
+                        <span class="trend-keyword-filter" onclick="filterByKeyword('${keyword}')" title="Click to filter articles">${keyword.toUpperCase()}</span>
                         <span class="trend-count">${count}</span>
                     </div>
                     <div class="trend-bar-container">
@@ -202,6 +202,30 @@ function updateTrendsPanel() {
     }
     
     trendsContent.innerHTML = html;
+}
+
+// Filter articles by CVE
+function filterByCVE(cve) {
+    if (searchInput) {
+        searchInput.value = cve;
+        searchInput.focus();
+        displayArticles();
+        
+        // Scroll to articles
+        document.querySelector('.news-feed')?.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+// Filter articles by keyword
+function filterByKeyword(keyword) {
+    if (searchInput) {
+        searchInput.value = keyword;
+        searchInput.focus();
+        displayArticles();
+        
+        // Scroll to articles
+        document.querySelector('.news-feed')?.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
 // DOM elements
