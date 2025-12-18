@@ -356,6 +356,38 @@ body {
     text-decoration: underline;
 }
 
+/* Clickable trend filters */
+.trend-cve-filter,
+.trend-keyword-filter {
+    color: #00d4ff;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.trend-cve-filter {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.trend-keyword-filter {
+    color: #00ff9f;
+    background: rgba(0, 255, 159, 0.1);
+}
+
+.trend-cve-filter:hover,
+.trend-keyword-filter:hover {
+    transform: translateX(3px);
+    background: rgba(0, 212, 255, 0.2);
+}
+
+.trend-keyword-filter:hover {
+    background: rgba(0, 255, 159, 0.2);
+}
+
 .trend-count {
     color: #ffbd2e;
     font-weight: bold;
