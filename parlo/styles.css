@@ -178,6 +178,40 @@ h1 {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
+.speaker-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(102, 126, 234, 0.2);
+    border: 2px solid rgba(102, 126, 234, 0.4);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #667eea;
+    z-index: 10;
+}
+
+.speaker-btn:hover {
+    background: rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.speaker-btn:active {
+    transform: scale(0.95);
+}
+
+.speaker-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
 .card-front {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
     border: 2px solid rgba(102, 126, 234, 0.3);
@@ -335,6 +369,18 @@ footer {
     
     .card-face {
         padding: 2rem 1.5rem;
+    }
+    
+    .speaker-btn {
+        top: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .speaker-btn svg {
+        width: 20px;
+        height: 20px;
     }
     
     .phrase-text {
