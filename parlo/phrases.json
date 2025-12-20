@@ -1,742 +1,1635 @@
 [
   {
-    "italian": "Io sono italiano",
-    "pronunciation": "EE-oh SOH-noh ee-tah-lee-AH-noh",
-    "english": "I am Italian"
-  },
-  {
-    "italian": "Tu hai fame",
-    "pronunciation": "too AH-ee FAH-meh",
-    "english": "You are hungry"
-  },
-  {
-    "italian": "Lui fa una passeggiata",
-    "pronunciation": "loo-EE fah OO-nah pahs-sehd-JAH-tah",
-    "english": "He takes a walk"
-  },
-  {
-    "italian": "Noi andiamo al cinema",
-    "pronunciation": "noh-EE ahn-dee-AH-moh ahl CHEE-neh-mah",
-    "english": "We go to the cinema"
-  },
-  {
-    "italian": "Voi venite domani",
-    "pronunciation": "voh-EE veh-NEE-teh doh-MAH-nee",
-    "english": "You (plural) come tomorrow"
-  },
-  {
-    "italian": "Loro dicono la verità",
-    "pronunciation": "LOH-roh DEE-koh-noh lah veh-ree-TAH",
-    "english": "They tell the truth"
-  },
-  {
-    "italian": "Io vedo un gatto",
-    "pronunciation": "EE-oh VEH-doh oon GAHT-toh",
-    "english": "I see a cat"
-  },
-  {
-    "italian": "Tu sai parlare inglese",
-    "pronunciation": "too SAH-ee pahr-LAH-reh een-GLEH-zeh",
-    "english": "You know how to speak English"
-  },
-  {
-    "italian": "Lei vuole un caffè",
-    "pronunciation": "leh-EE voo-OH-leh oon kahf-FEH",
-    "english": "She wants a coffee"
-  },
-  {
-    "italian": "Noi possiamo aiutare",
-    "pronunciation": "noh-EE pohs-see-AH-moh ah-yoo-TAH-reh",
-    "english": "We can help"
-  },
-  {
-    "italian": "Voi dovete studiare",
-    "pronunciation": "voh-EE doh-VEH-teh stoo-dee-AH-reh",
-    "english": "You (plural) must study"
-  },
-  {
-    "italian": "Io mangio la pizza",
-    "pronunciation": "EE-oh MAHN-joh lah PEET-tsah",
-    "english": "I eat pizza"
-  },
-  {
-    "italian": "Tu bevi acqua",
-    "pronunciation": "too BEH-vee AH-kwah",
-    "english": "You drink water"
-  },
-  {
-    "italian": "Lui lavora in ufficio",
-    "pronunciation": "loo-EE lah-VOH-rah een oof-FEE-choh",
-    "english": "He works in the office"
-  },
-  {
-    "italian": "Noi abitiamo a Roma",
-    "pronunciation": "noh-EE ah-bee-tee-AH-moh ah ROH-mah",
-    "english": "We live in Rome"
-  },
-  {
-    "italian": "Loro partono stasera",
-    "pronunciation": "LOH-roh PAHR-toh-noh stah-SEH-rah",
-    "english": "They leave tonight"
-  },
-  {
-    "italian": "Io esco con gli amici",
-    "pronunciation": "EE-oh EH-skoh kohn lyee ah-MEE-chee",
-    "english": "I go out with friends"
-  },
-  {
-    "italian": "Tu stai bene",
-    "pronunciation": "too stah-EE BEH-neh",
-    "english": "You are well"
-  },
-  {
-    "italian": "Lei dà un regalo",
-    "pronunciation": "leh-EE dah oon reh-GAH-loh",
-    "english": "She gives a gift"
-  },
-  {
-    "italian": "Noi facciamo la spesa",
-    "pronunciation": "noh-EE fah-chee-AH-moh lah SPEH-zah",
-    "english": "We do the shopping"
-  },
-  {
-    "italian": "Voi conoscete questa città",
-    "pronunciation": "voh-EE koh-noh-SHEH-teh KWEH-stah cheet-TAH",
-    "english": "You (plural) know this city"
-  },
-  {
-    "italian": "Io prendo il treno",
-    "pronunciation": "EE-oh PREHN-doh eel TREH-noh",
-    "english": "I take the train"
-  },
-  {
-    "italian": "Tu metti la giacca",
-    "pronunciation": "too MEHT-tee lah JAH-kah",
-    "english": "You put on the jacket"
-  },
-  {
-    "italian": "Lei sente la musica",
-    "pronunciation": "leh-EE SEHN-teh lah MOO-zee-kah",
-    "english": "She hears the music"
-  },
-  {
-    "italian": "Noi torniamo a casa",
-    "pronunciation": "noh-EE tohr-nee-AH-moh ah KAH-zah",
-    "english": "We return home"
-  },
-  {
-    "italian": "Io dormo otto ore",
-    "pronunciation": "EE-oh DOHR-moh OHT-toh OH-reh",
-    "english": "I sleep eight hours"
-  },
-  {
-    "italian": "Tu leggi un libro",
-    "pronunciation": "too LEHD-jee oon LEE-broh",
-    "english": "You read a book"
-  },
-  {
-    "italian": "Lui scrive una lettera",
-    "pronunciation": "loo-EE SKREE-veh OO-nah leht-TEH-rah",
-    "english": "He writes a letter"
-  },
-  {
-    "italian": "Noi parliamo italiano",
-    "pronunciation": "noh-EE pahr-lee-AH-moh ee-tah-lee-AH-noh",
-    "english": "We speak Italian"
-  },
-  {
-    "italian": "Voi ascoltate la radio",
-    "pronunciation": "voh-EE ah-skohl-TAH-teh lah RAH-dee-oh",
-    "english": "You (plural) listen to the radio"
-  },
-  {
-    "italian": "Loro aprono la porta",
-    "pronunciation": "LOH-roh AH-proh-noh lah POHR-tah",
-    "english": "They open the door"
-  },
-  {
-    "italian": "Io chiudo la finestra",
-    "pronunciation": "EE-oh kee-OO-doh lah fee-NEH-strah",
-    "english": "I close the window"
-  },
-  {
-    "italian": "Tu guardi la televisione",
-    "pronunciation": "too gwahr-DAH-ree lah teh-leh-vee-zee-OH-neh",
-    "english": "You watch television"
-  },
-  {
-    "italian": "Lei compra il pane",
-    "pronunciation": "leh-EE KOHM-prah eel PAH-neh",
-    "english": "She buys bread"
-  },
-  {
-    "italian": "Noi vendiamo la casa",
-    "pronunciation": "noh-EE vehn-dee-AH-moh lah KAH-zah",
-    "english": "We sell the house"
-  },
-  {
-    "italian": "Voi cercate il gatto",
-    "pronunciation": "voh-EE cher-KAH-teh eel GAHT-toh",
-    "english": "You (plural) look for the cat"
-  },
-  {
-    "italian": "Io trovo le chiavi",
-    "pronunciation": "EE-oh TROH-voh leh kee-AH-vee",
-    "english": "I find the keys"
-  },
-  {
-    "italian": "Tu perdi il telefono",
-    "pronunciation": "too PEHR-dee eel teh-LEH-foh-noh",
-    "english": "You lose the phone"
-  },
-  {
-    "italian": "Lui porta la valigia",
-    "pronunciation": "loo-EE POHR-tah lah vah-LEE-jah",
-    "english": "He carries the suitcase"
-  },
-  {
-    "italian": "Noi arriviamo in ritardo",
-    "pronunciation": "noh-EE ahr-ree-vee-AH-moh een ree-TAHR-doh",
-    "english": "We arrive late"
-  },
-  {
-    "italian": "Loro restano a cena",
-    "pronunciation": "LOH-roh REH-stah-noh ah CHEH-nah",
-    "english": "They stay for dinner"
-  },
-  {
-    "italian": "Io cammino nel parco",
-    "pronunciation": "EE-oh kahm-MEE-noh nehl PAHR-koh",
-    "english": "I walk in the park"
-  },
-  {
-    "italian": "Tu corri ogni mattina",
-    "pronunciation": "too KOHR-ree OH-nyee maht-TEE-nah",
-    "english": "You run every morning"
-  },
-  {
-    "italian": "Lei nuota in piscina",
-    "pronunciation": "leh-EE noo-OH-tah een pee-SHEE-nah",
-    "english": "She swims in the pool"
-  },
-  {
-    "italian": "Noi giochiamo a calcio",
-    "pronunciation": "noh-EE joh-kee-AH-moh ah KAHL-choh",
-    "english": "We play soccer"
-  },
-  {
-    "italian": "Voi cantate una canzone",
-    "pronunciation": "voh-EE kahn-TAH-teh OO-nah kahn-TSOH-neh",
-    "english": "You (plural) sing a song"
-  },
-  {
-    "italian": "Io ballo con Maria",
-    "pronunciation": "EE-oh BAHL-loh kohn mah-REE-ah",
-    "english": "I dance with Maria"
-  },
-  {
-    "italian": "Tu cucini la pasta",
-    "pronunciation": "too koo-CHEE-nee lah PAH-stah",
-    "english": "You cook pasta"
-  },
-  {
-    "italian": "Lui pulisce la casa",
-    "pronunciation": "loo-EE poo-LEE-sheh lah KAH-zah",
-    "english": "He cleans the house"
-  },
-  {
-    "italian": "Noi laviamo i piatti",
-    "pronunciation": "noh-EE lah-vee-AH-moh ee pee-AHT-tee",
-    "english": "We wash the dishes"
-  },
-  {
-    "italian": "Loro stirano i vestiti",
-    "pronunciation": "LOH-roh stee-RAH-noh ee veh-STEE-tee",
-    "english": "They iron the clothes"
-  },
-  {
-    "italian": "Io mi sveglio presto",
-    "pronunciation": "EE-oh mee SVEH-lyoh PREH-stoh",
-    "english": "I wake up early"
-  },
-  {
-    "italian": "Tu ti lavi i denti",
-    "pronunciation": "too tee LAH-vee ee DEHN-tee",
-    "english": "You brush your teeth"
-  },
-  {
-    "italian": "Lei si veste elegante",
-    "pronunciation": "leh-EE see VEH-steh eh-leh-GAHN-teh",
-    "english": "She dresses elegantly"
-  },
-  {
-    "italian": "Noi ci riposiamo",
-    "pronunciation": "noh-EE chee ree-poh-zee-AH-moh",
-    "english": "We rest"
-  },
-  {
-    "italian": "Voi vi divertite",
-    "pronunciation": "voh-EE vee dee-vehr-TEE-teh",
-    "english": "You (plural) have fun"
-  },
-  {
-    "italian": "Io mi chiamo Marco",
-    "pronunciation": "EE-oh mee kee-AH-moh MAHR-koh",
-    "english": "My name is Marco"
-  },
-  {
-    "italian": "Tu ti siedi qui",
-    "pronunciation": "too tee see-EH-dee kwee",
-    "english": "You sit here"
-  },
-  {
-    "italian": "Lui si alza tardi",
-    "pronunciation": "loo-EE see AHL-tsah TAHR-dee",
-    "english": "He gets up late"
-  },
-  {
-    "italian": "Noi ci incontriamo domani",
-    "pronunciation": "noh-EE chee een-kohn-tree-AH-moh doh-MAH-nee",
-    "english": "We meet tomorrow"
-  },
-  {
-    "italian": "Loro si sposano a giugno",
-    "pronunciation": "LOH-roh see SPOH-zah-noh ah JOO-nyoh",
-    "english": "They get married in June"
-  },
-  {
-    "italian": "Io ho mangiato bene",
-    "pronunciation": "EE-oh oh mahn-JAH-toh BEH-neh",
-    "english": "I ate well"
-  },
-  {
-    "italian": "Tu hai studiato molto",
-    "pronunciation": "too AH-ee stoo-dee-AH-toh MOHL-toh",
-    "english": "You studied a lot"
-  },
-  {
-    "italian": "Lei è andata al mare",
-    "pronunciation": "leh-EE eh ahn-DAH-tah ahl MAH-reh",
-    "english": "She went to the sea"
-  },
-  {
-    "italian": "Noi abbiamo visto il film",
-    "pronunciation": "noh-EE ahb-bee-AH-moh VEE-stoh eel feelm",
-    "english": "We saw the movie"
-  },
-  {
-    "italian": "Voi siete partiti ieri",
-    "pronunciation": "voh-EE see-EH-teh pahr-TEE-tee ee-EH-ree",
-    "english": "You (plural) left yesterday"
-  },
-  {
-    "italian": "Loro hanno dormito poco",
-    "pronunciation": "LOH-roh AHN-noh dohr-MEE-toh POH-koh",
-    "english": "They slept little"
-  },
-  {
-    "italian": "Io stavo leggendo",
-    "pronunciation": "EE-oh STAH-voh lehd-JEHN-doh",
-    "english": "I was reading"
-  },
-  {
-    "italian": "Tu stavi cucinando",
-    "pronunciation": "too STAH-vee koo-chee-NAHN-doh",
-    "english": "You were cooking"
-  },
-  {
-    "italian": "Lei stava parlando",
-    "pronunciation": "leh-EE STAH-vah pahr-LAHN-doh",
-    "english": "She was talking"
-  },
-  {
-    "italian": "Noi stavamo aspettando",
-    "pronunciation": "noh-EE stah-VAH-moh ah-speht-TAHN-doh",
-    "english": "We were waiting"
-  },
-  {
-    "italian": "Voi stavate ridendo",
-    "pronunciation": "voh-EE stah-VAH-teh ree-DEHN-doh",
-    "english": "You (plural) were laughing"
-  },
-  {
-    "italian": "Io mangerò la pizza",
-    "pronunciation": "EE-oh mahn-jeh-ROH lah PEET-tsah",
-    "english": "I will eat pizza"
-  },
-  {
-    "italian": "Tu andrai in vacanza",
-    "pronunciation": "too ahn-drah-EE een vah-KAHN-tsah",
-    "english": "You will go on vacation"
-  },
-  {
-    "italian": "Lei verrà alla festa",
-    "pronunciation": "leh-EE vehr-RAH AHL-lah FEH-stah",
-    "english": "She will come to the party"
-  },
-  {
-    "italian": "Noi faremo i compiti",
-    "pronunciation": "noh-EE fah-REH-moh ee kohm-PEE-tee",
-    "english": "We will do homework"
-  },
-  {
-    "italian": "Voi partirete domani",
-    "pronunciation": "voh-EE pahr-tee-REH-teh doh-MAH-nee",
-    "english": "You (plural) will leave tomorrow"
-  },
-  {
-    "italian": "Loro torneranno presto",
-    "pronunciation": "LOH-roh tohr-neh-RAHN-noh PREH-stoh",
-    "english": "They will return soon"
-  },
-  {
-    "italian": "Io vorrei un gelato",
-    "pronunciation": "EE-oh vohr-REH-ee oon jeh-LAH-toh",
-    "english": "I would like an ice cream"
-  },
-  {
-    "italian": "Tu dovresti studiare",
-    "pronunciation": "too doh-VRE-stee stoo-dee-AH-reh",
-    "english": "You should study"
-  },
-  {
-    "italian": "Lei potrebbe venire",
-    "pronunciation": "leh-EE poh-TREH-beh veh-NEE-reh",
-    "english": "She could come"
-  },
-  {
-    "italian": "Noi saremmo felici",
-    "pronunciation": "noh-EE sah-REHM-moh feh-LEE-chee",
-    "english": "We would be happy"
-  },
-  {
-    "italian": "Voi avreste tempo",
-    "pronunciation": "voh-EE ah-VRE-steh TEHM-poh",
-    "english": "You (plural) would have time"
-  },
-  {
-    "italian": "Io spero che tu venga",
-    "pronunciation": "EE-oh SPEH-roh keh too VEHN-gah",
-    "english": "I hope you come"
-  },
-  {
-    "italian": "Tu pensi che sia vero",
-    "pronunciation": "too PEHN-see keh SEE-ah VEH-roh",
-    "english": "You think it's true"
-  },
-  {
-    "italian": "Lei crede che piova",
-    "pronunciation": "leh-EE KREH-deh keh pee-OH-vah",
-    "english": "She believes it will rain"
-  },
-  {
-    "italian": "Noi dubitiamo che arrivi",
-    "pronunciation": "noh-EE doo-bee-tee-AH-moh keh ahr-REE-vee",
-    "english": "We doubt he arrives"
-  },
-  {
-    "italian": "Voi volete che studia",
-    "pronunciation": "voh-EE voh-LEH-teh keh STOO-dee-ah",
-    "english": "You (plural) want him to study"
-  },
-  {
-    "italian": "Io mi ricordo di te",
-    "pronunciation": "EE-oh mee ree-KOHR-doh dee teh",
-    "english": "I remember you"
-  },
-  {
-    "italian": "Tu ti dimentichi sempre",
-    "pronunciation": "too tee dee-mehn-TEE-kee SEHM-preh",
-    "english": "You always forget"
-  },
-  {
-    "italian": "Lei si preoccupa troppo",
-    "pronunciation": "leh-EE see preh-ohk-KOO-pah TROHP-poh",
-    "english": "She worries too much"
-  },
-  {
-    "italian": "Noi ci sbagliamo spesso",
-    "pronunciation": "noh-EE chee zbah-lyee-AH-moh SPEHS-soh",
-    "english": "We make mistakes often"
-  },
-  {
-    "italian": "Voi vi arrabbiate facilmente",
-    "pronunciation": "voh-EE vee ahr-rahb-bee-AH-teh fah-cheel-MEHN-teh",
-    "english": "You (plural) get angry easily"
-  },
-  {
-    "italian": "Io mi sono perso",
-    "pronunciation": "EE-oh mee SOH-noh PEHR-soh",
-    "english": "I got lost"
-  },
-  {
-    "italian": "Tu ti sei divertito",
-    "pronunciation": "too tee seh-EE dee-vehr-TEE-toh",
-    "english": "You had fun"
-  },
-  {
-    "italian": "Lei si è sposata",
-    "pronunciation": "leh-EE see eh spoh-ZAH-tah",
-    "english": "She got married"
-  },
-  {
-    "italian": "Noi ci siamo conosciuti",
-    "pronunciation": "noh-EE chee see-AH-moh koh-noh-SHOO-tee",
-    "english": "We met each other"
-  },
-  {
-    "italian": "Voi vi siete laureati",
-    "pronunciation": "voh-EE vee see-EH-teh lah-oo-reh-AH-tee",
-    "english": "You (plural) graduated"
-  },
-  {
-    "italian": "Io sto imparando l'italiano",
-    "pronunciation": "EE-oh stoh eem-pah-RAHN-doh lee-tah-lee-AH-noh",
-    "english": "I am learning Italian"
-  },
-  {
-    "italian": "Tu stai lavorando sodo",
-    "pronunciation": "too stah-EE lah-voh-RAHN-doh SOH-doh",
-    "english": "You are working hard"
-  },
-  {
-    "italian": "Lei sta migliorando",
-    "pronunciation": "leh-EE stah mee-lyoh-RAHN-doh",
-    "english": "She is improving"
-  },
-  {
-    "italian": "Noi stiamo aspettando",
-    "pronunciation": "noh-EE stee-AH-moh ah-speht-TAHN-doh",
-    "english": "We are waiting"
-  },
-  {
-    "italian": "Voi state crescendo",
-    "pronunciation": "voh-EE STAH-teh kreh-SHEHN-doh",
-    "english": "You (plural) are growing"
-  },
-  {
-    "italian": "Io ho appena finito",
-    "pronunciation": "EE-oh oh ahp-PEH-nah fee-NEE-toh",
-    "english": "I have just finished"
-  },
-  {
-    "italian": "Tu hai già mangiato",
-    "pronunciation": "too AH-ee jah mahn-JAH-toh",
-    "english": "You have already eaten"
-  },
-  {
-    "italian": "Lei non è ancora arrivata",
-    "pronunciation": "leh-EE nohn eh ahn-KOH-rah ahr-ree-VAH-tah",
-    "english": "She hasn't arrived yet"
-  },
-  {
-    "italian": "Noi abbiamo sempre saputo",
-    "pronunciation": "noh-EE ahb-bee-AH-moh SEHM-preh sah-POO-toh",
-    "english": "We have always known"
-  },
-  {
-    "italian": "Voi non avete mai visto",
-    "pronunciation": "voh-EE nohn ah-VEH-teh mah-EE VEE-stoh",
-    "english": "You (plural) have never seen"
-  },
-  {
-    "italian": "Io avevo fame",
-    "pronunciation": "EE-oh ah-VEH-voh FAH-meh",
-    "english": "I was hungry"
-  },
-  {
-    "italian": "Tu eri stanco",
-    "pronunciation": "too EH-ree STAHN-koh",
-    "english": "You were tired"
-  },
-  {
-    "italian": "Lei aveva ragione",
-    "pronunciation": "leh-EE ah-VEH-vah rah-JOH-neh",
-    "english": "She was right"
-  },
-  {
-    "italian": "Noi eravamo giovani",
-    "pronunciation": "noh-EE eh-rah-VAH-moh JOH-vah-nee",
-    "english": "We were young"
-  },
-  {
-    "italian": "Voi avevate fretta",
-    "pronunciation": "voh-EE ah-veh-VAH-teh FREHT-tah",
-    "english": "You (plural) were in a hurry"
-  },
-  {
-    "italian": "Io avevo già mangiato",
-    "pronunciation": "EE-oh ah-VEH-voh jah mahn-JAH-toh",
-    "english": "I had already eaten"
-  },
-  {
-    "italian": "Tu eri appena arrivato",
-    "pronunciation": "too EH-ree ahp-PEH-nah ahr-ree-VAH-toh",
-    "english": "You had just arrived"
-  },
-  {
-    "italian": "Lei aveva studiato molto",
-    "pronunciation": "leh-EE ah-VEH-vah stoo-dee-AH-toh MOHL-toh",
-    "english": "She had studied a lot"
-  },
-  {
-    "italian": "Noi eravamo già partiti",
-    "pronunciation": "noh-EE eh-rah-VAH-moh jah pahr-TEE-tee",
-    "english": "We had already left"
-  },
-  {
-    "italian": "Voi avevate finito tutto",
-    "pronunciation": "voh-EE ah-veh-VAH-teh fee-NEE-toh TOOT-toh",
-    "english": "You (plural) had finished everything"
-  },
-  {
-    "italian": "Io avrò finito entro sera",
-    "pronunciation": "EE-oh ah-VROH fee-NEE-toh EHN-troh SEH-rah",
-    "english": "I will have finished by evening"
-  },
-  {
-    "italian": "Tu sarai arrivato a casa",
-    "pronunciation": "too sah-RAH-ee ahr-ree-VAH-toh ah KAH-zah",
-    "english": "You will have arrived home"
-  },
-  {
-    "italian": "Lei avrà già cenato",
-    "pronunciation": "leh-EE ah-VRAH jah cheh-NAH-toh",
-    "english": "She will have already had dinner"
-  },
-  {
-    "italian": "Noi saremo partiti presto",
-    "pronunciation": "noh-EE sah-REH-moh pahr-TEE-tee PREH-stoh",
-    "english": "We will have left early"
-  },
-  {
-    "italian": "Voi avrete capito tutto",
-    "pronunciation": "voh-EE ah-VREH-teh kah-PEE-toh TOOT-toh",
-    "english": "You (plural) will have understood everything"
-  },
-  {
-    "italian": "Io mi sono abituato",
-    "pronunciation": "EE-oh mee SOH-noh ah-bee-too-AH-toh",
-    "english": "I got used to it"
-  },
-  {
-    "italian": "Tu ti sei reso conto",
-    "pronunciation": "too tee seh-EE REHN-doh KOHN-toh",
-    "english": "You realized"
-  },
-  {
-    "italian": "Lei si è accorta",
-    "pronunciation": "leh-EE see eh ahk-KOHR-tah",
-    "english": "She noticed"
-  },
-  {
-    "italian": "Noi ci siamo preparati",
-    "pronunciation": "noh-EE chee see-AH-moh preh-pah-RAH-tee",
-    "english": "We prepared ourselves"
-  },
-  {
-    "italian": "Voi vi siete comportati bene",
-    "pronunciation": "voh-EE vee see-EH-teh kohm-pohr-TAH-tee BEH-neh",
-    "english": "You (plural) behaved well"
-  },
-  {
-    "italian": "Io mi ero già svegliato",
-    "pronunciation": "EE-oh mee EH-roh jah zveh-lyee-AH-toh",
-    "english": "I had already woken up"
-  },
-  {
-    "italian": "Tu ti eri vestito elegante",
-    "pronunciation": "too tee EH-ree veh-STEE-toh eh-leh-GAHN-teh",
-    "english": "You had dressed elegantly"
-  },
-  {
-    "italian": "Lei si era preparata bene",
-    "pronunciation": "leh-EE see EH-rah preh-pah-RAH-tah BEH-neh",
-    "english": "She had prepared well"
-  },
-  {
-    "italian": "Noi ci eravamo innamorati",
-    "pronunciation": "noh-EE chee eh-rah-VAH-moh een-nah-moh-RAH-tee",
-    "english": "We had fallen in love"
-  },
-  {
-    "italian": "Voi vi eravate divertiti",
-    "pronunciation": "voh-EE vee eh-rah-VAH-teh dee-vehr-TEE-tee",
-    "english": "You (plural) had had fun"
-  },
-  {
-    "italian": "Io mi sarò laureato",
-    "pronunciation": "EE-oh mee sah-ROH lah-oo-reh-AH-toh",
-    "english": "I will have graduated"
-  },
-  {
-    "italian": "Tu ti sarai sposato",
-    "pronunciation": "too tee sah-RAH-ee spoh-ZAH-toh",
-    "english": "You will have gotten married"
-  },
-  {
-    "italian": "Lei si sarà trasferita",
-    "pronunciation": "leh-EE see sah-RAH trahs-feh-REE-tah",
-    "english": "She will have moved"
-  },
-  {
-    "italian": "Noi ci saremo riposati",
-    "pronunciation": "noh-EE chee sah-REH-moh ree-poh-ZAH-tee",
-    "english": "We will have rested"
-  },
-  {
-    "italian": "Voi vi sarete sistemati",
-    "pronunciation": "voh-EE vee sah-REH-teh see-steh-MAH-tee",
-    "english": "You (plural) will have settled"
-  },
-  {
-    "italian": "Se io fossi ricco",
-    "pronunciation": "seh EE-oh FOHS-see REEK-koh",
-    "english": "If I were rich"
-  },
-  {
-    "italian": "Se tu avessi tempo",
-    "pronunciation": "seh too ah-VEH-see TEHM-poh",
-    "english": "If you had time"
-  },
-  {
-    "italian": "Se lei venisse qui",
-    "pronunciation": "seh leh-EE veh-NEES-seh kwee",
-    "english": "If she came here"
-  },
-  {
-    "italian": "Se noi potessimo partire",
-    "pronunciation": "seh noh-EE poh-TEHS-see-moh pahr-TEE-reh",
-    "english": "If we could leave"
-  },
-  {
-    "italian": "Se voi sapeste la verità",
-    "pronunciation": "seh voh-EE sah-PEH-steh lah veh-ree-TAH",
-    "english": "If you (plural) knew the truth"
-  },
-  {
-    "italian": "Benché sia difficile",
-    "pronunciation": "behn-KEH SEE-ah dee-FEE-chee-leh",
-    "english": "Although it's difficult"
-  },
-  {
-    "italian": "Prima che tu parta",
-    "pronunciation": "PREE-mah keh too PAHR-tah",
-    "english": "Before you leave"
-  },
-  {
-    "italian": "Senza che lei lo sappia",
-    "pronunciation": "SEHN-tsah keh leh-EE loh SAHP-pee-ah",
-    "english": "Without her knowing it"
-  },
-  {
-    "italian": "Purché voi veniate",
-    "pronunciation": "poor-KEH voh-EE veh-nee-AH-teh",
-    "english": "Provided that you (plural) come"
-  },
-  {
-    "italian": "Affinché tutto vada bene",
-    "pronunciation": "ahf-feen-KEH TOOT-toh VAH-dah BEH-neh",
-    "english": "So that everything goes well"
+    "italian": "Ciao! Come stai?",
+    "pronunciation": "CHOW! KOH-meh STAH-ee?",
+    "english": "Hi! How are you?",
+    "tags": [
+      "basics",
+      "greetings",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Tutto bene, grazie! E tu?",
+    "pronunciation": "TOOT-toh BEH-neh, GRAHT-see-eh! Eh too?",
+    "english": "All good, thanks! And you?",
+    "tags": [
+      "basics",
+      "polite",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Buongiorno! Come va?",
+    "pronunciation": "bwohn-JOHR-noh! KOH-meh vah?",
+    "english": "Good morning! How's it going?",
+    "tags": [
+      "greetings",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Così così",
+    "pronunciation": "koh-ZEE koh-ZEE",
+    "english": "So-so",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non c'è male",
+    "pronunciation": "nohn cheh MAH-leh",
+    "english": "Not bad",
+    "tags": [
+      "health"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "In bocca al lupo!",
+    "pronunciation": "een BOHK-kah ahl LOO-poh!",
+    "english": "Good luck! (lit: In the wolf's mouth!)",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Crepi il lupo!",
+    "pronunciation": "KREH-pee eel LOO-poh!",
+    "english": "Thanks! (response to 'In bocca al lupo', lit: May the wolf die!)",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che bello!",
+    "pronunciation": "keh BEHL-loh!",
+    "english": "How nice! / That's great!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che bello vederti!",
+    "pronunciation": "keh BEHL-loh veh-DEHR-tee!",
+    "english": "So nice to see you!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi manchi",
+    "pronunciation": "mee MAHN-kee",
+    "english": "I miss you",
+    "tags": [
+      "emotions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Ti voglio bene",
+    "pronunciation": "tee VOH-lyoh BEH-neh",
+    "english": "I love you (affectionate, for friends/family)",
+    "tags": [
+      "emotions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Ti amo",
+    "pronunciation": "tee AH-moh",
+    "english": "I love you (romantic)",
+    "tags": [
+      "emotions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Facciamo due chiacchiere?",
+    "pronunciation": "fah-CHAH-moh DOO-eh kee-AHK-kee-eh-reh?",
+    "english": "Shall we have a chat?",
+    "tags": [
+      "conversation",
+      "emotions",
+      "questions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Andiamo a prendere un caffè?",
+    "pronunciation": "ahn-dee-AH-moh ah PREHN-deh-reh oon kahf-FEH?",
+    "english": "Shall we go get a coffee?",
+    "tags": [
+      "emotions",
+      "food",
+      "questions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Che ne dici?",
+    "pronunciation": "keh neh DEE-chee?",
+    "english": "What do you say? / What do you think?",
+    "tags": [
+      "conversation",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Va bene!",
+    "pronunciation": "vah BEH-neh!",
+    "english": "Okay! / Sounds good!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "D'accordo!",
+    "pronunciation": "dah-KOHR-doh!",
+    "english": "Agreed! / Deal!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non fa niente",
+    "pronunciation": "nohn fah nee-EHN-teh",
+    "english": "It doesn't matter / No worries",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Figurati!",
+    "pronunciation": "fee-goo-RAH-tee!",
+    "english": "Don't mention it! / No problem!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Prego!",
+    "pronunciation": "PREH-goh!",
+    "english": "You're welcome! / Please!",
+    "tags": [
+      "basics",
+      "polite"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi dispiace",
+    "pronunciation": "mee dee-SPYAH-cheh",
+    "english": "I'm sorry",
+    "tags": [
+      "basics",
+      "polite"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Scusa!",
+    "pronunciation": "SKOO-zah!",
+    "english": "Sorry! (informal)",
+    "tags": [
+      "basics",
+      "polite"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Scusi!",
+    "pronunciation": "SKOO-zee!",
+    "english": "Excuse me! (formal)",
+    "tags": [
+      "basics",
+      "polite"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Permesso?",
+    "pronunciation": "pehr-MEHS-soh?",
+    "english": "May I? / Coming through!",
+    "tags": [
+      "basics",
+      "polite",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Avanti!",
+    "pronunciation": "ah-VAHN-tee!",
+    "english": "Come in! / Go ahead!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che schifo!",
+    "pronunciation": "keh SKEE-foh!",
+    "english": "How disgusting! / Yuck!",
+    "tags": [
+      "slang"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Che casino!",
+    "pronunciation": "keh kah-ZEE-noh!",
+    "english": "What a mess!",
+    "tags": [
+      "slang"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Mamma mia!",
+    "pronunciation": "MAHM-mah MEE-ah!",
+    "english": "Oh my! / Wow!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Dai!",
+    "pronunciation": "DAH-ee!",
+    "english": "Come on!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Davvero?",
+    "pronunciation": "dahv-VEH-roh?",
+    "english": "Really?",
+    "tags": [
+      "questions",
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sul serio?",
+    "pronunciation": "sool SEH-ree-oh?",
+    "english": "Seriously?",
+    "tags": [
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non ci credo!",
+    "pronunciation": "nohn chee KREH-doh!",
+    "english": "I can't believe it!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che figata!",
+    "pronunciation": "keh fee-GAH-tah!",
+    "english": "How cool! (slang)",
+    "tags": [
+      "slang"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Fantastico!",
+    "pronunciation": "fahn-TAH-stee-koh!",
+    "english": "Fantastic!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Pazzesco!",
+    "pronunciation": "paht-TSEH-skoh!",
+    "english": "Crazy! / Amazing!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Basta così",
+    "pronunciation": "BAH-stah koh-ZEE",
+    "english": "That's enough",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Basta!",
+    "pronunciation": "BAH-stah!",
+    "english": "Enough! / Stop!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Lascia perdere",
+    "pronunciation": "LAH-shah PEHR-deh-reh",
+    "english": "Forget it / Let it go",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non importa",
+    "pronunciation": "nohn eem-POHR-tah",
+    "english": "It doesn't matter",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Chi se ne frega?",
+    "pronunciation": "kee seh neh FREH-gah?",
+    "english": "Who cares? (colloquial)",
+    "tags": [
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Magari!",
+    "pronunciation": "mah-GAH-ree!",
+    "english": "I wish! / If only!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Macché!",
+    "pronunciation": "mahk-KEH!",
+    "english": "No way! / Not at all!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mica male!",
+    "pronunciation": "MEE-kah MAH-leh!",
+    "english": "Not bad at all!",
+    "tags": [
+      "health"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Ci vediamo!",
+    "pronunciation": "chee veh-dee-AH-moh!",
+    "english": "See you!",
+    "tags": [
+      "emotions",
+      "greetings",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "A dopo!",
+    "pronunciation": "ah DOH-poh!",
+    "english": "See you later!",
+    "tags": [
+      "greetings"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "A presto!",
+    "pronunciation": "ah PREH-stoh!",
+    "english": "See you soon!",
+    "tags": [
+      "greetings",
+      "time"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Buona serata!",
+    "pronunciation": "BWOH-nah seh-RAH-tah!",
+    "english": "Have a good evening!",
+    "tags": [
+      "time"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Buon weekend!",
+    "pronunciation": "bwohn weekend!",
+    "english": "Have a good weekend!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "In gamba!",
+    "pronunciation": "een GAHM-bah!",
+    "english": "Well done! / Smart! (lit: in the leg)",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Bravo!",
+    "pronunciation": "BRAH-voh!",
+    "english": "Well done! / Good job!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Complimenti!",
+    "pronunciation": "kohm-plee-MEHN-tee!",
+    "english": "Congratulations!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Ho fame",
+    "pronunciation": "oh FAH-meh",
+    "english": "I'm hungry",
+    "tags": [
+      "food"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Ho sete",
+    "pronunciation": "oh SEH-teh",
+    "english": "I'm thirsty",
+    "tags": [
+      "food"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Ho sonno",
+    "pronunciation": "oh SOHN-noh",
+    "english": "I'm sleepy",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Ho freddo",
+    "pronunciation": "oh FREHD-doh",
+    "english": "I'm cold",
+    "tags": [
+      "weather"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Ho caldo",
+    "pronunciation": "oh KAHL-doh",
+    "english": "I'm hot",
+    "tags": [
+      "weather"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che fame!",
+    "pronunciation": "keh FAH-meh!",
+    "english": "I'm so hungry!",
+    "tags": [
+      "food"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Muoio di fame!",
+    "pronunciation": "MWOH-yoh dee FAH-meh!",
+    "english": "I'm starving! (lit: I'm dying of hunger)",
+    "tags": [
+      "expressions",
+      "food",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Buon appetito!",
+    "pronunciation": "bwohn ahp-peh-TEE-toh!",
+    "english": "Enjoy your meal!",
+    "tags": [
+      "food"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Salute!",
+    "pronunciation": "sah-LOO-teh!",
+    "english": "Cheers! / Bless you!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Cin cin!",
+    "pronunciation": "cheen cheen!",
+    "english": "Cheers!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Fa un freddo cane",
+    "pronunciation": "fah oon FREHD-doh KAH-neh",
+    "english": "It's freezing cold (lit: dog cold)",
+    "tags": [
+      "expressions",
+      "idioms",
+      "weather"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Piove a catinelle",
+    "pronunciation": "pee-OH-veh ah kah-tee-NEHL-leh",
+    "english": "It's pouring rain (lit: raining in buckets)",
+    "tags": [
+      "expressions",
+      "idioms",
+      "weather"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Che caldo!",
+    "pronunciation": "keh KAHL-doh!",
+    "english": "It's so hot!",
+    "tags": [
+      "weather"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che bella giornata!",
+    "pronunciation": "keh BEHL-lah johr-NAH-tah!",
+    "english": "What a beautiful day!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che tempo fa?",
+    "pronunciation": "keh TEHM-poh fah?",
+    "english": "What's the weather like?",
+    "tags": [
+      "questions",
+      "weather"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi puoi aiutare?",
+    "pronunciation": "mee pwoh-EE ah-yoo-TAH-reh?",
+    "english": "Can you help me?",
+    "tags": [
+      "health",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi sono perso",
+    "pronunciation": "mee SOH-noh PEHR-soh",
+    "english": "I'm lost (masculine)",
+    "tags": [
+      "travel"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi sono persa",
+    "pronunciation": "mee SOH-noh PEHR-sah",
+    "english": "I'm lost (feminine)",
+    "tags": [
+      "travel"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Dove si trova...?",
+    "pronunciation": "DOH-veh see TROH-vah...?",
+    "english": "Where is...?",
+    "tags": [
+      "questions",
+      "travel"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Quanto costa?",
+    "pronunciation": "KWAHN-toh KOH-stah?",
+    "english": "How much does it cost?",
+    "tags": [
+      "questions",
+      "shopping"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "È troppo caro",
+    "pronunciation": "eh TROHP-poh KAH-roh",
+    "english": "It's too expensive",
+    "tags": [
+      "shopping"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Posso avere il conto?",
+    "pronunciation": "POHS-soh ah-VEH-reh eel KOHN-toh?",
+    "english": "Can I have the bill?",
+    "tags": [
+      "food",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Va via!",
+    "pronunciation": "vah VEE-ah!",
+    "english": "Go away!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Lasciami in pace!",
+    "pronunciation": "LAH-shah-mee een PAH-cheh!",
+    "english": "Leave me alone!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non mi rompere!",
+    "pronunciation": "nohn mee ROHM-peh-reh!",
+    "english": "Don't bother me! (colloquial)",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi prendi in giro?",
+    "pronunciation": "mee PREHN-dee een JEE-roh?",
+    "english": "Are you kidding me? / Are you making fun of me?",
+    "tags": [
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Stai scherzando?",
+    "pronunciation": "stah-EE skehr-TSAHN-doh?",
+    "english": "Are you joking?",
+    "tags": [
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non ci posso credere!",
+    "pronunciation": "nohn chee POHS-soh KREH-deh-reh!",
+    "english": "I can't believe it!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che sorpresa!",
+    "pronunciation": "keh sohr-PREH-zah!",
+    "english": "What a surprise!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che coincidenza!",
+    "pronunciation": "keh koh-een-chee-DEHN-tsah!",
+    "english": "What a coincidence!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che fortuna!",
+    "pronunciation": "keh fohr-TOO-nah!",
+    "english": "How lucky!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che sfortuna!",
+    "pronunciation": "keh sfohr-TOO-nah!",
+    "english": "What bad luck!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Tocca ferro!",
+    "pronunciation": "TOHK-kah FEHR-roh!",
+    "english": "Knock on wood! (lit: touch iron)",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Non vedo l'ora!",
+    "pronunciation": "nohn VEH-doh LOH-rah!",
+    "english": "I can't wait! (lit: I don't see the hour)",
+    "tags": [
+      "expressions",
+      "idioms",
+      "time"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Mi fa male la testa",
+    "pronunciation": "mee fah MAH-leh lah TEH-stah",
+    "english": "I have a headache",
+    "tags": [
+      "health"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi sento male",
+    "pronunciation": "mee SEHN-toh MAH-leh",
+    "english": "I feel sick",
+    "tags": [
+      "health"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sto male",
+    "pronunciation": "stoh MAH-leh",
+    "english": "I'm unwell",
+    "tags": [
+      "health"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che mal di testa!",
+    "pronunciation": "keh mahl dee TEH-stah!",
+    "english": "What a headache!",
+    "tags": [
+      "health"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sono stanco morto",
+    "pronunciation": "SOH-noh STAHN-koh MOHR-toh",
+    "english": "I'm dead tired",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sono distrutto",
+    "pronunciation": "SOH-noh dee-STROOT-toh",
+    "english": "I'm exhausted (lit: destroyed)",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Devo andare",
+    "pronunciation": "DEH-voh ahn-DAH-reh",
+    "english": "I have to go",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "È tardi!",
+    "pronunciation": "eh TAHR-dee!",
+    "english": "It's late!",
+    "tags": [
+      "time"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Faccio tardi!",
+    "pronunciation": "FAH-choh TAHR-dee!",
+    "english": "I'm running late!",
+    "tags": [
+      "time"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che ora è?",
+    "pronunciation": "keh OH-rah eh?",
+    "english": "What time is it?",
+    "tags": [
+      "questions",
+      "time"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sbrigati!",
+    "pronunciation": "ZBREE-gah-tee!",
+    "english": "Hurry up!",
+    "tags": [
+      "time"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Piano piano!",
+    "pronunciation": "pee-AH-noh pee-AH-noh!",
+    "english": "Slowly! / Take it easy!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Con calma",
+    "pronunciation": "kohn KAHL-mah",
+    "english": "Calmly / Take your time",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Tranquillo!",
+    "pronunciation": "trahn-KWEEL-loh!",
+    "english": "Relax! / Don't worry!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non ti preoccupare",
+    "pronunciation": "nohn tee preh-ohk-koo-PAH-reh",
+    "english": "Don't worry",
+    "tags": [
+      "emotions"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Va tutto bene",
+    "pronunciation": "vah TOOT-toh BEH-neh",
+    "english": "Everything's fine",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Andrà tutto bene",
+    "pronunciation": "ahn-DRAH TOOT-toh BEH-neh",
+    "english": "Everything will be fine",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che bel lavoro!",
+    "pronunciation": "keh behl lah-VOH-roh!",
+    "english": "Nice work! / Good job!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Hai ragione",
+    "pronunciation": "ah-EE rah-JOH-neh",
+    "english": "You're right",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Hai torto",
+    "pronunciation": "ah-EE TOHR-toh",
+    "english": "You're wrong",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Dipende",
+    "pronunciation": "dee-PEHN-deh",
+    "english": "It depends",
+    "tags": [
+      "basics",
+      "conversation"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Forse",
+    "pronunciation": "FOHR-seh",
+    "english": "Maybe / Perhaps",
+    "tags": [
+      "basics",
+      "conversation"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Può darsi",
+    "pronunciation": "pwoh DAHR-see",
+    "english": "Maybe / It's possible",
+    "tags": [
+      "basics",
+      "conversation"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Chissà!",
+    "pronunciation": "kees-SAH!",
+    "english": "Who knows!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Boh!",
+    "pronunciation": "BOH!",
+    "english": "I don't know! / Dunno! (very colloquial)",
+    "tags": [
+      "slang"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Non lo so",
+    "pronunciation": "nohn loh soh",
+    "english": "I don't know",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non ne ho idea",
+    "pronunciation": "nohn neh oh ee-DEH-ah",
+    "english": "I have no idea",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che ne so io?",
+    "pronunciation": "keh neh soh EE-oh?",
+    "english": "How should I know?",
+    "tags": [
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Come si dice...?",
+    "pronunciation": "KOH-meh see DEE-cheh...?",
+    "english": "How do you say...?",
+    "tags": [
+      "learning",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Cosa significa?",
+    "pronunciation": "KOH-zah see-nyee-FEE-kah?",
+    "english": "What does it mean?",
+    "tags": [
+      "learning",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non capisco",
+    "pronunciation": "nohn kah-PEE-skoh",
+    "english": "I don't understand",
+    "tags": [
+      "basics",
+      "learning"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Puoi ripetere?",
+    "pronunciation": "PWOH-ee ree-PEH-teh-reh?",
+    "english": "Can you repeat?",
+    "tags": [
+      "learning",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Più piano, per favore",
+    "pronunciation": "pyoo pee-AH-noh, pehr fah-VOH-reh",
+    "english": "Slower, please",
+    "tags": [
+      "basics",
+      "polite"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Parli inglese?",
+    "pronunciation": "PAHR-lee een-GLEH-zeh?",
+    "english": "Do you speak English?",
+    "tags": [
+      "learning",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sto imparando l'italiano",
+    "pronunciation": "stoh eem-pah-RAHN-doh lee-tah-lee-AH-noh",
+    "english": "I'm learning Italian",
+    "tags": [
+      "basics",
+      "learning"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sono americano",
+    "pronunciation": "SOH-noh ah-meh-ree-KAH-noh",
+    "english": "I'm American (masculine)",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sono americana",
+    "pronunciation": "SOH-noh ah-meh-ree-KAH-nah",
+    "english": "I'm American (feminine)",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Di dove sei?",
+    "pronunciation": "dee DOH-veh seh-EE?",
+    "english": "Where are you from?",
+    "tags": [
+      "introductions",
+      "questions",
+      "travel"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Piacere!",
+    "pronunciation": "pee-ah-CHEH-reh!",
+    "english": "Nice to meet you!",
+    "tags": [
+      "greetings",
+      "introductions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Molto piacere!",
+    "pronunciation": "MOHL-toh pee-ah-CHEH-reh!",
+    "english": "Very nice to meet you!",
+    "tags": [
+      "greetings",
+      "introductions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Come ti chiami?",
+    "pronunciation": "KOH-meh tee kee-AH-mee?",
+    "english": "What's your name?",
+    "tags": [
+      "introductions",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi chiamo...",
+    "pronunciation": "mee kee-AH-moh...",
+    "english": "My name is...",
+    "tags": [
+      "emotions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Quanti anni hai?",
+    "pronunciation": "KWAHN-tee AHN-nee ah-EE?",
+    "english": "How old are you?",
+    "tags": [
+      "introductions",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Cosa fai nella vita?",
+    "pronunciation": "KOH-zah FAH-ee NEHL-lah VEE-tah?",
+    "english": "What do you do for a living?",
+    "tags": [
+      "introductions",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Dove abiti?",
+    "pronunciation": "DOH-veh ah-BEE-tee?",
+    "english": "Where do you live?",
+    "tags": [
+      "introductions",
+      "questions",
+      "travel"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sono in vacanza",
+    "pronunciation": "SOH-noh een vah-KAHN-tsah",
+    "english": "I'm on vacation",
+    "tags": [
+      "travel"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sono qui per lavoro",
+    "pronunciation": "SOH-noh kwee pehr lah-VOH-roh",
+    "english": "I'm here for work",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "È la prima volta qui",
+    "pronunciation": "eh lah PREE-mah VOHL-tah kwee",
+    "english": "It's my first time here",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi piace molto l'Italia",
+    "pronunciation": "mee pee-AH-cheh MOHL-toh lee-TAH-lee-ah",
+    "english": "I really like Italy",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "L'Italia è bellissima",
+    "pronunciation": "lee-TAH-lee-ah eh behl-LEES-see-mah",
+    "english": "Italy is beautiful",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Fare una scampagnata",
+    "pronunciation": "FAH-reh OO-nah skahm-pah-NYAH-tah",
+    "english": "To go on a countryside outing",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Fare quattro passi",
+    "pronunciation": "FAH-reh KWAHT-troh PAHS-see",
+    "english": "To take a short walk (lit: to do four steps)",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Fare due chiacchiere",
+    "pronunciation": "FAH-reh DOO-eh kee-AHK-kee-eh-reh",
+    "english": "To have a chat",
+    "tags": [
+      "basics",
+      "conversation"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Essere in gamba",
+    "pronunciation": "EHS-seh-reh een GAHM-bah",
+    "english": "To be smart/capable",
+    "tags": [
+      "shopping"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Acqua in bocca!",
+    "pronunciation": "AH-kwah een BOHK-kah!",
+    "english": "Keep it secret! (lit: water in mouth)",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Occhio!",
+    "pronunciation": "OHK-kee-oh!",
+    "english": "Watch out! / Be careful!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Attento!",
+    "pronunciation": "aht-TEHN-toh!",
+    "english": "Careful! / Watch out!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Sta attento!",
+    "pronunciation": "stah aht-TEHN-toh!",
+    "english": "Be careful!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Meno male!",
+    "pronunciation": "MEH-noh MAH-leh!",
+    "english": "Thank goodness! / What a relief!",
+    "tags": [
+      "expressions",
+      "health",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Per carità!",
+    "pronunciation": "pehr kah-ree-TAH!",
+    "english": "God forbid! / No way!",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Neanche per sogno!",
+    "pronunciation": "neh-AHN-keh pehr SOH-nyoh!",
+    "english": "Not even in dreams! / No way!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Colpo di fulmine",
+    "pronunciation": "KOHL-poh dee fool-MEE-neh",
+    "english": "Love at first sight (lit: lightning strike)",
+    "tags": [
+      "expressions",
+      "idioms",
+      "romance"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Essere al verde",
+    "pronunciation": "EHS-seh-reh ahl VEHR-deh",
+    "english": "To be broke (lit: to be at the green)",
+    "tags": [
+      "expressions",
+      "idioms",
+      "shopping"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Costare un occhio della testa",
+    "pronunciation": "koh-STAH-reh oon OHK-kee-oh DEHL-lah TEH-stah",
+    "english": "To cost an arm and a leg (lit: cost an eye from the head)",
+    "tags": [
+      "expressions",
+      "health",
+      "idioms",
+      "shopping"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "In bocca al lupo per l'esame!",
+    "pronunciation": "een BOHK-kah ahl LOO-poh pehr leh-ZAH-meh!",
+    "english": "Good luck on the exam!",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Che pizza!",
+    "pronunciation": "keh PEET-tsah!",
+    "english": "How boring! (slang, not about food)",
+    "tags": [
+      "food"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che noia!",
+    "pronunciation": "keh NOH-yah!",
+    "english": "How boring!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che palle!",
+    "pronunciation": "keh PAHL-leh!",
+    "english": "What a pain! (vulgar slang)",
+    "tags": [
+      "slang"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Cavoli!",
+    "pronunciation": "KAH-voh-lee!",
+    "english": "Darn! / Shoot! (lit: cabbages)",
+    "tags": [
+      "expressions",
+      "idioms",
+      "reactions"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Accidenti!",
+    "pronunciation": "ah-chee-DEHN-tee!",
+    "english": "Darn it!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mannaggia!",
+    "pronunciation": "mahn-NAH-jah!",
+    "english": "Darn! / Shoot!",
+    "tags": [
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Essere una pasta d'uomo",
+    "pronunciation": "EHS-seh-reh OO-nah PAH-stah DWOH-moh",
+    "english": "To be a good-natured person",
+    "tags": [
+      "expressions",
+      "food",
+      "idioms",
+      "shopping"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Essere un pezzo di pane",
+    "pronunciation": "EHS-seh-reh oon PEH-tsoh dee PAH-neh",
+    "english": "To be a very kind person (lit: to be a piece of bread)",
+    "tags": [
+      "expressions",
+      "food",
+      "idioms",
+      "shopping"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Buono come il pane",
+    "pronunciation": "BWOH-noh KOH-meh eel PAH-neh",
+    "english": "Very kind (lit: good as bread)",
+    "tags": [
+      "expressions",
+      "food",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Mi gira la testa",
+    "pronunciation": "mee JEE-rah lah TEH-stah",
+    "english": "My head is spinning",
+    "tags": [
+      "health"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi piace un sacco!",
+    "pronunciation": "mee pee-AH-cheh oon SAHK-koh!",
+    "english": "I like it a lot! (lit: a sack)",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "advanced"
+  },
+  {
+    "italian": "Un sacco di gente",
+    "pronunciation": "oon SAHK-koh dee JEHN-teh",
+    "english": "A lot of people",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Un casino di soldi",
+    "pronunciation": "oon kah-ZEE-noh dee SOHL-dee",
+    "english": "A ton of money (colloquial)",
+    "tags": [
+      "shopping",
+      "slang"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Fa lo stesso",
+    "pronunciation": "fah loh STEHS-soh",
+    "english": "It's all the same / It doesn't matter",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "È uguale",
+    "pronunciation": "eh oo-GWAH-leh",
+    "english": "It's the same",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi fa lo stesso",
+    "pronunciation": "mee fah loh STEHS-soh",
+    "english": "It's all the same to me",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Come vuoi",
+    "pronunciation": "KOH-meh VWOH-ee",
+    "english": "As you wish / Whatever you want",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Facciamo così",
+    "pronunciation": "fah-CHAH-moh koh-ZEE",
+    "english": "Let's do it this way",
+    "tags": [
+      "conversation",
+      "emotions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Andiamo!",
+    "pronunciation": "ahn-dee-AH-moh!",
+    "english": "Let's go!",
+    "tags": [
+      "emotions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Forza!",
+    "pronunciation": "FOHR-tsah!",
+    "english": "Come on! / Let's go!",
+    "tags": [
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Dai, andiamo!",
+    "pronunciation": "DAH-ee, ahn-dee-AH-moh!",
+    "english": "Come on, let's go!",
+    "tags": [
+      "emotions",
+      "reactions",
+      "romance"
+    ],
+    "difficulty": "intermediate"
   }
 ]
