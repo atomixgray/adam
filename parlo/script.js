@@ -288,6 +288,65 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// Touch/Swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
+let isSwiping = false;
+
+flashcard.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+    isSwiping = false;
+}, { passive: true });
+
+flashcard.addEventListener('touchmove', (e) => {
+    if (!isSwiping) {
+        const currentX = e.changedTouches[0].screenX;
+        const currentY = e.changedTouches[0].screenY;
+        const diffX = Math.abs(currentX - touchStartX);
+        const diffY = Math.abs(currentY - touchStartY);
+        
+        // Detect horizontal swipe
+        if (diffX > diffY && diffX > 10) {
+            isSwiping = true;
+        }
+    }
+}, { passive: true });
+
+flashcard.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+    isSwiping = false;
+}, { passive: true });
+
+function handleSwipe() {
+    const swipeThreshold = 50; // minimum distance for a swipe
+    const horizontalSwipe = Math.abs(touchEndX - touchStartX);
+    const verticalSwipe = Math.abs(touchEndY - touchStartY);
+    
+    // Only register horizontal swipes (not vertical scrolling)
+    if (horizontalSwipe > verticalSwipe && horizontalSwipe > swipeThreshold) {
+        if (touchEndX < touchStartX) {
+            // Swiped left - go to next card
+            if (currentIndex < phrases.length - 1) {
+                currentIndex++;
+                displayCard();
+            }
+        }
+        
+        if (touchEndX > touchStartX) {
+            // Swiped right - go to previous card
+            if (currentIndex > 0) {
+                currentIndex--;
+                displayCard();
+            }
+        }
+    }
+}
+
 // Particle background animation
 function initParticles() {
     const canvas = document.getElementById('particles');
