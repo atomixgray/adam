@@ -35,11 +35,28 @@ function speakItalian(text) {
     currentUtterance.rate = 0.85; // Slightly slower for learning
     currentUtterance.pitch = 1.0;
     
-    // Try to find an Italian voice
+    // Try to find an Italian voice, preferring male voices
     const voices = speechSynthesis.getVoices();
-    const italianVoice = voices.find(voice => voice.lang.startsWith('it'));
+    
+    // First, try to find a male Italian voice
+    let italianVoice = voices.find(voice => 
+        voice.lang.startsWith('it') && 
+        !voice.name.toLowerCase().includes('female') &&
+        (voice.name.toLowerCase().includes('male') || 
+         voice.name.toLowerCase().includes('diego') ||
+         voice.name.toLowerCase().includes('luca') ||
+         voice.name.toLowerCase().includes('cosimo') ||
+         voice.name.toLowerCase().includes('giorgio'))
+    );
+    
+    // If no explicitly male voice found, just get any Italian voice
+    if (!italianVoice) {
+        italianVoice = voices.find(voice => voice.lang.startsWith('it'));
+    }
+    
     if (italianVoice) {
         currentUtterance.voice = italianVoice;
+        console.log('Using voice:', italianVoice.name);
     }
     
     speechSynthesis.speak(currentUtterance);
@@ -48,7 +65,11 @@ function speakItalian(text) {
 // Load voices when they're ready (some browsers load them async)
 speechSynthesis.addEventListener('voiceschanged', () => {
     const voices = speechSynthesis.getVoices();
-    console.log('Available Italian voices:', voices.filter(v => v.lang.startsWith('it')));
+    const italianVoices = voices.filter(v => v.lang.startsWith('it'));
+    console.log('Available Italian voices:');
+    italianVoices.forEach(v => {
+        console.log(`- ${v.name} (${v.lang}) [${v.localService ? 'Local' : 'Remote'}]`);
+    });
 });
 
 // Load phrases from JSON file
