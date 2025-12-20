@@ -20,6 +20,37 @@ const shuffleBtn = document.getElementById('shuffleBtn');
 const resetBtn = document.getElementById('resetBtn');
 const modeButtons = document.querySelectorAll('.mode-btn');
 
+// Speech synthesis for audio pronunciation
+let currentUtterance = null;
+
+function speakItalian(text) {
+    // Cancel any ongoing speech
+    if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+    }
+    
+    // Create new utterance
+    currentUtterance = new SpeechSynthesisUtterance(text);
+    currentUtterance.lang = 'it-IT';
+    currentUtterance.rate = 0.85; // Slightly slower for learning
+    currentUtterance.pitch = 1.0;
+    
+    // Try to find an Italian voice
+    const voices = speechSynthesis.getVoices();
+    const italianVoice = voices.find(voice => voice.lang.startsWith('it'));
+    if (italianVoice) {
+        currentUtterance.voice = italianVoice;
+    }
+    
+    speechSynthesis.speak(currentUtterance);
+}
+
+// Load voices when they're ready (some browsers load them async)
+speechSynthesis.addEventListener('voiceschanged', () => {
+    const voices = speechSynthesis.getVoices();
+    console.log('Available Italian voices:', voices.filter(v => v.lang.startsWith('it')));
+});
+
 // Load phrases from JSON file
 async function loadPhrases() {
     try {
@@ -63,6 +94,9 @@ function displayCard() {
         document.querySelector('.card-back .language-label').textContent = 'English';
         document.querySelector('.card-front .flip-hint').textContent = 'Click to reveal English';
         document.querySelector('.card-back .flip-hint').textContent = 'Click to see Italian';
+        
+        // Store the Italian text for audio button
+        document.querySelector('.card-front').setAttribute('data-italian-text', phrase.italian);
     } else {
         // English on front, Italian on back
         italianText.textContent = phrase.english;
@@ -78,6 +112,9 @@ function displayCard() {
         if (backPronunciation) {
             backPronunciation.textContent = phrase.pronunciation;
         }
+        
+        // Store the Italian text for audio button on back
+        document.querySelector('.card-back').setAttribute('data-italian-text', phrase.italian);
     }
     
     currentCardSpan.textContent = currentIndex + 1;
@@ -166,8 +203,12 @@ function resetProgress() {
     }
 }
 
-// Flip card
-flashcard.addEventListener('click', () => {
+// Flip card (but not if clicking speaker button)
+flashcard.addEventListener('click', (e) => {
+    // Don't flip if clicking speaker button
+    if (e.target.closest('.speaker-btn')) {
+        return;
+    }
     isFlipped = !isFlipped;
     flashcard.classList.toggle('flipped');
 });
