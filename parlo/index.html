@@ -20,7 +20,6 @@
                 <button class="mode-btn" data-mode="mixed">Mixed</button>
             </div>
         </header>
-
         <div class="controls">
             <button id="shuffleBtn" class="control-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -39,10 +38,15 @@
                 Reset
             </button>
         </div>
-
         <div class="flashcard-container">
             <div id="flashcard" class="flashcard">
                 <div class="card-face card-front">
+                    <button class="speaker-btn" onclick="event.stopPropagation(); speakItalian(phrases[currentIndex].italian);" title="Listen to pronunciation">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                    </button>
                     <div class="card-content">
                         <div class="language-label">Italiano</div>
                         <div id="italianText" class="phrase-text"></div>
@@ -51,6 +55,12 @@
                     </div>
                 </div>
                 <div class="card-face card-back">
+                    <button class="speaker-btn" onclick="event.stopPropagation(); speakItalian(phrases[currentIndex].italian);" title="Listen to pronunciation">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                    </button>
                     <div class="card-content">
                         <div class="language-label">English</div>
                         <div id="englishText" class="phrase-text"></div>
@@ -60,7 +70,6 @@
                 </div>
             </div>
         </div>
-
         <div class="navigation">
             <button id="prevBtn" class="nav-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -75,12 +84,10 @@
                 </svg>
             </button>
         </div>
-
         <footer>
             <a href="/" class="back-link">← Back to adamlarkin.com</a>
         </footer>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
