@@ -116,6 +116,12 @@ function displayCard() {
         document.querySelector('.card-front .flip-hint').textContent = 'Click to reveal English';
         document.querySelector('.card-back .flip-hint').textContent = 'Click to see Italian';
         
+        // Clear pronunciation from back (English side doesn't need it)
+        const backPronunciation = document.querySelector('.card-back .pronunciation');
+        if (backPronunciation) {
+            backPronunciation.textContent = '';
+        }
+        
         // Store the Italian text for audio button
         document.querySelector('.card-front').setAttribute('data-italian-text', phrase.italian);
     } else {
