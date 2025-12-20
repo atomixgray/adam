@@ -785,14 +785,15 @@
     "difficulty": "beginner"
   },
   {
-    "italian": "Tocca ferro!",
-    "pronunciation": "TOHK-kah FEHR-roh!",
-    "english": "Knock on wood! (lit: touch iron)",
+    "italian": "Mangio la pasta ogni giorno",
+    "pronunciation": "MAHN-joh lah PAH-stah OH-nyee JOHR-noh",
+    "english": "I eat pasta every day",
     "tags": [
-      "expressions",
-      "idioms"
+      "food",
+      "basics",
+      "verbs"
     ],
-    "difficulty": "advanced"
+    "difficulty": "beginner"
   },
   {
     "italian": "Non vedo l'ora!",
@@ -1278,23 +1279,26 @@
     "difficulty": "beginner"
   },
   {
-    "italian": "Fare una scampagnata",
-    "pronunciation": "FAH-reh OO-nah skahm-pah-NYAH-tah",
-    "english": "To go on a countryside outing",
+    "italian": "Bevo un caffè al mattino",
+    "pronunciation": "BEH-voh oon kahf-FEH ahl maht-TEE-noh",
+    "english": "I drink a coffee in the morning",
     "tags": [
-      "basics"
+      "food",
+      "basics",
+      "verbs"
     ],
     "difficulty": "beginner"
   },
   {
-    "italian": "Fare quattro passi",
-    "pronunciation": "FAH-reh KWAHT-troh PAHS-see",
-    "english": "To take a short walk (lit: to do four steps)",
+    "italian": "Vengo con te",
+    "pronunciation": "VEHN-goh kohn teh",
+    "english": "I'm coming with you",
     "tags": [
-      "expressions",
-      "idioms"
+      "conversation",
+      "basics",
+      "verbs"
     ],
-    "difficulty": "advanced"
+    "difficulty": "beginner"
   },
   {
     "italian": "Fare due chiacchiere",
@@ -1483,46 +1487,45 @@
     "difficulty": "beginner"
   },
   {
-    "italian": "Essere una pasta d'uomo",
-    "pronunciation": "EHS-seh-reh OO-nah PAH-stah DWOH-moh",
-    "english": "To be a good-natured person",
+    "italian": "Lavoro in ufficio",
+    "pronunciation": "lah-VOH-roh een oof-FEE-choh",
+    "english": "I work in an office",
     "tags": [
-      "expressions",
-      "food",
-      "idioms",
-      "shopping"
+      "work",
+      "basics",
+      "verbs"
     ],
-    "difficulty": "advanced"
+    "difficulty": "beginner"
   },
   {
-    "italian": "Essere un pezzo di pane",
-    "pronunciation": "EHS-seh-reh oon PEH-tsoh dee PAH-neh",
-    "english": "To be a very kind person (lit: to be a piece of bread)",
+    "italian": "Studio italiano",
+    "pronunciation": "STOO-dee-oh ee-tah-lee-AH-noh",
+    "english": "I study Italian",
     "tags": [
-      "expressions",
-      "food",
-      "idioms",
-      "shopping"
+      "learning",
+      "basics",
+      "verbs"
     ],
-    "difficulty": "advanced"
+    "difficulty": "beginner"
   },
   {
-    "italian": "Buono come il pane",
-    "pronunciation": "BWOH-noh KOH-meh eel PAH-neh",
-    "english": "Very kind (lit: good as bread)",
+    "italian": "Vivo a New York",
+    "pronunciation": "VEE-voh ah New York",
+    "english": "I live in New York",
     "tags": [
-      "expressions",
-      "food",
-      "idioms"
+      "introductions",
+      "basics",
+      "verbs"
     ],
-    "difficulty": "advanced"
+    "difficulty": "beginner"
   },
   {
-    "italian": "Mi gira la testa",
-    "pronunciation": "mee JEE-rah lah TEH-stah",
-    "english": "My head is spinning",
+    "italian": "Dormo otto ore",
+    "pronunciation": "DOHR-moh OHT-toh OH-reh",
+    "english": "I sleep eight hours",
     "tags": [
-      "health"
+      "basics",
+      "verbs"
     ],
     "difficulty": "beginner"
   },
@@ -1556,29 +1559,34 @@
     "difficulty": "intermediate"
   },
   {
-    "italian": "Fa lo stesso",
-    "pronunciation": "fah loh STEHS-soh",
-    "english": "It's all the same / It doesn't matter",
+    "italian": "Parto domani",
+    "pronunciation": "PAHR-toh doh-MAH-nee",
+    "english": "I'm leaving tomorrow",
     "tags": [
-      "basics"
+      "travel",
+      "basics",
+      "verbs"
     ],
     "difficulty": "beginner"
   },
   {
-    "italian": "È uguale",
-    "pronunciation": "eh oo-GWAH-leh",
-    "english": "It's the same",
+    "italian": "Torno a casa",
+    "pronunciation": "TOHR-noh ah KAH-zah",
+    "english": "I'm going back home",
     "tags": [
-      "basics"
+      "basics",
+      "verbs"
     ],
     "difficulty": "beginner"
   },
   {
-    "italian": "Mi fa lo stesso",
-    "pronunciation": "mee fah loh STEHS-soh",
-    "english": "It's all the same to me",
+    "italian": "Esco stasera",
+    "pronunciation": "EH-skoh stah-SEH-rah",
+    "english": "I'm going out tonight",
     "tags": [
-      "basics"
+      "conversation",
+      "basics",
+      "verbs"
     ],
     "difficulty": "beginner"
   },
@@ -1629,6 +1637,304 @@
       "emotions",
       "reactions",
       "romance"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Che ne pensi?",
+    "pronunciation": "keh neh PEHN-see?",
+    "english": "What do you think about it?",
+    "tags": [
+      "conversation",
+      "questions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non vedo l'ora di vederti!",
+    "pronunciation": "nohn VEH-doh LOH-rah dee veh-DEHR-tee!",
+    "english": "I can't wait to see you!",
+    "tags": [
+      "emotions",
+      "expressions"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Sono pieno",
+    "pronunciation": "SOH-noh pee-EH-noh",
+    "english": "I'm full (after eating)",
+    "tags": [
+      "food",
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Ho mal di pancia",
+    "pronunciation": "oh mahl dee PAHN-chah",
+    "english": "I have a stomachache",
+    "tags": [
+      "health",
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Entro subito",
+    "pronunciation": "EHN-troh SOO-bee-toh",
+    "english": "I'm coming in right away",
+    "tags": [
+      "basics",
+      "verbs"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che rabbia!",
+    "pronunciation": "keh RAHB-bee-ah!",
+    "english": "How annoying! / How frustrating!",
+    "tags": [
+      "reactions",
+      "emotions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi sto annoiando",
+    "pronunciation": "mee stoh ahn-noh-YAHN-doh",
+    "english": "I'm getting bored",
+    "tags": [
+      "emotions",
+      "conversation"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Che bella sorpresa!",
+    "pronunciation": "keh BEHL-lah sohr-PREH-zah!",
+    "english": "What a nice surprise!",
+    "tags": [
+      "reactions",
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non è il mio tipo",
+    "pronunciation": "nohn eh eel MEE-oh TEE-poh",
+    "english": "He/She is not my type",
+    "tags": [
+      "romance",
+      "conversation"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Ci stai?",
+    "pronunciation": "chee STAH-ee?",
+    "english": "Are you in? / You coming?",
+    "tags": [
+      "conversation",
+      "slang"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Sono a dieta",
+    "pronunciation": "SOH-noh ah dee-EH-tah",
+    "english": "I'm on a diet",
+    "tags": [
+      "food",
+      "health"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Arrivo tra cinque minuti",
+    "pronunciation": "ahr-REE-voh trah CHEEN-kweh mee-NOO-tee",
+    "english": "I'll arrive in five minutes",
+    "tags": [
+      "time",
+      "basics",
+      "verbs"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Che stress!",
+    "pronunciation": "keh stress!",
+    "english": "How stressful!",
+    "tags": [
+      "reactions",
+      "emotions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi stai prendendo in giro?",
+    "pronunciation": "mee stah-EE prehn-DEHN-doh een JEE-roh?",
+    "english": "Are you kidding me? / Are you messing with me?",
+    "tags": [
+      "conversation",
+      "questions"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Posso provare?",
+    "pronunciation": "POHS-soh proh-VAH-reh?",
+    "english": "Can I try?",
+    "tags": [
+      "shopping",
+      "questions",
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Devo scappare",
+    "pronunciation": "DEH-voh skahp-PAH-reh",
+    "english": "I have to run / I gotta go",
+    "tags": [
+      "conversation",
+      "time"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Penso di sì",
+    "pronunciation": "PEHN-soh dee see",
+    "english": "I think so",
+    "tags": [
+      "conversation",
+      "basics",
+      "verbs"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "A che ora?",
+    "pronunciation": "ah keh OH-rah?",
+    "english": "At what time?",
+    "tags": [
+      "time",
+      "questions",
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Quanto tempo ci vuole?",
+    "pronunciation": "KWAHN-toh TEHM-poh chee vwoh-leh?",
+    "english": "How long does it take?",
+    "tags": [
+      "travel",
+      "time",
+      "questions"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Sto scherzando!",
+    "pronunciation": "stoh skehr-TSAHN-doh!",
+    "english": "I'm joking! / Just kidding!",
+    "tags": [
+      "conversation",
+      "reactions"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Non fa per me",
+    "pronunciation": "nohn fah pehr meh",
+    "english": "It's not for me / Not my thing",
+    "tags": [
+      "conversation",
+      "expressions"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Che giornata!",
+    "pronunciation": "keh johr-NAH-tah!",
+    "english": "What a day!",
+    "tags": [
+      "reactions",
+      "basics"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Mi puoi fare un favore?",
+    "pronunciation": "mee PWOH-ee FAH-reh oon fah-VOH-reh?",
+    "english": "Can you do me a favor?",
+    "tags": [
+      "polite",
+      "questions",
+      "conversation"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Aspetto un amico",
+    "pronunciation": "ah-SPEHT-toh oon ah-MEE-koh",
+    "english": "I'm waiting for a friend",
+    "tags": [
+      "conversation",
+      "basics",
+      "verbs"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Cerco il bagno",
+    "pronunciation": "CHEHR-koh eel BAH-nyoh",
+    "english": "I'm looking for the bathroom",
+    "tags": [
+      "travel",
+      "basics",
+      "verbs"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Ci mancherebbe altro!",
+    "pronunciation": "chee mahn-keh-REHB-beh AHL-troh!",
+    "english": "Of course! / Don't mention it!",
+    "tags": [
+      "polite",
+      "expressions"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "Apro la finestra",
+    "pronunciation": "AH-proh lah fee-NEH-strah",
+    "english": "I'm opening the window",
+    "tags": [
+      "basics",
+      "verbs"
+    ],
+    "difficulty": "beginner"
+  },
+  {
+    "italian": "Meglio tardi che mai",
+    "pronunciation": "MEH-lyoh TAHR-dee keh MAH-ee",
+    "english": "Better late than never",
+    "tags": [
+      "expressions",
+      "idioms"
+    ],
+    "difficulty": "intermediate"
+  },
+  {
+    "italian": "In bocca al lupo per il colloquio!",
+    "pronunciation": "een BOHK-kah ahl LOO-poh pehr eel kohl-LOH-kwee-oh!",
+    "english": "Good luck with the interview!",
+    "tags": [
+      "expressions",
+      "work"
     ],
     "difficulty": "intermediate"
   }
