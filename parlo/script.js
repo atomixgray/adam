@@ -116,6 +116,9 @@ function displayCard() {
         document.querySelector('.card-front .flip-hint').textContent = 'Click to reveal English';
         document.querySelector('.card-back .flip-hint').textContent = 'Click to see Italian';
         
+        // Show speaker on front (Italian side)
+        document.querySelector('.card-front .speaker-btn').style.display = 'flex';
+        
         // Clear pronunciation from back (English side doesn't need it)
         const backPronunciation = document.querySelector('.card-back .pronunciation');
         if (backPronunciation) {
@@ -133,6 +136,9 @@ function displayCard() {
         document.querySelector('.card-back .language-label').textContent = 'Italiano';
         document.querySelector('.card-front .flip-hint').textContent = 'Click to reveal Italian';
         document.querySelector('.card-back .flip-hint').textContent = 'Click to see English';
+        
+        // Hide speaker on front (English side)
+        document.querySelector('.card-front .speaker-btn').style.display = 'none';
         
         // Show pronunciation on back for English-to-Italian mode
         const backPronunciation = document.querySelector('.card-back .pronunciation');
