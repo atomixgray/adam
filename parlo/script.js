@@ -116,11 +116,17 @@ function displayCard() {
         document.querySelector('.card-front .flip-hint').textContent = 'Click to reveal English';
         document.querySelector('.card-back .flip-hint').textContent = 'Click to see Italian';
         
-        // Show speaker on front (Italian), hide on back (English)
+        // Show speaker on front (Italian), hide on back (English) using classes
         const frontSpeaker = document.querySelector('.card-front .speaker-btn');
         const backSpeaker = document.querySelector('.card-back .speaker-btn');
-        if (frontSpeaker) frontSpeaker.style.display = 'flex';
-        if (backSpeaker) backSpeaker.style.display = 'none';
+        if (frontSpeaker) {
+            frontSpeaker.classList.remove('hidden');
+            frontSpeaker.style.display = 'flex';
+        }
+        if (backSpeaker) {
+            backSpeaker.classList.add('hidden');
+            backSpeaker.style.display = 'none';
+        }
         
         // Clear pronunciation from back (English side doesn't need it)
         const backPronunciation = document.querySelector('.card-back .pronunciation');
@@ -140,11 +146,17 @@ function displayCard() {
         document.querySelector('.card-front .flip-hint').textContent = 'Click to reveal Italian';
         document.querySelector('.card-back .flip-hint').textContent = 'Click to see English';
         
-        // Hide speaker on front (English), show on back (Italian)
+        // Hide speaker on front (English), show on back (Italian) using classes
         const frontSpeaker = document.querySelector('.card-front .speaker-btn');
         const backSpeaker = document.querySelector('.card-back .speaker-btn');
-        if (frontSpeaker) frontSpeaker.style.display = 'none';
-        if (backSpeaker) backSpeaker.style.display = 'flex';
+        if (frontSpeaker) {
+            frontSpeaker.classList.add('hidden');
+            frontSpeaker.style.display = 'none';
+        }
+        if (backSpeaker) {
+            backSpeaker.classList.remove('hidden');
+            backSpeaker.style.display = 'flex';
+        }
         
         // Show pronunciation on back for English-to-Italian mode
         const backPronunciation = document.querySelector('.card-back .pronunciation');
