@@ -201,6 +201,17 @@ h1 {
     z-index: 10;
 }
 
+.speaker-btn[style*="display: none"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.speaker-btn.hidden {
+    display: none !important;
+}
+
 .speaker-btn:hover {
     background: rgba(102, 126, 234, 0.15);
     border-color: rgba(102, 126, 234, 0.3);
