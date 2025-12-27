@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todd's Paternity Investigation - Summary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .key-fact {
+            background: #f0f7ff;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .key-fact strong {
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        
+        .dna-match {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dna-match:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+        
+        .match-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .match-relationship {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .match-cm {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .family-tree {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .generation {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .generation-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .person {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 8px 15px;
+            background: #e8eaf6;
+            border-radius: 5px;
+        }
+        
+        .candidate-card {
+            background: white;
+            border: 3px solid #ddd;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        
+        .candidate-card.prime {
+            border-color: #27ae60;
+            background: #f0fff4;
+        }
+        
+        .candidate-card.possible {
+            border-color: #f39c12;
+            background: #fffbf0;
+        }
+        
+        .candidate-card.unlikely {
+            border-color: #e74c3c;
+            background: #fff5f5;
+        }
+        
+        .candidate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .candidate-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .likelihood {
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .likelihood.prime {
+            background: #27ae60;
+        }
+        
+        .likelihood.possible {
+            background: #f39c12;
+        }
+        
+        .likelihood.unlikely {
+            background: #e74c3c;
+        }
+        
+        .evidence-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .evidence-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .evidence-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .evidence-list li.negative:before {
+            content: "✗";
+            color: #e74c3c;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        
+        .conclusion h3 {
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .next-steps {
+            background: #f0f7ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .next-steps h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .next-steps ol {
+            padding-left: 20px;
+        }
+        
+        .next-steps li {
+            margin: 10px 0;
+            padding: 5px 0;
+        }
+        
+        .timeline {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: #667eea;
+            min-width: 80px;
+            font-size: 1.2em;
+        }
+        
+        .ruled-out {
+            background: #fff5f5;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .ruled-out h3 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧬 Todd's Paternity Investigation</h1>
+            <p>5 Years of DNA Detective Work - Summary Report</p>
+        </div>
+        
+        <div class="content">
+            <!-- Key Facts Section -->
+            <div class="section">
+                <h2>📋 Key Facts</h2>
+                
+                <div class="key-fact">
+                    <strong>Todd:</strong> Born 1971 in Michigan
+                </div>
+                
+                <div class="key-fact">
+                    <strong>Todd's Mother:</strong> Virginia (born ~1953, died 1993) - was 17 years old at conception
+                </div>
+                
+                <div class="key-fact">
+                    <strong>Search Focus:</strong> Descendants of Tony T. Ruhle (1893-1982) and Audrey C Ruhle (1899-1952)
+                </div>
+            </div>
+            
+            <!-- Timeline Section -->
+            <div class="section">
+                <h2>📅 Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1970</div>
+                        <div>Todd conceived in Michigan. Virginia is 17 years old.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1971</div>
+                        <div>Todd born</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1993</div>
+                        <div>Virginia (Todd's mother) passes away</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div>DNA investigation begins (5 years ago)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025</div>
+                        <div>Investigation ongoing - narrowed to Tony & Audrey's descendants</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DNA Evidence Section -->
+            <div class="section">
+                <h2>🔬 DNA Evidence</h2>
+                
+                <div class="dna-match">
+                    <div>
+                        <div class="match-name">Laura (Your Mom)</div>
+                        <div class="match-relationship">Jock's daughter, Tony & Audrey's granddaughter</div>
+                    </div>
+                    <div class="match-cm">619 cM</div>
+                </div>
+                
+                <div class="dna-match">
+                    <div>
+                        <div class="match-name">Donna</div>
+                        <div class="match-relationship">Florence's daughter (Laura's first cousin)</div>
+                    </div>
+                    <div class="match-cm">494 cM</div>
+                </div>
+                
+                <div class="dna-match">
+                    <div>
+                        <div class="match-name">Colleen</div>
+                        <div class="match-relationship">Tom's daughter (Laura's niece)</div>
+                    </div>
+                    <div class="match-cm">276 cM</div>
+                </div>
+                
+                <div class="dna-match">
+                    <div>
+                        <div class="match-name">You</div>
+                        <div class="match-relationship">Laura's child</div>
+                    </div>
+                    <div class="match-cm">221 cM</div>
+                </div>
+                
+                <div class="dna-match">
+                    <div>
+                        <div class="match-name">Dan Meese</div>
+                        <div class="match-relationship">Descended from DeMasque (Audrey's brother)</div>
+                    </div>
+                    <div class="match-cm">195 cM</div>
+                </div>
+                
+                <div class="dna-match">
+                    <div>
+                        <div class="match-name">Cheryl Raymond</div>
+                        <div class="match-relationship">Betty's daughter (Jock's first cousin's child) - Ruhle side</div>
+                    </div>
+                    <div class="match-cm">159 cM</div>
+                </div>
+                
+                <div class="dna-match">
+                    <div>
+                        <div class="match-name">Jeff Gass</div>
+                        <div class="match-relationship">Meese side (DeMasque's sister's descendant)</div>
+                    </div>
+                    <div class="match-cm">141 cM</div>
+                </div>
+            </div>
+            
+            <!-- Family Tree Section -->
+            <div class="section">
+                <h2>🌳 Family Tree - Focus Area</h2>
+                <div class="family-tree">
+                    <div class="generation">
+                        <div class="generation-title">Great-Grandparents (Generation 1)</div>
+                        <div class="person">Tony T. Ruhle (1893-1982)</div>
+                        <div class="person">Audrey C Ruhle (1899-1952) [née Meese]</div>
+                    </div>
+                    
+                    <div class="generation">
+                        <div class="generation-title">Grandparents Generation (Generation 2) - Children of Tony & Audrey</div>
+                        <div class="person">Alvin Ruhle</div>
+                        <div class="person">Berdette "Jock" Ruhle (your grandfather, b. 1926)</div>
+                        <div class="person">Florence Ruhle</div>
+                        <div class="person">Irene T Ruhle</div>
+                    </div>
+                    
+                    <div class="generation">
+                        <div class="generation-title">Parents Generation (Generation 3)</div>
+                        <div class="person">Alvin's son (now 77, married since HS)</div>
+                        <div class="person">Laura (Jock's daughter - your mom)</div>
+                        <div class="person">Tom (Jock's son)</div>
+                        <div class="person">Donna (Florence's daughter)</div>
+                        <div class="person">Gary (Irene's son, now ~80, "partier")</div>
+                        <div class="person">Craig (Irene's son)</div>
+                    </div>
+                    
+                    <div class="generation">
+                        <div class="generation-title">Your Generation (Generation 4)</div>
+                        <div class="person">You (Laura's child)</div>
+                        <div class="person">Colleen (Tom's daughter)</div>
+                        <div class="person">Todd (b. 1971) - ❓ Father Unknown</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- What the DNA Tells Us -->
+            <div class="section">
+                <h2>🎯 What the DNA Tells Us</h2>
+                
+                <div class="key-fact">
+                    <strong>619 cM with Laura =</strong> Todd's father is Laura's first cousin (or possibly half-brother, but unlikely given Jock's age). This means Todd's father is a child of Tony and Audrey's children (Alvin, Florence, or Irene).
+                </div>
+                
+                <div class="key-fact">
+                    <strong>494 cM with Donna =</strong> Rules out Florence's sons as Todd's father. If Todd's father were Donna's brother, they would share ~1,700 cM as half-siblings, not 494 cM.
+                </div>
+                
+                <div class="key-fact">
+                    <strong>Focus Area Confirmed:</strong> Todd's father is almost certainly a descendant of Tony T. Ruhle and Audrey C Ruhle (née Meese).
+                </div>
+            </div>
+            
+            <!-- Ruled Out Section -->
+            <div class="section">
+                <h2>❌ Ruled Out</h2>
+                <div class="ruled-out">
+                    <h3>Lines We Can Eliminate:</h3>
+                    <ul class="evidence-list">
+                        <li class="negative">Florence's sons - DNA with Donna (494 cM) too low for half-siblings</li>
+                        <li class="negative">Jock having another son - unlikely at age 44 in 1970</li>
+                        <li class="negative">Pure DeMasque Meese line - 619 cM with Laura too high</li>
+                        <li class="negative">Ruhle side (Clifford's line) - Cheryl match pattern doesn't fit</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Candidates Section -->
+            <div class="section">
+                <h2>👤 Candidates for Todd's Father</h2>
+                
+                <div class="candidate-card prime">
+                    <div class="candidate-header">
+                        <div class="candidate-name">Gary (Irene's son)</div>
+                        <div class="likelihood prime">PRIME CANDIDATE</div>
+                    </div>
+                    <p><strong>Current Age:</strong> ~80 years old</p>
+                    <p><strong>Age in 1970:</strong> ~25 years old</p>
+                    <p><strong>Relationship to Laura:</strong> First cousin</p>
+                    <p><strong>Relationship to Todd (if father):</strong> Father</p>
+                    <p><strong>Expected DNA with Todd:</strong> ~2,550 cM (parent/child)</p>
+                    
+                    <h4 style="margin-top: 15px; margin-bottom: 10px;">Evidence FOR:</h4>
+                    <ul class="evidence-list">
+                        <li>Right age in 1970 (25 years old)</li>
+                        <li>Described as a "partier" - personality fits scenario</li>
+                        <li>Possible paternity questions (Alfred Wheeler might not be bio dad)</li>
+                        <li>DNA pattern with Laura (619 cM) fits perfectly for first cousin once removed</li>
+                        <li>Said he "might" take DNA test</li>
+                        <li><strong>🎯 CRITICAL: Both Gary AND Virginia lived in Michigan in 1970 - geographic connection confirmed!</strong></li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 15px; margin-bottom: 10px;">Evidence AGAINST:</h4>
+                    <ul class="evidence-list">
+                        <li class="negative">8-year age gap with Virginia (she was 17, he was 25) - though this unfortunately happened in the 1970s</li>
+                    </ul>
+                </div>
+                
+                <div class="candidate-card possible">
+                    <div class="candidate-header">
+                        <div class="candidate-name">Craig (Irene's son)</div>
+                        <div class="likelihood possible">POSSIBLE</div>
+                    </div>
+                    <p><strong>Age in 1970:</strong> Unknown (likely 20s)</p>
+                    <p><strong>Relationship to Laura:</strong> First cousin</p>
+                    <p><strong>Relationship to Todd (if father):</strong> Father</p>
+                    <p><strong>Expected DNA with Todd:</strong> ~2,550 cM (parent/child)</p>
+                    
+                    <h4 style="margin-top: 15px; margin-bottom: 10px;">Evidence FOR:</h4>
+                    <ul class="evidence-list">
+                        <li>DNA pattern with Laura fits</li>
+                        <li>Son of Irene (Tony & Audrey's daughter)</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 15px; margin-bottom: 10px;">Evidence AGAINST:</h4>
+                    <ul class="evidence-list">
+                        <li class="negative">Does not recall anyone named Virginia</li>
+                        <li class="negative">Less circumstantial evidence than Gary</li>
+                    </ul>
+                </div>
+                
+                <div class="candidate-card possible">
+                    <div class="candidate-header">
+                        <div class="candidate-name">Alvin's Son</div>
+                        <div class="likelihood possible">POSSIBLE BUT LESS LIKELY</div>
+                    </div>
+                    <p><strong>Current Age:</strong> 77 years old</p>
+                    <p><strong>Age in 1970:</strong> ~22 years old</p>
+                    <p><strong>Marital Status in 1970:</strong> Married since high school (~1966)</p>
+                    <p><strong>Relationship to Laura:</strong> First cousin</p>
+                    <p><strong>Relationship to Todd (if father):</strong> Father</p>
+                    <p><strong>Expected DNA with Todd:</strong> ~2,550 cM (parent/child)</p>
+                    
+                    <h4 style="margin-top: 15px; margin-bottom: 10px;">Evidence FOR:</h4>
+                    <ul class="evidence-list">
+                        <li>Right age in 1970 (22 years old)</li>
+                        <li>DNA pattern with Laura fits</li>
+                        <li>Son of Alvin (Tony & Audrey's son)</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 15px; margin-bottom: 10px;">Evidence AGAINST:</h4>
+                    <ul class="evidence-list">
+                        <li class="negative">Already married for 4 years in 1970</li>
+                        <li class="negative">Less likely to be in Michigan or having affairs</li>
+                        <li class="negative">Settled, married life doesn't fit the scenario as well</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Conclusion -->
+            <div class="conclusion">
+                <h3>🎯 Conclusion After 5 Years</h3>
+                <p style="font-size: 1.1em; line-height: 1.8;">
+                    <strong>Todd's biological father is almost certainly a descendant of Tony T. Ruhle and Audrey C Ruhle.</strong>
+                    The 619 cM DNA match with Laura (their granddaughter) provides strong evidence that Todd's father 
+                    is one of Laura's first cousins - specifically a son of Irene or Alvin.
+                </p>
+                <p style="font-size: 1.1em; line-height: 1.8; margin-top: 15px;">
+                    <strong>Gary (Irene's son) is the overwhelming prime candidate.</strong> The evidence is compelling:
+                </p>
+                <ul style="font-size: 1.1em; line-height: 1.8; margin-top: 10px; margin-left: 30px;">
+                    <li>✓ Right age (25 in 1970)</li>
+                    <li>✓ "Partier" personality</li>
+                    <li>✓ DNA pattern fits perfectly</li>
+                    <li>✓ <strong>Both Gary and Virginia lived in Michigan in 1970 - they were in the same place at the same time</strong></li>
+                </ul>
+                <p style="font-size: 1.1em; line-height: 1.8; margin-top: 15px;">
+                    While Craig and Alvin's son cannot be completely ruled out without testing, Gary has by far the strongest 
+                    combination of DNA evidence, geographic proximity, age, and circumstantial factors.
+                </p>
+            </div>
+            
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <h3>📝 Recommended Next Steps</h3>
+                <ol>
+                    <li><strong>Priority 1: Get Gary to DNA test</strong> - He said he "might" do it. This would definitively confirm or rule him out. If he's the father, he'll share ~2,550 cM with Todd.</li>
+                    
+                    <li><strong>Find Gary's other children</strong> - Search Todd's DNA matches for anyone sharing 1,300-2,200 cM. These would be Todd's half-siblings and can confirm Gary is the father even without Gary testing.</li>
+                    
+                    <li><strong>Approach Craig about testing</strong> - Even though he doesn't recall Virginia, memory from 55 years ago can be unreliable. He may be more willing to test than Gary.</li>
+                    
+                    <li><strong>Check for Alvin's son's children in DNA databases</strong> - Look for matches in the 1,300-2,200 cM range that might connect to Alvin's line.</li>
+                    
+                    <li><strong>Review all DNA matches in the 300-1,700 cM range</strong> - There may be other descendants of Tony & Audrey who've tested that could help triangulate the answer.</li>
+                    
+                    <li><strong>Consider hiring a professional genetic genealogist</strong> - After 5 years, a professional might spot patterns or connections you've missed and can help navigate the final steps.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
