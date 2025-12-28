@@ -748,28 +748,27 @@ async function checkAnswerWithAI(answer) {
                 model: 'llama-3.1-8b-instant',
                 messages: [{
                     role: 'user',
-                    content: `You are an Italian language teacher. A ${currentLevel} level student was asked to: "${currentPrompt}" using ${tense}.
+                    content: `You are a friendly Italian tutor checking grammar. A ${currentLevel} student wrote: "${answer}"
 
-They wrote: "${answer}"
+Provide BRIEF feedback (2-3 sentences total):
+- Only point out actual ERRORS (wrong verb forms, missing articles, incorrect prepositions)
+- Accept conversational phrases like "e tu?", "ma", "però" - these are natural!
+- If it's grammatically correct, just say "Bene!" and maybe one small tip
+- Give the corrected version ONLY if there are real mistakes
 
-Provide BRIEF feedback in 2 SHORT paragraphs:
+DO NOT criticize:
+- Conversational style or questions like "e tu?"
+- Valid conjunction choices (ma, e, però are all fine)
+- Content or topic choices
 
-1. Quick grammar/vocabulary check + corrected version if needed
-2. One encouraging sentence
+Example:
+Student: "Vivo a Michigan ma lavoro a Detroit e tu?"
+Good response: "Quasi perfetto! In Italian we say 'in Michigan' or 'nel Michigan' (not 'a Michigan'). Corrected: 'Vivo in Michigan ma lavoro a Detroit, e tu?'"
 
-IMPORTANT: 
-- Keep it CONCISE (2-3 sentences per paragraph MAX)
-- Focus ONLY on grammar and language, not content
-- Don't judge topic choices
-- Be encouraging but brief
-
-Example good feedback:
-"Good use of present tense! Small fix: 'Mi piacciono i tacos' (plural). Your sentence: 'Mi piacciono molto i tacos messicani.'
-
-Great job practicing!"`
+Be encouraging and focus only on real grammar mistakes!`
                 }],
-                temperature: 0.7,
-                max_tokens: 400
+                temperature: 0.6,
+                max_tokens: 300
             })
         });
         
