@@ -586,6 +586,16 @@ async function generateAIPrompt(level, tense) {
     
     const tenseName = tense === 'passato' ? 'passato prossimo' : tense;
     
+    // Random topics to add variety
+    const topics = [
+        'daily routine', 'food and dining', 'family and relationships', 'hobbies and interests',
+        'travel and places', 'work or school', 'weather and seasons', 'shopping and clothes',
+        'technology and media', 'health and fitness', 'home and living', 'transportation',
+        'entertainment and culture', 'childhood memories', 'future plans', 'personal preferences',
+        'describing people or places', 'emotions and feelings', 'weekend activities', 'holidays and celebrations'
+    ];
+    const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+    
     try {
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
             method: 'POST',
@@ -597,22 +607,27 @@ async function generateAIPrompt(level, tense) {
                 model: 'llama-3.3-70b-versatile',
                 messages: [{
                     role: 'user',
-                    content: `Generate a single Italian language practice prompt for a ${level} level student to practice ${tenseName}.
+                    content: `Generate a unique Italian language practice prompt for a ${level} level student to practice ${tenseName}.
+
+Topic to focus on: ${randomTopic}
 
 The prompt should ask them to write a sentence or short paragraph in Italian.
 
-IMPORTANT: Provide the prompt in BOTH English and Italian, separated by a forward slash.
+IMPORTANT: 
+- Provide the prompt in BOTH English and Italian, separated by " / "
+- Be creative and varied - avoid generic questions like "what is your name"
+- Make it specific and interesting
 
 Format: "English question / Italian question"
 
 Examples:
-- "Describe your morning routine / Descrivi la tua routine mattutina"
-- "Tell me what you did yesterday / Dimmi cosa hai fatto ieri"
-- "Talk about your favorite hobby / Parla del tuo hobby preferito"
+- "Describe your favorite meal / Descrivi il tuo pasto preferito"
+- "Tell me what you did last weekend / Dimmi cosa hai fatto lo scorso fine settimana"
+- "Explain why you enjoy your hobby / Spiega perché ti piace il tuo hobby"
 
-Make it relevant and interesting for ${level} level. Respond with ONLY the bilingual prompt (no extra text).`
+Respond with ONLY the bilingual prompt (no quotes, no extra text).`
                 }],
-                temperature: 0.9,
+                temperature: 1.0,
                 max_tokens: 100
             })
         });
