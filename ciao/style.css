@@ -525,13 +525,88 @@ h1 {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    width: 100%;
 }
 
 .try-another-btn:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(102, 126, 234, 0.3);
     color: #a8b5ff;
+}
+
+.feedback-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.challenge-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.2rem;
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 8px;
+    color: #ffc107;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.challenge-btn:hover {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: rgba(255, 193, 7, 0.4);
+    transform: translateY(-1px);
+}
+
+.challenge-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.challenge-section {
+    background: rgba(255, 193, 7, 0.05);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.challenge-header {
+    margin-bottom: 1rem;
+}
+
+.challenge-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffc107;
+}
+
+.challenge-section textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 10px;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+    transition: all 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.challenge-section textarea:focus {
+    border-color: rgba(255, 193, 7, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.challenge-actions {
+    display: flex;
+    gap: 0.8rem;
 }
 
 .example-section {
