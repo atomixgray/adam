@@ -752,23 +752,24 @@ async function checkAnswerWithAI(answer) {
 
 They wrote: "${answer}"
 
-Provide friendly feedback in 3-4 short paragraphs focusing ONLY on Italian grammar, vocabulary, and language structure:
+Provide BRIEF feedback in 2 SHORT paragraphs:
 
-1. Acknowledge what they did well grammatically
-2. Point out any grammar, verb conjugation, or vocabulary errors
-3. Provide the corrected version in Italian (if needed)
-4. Give encouragement
+1. Quick grammar/vocabulary check + corrected version if needed
+2. One encouraging sentence
 
 IMPORTANT: 
-- Focus on LANGUAGE and GRAMMAR, not content appropriateness
-- Don't judge their topic choices or what they talk about
-- If they write about tacos, pizza, or anything else - that's fine! Just check the Italian.
-- Be supportive about their language skills, not their content choices
+- Keep it CONCISE (2-3 sentences per paragraph MAX)
+- Focus ONLY on grammar and language, not content
+- Don't judge topic choices
+- Be encouraging but brief
 
-Keep it concise and helpful.`
+Example good feedback:
+"Good use of present tense! Small fix: 'Mi piacciono i tacos' (plural). Your sentence: 'Mi piacciono molto i tacos messicani.'
+
+Great job practicing!"`
                 }],
                 temperature: 0.7,
-                max_tokens: 800
+                max_tokens: 400
             })
         });
         
