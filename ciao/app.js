@@ -430,6 +430,7 @@ const EXAMPLE_SENTENCES = {
 let currentLevel = 'A0';
 let currentTense = 'present';
 let currentPrompt = '';
+let lastAnswer = ''; // Store for challenge context
 let aiPromptsEnabled = false;
 let feedbackEnabled = true; // ON by default
 let apiKey = localStorage.getItem('groq_api_key') || '';
@@ -489,10 +490,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Feedback section
     document.getElementById('close-feedback').addEventListener('click', () => {
         document.getElementById('ai-feedback-section').style.display = 'none';
+        document.getElementById('challenge-section').style.display = 'none';
     });
     document.getElementById('try-another-btn').addEventListener('click', () => {
         document.getElementById('ai-feedback-section').style.display = 'none';
+        document.getElementById('challenge-section').style.display = 'none';
         loadNewPrompt();
+    });
+    
+    // Challenge feedback
+    document.getElementById('challenge-feedback-btn').addEventListener('click', () => {
+        document.getElementById('challenge-section').style.display = 'block';
+        document.getElementById('challenge-input').focus();
+    });
+    document.getElementById('send-challenge-btn').addEventListener('click', sendChallenge);
+    document.getElementById('cancel-challenge-btn').addEventListener('click', () => {
+        document.getElementById('challenge-section').style.display = 'none';
+        document.getElementById('challenge-input').value = '';
     });
     
     // Show example button
@@ -720,6 +734,9 @@ async function checkAnswerWithAI(answer) {
         return;
     }
     
+    // Store answer for potential challenge
+    lastAnswer = answer;
+    
     const btn = document.getElementById('done-btn');
     const originalHTML = btn.innerHTML;
     btn.disabled = true;
@@ -750,25 +767,35 @@ async function checkAnswerWithAI(answer) {
                     role: 'user',
                     content: `You are a friendly Italian tutor checking grammar. A ${currentLevel} student wrote: "${answer}"
 
-Provide BRIEF, WARM feedback in ENGLISH (2-3 sentences total):
+IMPORTANT ITALIAN GRAMMAR RULES - DO NOT "CORRECT" THESE:
+1. Possessives + singular family members = NO ARTICLE
+   - "mia moglie" ✓ NOT "la mia moglie" ✗
+   - "mio marito" ✓ NOT "il mio marito" ✗
+   - "mio padre" ✓ NOT "il mio padre" ✗
+   Exception: Use article with "loro" (la loro madre) or plural/modified family (le mie sorelle, il mio caro padre)
+
+2. Conversational phrases are natural:
+   - "e tu?" "ma" "però" are all correct
+   
+3. Prepositions with places:
+   - Cities: "a Roma" (to/in Rome)
+   - Regions/countries: "in Italia" or "in Toscana"
+   - US states: usually "in Michigan" or "nel Michigan" (NOT "a Michigan")
+
+Provide BRIEF, WARM feedback in ENGLISH (2-3 sentences):
 - Explain errors in ENGLISH
 - Show corrections in ITALIAN
-- Only point out actual ERRORS (wrong verb forms, missing articles, incorrect prepositions)
-- Accept conversational phrases like "e tu?", "ma", "però" - these are natural!
-- If it's grammatically correct, celebrate it! Say "Perfect!" or "Excellent!"
-- Give the corrected Italian version ONLY if there are real mistakes
+- Only point out ACTUAL errors
+- If correct, celebrate: "Perfect!" or "Excellent!"
 
-DO NOT criticize:
-- Conversational style or questions like "e tu?"
-- Valid conjunction choices (ma, e, però are all fine)
-- Content or topic choices
+Example:
+Student: "Vedo mia moglie e il computer"
+Good: "Perfect! Your Italian is correct. Nice work!"
+Bad: "You need 'la' before 'mia moglie'" ← WRONG, don't do this!
 
-Example feedback format:
-"Great work! Just one small fix: in Italian we say 'in Michigan' instead of 'a Michigan'. Corrected: 'Vivo in Michigan ma lavoro a Detroit, e tu?' Nice conversational Italian!"
-
-IMPORTANT: Write your feedback explanation in ENGLISH, but show Italian corrections in ITALIAN.`
+Write feedback in ENGLISH. Show Italian corrections in ITALIAN.`
                 }],
-                temperature: 0.6,
+                temperature: 0.5,
                 max_tokens: 300
             })
         });
@@ -1171,4 +1198,100 @@ function showContextHint(text) {
 
 function hideContextHint() {
     document.getElementById('context-hint').style.display = 'none';
+}
+
+// Challenge AI feedback
+async function sendChallenge() {
+    const challenge = document.getElementById('challenge-input').value.trim();
+    
+    if (!challenge) {
+        alert('Please write your question or concern!');
+        return;
+    }
+    
+    const btn = document.getElementById('send-challenge-btn');
+    const originalHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="0">
+                <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
+            </circle>
+        </svg>
+        Checking...
+    `;
+    
+    try {
+        let tense = currentTense;
+        if (tense === 'mixed') {
+            tense = document.getElementById('tense-label').textContent.toLowerCase();
+        }
+        
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'llama-3.3-70b-versatile',
+                messages: [{
+                    role: 'user',
+                    content: `You are an Italian language expert. A student is challenging your feedback.
+
+Original prompt: "${currentPrompt}"
+Student's answer: "${lastAnswer}"
+Student's question/concern: "${challenge}"
+
+IMPORTANT GRAMMAR RULES:
+1. Possessives + singular family members = NO ARTICLE
+   - "mia moglie" ✓ is CORRECT
+   - "la mia moglie" is overly formal/wrong
+   - Same for: mio marito, mio padre, mia madre, etc.
+   Exception: Use article with "loro" or plural family members
+
+2. Accept natural conversational Italian like "e tu?", "ma", "però"
+
+3. US states usually take "in" not "a" (in Michigan, NOT a Michigan)
+
+Respond in ENGLISH (2-3 sentences):
+- If the student is RIGHT, admit it! Say "You're absolutely right, I apologize..."
+- If there IS an error, explain clearly why
+- Be humble and educational
+
+Focus on being helpful and accurate, not defending your original feedback.`
+                }],
+                temperature: 0.5,
+                max_tokens: 250
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to get response');
+        }
+        
+        const data = await response.json();
+        
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+            const clarification = data.choices[0].message.content;
+            
+            // Show the clarification
+            const feedbackContent = document.getElementById('ai-feedback-content');
+            feedbackContent.innerHTML += `
+                <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid rgba(255, 193, 7, 0.2);">
+                <p style="color: #ffc107; font-weight: 600; margin-bottom: 0.5rem;">📝 Clarification:</p>
+                <p>${clarification}</p>
+            `;
+            
+            // Hide challenge section
+            document.getElementById('challenge-section').style.display = 'none';
+            document.getElementById('challenge-input').value = '';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error getting clarification. Try again!');
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+    }
 }
