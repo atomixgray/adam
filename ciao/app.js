@@ -430,7 +430,8 @@ const EXAMPLE_SENTENCES = {
 let currentLevel = 'A0';
 let currentTense = 'present';
 let currentPrompt = '';
-let feedbackEnabled = false;
+let aiPromptsEnabled = false;
+let feedbackEnabled = true; // ON by default
 let apiKey = localStorage.getItem('groq_api_key') || '';
 let idleTimer = null;
 let hintShown = false;
@@ -468,6 +469,15 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDoneButton();
     });
     
+    // AI Prompts toggle
+    document.getElementById('ai-prompts-toggle').addEventListener('change', (e) => {
+        aiPromptsEnabled = e.target.checked;
+        localStorage.setItem('ai_prompts_enabled', aiPromptsEnabled);
+        updateFeedbackStatus();
+        // Load new prompt with new setting
+        loadNewPrompt();
+    });
+    
     // API key management
     document.getElementById('setup-feedback-btn').addEventListener('click', () => {
         document.getElementById('api-modal').style.display = 'flex';
@@ -503,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Load new prompt
-function loadNewPrompt() {
+async function loadNewPrompt() {
     const level = currentLevel;
     let tense = currentTense;
     
@@ -513,14 +523,6 @@ function loadNewPrompt() {
         tense = tenses[Math.floor(Math.random() * tenses.length)];
     }
     
-    const prompts = SENTENCE_PROMPTS[level][tense];
-    currentPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-    
-    document.getElementById('prompt-text').textContent = currentPrompt;
-    document.getElementById('tense-label').textContent = getTenseLabel(tense);
-    document.getElementById('difficulty-label').textContent = level;
-    document.getElementById('answer-input').value = '';
-    
     // Hide AI feedback section
     document.getElementById('ai-feedback-section').style.display = 'none';
     
@@ -528,6 +530,20 @@ function loadNewPrompt() {
     hideContextHint();
     hintShown = false;
     clearTimeout(idleTimer);
+    
+    document.getElementById('answer-input').value = '';
+    document.getElementById('tense-label').textContent = getTenseLabel(tense);
+    document.getElementById('difficulty-label').textContent = level;
+    
+    // AI-generated or hardcoded prompts?
+    if (aiPromptsEnabled && apiKey) {
+        await generateAIPrompt(level, tense);
+    } else {
+        // Use hardcoded prompts
+        const prompts = SENTENCE_PROMPTS[level][tense];
+        currentPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+        document.getElementById('prompt-text').textContent = currentPrompt;
+    }
     
     // Update tip
     document.getElementById('tips-content').textContent = GRAMMAR_TIPS[tense];
@@ -547,6 +563,60 @@ function loadNewPrompt() {
         </svg>
         Show Example Vocabulary
     `;
+}
+
+// Generate AI prompt
+async function generateAIPrompt(level, tense) {
+    const promptCard = document.getElementById('prompt-text');
+    promptCard.textContent = 'Generating question...';
+    
+    const tenseName = tense === 'passato' ? 'passato prossimo' : tense;
+    
+    try {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'llama-3.1-8b-instant',
+                messages: [{
+                    role: 'user',
+                    content: `Generate a single Italian language practice prompt for a ${level} level student to practice ${tenseName}.
+
+The prompt should ask them to write a sentence or short paragraph in Italian. Make it relevant and interesting.
+
+Examples of good prompts:
+- "Describe what you see in this room"
+- "Tell me about your last vacation"
+- "Explain why you are learning Italian"
+
+Respond with ONLY the prompt text (no quotes, no extra text). Keep it simple and clear.`
+                }],
+                temperature: 0.9,
+                max_tokens: 100
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to generate prompt');
+        }
+        
+        const data = await response.json();
+        
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+            currentPrompt = data.choices[0].message.content.trim().replace(/^["']|["']$/g, '');
+            promptCard.textContent = currentPrompt;
+        }
+    } catch (error) {
+        console.error('Error generating prompt:', error);
+        // Fallback to hardcoded
+        const prompts = SENTENCE_PROMPTS[level][tense];
+        currentPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+        promptCard.textContent = currentPrompt;
+        showContextHint("Couldn't generate AI prompt, using curated question instead.");
+    }
 }
 
 function getTenseLabel(tense) {
@@ -675,7 +745,7 @@ async function checkAnswerWithAI(answer) {
                 'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-                model: 'llama-3.3-70b-versatile',
+                model: 'llama-3.1-8b-instant',
                 messages: [{
                     role: 'user',
                     content: `You are an Italian language teacher. A ${currentLevel} level student was asked to: "${currentPrompt}" using ${tense}.
@@ -765,24 +835,35 @@ function updateFeedbackStatus() {
     const statusText = document.getElementById('feedback-status').querySelector('.status-text');
     const setupBtn = document.getElementById('setup-feedback-btn');
     
-    if (feedbackEnabled) {
-        if (apiKey) {
-            statusText.textContent = `Ready! Using API key: ${apiKey.slice(0, 8)}...`;
+    if (!apiKey) {
+        // No API key
+        if (feedbackEnabled || aiPromptsEnabled) {
+            statusText.textContent = 'API key required for AI features';
+            statusText.classList.remove('active');
+            setupBtn.style.display = 'inline-block';
+            setupBtn.textContent = 'Setup';
+        } else {
+            statusText.textContent = 'Enable AI features and add your Groq API key';
+            statusText.classList.remove('active');
+            setupBtn.style.display = 'none';
+        }
+    } else {
+        // Has API key
+        const features = [];
+        if (aiPromptsEnabled) features.push('AI Prompts');
+        if (feedbackEnabled) features.push('AI Feedback');
+        
+        if (features.length > 0) {
+            statusText.textContent = `Active: ${features.join(' + ')} | Key: ${apiKey.slice(0, 8)}...`;
             statusText.classList.add('active');
             setupBtn.style.display = 'inline-block';
             setupBtn.textContent = 'Change Key';
         } else {
-            statusText.textContent = 'API key required for feedback';
+            statusText.textContent = `API key set: ${apiKey.slice(0, 8)}... (enable AI features above)`;
             statusText.classList.remove('active');
             setupBtn.style.display = 'inline-block';
-            setupBtn.textContent = 'Setup';
-            // Auto-open modal if enabled but no key
-            document.getElementById('api-modal').style.display = 'flex';
+            setupBtn.textContent = 'Change Key';
         }
-    } else {
-        statusText.textContent = 'Enable AI feedback to get corrections';
-        statusText.classList.remove('active');
-        setupBtn.style.display = 'none';
     }
 }
 
@@ -820,13 +901,7 @@ function closeModal() {
     document.getElementById('api-modal').style.display = 'none';
     document.getElementById('api-key-input').value = '';
     
-    // If feedback was enabled but no key saved, disable feedback
-    if (feedbackEnabled && !apiKey) {
-        document.getElementById('feedback-toggle').checked = false;
-        feedbackEnabled = false;
-        updateFeedbackStatus();
-        updateDoneButton();
-    }
+    // Don't auto-disable features if user cancels - they're already toggled on
 }
 
 // Particle animation
@@ -922,29 +997,125 @@ function initializeParticles() {
     });
 }
 
-// Show example sentence
-function showExampleSentence() {
+// Show example sentence - NOW USES AI!
+async function showExampleSentence() {
+    if (!apiKey) {
+        alert('Please set up your API key first to generate examples!');
+        document.getElementById('api-modal').style.display = 'flex';
+        return;
+    }
+    
+    const btn = document.getElementById('show-example-btn');
+    const originalHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="0">
+                <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
+            </circle>
+        </svg>
+        Generating...
+    `;
+    
     let tense = currentTense;
     if (tense === 'mixed') {
         tense = document.getElementById('tense-label').textContent.toLowerCase().replace(' tense', '').replace(' prossimo', '');
-        if (tense === 'passato') tense = 'passato';
+        if (tense === 'passato') tense = 'passato prossimo';
     }
     
-    const examples = EXAMPLE_SENTENCES[currentLevel][tense];
-    const example = examples[Math.floor(Math.random() * examples.length)];
-    
-    const textarea = document.getElementById('answer-input');
-    
-    // If textarea is empty, fill it; otherwise show as hint
-    if (!textarea.value.trim()) {
-        textarea.value = example;
-        textarea.focus();
+    try {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'llama-3.1-8b-instant',
+                messages: [{
+                    role: 'user',
+                    content: `You are helping an ${currentLevel} level Italian student. They need an example sentence for this prompt: "${currentPrompt}"
+
+The sentence should use ${tense}.
+
+Provide ONLY a single example sentence in Italian (no explanation, no translation, just the Italian sentence). Keep it appropriate for ${currentLevel} level - ${currentLevel === 'A0' || currentLevel === 'A1' ? 'simple and short' : currentLevel === 'A2' ? 'intermediate complexity' : 'more sophisticated'}.`
+                }],
+                temperature: 0.8,
+                max_tokens: 100
+            })
+        });
         
-        // Show hint that they can modify it
-        showContextHint("Feel free to modify this example or write your own!");
-    } else {
-        showContextHint(`Example: "${example}"`);
+        if (!response.ok) {
+            throw new Error('Failed to generate example');
+        }
+        
+        const data = await response.json();
+        
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+            const example = data.choices[0].message.content.trim();
+            
+            const textarea = document.getElementById('answer-input');
+            
+            // If textarea is empty, fill it; otherwise show as hint
+            if (!textarea.value.trim()) {
+                textarea.value = example;
+                textarea.focus();
+                showContextHint("AI-generated example! Feel free to modify it or write your own!");
+            } else {
+                showContextHint(`AI Example: "${example}"`);
+            }
+        }
+    } catch (error) {
+        console.error('Error generating example:', error);
+        showContextHint("Couldn't generate example. Try again or write your own!");
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
     }
+}
+
+// Old hardcoded example generator - keeping as backup fallback
+function generateContextualExample(prompt, level, tense) {
+    const promptLower = prompt.toLowerCase();
+    
+    // Present tense examples
+    if (tense === 'present') {
+        if (promptLower.includes('what you are doing') || promptLower.includes('doing right now')) {
+            return level === 'A0' ? "Sto studiando italiano." : 
+                   level === 'A1' ? "In questo momento sto leggendo un libro interessante." :
+                   level === 'A2' ? "Adesso sto lavorando al computer e ascoltando musica." :
+                   level === 'B1' ? "Sto cercando di concentrarmi sul mio lavoro, ma continuo a distrarmi." :
+                   "Attualmente sto riflettendo sulle mie priorità mentre lavoro a questo progetto.";
+        }
+        if (promptLower.includes('what you like to eat') || promptLower.includes('like to eat')) {
+            return level === 'A0' ? "Mi piace la pizza e la pasta." :
+                   level === 'A1' ? "Mi piace molto mangiare la pizza margherita e il gelato." :
+                   level === 'A2' ? "Mi piacciono i piatti tradizionali italiani, soprattutto la carbonara." :
+                   level === 'B1' ? "Preferisco la cucina mediterranea perché è sana e saporita." :
+                   "Apprezzo particolarmente i piatti che combinano tradizione e innovazione culinaria.";
+        }
+        if (promptLower.includes('where you live')) {
+            return level === 'A0' ? "Abito a Roma." :
+                   level === 'A1' ? "Vivo in un appartamento piccolo ma confortevole." :
+                   level === 'A2' ? "Abito in una città di medie dimensioni vicino al mare." :
+                   level === 'B1' ? "Vivo in periferia, in una zona tranquilla con molti spazi verdi." :
+                   "Risiedo in un quartiere residenziale caratterizzato da un'atmosfera familiare.";
+        }
+        if (promptLower.includes('see in this room') || promptLower.includes('what you see')) {
+            return level === 'A0' ? "Vedo un tavolo, una sedia e una finestra." :
+                   level === 'A1' ? "Nella stanza vedo un computer, alcuni libri e una lampada." :
+                   level === 'A2' ? "Guardandomi intorno, vedo un divano comodo, una scrivania e delle piante." :
+                   level === 'B1' ? "Osservando la stanza, noto vari oggetti che riflettono i miei interessi: libri, poster e strumenti musicali." :
+                   "L'ambiente circostante presenta una combinazione di elementi funzionali e decorativi che creano un'atmosfera accogliente.";
+        }
+    }
+    
+    // Fallback
+    return level === 'A0' ? "Sono uno studente di italiano." : 
+           level === 'A1' ? "Mi piace studiare l'italiano ogni giorno." :
+           level === 'A2' ? "Sto cercando di migliorare il mio italiano." :
+           level === 'B1' ? "L'apprendimento dell'italiano è importante per me." :
+           "Considero lo studio dell'italiano un investimento significativo per il mio futuro.";
 }
 
 // Context hint system
@@ -964,11 +1135,12 @@ function resetIdleTimer() {
 
 function showIdleHint() {
     const hints = [
-        "Stuck? Click 'Show Example' for inspiration!",
+        "Stuck? Click 'Generate Example (AI)' for a custom sentence!",
         "Try starting with basic words from the vocabulary helper below",
         "Don't worry about perfection - just write something!",
         "Remember: practice makes progress, not perfection",
-        "Tip: Start simple, then add details"
+        "Tip: Start simple, then add details",
+        "Need inspiration? The AI can generate an example for you!"
     ];
     
     const hint = hints[Math.floor(Math.random() * hints.length)];
