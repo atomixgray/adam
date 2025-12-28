@@ -71,6 +71,20 @@
                     placeholder="Scrivi la tua frase in italiano... (Write your sentence in Italian...)"
                     rows="4"
                 ></textarea>
+                <div class="answer-helpers">
+                    <button class="helper-btn" id="show-example-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        Show Example
+                    </button>
+                    <div id="context-hint" class="context-hint" style="display: none;">
+                        <span class="hint-icon">💡</span>
+                        <span id="hint-text" class="hint-text"></span>
+                    </div>
+                </div>
                 <div class="action-buttons">
                     <button class="action-btn btn-done" id="done-btn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
