@@ -752,13 +752,20 @@ async function checkAnswerWithAI(answer) {
 
 They wrote: "${answer}"
 
-Provide friendly feedback in 3-4 short paragraphs:
-1. First, acknowledge what they did well
-2. Point out any grammar or vocabulary issues
+Provide friendly feedback in 3-4 short paragraphs focusing ONLY on Italian grammar, vocabulary, and language structure:
+
+1. Acknowledge what they did well grammatically
+2. Point out any grammar, verb conjugation, or vocabulary errors
 3. Provide the corrected version in Italian (if needed)
 4. Give encouragement
 
-Be supportive and constructive. Keep it concise.`
+IMPORTANT: 
+- Focus on LANGUAGE and GRAMMAR, not content appropriateness
+- Don't judge their topic choices or what they talk about
+- If they write about tacos, pizza, or anything else - that's fine! Just check the Italian.
+- Be supportive about their language skills, not their content choices
+
+Keep it concise and helpful.`
                 }],
                 temperature: 0.7,
                 max_tokens: 800
