@@ -319,12 +319,121 @@ const GRAMMAR_TIPS = {
     mixed: "Combine tenses naturally! Use imperfetto for background/ongoing actions, passato prossimo for completed actions, and present for current states"
 };
 
+// Example sentence templates
+const EXAMPLE_SENTENCES = {
+    A0: {
+        present: [
+            "Io sono uno studente.",
+            "Mi piace la pizza.",
+            "Abito a Roma.",
+            "Oggi fa bel tempo.",
+            "Vedo una macchina rossa."
+        ],
+        imperfetto: [
+            "Quando ero piccolo, giocavo sempre.",
+            "La mia casa era grande.",
+            "Ieri facevo i compiti."
+        ],
+        passato: [
+            "Stamattina ho mangiato una mela.",
+            "Sono andato al parco.",
+            "Ho comprato un libro."
+        ]
+    },
+    A1: {
+        present: [
+            "Di solito mi alzo alle sette.",
+            "Mio fratello lavora in un ufficio.",
+            "Mi piace molto leggere libri.",
+            "Il sabato vado sempre al mercato.",
+            "Preferisco il caffè al tè."
+        ],
+        imperfetto: [
+            "Quando abitavo a Milano, andavo spesso al cinema.",
+            "Da bambino mi piaceva giocare a calcio.",
+            "L'anno scorso lavoravo in una biblioteca.",
+            "Ogni estate andavamo al mare."
+        ],
+        passato: [
+            "La settimana scorsa sono andato in vacanza.",
+            "Ho parlato con mia madre ieri sera.",
+            "Ho visto un bel film al cinema.",
+            "Domenica scorsa ho cucinato la pasta."
+        ]
+    },
+    A2: {
+        present: [
+            "Secondo me, l'italiano è una lingua bellissima.",
+            "Sto cercando di migliorare il mio italiano.",
+            "Mi sembra che oggi sia una bella giornata.",
+            "Penso che sia importante studiare ogni giorno.",
+            "Vorrei visitare la Toscana l'anno prossimo."
+        ],
+        imperfetto: [
+            "Dieci anni fa la tecnologia era molto diversa.",
+            "Quando studiavo all'università, mi piaceva molto la filosofia.",
+            "Mentre camminavo, pensavo ai miei progetti.",
+            "Prima di trasferirmi, avevo molti dubbi."
+        ],
+        passato: [
+            "Ho deciso di imparare l'italiano due anni fa.",
+            "Sono riuscito a finire il progetto in tempo.",
+            "Mi è piaciuto molto il concerto di ieri sera.",
+            "Ho imparato molte cose nuove questa settimana."
+        ]
+    },
+    B1: {
+        present: [
+            "Ultimamente sto cercando di migliorare le mie abitudini quotidiane.",
+            "Credo che la tecnologia stia cambiando il modo in cui comunichiamo.",
+            "Mi rendo conto che è importante trovare un equilibrio nella vita.",
+            "Oggigiorno molte persone lavorano da remoto.",
+            "Sto affrontando alcune sfide importanti nel mio lavoro."
+        ],
+        imperfetto: [
+            "Quando lavoravo in quella azienda, avevo molto stress.",
+            "Mentre studiavo per l'esame, continuavo a pensare ad altro.",
+            "Dieci anni fa la situazione era completamente diversa.",
+            "Durante quel periodo stavo imparando molte cose nuove."
+        ],
+        passato: [
+            "Ho affrontato una situazione difficile e sono riuscito a superarla.",
+            "Mi sono reso conto che dovevo cambiare il mio approccio.",
+            "Ho dovuto prendere una decisione importante la settimana scorsa.",
+            "È successo qualcosa di inaspettato durante la riunione."
+        ]
+    },
+    B2: {
+        present: [
+            "Per quanto riguarda il lavoro a distanza, ci sono sia vantaggi che svantaggi.",
+            "D'altra parte, bisogna considerare anche le implicazioni sociali.",
+            "Oggigiorno si tende a sottovalutare l'importanza della comunicazione faccia a faccia.",
+            "Nonostante i progressi tecnologici, esistono ancora molte sfide.",
+            "Di conseguenza, è necessario trovare un equilibrio sostenibile."
+        ],
+        imperfetto: [
+            "All'epoca si credeva che la tecnologia avrebbe risolto tutti i problemi.",
+            "Nell'ambiente in cui lavoravo, c'era molta competitività.",
+            "Man mano che la situazione si sviluppava, diventava sempre più complessa.",
+            "Si diceva che il cambiamento fosse inevitabile."
+        ],
+        passato: [
+            "In seguito a quella esperienza, ho cambiato completamente prospettiva.",
+            "Dopo aver considerato tutte le opzioni, ho preso la mia decisione.",
+            "Grazie al fatto che ho perseverato, sono riuscito a raggiungere il mio obiettivo.",
+            "Alla fine, tutto si è risolto meglio di quanto sperassi."
+        ]
+    }
+};
+
 // State
 let currentLevel = 'A0';
 let currentTense = 'present';
 let currentPrompt = '';
 let feedbackEnabled = false;
 let apiKey = localStorage.getItem('groq_api_key') || '';
+let idleTimer = null;
+let hintShown = false;
 let stats = {
     completed: parseInt(localStorage.getItem('prompts_completed') || '0'),
     streak: 0,
@@ -375,6 +484,22 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('ai-feedback-section').style.display = 'none';
         loadNewPrompt();
     });
+    
+    // Show example button
+    document.getElementById('show-example-btn').addEventListener('click', showExampleSentence);
+    
+    // Monitor textarea for idle hints
+    const textarea = document.getElementById('answer-input');
+    textarea.addEventListener('input', () => {
+        resetIdleTimer();
+        hideContextHint();
+    });
+    textarea.addEventListener('focus', () => {
+        startIdleTimer();
+    });
+    textarea.addEventListener('blur', () => {
+        clearTimeout(idleTimer);
+    });
 });
 
 // Load new prompt
@@ -398,6 +523,11 @@ function loadNewPrompt() {
     
     // Hide AI feedback section
     document.getElementById('ai-feedback-section').style.display = 'none';
+    
+    // Reset hints
+    hideContextHint();
+    hintShown = false;
+    clearTimeout(idleTimer);
     
     // Update tip
     document.getElementById('tips-content').textContent = GRAMMAR_TIPS[tense];
@@ -500,6 +630,14 @@ function markDone(answer) {
     
     // Celebrate!
     celebrateCompletion();
+    
+    // Show hint about AI feedback after 5 completions if not enabled
+    if (stats.completed === 5 && !feedbackEnabled && !localStorage.getItem('feedback_hint_shown')) {
+        setTimeout(() => {
+            showContextHint("💡 Tip: Enable 'AI Feedback' above to get free corrections on your sentences!");
+            localStorage.setItem('feedback_hint_shown', 'true');
+        }, 1500);
+    }
     
     // Load next prompt after a moment
     setTimeout(loadNewPrompt, 800);
@@ -782,4 +920,75 @@ function initializeParticles() {
         init();
         animate();
     });
+}
+
+// Show example sentence
+function showExampleSentence() {
+    let tense = currentTense;
+    if (tense === 'mixed') {
+        tense = document.getElementById('tense-label').textContent.toLowerCase().replace(' tense', '').replace(' prossimo', '');
+        if (tense === 'passato') tense = 'passato';
+    }
+    
+    const examples = EXAMPLE_SENTENCES[currentLevel][tense];
+    const example = examples[Math.floor(Math.random() * examples.length)];
+    
+    const textarea = document.getElementById('answer-input');
+    
+    // If textarea is empty, fill it; otherwise show as hint
+    if (!textarea.value.trim()) {
+        textarea.value = example;
+        textarea.focus();
+        
+        // Show hint that they can modify it
+        showContextHint("Feel free to modify this example or write your own!");
+    } else {
+        showContextHint(`Example: "${example}"`);
+    }
+}
+
+// Context hint system
+function startIdleTimer() {
+    resetIdleTimer();
+}
+
+function resetIdleTimer() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+        const textarea = document.getElementById('answer-input');
+        if (!textarea.value.trim() && !hintShown) {
+            showIdleHint();
+        }
+    }, 15000); // Show hint after 15 seconds of inactivity
+}
+
+function showIdleHint() {
+    const hints = [
+        "Stuck? Click 'Show Example' for inspiration!",
+        "Try starting with basic words from the vocabulary helper below",
+        "Don't worry about perfection - just write something!",
+        "Remember: practice makes progress, not perfection",
+        "Tip: Start simple, then add details"
+    ];
+    
+    const hint = hints[Math.floor(Math.random() * hints.length)];
+    showContextHint(hint);
+    hintShown = true;
+}
+
+function showContextHint(text) {
+    const hintElement = document.getElementById('context-hint');
+    const hintText = document.getElementById('hint-text');
+    
+    hintText.textContent = text;
+    hintElement.style.display = 'flex';
+    
+    // Auto-hide after 8 seconds
+    setTimeout(() => {
+        hideContextHint();
+    }, 8000);
+}
+
+function hideContextHint() {
+    document.getElementById('context-hint').style.display = 'none';
 }
