@@ -599,14 +599,18 @@ async function generateAIPrompt(level, tense) {
                     role: 'user',
                     content: `Generate a single Italian language practice prompt for a ${level} level student to practice ${tenseName}.
 
-The prompt should ask them to write a sentence or short paragraph in Italian. Make it relevant and interesting.
+The prompt should ask them to write a sentence or short paragraph in Italian.
 
-Examples of good prompts:
-- "Describe what you see in this room"
-- "Tell me about your last vacation"
-- "Explain why you are learning Italian"
+IMPORTANT: Provide the prompt in BOTH English and Italian, separated by a forward slash.
 
-Respond with ONLY the prompt text (no quotes, no extra text). Keep it simple and clear.`
+Format: "English question / Italian question"
+
+Examples:
+- "Describe your morning routine / Descrivi la tua routine mattutina"
+- "Tell me what you did yesterday / Dimmi cosa hai fatto ieri"
+- "Talk about your favorite hobby / Parla del tuo hobby preferito"
+
+Make it relevant and interesting for ${level} level. Respond with ONLY the bilingual prompt (no extra text).`
                 }],
                 temperature: 0.9,
                 max_tokens: 100
