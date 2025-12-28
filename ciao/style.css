@@ -138,6 +138,12 @@ h1 {
     margin-bottom: 0.5rem;
 }
 
+.toggle-description {
+    font-size: 0.8rem;
+    color: #6a6a7a;
+    margin-left: auto;
+}
+
 .toggle-label {
     display: flex;
     align-items: center;
