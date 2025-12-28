@@ -323,6 +323,8 @@ const GRAMMAR_TIPS = {
 let currentLevel = 'A0';
 let currentTense = 'present';
 let currentPrompt = '';
+let feedbackEnabled = false;
+let apiKey = localStorage.getItem('groq_api_key') || '';
 let stats = {
     completed: parseInt(localStorage.getItem('prompts_completed') || '0'),
     streak: 0,
@@ -333,6 +335,7 @@ let stats = {
 document.addEventListener('DOMContentLoaded', () => {
     loadNewPrompt();
     updateStats();
+    updateFeedbackStatus();
     initializeParticles();
     
     // Event listeners
@@ -345,9 +348,33 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTense = e.target.value;
         loadNewPrompt();
     });
-    document.getElementById('done-btn').addEventListener('click', markDone);
+    document.getElementById('done-btn').addEventListener('click', handleDoneClick);
     document.getElementById('skip-btn').addEventListener('click', loadNewPrompt);
     document.getElementById('toggle-examples').addEventListener('click', toggleExamples);
+    
+    // Feedback toggle
+    document.getElementById('feedback-toggle').addEventListener('change', (e) => {
+        feedbackEnabled = e.target.checked;
+        updateFeedbackStatus();
+        updateDoneButton();
+    });
+    
+    // API key management
+    document.getElementById('setup-feedback-btn').addEventListener('click', () => {
+        document.getElementById('api-modal').style.display = 'flex';
+    });
+    document.getElementById('save-api-key-btn').addEventListener('click', saveAPIKey);
+    document.getElementById('cancel-api-key-btn').addEventListener('click', closeModal);
+    document.getElementById('modal-overlay').addEventListener('click', closeModal);
+    
+    // Feedback section
+    document.getElementById('close-feedback').addEventListener('click', () => {
+        document.getElementById('ai-feedback-section').style.display = 'none';
+    });
+    document.getElementById('try-another-btn').addEventListener('click', () => {
+        document.getElementById('ai-feedback-section').style.display = 'none';
+        loadNewPrompt();
+    });
 });
 
 // Load new prompt
@@ -368,6 +395,9 @@ function loadNewPrompt() {
     document.getElementById('tense-label').textContent = getTenseLabel(tense);
     document.getElementById('difficulty-label').textContent = level;
     document.getElementById('answer-input').value = '';
+    
+    // Hide AI feedback section
+    document.getElementById('ai-feedback-section').style.display = 'none';
     
     // Update tip
     document.getElementById('tips-content').textContent = GRAMMAR_TIPS[tense];
@@ -438,7 +468,7 @@ function updateVocabulary(level, tense) {
     `).join('');
 }
 
-function markDone() {
+function handleDoneClick() {
     const answer = document.getElementById('answer-input').value.trim();
     
     if (!answer) {
@@ -446,6 +476,14 @@ function markDone() {
         return;
     }
     
+    if (feedbackEnabled) {
+        checkAnswerWithAI(answer);
+    } else {
+        markDone(answer);
+    }
+}
+
+function markDone(answer) {
     // Count words
     const wordCount = answer.split(/\s+/).filter(w => w.length > 0).length;
     
@@ -465,6 +503,99 @@ function markDone() {
     
     // Load next prompt after a moment
     setTimeout(loadNewPrompt, 800);
+}
+
+async function checkAnswerWithAI(answer) {
+    if (!apiKey) {
+        alert('Please set up your API key first!');
+        document.getElementById('api-modal').style.display = 'flex';
+        return;
+    }
+    
+    const btn = document.getElementById('done-btn');
+    const originalHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="0">
+                <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
+            </circle>
+        </svg>
+        <span>Checking...</span>
+    `;
+    
+    try {
+        let tense = currentTense;
+        if (tense === 'mixed') {
+            tense = document.getElementById('tense-label').textContent.toLowerCase();
+        }
+        
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: 'llama-3.3-70b-versatile',
+                messages: [{
+                    role: 'user',
+                    content: `You are an Italian language teacher. A ${currentLevel} level student was asked to: "${currentPrompt}" using ${tense}.
+
+They wrote: "${answer}"
+
+Provide friendly feedback in 3-4 short paragraphs:
+1. First, acknowledge what they did well
+2. Point out any grammar or vocabulary issues
+3. Provide the corrected version in Italian (if needed)
+4. Give encouragement
+
+Be supportive and constructive. Keep it concise.`
+                }],
+                temperature: 0.7,
+                max_tokens: 800
+            })
+        });
+        
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error?.message || 'API request failed');
+        }
+        
+        const data = await response.json();
+        
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+            const feedback = data.choices[0].message.content;
+            displayFeedback(feedback);
+            
+            // Still count it as completed
+            const wordCount = answer.split(/\s+/).filter(w => w.length > 0).length;
+            stats.completed++;
+            stats.streak++;
+            stats.words += wordCount;
+            localStorage.setItem('prompts_completed', stats.completed.toString());
+            localStorage.setItem('total_words', stats.words.toString());
+            updateStats();
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error checking answer. Please check your API key and try again.\n\nError: ' + error.message);
+    } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+    }
+}
+
+function displayFeedback(feedback) {
+    const feedbackSection = document.getElementById('ai-feedback-section');
+    const feedbackContent = document.getElementById('ai-feedback-content');
+    
+    // Convert line breaks to paragraphs
+    const paragraphs = feedback.split('\n\n').filter(p => p.trim());
+    feedbackContent.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+    
+    feedbackSection.style.display = 'block';
+    feedbackSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function updateStats() {
@@ -490,6 +621,74 @@ function celebrateCompletion() {
         btn.innerHTML = originalContent;
         btn.style.transform = '';
     }, 800);
+}
+
+function updateFeedbackStatus() {
+    const statusText = document.getElementById('feedback-status').querySelector('.status-text');
+    const setupBtn = document.getElementById('setup-feedback-btn');
+    
+    if (feedbackEnabled) {
+        if (apiKey) {
+            statusText.textContent = `Ready! Using API key: ${apiKey.slice(0, 8)}...`;
+            statusText.classList.add('active');
+            setupBtn.style.display = 'inline-block';
+            setupBtn.textContent = 'Change Key';
+        } else {
+            statusText.textContent = 'API key required for feedback';
+            statusText.classList.remove('active');
+            setupBtn.style.display = 'inline-block';
+            setupBtn.textContent = 'Setup';
+            // Auto-open modal if enabled but no key
+            document.getElementById('api-modal').style.display = 'flex';
+        }
+    } else {
+        statusText.textContent = 'Enable AI feedback to get corrections';
+        statusText.classList.remove('active');
+        setupBtn.style.display = 'none';
+    }
+}
+
+function updateDoneButton() {
+    const btnText = document.getElementById('done-btn-text');
+    if (feedbackEnabled && apiKey) {
+        btnText.textContent = 'Check Answer';
+    } else {
+        btnText.textContent = 'Done';
+    }
+}
+
+function saveAPIKey() {
+    const input = document.getElementById('api-key-input');
+    const key = input.value.trim();
+    
+    if (!key) {
+        alert('Please enter an API key');
+        return;
+    }
+    
+    if (!key.startsWith('gsk_')) {
+        alert('Invalid API key format. Groq API keys should start with "gsk_"');
+        return;
+    }
+    
+    apiKey = key;
+    localStorage.setItem('groq_api_key', key);
+    updateFeedbackStatus();
+    updateDoneButton();
+    closeModal();
+}
+
+function closeModal() {
+    document.getElementById('api-modal').style.display = 'none';
+    document.getElementById('api-key-input').value = '';
+    
+    // If feedback was enabled but no key saved, disable feedback
+    if (feedbackEnabled && !apiKey) {
+        document.getElementById('feedback-toggle').checked = false;
+        feedbackEnabled = false;
+        updateFeedbackStatus();
+        updateDoneButton();
+    }
 }
 
 // Particle animation
