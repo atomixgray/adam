@@ -119,7 +119,38 @@
                         <button class="feedback-close" id="close-feedback">×</button>
                     </div>
                     <div id="ai-feedback-content" class="ai-feedback-content"></div>
-                    <button class="try-another-btn" id="try-another-btn">Try Another Prompt</button>
+                    <div class="feedback-actions">
+                        <button class="challenge-btn" id="challenge-feedback-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                            Question This
+                        </button>
+                        <button class="try-another-btn" id="try-another-btn">Try Another Prompt</button>
+                    </div>
+                </div>
+                
+                <div id="challenge-section" class="challenge-section" style="display: none;">
+                    <div class="challenge-header">
+                        <span class="challenge-title">💬 Challenge the Feedback</span>
+                    </div>
+                    <textarea 
+                        id="challenge-input" 
+                        placeholder="Tell the AI why you think your answer was correct... (e.g., 'I don't think I need the article before mia moglie')"
+                        rows="3"
+                    ></textarea>
+                    <div class="challenge-actions">
+                        <button class="action-btn btn-done" id="send-challenge-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                            Send Challenge
+                        </button>
+                        <button class="action-btn btn-skip" id="cancel-challenge-btn">Cancel</button>
+                    </div>
                 </div>
             </div>
 
