@@ -41,6 +41,20 @@
             </div>
         </div>
 
+        <div class="feedback-toggle-section">
+            <div class="toggle-container">
+                <label class="toggle-label">
+                    <input type="checkbox" id="feedback-toggle" class="toggle-checkbox">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">AI Feedback</span>
+                </label>
+                <button class="small-link-btn" id="setup-feedback-btn" style="display: none;">Setup</button>
+            </div>
+            <div class="feedback-status" id="feedback-status">
+                <span class="status-text">Enable AI feedback to get corrections</span>
+            </div>
+        </div>
+
         <div class="builder-container">
             <div class="prompt-card">
                 <div class="prompt-label">Your Challenge</div>
@@ -62,7 +76,7 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="20 6 9 17 4 12"/>
                         </svg>
-                        Done
+                        <span id="done-btn-text">Done</span>
                     </button>
                     <button class="action-btn btn-skip" id="skip-btn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -77,6 +91,15 @@
                     <div id="tips-content" class="tips-content">
                         Focus on using the correct tense and word order. Don't worry about being perfect!
                     </div>
+                </div>
+
+                <div id="ai-feedback-section" class="ai-feedback-section" style="display: none;">
+                    <div class="feedback-header">
+                        <span class="feedback-title">✨ AI Feedback</span>
+                        <button class="feedback-close" id="close-feedback">×</button>
+                    </div>
+                    <div id="ai-feedback-content" class="ai-feedback-content"></div>
+                    <button class="try-another-btn" id="try-another-btn">Try Another Prompt</button>
                 </div>
             </div>
 
@@ -113,6 +136,36 @@
         <footer>
             <a href="../" class="back-link">← Back to Main Site</a>
         </footer>
+    </div>
+
+    <!-- API Key Modal -->
+    <div id="api-modal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <h3>Setup AI Feedback</h3>
+            <p class="modal-description">
+                To get AI feedback on your sentences, you'll need a Groq API key. 
+                Your key is stored locally in your browser and only sent to Groq.
+            </p>
+            <p class="modal-description">
+                <strong>Cost:</strong> 100% FREE! (Groq offers free API access)
+            </p>
+            <div class="modal-link">
+                <a href="https://console.groq.com" target="_blank" rel="noopener">
+                    Get FREE API key from console.groq.com →
+                </a>
+            </div>
+            <input 
+                type="password" 
+                id="api-key-input" 
+                placeholder="gsk_..."
+                autocomplete="off"
+            />
+            <div class="modal-actions">
+                <button id="save-api-key-btn" class="modal-btn modal-btn-primary">Save Key</button>
+                <button id="cancel-api-key-btn" class="modal-btn">Cancel</button>
+            </div>
+        </div>
     </div>
 
     <script src="app.js"></script>
