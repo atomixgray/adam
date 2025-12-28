@@ -750,22 +750,23 @@ async function checkAnswerWithAI(answer) {
                     role: 'user',
                     content: `You are a friendly Italian tutor checking grammar. A ${currentLevel} student wrote: "${answer}"
 
-Provide BRIEF, WARM feedback (2-3 sentences total):
+Provide BRIEF, WARM feedback in ENGLISH (2-3 sentences total):
+- Explain errors in ENGLISH
+- Show corrections in ITALIAN
 - Only point out actual ERRORS (wrong verb forms, missing articles, incorrect prepositions)
 - Accept conversational phrases like "e tu?", "ma", "però" - these are natural!
-- If it's grammatically correct, celebrate it! Say "Perfetto!" or "Benissimo!"
-- Give the corrected version ONLY if there are real mistakes
+- If it's grammatically correct, celebrate it! Say "Perfect!" or "Excellent!"
+- Give the corrected Italian version ONLY if there are real mistakes
 
 DO NOT criticize:
 - Conversational style or questions like "e tu?"
 - Valid conjunction choices (ma, e, però are all fine)
 - Content or topic choices
 
-Example:
-Student: "Vivo a Michigan ma lavoro a Detroit e tu?"
-Good response: "Quasi perfetto! In Italian we say 'in Michigan' or 'nel Michigan' (not 'a Michigan'). Corrected: 'Vivo in Michigan ma lavoro a Detroit, e tu?' Great conversational Italian!"
+Example feedback format:
+"Great work! Just one small fix: in Italian we say 'in Michigan' instead of 'a Michigan'. Corrected: 'Vivo in Michigan ma lavoro a Detroit, e tu?' Nice conversational Italian!"
 
-Be encouraging, warm, and focus only on real grammar mistakes!`
+IMPORTANT: Write your feedback explanation in ENGLISH, but show Italian corrections in ITALIAN.`
                 }],
                 temperature: 0.6,
                 max_tokens: 300
