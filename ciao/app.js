@@ -580,7 +580,7 @@ async function generateAIPrompt(level, tense) {
                 'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-                model: 'llama-3.1-8b-instant',
+                model: 'llama-3.3-70b-versatile',
                 messages: [{
                     role: 'user',
                     content: `Generate a single Italian language practice prompt for a ${level} level student to practice ${tenseName}.
@@ -745,15 +745,15 @@ async function checkAnswerWithAI(answer) {
                 'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-                model: 'llama-3.1-8b-instant',
+                model: 'llama-3.3-70b-versatile',
                 messages: [{
                     role: 'user',
                     content: `You are a friendly Italian tutor checking grammar. A ${currentLevel} student wrote: "${answer}"
 
-Provide BRIEF feedback (2-3 sentences total):
+Provide BRIEF, WARM feedback (2-3 sentences total):
 - Only point out actual ERRORS (wrong verb forms, missing articles, incorrect prepositions)
 - Accept conversational phrases like "e tu?", "ma", "però" - these are natural!
-- If it's grammatically correct, just say "Bene!" and maybe one small tip
+- If it's grammatically correct, celebrate it! Say "Perfetto!" or "Benissimo!"
 - Give the corrected version ONLY if there are real mistakes
 
 DO NOT criticize:
@@ -763,9 +763,9 @@ DO NOT criticize:
 
 Example:
 Student: "Vivo a Michigan ma lavoro a Detroit e tu?"
-Good response: "Quasi perfetto! In Italian we say 'in Michigan' or 'nel Michigan' (not 'a Michigan'). Corrected: 'Vivo in Michigan ma lavoro a Detroit, e tu?'"
+Good response: "Quasi perfetto! In Italian we say 'in Michigan' or 'nel Michigan' (not 'a Michigan'). Corrected: 'Vivo in Michigan ma lavoro a Detroit, e tu?' Great conversational Italian!"
 
-Be encouraging and focus only on real grammar mistakes!`
+Be encouraging, warm, and focus only on real grammar mistakes!`
                 }],
                 temperature: 0.6,
                 max_tokens: 300
@@ -1038,7 +1038,7 @@ async function showExampleSentence() {
                 'Authorization': `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-                model: 'llama-3.1-8b-instant',
+                model: 'llama-3.3-70b-versatile',
                 messages: [{
                     role: 'user',
                     content: `You are helping an ${currentLevel} level Italian student. They need an example sentence for this prompt: "${currentPrompt}"
