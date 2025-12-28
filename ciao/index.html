@@ -44,14 +44,22 @@
         <div class="feedback-toggle-section">
             <div class="toggle-container">
                 <label class="toggle-label">
-                    <input type="checkbox" id="feedback-toggle" class="toggle-checkbox">
+                    <input type="checkbox" id="ai-prompts-toggle" class="toggle-checkbox">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">AI Prompts</span>
+                </label>
+                <span class="toggle-description">Generate unique questions with AI</span>
+            </div>
+            <div class="toggle-container">
+                <label class="toggle-label">
+                    <input type="checkbox" id="feedback-toggle" class="toggle-checkbox" checked>
                     <span class="toggle-slider"></span>
                     <span class="toggle-text">AI Feedback</span>
                 </label>
                 <button class="small-link-btn" id="setup-feedback-btn" style="display: none;">Setup</button>
             </div>
             <div class="feedback-status" id="feedback-status">
-                <span class="status-text">Enable AI feedback to get corrections</span>
+                <span class="status-text">Enable AI features and add your Groq API key</span>
             </div>
         </div>
 
@@ -74,11 +82,9 @@
                 <div class="answer-helpers">
                     <button class="helper-btn" id="show-example-btn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                         </svg>
-                        Show Example
+                        Generate Example (AI)
                     </button>
                     <div id="context-hint" class="context-hint" style="display: none;">
                         <span class="hint-icon">💡</span>
