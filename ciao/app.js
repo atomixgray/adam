@@ -884,10 +884,11 @@ function updateFeedbackStatus() {
     const setupBtn = document.getElementById('setup-feedback-btn');
     
     if (!apiKey) {
-        // No API key
+        // No API key - show setup button!
         statusText.textContent = 'Setup your API key to enable AI features';
         statusText.classList.remove('active');
-        setupBtn.style.display = 'none';
+        setupBtn.style.display = 'inline-block';
+        setupBtn.textContent = 'Setup';
     } else {
         // Has API key - AI Feedback is always on
         const features = ['AI Feedback'];
