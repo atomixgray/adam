@@ -213,12 +213,13 @@ h1 {
 .feedback-status {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
 }
 
 .status-text {
     font-size: 0.85rem;
     color: #8a8a9a;
+    flex: 1;
 }
 
 .status-text.active {
