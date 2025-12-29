@@ -463,12 +463,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('skip-btn').addEventListener('click', loadNewPrompt);
     document.getElementById('toggle-examples').addEventListener('click', toggleExamples);
     
-    // Feedback toggle
-    document.getElementById('feedback-toggle').addEventListener('change', (e) => {
-        feedbackEnabled = e.target.checked;
-        updateFeedbackStatus();
-        updateDoneButton();
-    });
     
     // AI Prompts toggle
     document.getElementById('ai-prompts-toggle').addEventListener('change', (e) => {
@@ -891,39 +885,25 @@ function updateFeedbackStatus() {
     
     if (!apiKey) {
         // No API key
-        if (feedbackEnabled || aiPromptsEnabled) {
-            statusText.textContent = 'API key required for AI features';
-            statusText.classList.remove('active');
-            setupBtn.style.display = 'inline-block';
-            setupBtn.textContent = 'Setup';
-        } else {
-            statusText.textContent = 'Enable AI features and add your Groq API key';
-            statusText.classList.remove('active');
-            setupBtn.style.display = 'none';
-        }
+        statusText.textContent = 'Setup your API key to enable AI features';
+        statusText.classList.remove('active');
+        setupBtn.style.display = 'none';
     } else {
-        // Has API key
-        const features = [];
+        // Has API key - AI Feedback is always on
+        const features = ['AI Feedback'];
         if (aiPromptsEnabled) features.push('AI Prompts');
-        if (feedbackEnabled) features.push('AI Feedback');
         
-        if (features.length > 0) {
-            statusText.textContent = `Active: ${features.join(' + ')} | Key: ${apiKey.slice(0, 8)}...`;
-            statusText.classList.add('active');
-            setupBtn.style.display = 'inline-block';
-            setupBtn.textContent = 'Change Key';
-        } else {
-            statusText.textContent = `API key set: ${apiKey.slice(0, 8)}... (enable AI features above)`;
-            statusText.classList.remove('active');
-            setupBtn.style.display = 'inline-block';
-            setupBtn.textContent = 'Change Key';
-        }
+        statusText.textContent = `Active: ${features.join(' + ')} | Key: ${apiKey.slice(0, 8)}...`;
+        statusText.classList.add('active');
+        setupBtn.style.display = 'inline-block';
+        setupBtn.textContent = 'Change';
     }
 }
 
 function updateDoneButton() {
     const btnText = document.getElementById('done-btn-text');
-    if (feedbackEnabled && apiKey) {
+    // AI Feedback is always on if there's an API key
+    if (apiKey) {
         btnText.textContent = 'Check Answer';
     } else {
         btnText.textContent = 'Done';
