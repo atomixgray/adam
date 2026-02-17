@@ -8,8 +8,8 @@ const NEWS_FEEDS = {
     cso: 'https://www.csoonline.com/feed/',
     securityweek: 'https://www.securityweek.com/feed/',
     sans: 'https://isc.sans.edu/rssfeed.xml',
-    // NEW SOURCES ADDED
-    sophos: 'https://news.sophos.com/en-us/category/threat-research/feed/',
+    // SOPHOS REPLACED WITH SCHNEIER (Sophos killed their RSS feed)
+    schneier: 'https://www.schneier.com/feed/atom/',
     threatpost: 'https://threatpost.com/feed/'
 };
 
