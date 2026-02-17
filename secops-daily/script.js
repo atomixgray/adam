@@ -21,7 +21,9 @@ const INTEL_FEEDS = {
     mitre: 'https://medium.com/feed/mitre-attack',
     // NEW SOURCES ADDED
     crowdstrike: 'https://www.crowdstrike.com/blog/feed/',
-    unit42: 'https://unit42.paloaltonetworks.com/feed/'
+    unit42: 'https://unit42.paloaltonetworks.com/feed/',
+    // RAW EXPLOIT DATA
+    exploitdb: 'https://www.exploit-db.com/rss.xml'
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
