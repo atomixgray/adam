@@ -51,6 +51,8 @@ let allArticles = [];
 let currentFilter = 'all';
 let currentView = 'all'; // 'all' or 'bookmarks'
 let showTrends = false; // Toggle for trends panel
+let aiAnalysisCache = null; // Cache AI analysis for 1 hour
+let aiAnalysisLoading = false; // Loading state for AI analysis
 
 // Bookmark management
 function getBookmarks() {
@@ -141,7 +143,15 @@ function toggleTrendsPanel() {
     if (showTrends) {
         trendsPanel.style.display = 'block';
         toggleBtn.textContent = 'HIDE TRENDS';
-        updateTrendsPanel();
+        
+        // Show AI analysis option at the top
+        const trendsContent = document.getElementById('trendsContent');
+        trendsContent.innerHTML = `
+            <div class="trends-choice">
+                <button onclick="generateAIAnalysis()" class="ai-analysis-btn">🤖 AI THREAT ANALYSIS</button>
+                <button onclick="updateTrendsPanel()" class="keyword-analysis-btn">📊 KEYWORD TRENDS</button>
+            </div>
+        `;
     } else {
         trendsPanel.style.display = 'none';
         toggleBtn.textContent = 'TRENDING';
@@ -204,6 +214,113 @@ function updateTrendsPanel() {
         });
         html += '</div>';
     }
+    
+    trendsContent.innerHTML = html;
+}
+
+// AI-powered threat analysis
+async function generateAIAnalysis() {
+    const trendsContent = document.getElementById('trendsContent');
+    const toggleBtn = document.getElementById('toggleTrendsBtn');
+    
+    // Check cache first (1 hour)
+    if (aiAnalysisCache && aiAnalysisCache.timestamp > Date.now() - 3600000) {
+        displayAIAnalysis(aiAnalysisCache.data);
+        return;
+    }
+    
+    if (aiAnalysisLoading) return; // Prevent duplicate requests
+    
+    aiAnalysisLoading = true;
+    toggleBtn.textContent = 'ANALYZING...';
+    toggleBtn.disabled = true;
+    
+    trendsContent.innerHTML = '<div class="ai-loading">🤖 AI analyzing threat landscape...</div>';
+    
+    try {
+        // Prepare articles data for AI
+        const articlesData = allArticles.map(a => ({
+            title: a.title,
+            source: a.source,
+            date: a.date.toISOString(),
+            description: a.description
+        }));
+        
+        const response = await fetch(`${PROXY_URL}/analyze-trends`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ articles: articlesData })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`AI analysis failed: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Cache the result
+        aiAnalysisCache = {
+            data,
+            timestamp: Date.now()
+        };
+        
+        displayAIAnalysis(data);
+        
+    } catch (error) {
+        console.error('AI analysis error:', error);
+        trendsContent.innerHTML = `
+            <div class="ai-error">
+                ⚠️ AI analysis unavailable. ${error.message}
+                <br><br>
+                <button onclick="updateTrendsPanel()" class="ai-fallback-btn">Show keyword trends instead</button>
+            </div>
+        `;
+    } finally {
+        aiAnalysisLoading = false;
+        toggleBtn.textContent = 'AI ANALYSIS';
+        toggleBtn.disabled = false;
+    }
+}
+
+// Display AI analysis results
+function displayAIAnalysis(data) {
+    const trendsContent = document.getElementById('trendsContent');
+    
+    if (!data.threats || data.threats.length === 0) {
+        trendsContent.innerHTML = '<div class="ai-empty">No significant threats detected in recent articles.</div>';
+        return;
+    }
+    
+    let html = '<div class="ai-analysis-header">';
+    html += '<h3 class="trends-title">🤖 [AI THREAT ANALYSIS - LAST 24H]</h3>';
+    html += `<div class="ai-meta">Analyzed ${data.analyzed_count} articles • Updated ${new Date(data.timestamp).toLocaleTimeString()}</div>`;
+    html += '</div>';
+    
+    html += '<div class="ai-threats">';
+    
+    data.threats.forEach((threat, index) => {
+        const severityClass = `severity-${threat.severity || 'medium'}`;
+        const severityIcon = threat.severity === 'critical' ? '🔴' : threat.severity === 'high' ? '🟠' : '🟡';
+        
+        html += `
+            <div class="ai-threat-card ${severityClass}">
+                <div class="ai-threat-header">
+                    <span class="ai-threat-number">#${index + 1}</span>
+                    <span class="ai-threat-severity">${severityIcon} ${(threat.severity || 'medium').toUpperCase()}</span>
+                </div>
+                <div class="ai-threat-name">${threat.threat}</div>
+                <div class="ai-threat-description">${threat.description}</div>
+            </div>
+        `;
+    });
+    
+    html += '</div>';
+    
+    html += '<div class="ai-footer">';
+    html += '<button onclick="updateTrendsPanel()" class="ai-switch-btn">Switch to keyword trends</button>';
+    html += '</div>';
     
     trendsContent.innerHTML = html;
 }
