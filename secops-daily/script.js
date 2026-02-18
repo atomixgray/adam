@@ -23,7 +23,8 @@ const INTEL_FEEDS = {
     crowdstrike: 'https://www.crowdstrike.com/blog/feed/',
     unit42: 'https://unit42.paloaltonetworks.com/feed/',
     // RAW EXPLOIT DATA
-    exploitdb: 'https://www.exploit-db.com/rss.xml'
+    exploitdb: 'https://www.exploit-db.com/rss.xml',
+    akamai: 'https://feeds.feedburner.com/akamai/blog'
 };
 
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
