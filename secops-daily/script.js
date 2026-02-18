@@ -769,7 +769,26 @@ function displayArticles() {
     // Make bookmark buttons functional (need to attach after HTML is inserted)
     window.handleBookmarkClick = function(link, event) {
         event.stopPropagation();
-        const article = allArticles.find(a => a.link === link);
+        
+        // Try to find in allArticles first
+        let article = allArticles.find(a => a.link === link);
+        
+        // If not found (e.g., we're in bookmarks view with filtered articles)
+        // reconstruct from the filtered list or bookmarks
+        if (!article && currentView === 'bookmarks') {
+            const bookmarks = getBookmarks();
+            const bookmark = bookmarks.find(b => b.link === link);
+            if (bookmark) {
+                article = {
+                    title: bookmark.title,
+                    link: bookmark.link,
+                    source: bookmark.source,
+                    date: new Date(bookmark.date),
+                    description: ''
+                };
+            }
+        }
+        
         if (article) {
             toggleBookmark(article);
         }
