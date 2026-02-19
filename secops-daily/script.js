@@ -153,11 +153,6 @@ function toggleTrendsPanel() {
                 <button onclick="updateTrendsPanel()" class="keyword-analysis-btn">📊 KEYWORD TRENDS</button>
             </div>
         `;
-        
-        // Add click-outside-to-close listener after a longer delay
-        setTimeout(() => {
-            document.addEventListener('click', handleOutsideClick, true);
-        }, 300);
     } else {
         closeTrendsPanel();
     }
@@ -171,21 +166,6 @@ function closeTrendsPanel() {
     
     trendsPanel.style.display = 'none';
     toggleBtn.textContent = 'TRENDING';
-    
-    // Remove click-outside listener
-    document.removeEventListener('click', handleOutsideClick, true);
-}
-
-// Handle clicks outside trends panel
-function handleOutsideClick(e) {
-    const trendsPanel = document.getElementById('trendsPanel');
-    const toggleBtn = document.getElementById('toggleTrendsBtn');
-    
-    // Check if click is truly outside the panel
-    if (trendsPanel && !trendsPanel.contains(e.target) && !toggleBtn.contains(e.target)) {
-        e.stopPropagation();
-        closeTrendsPanel();
-    }
 }
 
 // Make closeTrendsPanel global for onclick
