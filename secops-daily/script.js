@@ -154,10 +154,10 @@ function toggleTrendsPanel() {
             </div>
         `;
         
-        // Add click-outside-to-close listener (with slight delay to avoid immediate close)
+        // Add click-outside-to-close listener after a longer delay
         setTimeout(() => {
-            document.addEventListener('click', handleOutsideClick);
-        }, 100);
+            document.addEventListener('click', handleOutsideClick, true);
+        }, 300);
     } else {
         closeTrendsPanel();
     }
@@ -173,7 +173,7 @@ function closeTrendsPanel() {
     toggleBtn.textContent = 'TRENDING';
     
     // Remove click-outside listener
-    document.removeEventListener('click', handleOutsideClick);
+    document.removeEventListener('click', handleOutsideClick, true);
 }
 
 // Handle clicks outside trends panel
@@ -181,8 +181,9 @@ function handleOutsideClick(e) {
     const trendsPanel = document.getElementById('trendsPanel');
     const toggleBtn = document.getElementById('toggleTrendsBtn');
     
-    // Don't close if clicking inside the panel or on the toggle button
-    if (trendsPanel && !trendsPanel.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+    // Check if click is truly outside the panel
+    if (trendsPanel && !trendsPanel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        e.stopPropagation();
         closeTrendsPanel();
     }
 }
