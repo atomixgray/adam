@@ -307,6 +307,32 @@ body {
     border: 1px solid #667eea;
     border-radius: 4px;
     animation: fadeIn 0.3s ease;
+    position: relative;
+}
+
+.trends-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: #8a8a9a;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.trends-close-btn:hover {
+    color: #ff5f56;
+    transform: scale(1.2);
 }
 
 .trends-content {
