@@ -144,19 +144,51 @@ function toggleTrendsPanel() {
         trendsPanel.style.display = 'block';
         toggleBtn.textContent = 'HIDE TRENDS';
         
-        // Show AI analysis option at the top
+        // Show AI analysis option at the top with close button
         const trendsContent = document.getElementById('trendsContent');
         trendsContent.innerHTML = `
+            <button class="trends-close-btn" onclick="closeTrendsPanel()" title="Close">×</button>
             <div class="trends-choice">
                 <button onclick="generateAIAnalysis()" class="ai-analysis-btn">🤖 AI THREAT ANALYSIS</button>
                 <button onclick="updateTrendsPanel()" class="keyword-analysis-btn">📊 KEYWORD TRENDS</button>
             </div>
         `;
+        
+        // Add click-outside-to-close listener (with slight delay to avoid immediate close)
+        setTimeout(() => {
+            document.addEventListener('click', handleOutsideClick);
+        }, 100);
     } else {
-        trendsPanel.style.display = 'none';
-        toggleBtn.textContent = 'TRENDING';
+        closeTrendsPanel();
     }
 }
+
+// Close trends panel helper
+function closeTrendsPanel() {
+    showTrends = false;
+    const trendsPanel = document.getElementById('trendsPanel');
+    const toggleBtn = document.getElementById('toggleTrendsBtn');
+    
+    trendsPanel.style.display = 'none';
+    toggleBtn.textContent = 'TRENDING';
+    
+    // Remove click-outside listener
+    document.removeEventListener('click', handleOutsideClick);
+}
+
+// Handle clicks outside trends panel
+function handleOutsideClick(e) {
+    const trendsPanel = document.getElementById('trendsPanel');
+    const toggleBtn = document.getElementById('toggleTrendsBtn');
+    
+    // Don't close if clicking inside the panel or on the toggle button
+    if (trendsPanel && !trendsPanel.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)) {
+        closeTrendsPanel();
+    }
+}
+
+// Make closeTrendsPanel global for onclick
+window.closeTrendsPanel = closeTrendsPanel;
 
 function updateTrendsPanel() {
     const trends = analyzeTrends();
@@ -456,9 +488,11 @@ function handleKeyboardShortcuts(e) {
             }
             break;
         case 'escape':
-            // Close modal
-            if (shortcutsModal) {
+            // Close modal or trends panel
+            if (shortcutsModal && shortcutsModal.style.display === 'flex') {
                 shortcutsModal.style.display = 'none';
+            } else if (showTrends) {
+                closeTrendsPanel();
             }
             break;
     }
