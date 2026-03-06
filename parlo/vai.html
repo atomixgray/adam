@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il Tuo Sistema — Your Italian Immersion System</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --parchment: #EDE5D0;
+    --terra: #C4622D;
+    --terra-deep: #9B3E18;
+    --terra-light: #E8845A;
+    --olive: #6B7C45;
+    --olive-light: #8A9E5A;
+    --midnight: #1A1410;
+    --espresso: #2C1F14;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --stone: #7A6E62;
+    --stone-light: #A89E94;
+    --ink: #2A2018;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  .hero {
+    min-height: 100vh;
+    background: var(--espresso);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 20% 50%, rgba(196,98,45,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 30%, rgba(107,124,69,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 60% 80%, rgba(201,168,76,0.1) 0%, transparent 50%);
+  }
+
+  .hero-stripes {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -15deg,
+      transparent,
+      transparent 80px,
+      rgba(255,255,255,0.015) 80px,
+      rgba(255,255,255,0.015) 81px
+    );
+  }
+
+  .hero-nav {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .flag {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .flag span {
+    width: 10px;
+    height: 28px;
+    border-radius: 2px;
+  }
+
+  .flag span:nth-child(1) { background: var(--olive-light); }
+  .flag span:nth-child(2) { background: var(--cream); }
+  .flag span:nth-child(3) { background: var(--terra); }
+
+  .nav-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--stone-light);
+    text-transform: uppercase;
+  }
+
+  .hero-body {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3rem;
+    max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--terra-light);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-title em { font-style: italic; color: var(--terra-light); }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold-light);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--stone-light);
+    max-width: 560px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-desc strong { color: var(--cream); font-weight: 500; }
+
+  .hero-footer {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .hero-stat { text-align: left; opacity: 0; animation: fadeUp 0.8s ease 1s forwards; }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--terra-light);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--stone-light);
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.1); }
+
+  .section { padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; }
+
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--terra);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--espresso);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--terra); }
+
+  .section-intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--stone);
+    max-width: 680px;
+    margin-bottom: 3rem;
+  }
+
+  .diagnosis {
+    background: var(--espresso);
+    padding: 5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diagnosis::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 100% at 100% 50%, rgba(196,98,45,0.2) 0%, transparent 60%);
+  }
+
+  .diagnosis-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+
+  .diagnosis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 3rem;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .diagnosis-card {
+    background: rgba(255,255,255,0.04);
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+  }
+
+  .diagnosis-card:hover { background: rgba(255,255,255,0.07); }
+  .diagnosis-card.bad { border-left: 3px solid rgba(196,98,45,0.5); }
+  .diagnosis-card.good { border-left: 3px solid rgba(107,124,69,0.7); }
+
+  .diagnosis-card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .diagnosis-card.bad .diagnosis-card-label { color: var(--terra-light); }
+  .diagnosis-card.good .diagnosis-card-label { color: var(--olive-light); }
+
+  .diagnosis-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+
+  .diagnosis-card-text { font-size: 0.9rem; line-height: 1.65; color: var(--stone-light); }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--parchment);
+    border: 1.5px solid var(--parchment);
+  }
+
+  .pillar {
+    background: var(--cream);
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .pillar:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(44,31,20,0.12); z-index: 2; }
+
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--parchment);
+    line-height: 1;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    user-select: none;
+  }
+
+  .pillar-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+
+  .pillar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--espresso);
+    margin-bottom: 0.5rem;
+  }
+
+  .pillar-italian {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--terra);
+    margin-bottom: 1rem;
+  }
+
+  .pillar-text { font-size: 0.88rem; line-height: 1.7; color: var(--stone); }
+
+  .schedule-wrap { background: var(--espresso); padding: 5rem 3rem; }
+  .schedule-inner { max-width: 1100px; margin: 0 auto; }
+
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-top: 3rem;
+  }
+
+  .time-block { background: var(--espresso); padding: 2rem 1.75rem; position: relative; }
+
+  .time-block-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .time-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .morning .time-dot { background: var(--gold); }
+  .lunch .time-dot { background: var(--terra-light); }
+  .evening .time-dot { background: var(--olive-light); }
+
+  .time-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+  }
+
+  .time-duration {
+    margin-left: auto;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--cream);
+  }
+
+  .time-activity { margin-bottom: 0.75rem; }
+
+  .activity-name { font-weight: 500; font-size: 0.92rem; color: var(--cream); margin-bottom: 0.2rem; }
+  .activity-desc { font-size: 0.8rem; color: var(--stone-light); line-height: 1.5; }
+
+  .activity-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-top: 0.3rem;
+  }
+
+  .tag-listen { background: rgba(201,168,76,0.15); color: var(--gold-light); }
+  .tag-speak { background: rgba(196,98,45,0.2); color: var(--terra-light); }
+  .tag-watch { background: rgba(107,124,69,0.2); color: var(--olive-light); }
+  .tag-read { background: rgba(122,110,98,0.2); color: var(--stone-light); }
+
+  .tools-section { padding: 5rem 3rem; background: var(--parchment); }
+  .tools-inner { max-width: 1100px; margin: 0 auto; }
+
+  .tools-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; background: var(--cream); }
+
+  .tools-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    background: var(--parchment);
+    border-bottom: 1px solid #D9CEB8;
+  }
+
+  .tools-table td {
+    padding: 1.1rem 1.5rem;
+    font-size: 0.88rem;
+    border-bottom: 1px solid #E8E0D0;
+    vertical-align: top;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .tools-table tr:last-child td { border-bottom: none; }
+  .tools-table tr:hover td { background: rgba(196,98,45,0.03); }
+  .tool-name { font-weight: 500; color: var(--espresso); font-size: 0.92rem; }
+
+  .tool-verdict {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .verdict-yes { background: rgba(107,124,69,0.15); color: var(--olive); }
+  .verdict-no { background: rgba(196,98,45,0.12); color: var(--terra-deep); }
+  .verdict-optional { background: rgba(201,168,76,0.15); color: #8A6E20; }
+
+  .phases-wrap { padding: 5rem 3rem; }
+  .phases-inner { max-width: 1100px; margin: 0 auto; }
+
+  .phase {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    margin-bottom: 2px;
+    background: var(--cream);
+    border: 1px solid var(--parchment);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+
+  .phase:hover { box-shadow: 0 8px 40px rgba(44,31,20,0.08); }
+
+  .phase-sidebar {
+    background: var(--espresso);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .phase-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--stone-light);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .phase-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .phase-name em {
+    display: block;
+    font-style: italic;
+    color: var(--terra-light);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }
+
+  .phase-duration {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    margin-top: 1.5rem;
+  }
+
+  .phase-duration span {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    color: var(--stone-light);
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .phase-body { padding: 2.5rem; }
+
+  .phase-goal {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--terra);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--parchment);
+  }
+
+  .phase-items { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .phase-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+
+  .phase-item-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--terra);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .phase-item-text { font-size: 0.87rem; line-height: 1.6; color: var(--stone); }
+  .phase-item-text strong { color: var(--espresso); font-weight: 500; display: block; }
+
+  .immersion-wrap { background: var(--espresso); padding: 5rem 3rem; }
+  .immersion-inner { max-width: 1100px; margin: 0 auto; }
+
+  .content-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-top: 3rem;
+  }
+
+  .content-card { background: rgba(255,255,255,0.03); padding: 2rem; transition: background 0.3s; }
+  .content-card:hover { background: rgba(255,255,255,0.06); }
+
+  .content-card-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .content-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .content-list { list-style: none; }
+
+  .content-list li {
+    font-size: 0.85rem;
+    color: var(--stone-light);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .content-list li:last-child { border-bottom: none; }
+  .content-list li::before { content: '→'; color: var(--terra-light); font-size: 0.7rem; flex-shrink: 0; }
+  .content-list li strong { color: var(--cream); font-weight: 500; }
+
+  .rules-wrap { padding: 5rem 3rem; background: var(--cream); }
+  .rules-inner { max-width: 1100px; margin: 0 auto; }
+
+  .rules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
+
+  .rule-card {
+    border: 1px solid var(--parchment);
+    padding: 2rem;
+    position: relative;
+    background: var(--cream);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .rule-card:hover { border-color: var(--terra-light); box-shadow: 0 4px 30px rgba(196,98,45,0.08); }
+
+  .rule-card::before {
+    content: attr(data-num);
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    font-weight: 900;
+    color: var(--parchment);
+    position: absolute;
+    top: -1rem;
+    right: 1rem;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .rule-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--espresso);
+    margin-bottom: 0.75rem;
+  }
+
+  .rule-text { font-size: 0.87rem; line-height: 1.7; color: var(--stone); }
+  .rule-text strong { color: var(--terra-deep); font-weight: 500; }
+
+  .verdict-banner { background: var(--parchment); padding: 5rem 3rem; }
+  .verdict-inner { max-width: 1100px; margin: 0 auto; }
+
+  .verdict-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 3rem; }
+
+  .verdict-card { padding: 2.5rem; position: relative; }
+  .verdict-card.keep { background: var(--espresso); }
+  .verdict-card.conditional { background: #EDE0C8; }
+
+  .verdict-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .verdict-card.keep .verdict-badge { background: rgba(107,124,69,0.2); color: var(--olive-light); }
+  .verdict-card.conditional .verdict-badge { background: rgba(201,168,76,0.2); color: #7A5E10; }
+
+  .verdict-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .verdict-card.keep .verdict-card-title { color: var(--cream); }
+  .verdict-card.conditional .verdict-card-title { color: var(--espresso); }
+
+  .verdict-card-role {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .verdict-card.keep .verdict-card-role { color: var(--terra-light); }
+  .verdict-card.conditional .verdict-card-role { color: var(--stone); }
+
+  .verdict-points { list-style: none; }
+
+  .verdict-points li {
+    font-size: 0.87rem;
+    line-height: 1.65;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid;
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .verdict-card.keep .verdict-points li { color: var(--stone-light); border-color: rgba(255,255,255,0.06); }
+  .verdict-card.conditional .verdict-points li { color: var(--stone); border-color: rgba(44,31,20,0.08); }
+  .verdict-points li:last-child { border-bottom: none; }
+  .verdict-points li::before { content: '✓'; color: var(--gold); font-size: 0.8rem; flex-shrink: 0; margin-top: 1px; }
+
+  .manifesto {
+    background: var(--terra-deep);
+    padding: 6rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .manifesto::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 60% at 30% 40%, rgba(201,168,76,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 70% 60%, rgba(0,0,0,0.2) 0%, transparent 60%);
+  }
+
+  .manifesto-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 2; }
+
+  .manifesto-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+
+  .manifesto-quote em { color: var(--gold-light); font-style: normal; }
+  .manifesto-sub { font-size: 1rem; color: rgba(245,240,232,0.7); line-height: 1.7; }
+
+  .tab-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--espresso);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 3rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tab-nav::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 1.1rem 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover { color: var(--cream); }
+  .tab-btn.active { color: var(--terra-light); border-bottom-color: var(--terra-light); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--parchment);
+    border: 1px solid var(--parchment);
+    margin-top: 2.5rem;
+  }
+
+  .week-day { background: var(--cream); padding: 1.25rem 1rem; text-align: center; }
+
+  .week-day-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .week-day-focus {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--espresso);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .week-day-detail { font-size: 0.72rem; color: var(--stone); line-height: 1.4; }
+
+  .week-day.highlight { background: var(--espresso); }
+  .week-day.highlight .week-day-focus { color: var(--terra-light); }
+  .week-day.highlight .week-day-detail { color: var(--stone-light); }
+  .week-day.highlight .week-day-name { color: rgba(168,158,148,0.6); }
+
+  @media (max-width: 768px) {
+    .pillars-grid, .schedule-grid, .content-cards, .phase-items,
+    .rules-grid, .verdict-cards, .diagnosis-grid { grid-template-columns: 1fr; }
+    .phase { grid-template-columns: 1fr; }
+    .hero-body { padding: 3rem 1.5rem; }
+    .section, .schedule-wrap, .tools-section, .phases-wrap,
+    .immersion-wrap, .rules-wrap, .verdict-banner, .manifesto { padding: 3.5rem 1.5rem; }
+    .week-grid { grid-template-columns: repeat(3, 1fr); }
+    .tab-nav { padding: 0 1.5rem; }
+  }
+</style>
+<style>
+  /* PASSWORD GATE */
+  #password-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--espresso);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  #password-gate::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 20% 50%, rgba(196,98,45,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 70% at 80% 30%, rgba(107,124,69,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .gate-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+  }
+
+  .gate-flag { display: flex; gap: 5px; align-items: center; justify-content: center; margin-bottom: 2rem; }
+
+  .gate-flag span { width: 12px; height: 34px; border-radius: 2px; }
+  .gate-flag span:nth-child(1) { background: #8A9E5A; }
+  .gate-flag span:nth-child(2) { background: #F5F0E8; }
+  .gate-flag span:nth-child(3) { background: #C4622D; }
+
+  .gate-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+    line-height: 1;
+  }
+
+  .gate-title em { font-style: italic; color: var(--terra-light); }
+
+  .gate-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    margin-bottom: 2.5rem;
+  }
+
+  .gate-input-wrap { position: relative; margin-bottom: 1rem; }
+
+  #gate-input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 3px;
+    padding: 1rem 1.25rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    text-align: center;
+  }
+
+  #gate-input::placeholder { color: var(--stone-light); letter-spacing: 0.15em; font-size: 0.75rem; }
+  #gate-input:focus { border-color: var(--terra-light); background: rgba(255,255,255,0.09); }
+  #gate-input.error { border-color: var(--terra); animation: shake 0.4s ease; }
+
+  #gate-btn {
+    width: 100%;
+    background: var(--terra);
+    border: none;
+    border-radius: 3px;
+    padding: 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cream);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-bottom: 1rem;
+  }
+
+  #gate-btn:hover { background: var(--terra-light); }
+  #gate-btn:active { transform: scale(0.98); }
+
+  #gate-error {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--terra-light);
+    text-transform: uppercase;
+    min-height: 1.2rem;
+    transition: opacity 0.2s;
+  }
+
+  .gate-hint { margin-top: 2rem; font-size: 0.75rem; color: rgba(168,158,148,0.4); font-style: italic; }
+
+  #main-content { display: none; }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+  }
+
+  @keyframes gateFadeOut {
+    to { opacity: 0; pointer-events: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="password-gate">
+  <div class="gate-inner">
+    <div class="gate-flag">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="gate-title">Il Tuo<br><em>Sistema</em></div>
+    <div class="gate-subtitle">Personal Italian Immersion System</div>
+    <div class="gate-input-wrap">
+      <input
+        type="password"
+        id="gate-input"
+        placeholder="Enter password"
+        autocomplete="current-password"
+        onkeydown="if(event.key==='Enter') checkPassword()"
+      />
+    </div>
+    <button id="gate-btn" onclick="checkPassword()">Entra — Enter</button>
+    <div id="gate-error"></div>
+    <div class="gate-hint">La lingua è la strada per il cuore.</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripes"></div>
+  <nav class="hero-nav">
+    <div class="flag"><span></span><span></span><span></span></div>
+    <div class="nav-label">Il Tuo Sistema Personale — Your Personal Italian System</div>
+  </nav>
+  <div class="hero-body">
+    <div class="hero-eyebrow">Artificial Immersion · Personalized for Your Heritage & Life</div>
+    <h1 class="hero-title">Parla<br><em>Italiano.</em></h1>
+    <p class="hero-subtitle">Finally. A system designed for exactly who you are.</p>
+    <p class="hero-desc">
+      You have the heritage, the motivation, the time, and more Italian in you than you think.
+      What you've been missing is <strong>a clear, consistent system</strong> that fits your actual life —
+      not a course, not an app, not a textbook. A living method you can run on autopilot every single day.
+    </p>
+  </div>
+  <div class="hero-footer">
+    <div class="hero-stat"><div class="hero-stat-num">55</div><div class="hero-stat-label">min/day total</div></div>
+    <div class="stat-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">daily time slots</div></div>
+    <div class="stat-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num">90</div><div class="hero-stat-label">days to conversational</div></div>
+    <div class="stat-divider"></div>
+    <div class="hero-stat"><div class="hero-stat-num">∞</div><div class="hero-stat-label">ancestral connection</div></div>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="scrollTo(document.getElementById('diagnosis'))">Diagnosis</button>
+  <button class="tab-btn" onclick="scrollTo(document.getElementById('pillars'))">The 4 Pillars</button>
+  <button class="tab-btn" onclick="scrollTo(document.getElementById('schedule'))">Daily Schedule</button>
+  <button class="tab-btn" onclick="scrollTo(document.getElementById('phases'))">3 Phases</button>
+  <button class="tab-btn" onclick="scrollTo(document.getElementById('immersion'))">Immersion Content</button>
+  <button class="tab-btn" onclick="scrollTo(document.getElementById('tools'))">Tools Verdict</button>
+  <button class="tab-btn" onclick="scrollTo(document.getElementById('rules'))">The Rules</button>
+</nav>
+
+<!-- DIAGNOSIS -->
+<section id="diagnosis" class="diagnosis">
+  <div class="diagnosis-inner">
+    <div class="section-eyebrow" style="color:var(--terra-light)">Why You've Stalled — And Why That Ends Now</div>
+    <h2 class="section-title" style="color:var(--cream)">The <em>Real</em> Diagnosis</h2>
+    <p class="section-intro" style="color:var(--stone-light)">
+      You've had Italian in you for years — vocabulary, instincts, maybe even fragments from family.
+      The problem was never ability. It was system failure and life collision. Let's name it, then fix it.
+    </p>
+    <div class="diagnosis-grid">
+      <div class="diagnosis-card bad">
+        <div class="diagnosis-card-label">❌ What Went Wrong</div>
+        <div class="diagnosis-card-title">No System = No Progress</div>
+        <div class="diagnosis-card-text">Without a daily protocol, every session was a fresh decision: <em>What do I do today?</em> That friction kills momentum. You'd open Duolingo, do five minutes, feel vaguely guilty, and stop. Inconsistency isn't laziness — it's the absence of a habit architecture.</div>
+      </div>
+      <div class="diagnosis-card bad">
+        <div class="diagnosis-card-label">❌ What Went Wrong</div>
+        <div class="diagnosis-card-title">Studying, Not Acquiring</div>
+        <div class="diagnosis-card-text">Apps and textbooks teach you <em>about</em> Italian. You need to <em>absorb</em> Italian. The brain acquires language through massive comprehensible input — hearing and seeing it used in context — not through flashcard grinding or grammar tables.</div>
+      </div>
+      <div class="diagnosis-card good">
+        <div class="diagnosis-card-label">✓ What You Have Going For You</div>
+        <div class="diagnosis-card-title">You're Not a Beginner</div>
+        <div class="diagnosis-card-text">"More than basics" means your passive comprehension is ahead of your speaking. This is perfect. The immersion model works fastest for people exactly like you — your brain already recognizes patterns. We're unlocking output, not building from zero.</div>
+      </div>
+      <div class="diagnosis-card good">
+        <div class="diagnosis-card-label">✓ What You Have Going For You</div>
+        <div class="diagnosis-card-title">Heritage is a Superpower</div>
+        <div class="diagnosis-card-text">Italian heritage means you likely have exposure baked into your past — sounds, cadences, words from family. Your emotional connection to the language is your single greatest motivator. We'll make your ancestors the "why" that keeps you going when life gets busy.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars" class="section" style="max-width:100%; padding: 5rem 3rem; background: var(--cream);">
+  <div style="max-width:1100px; margin: 0 auto;">
+    <div class="section-eyebrow">The Foundation</div>
+    <h2 class="section-title">Your 4 <em>Pillars</em></h2>
+    <p class="section-intro">Everything in your system rests on these four practices. Miss one and the system wobbles. Run all four and progress becomes nearly inevitable.</p>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">1</div>
+        <div class="pillar-icon">👂</div>
+        <div class="pillar-title">Massive Listening Input</div>
+        <div class="pillar-italian">Ascoltare — To Listen</div>
+        <div class="pillar-text">Your brain needs to swim in Italian audio every single day. Not studying it — just exposing yourself to it. Podcasts, TV, films, music, YouTube. You chose podcasts and TV: Italian versions of both are your primary immersion fuel. Minimum 30 min of passive exposure daily, even in the background.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">2</div>
+        <div class="pillar-icon">🗣️</div>
+        <div class="pillar-title">Daily Spoken Output</div>
+        <div class="pillar-italian">Parlare — To Speak</div>
+        <div class="pillar-text">You're fine practicing alone but nervous with real people. Perfect — we build solo speaking confidence first through shadowing, self-talk, and AI conversation. The goal is to get your mouth moving in Italian every day. Speaking to yourself in Italian is one of the most underrated language tools in existence.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">3</div>
+        <div class="pillar-icon">🔁</div>
+        <div class="pillar-title">Spaced Repetition Vocabulary</div>
+        <div class="pillar-italian">Ricordare — To Remember</div>
+        <div class="pillar-text">You learn through repetition until it's automatic. Anki flashcards with Italian audio — 15 min daily, non-negotiable. You won't memorize word lists. You'll review real sentences from content you've already heard. Vocabulary sticks because it has context and emotion attached to it.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">4</div>
+        <div class="pillar-icon">🎬</div>
+        <div class="pillar-title">Comprehensible Input Content</div>
+        <div class="pillar-italian">Capire — To Understand</div>
+        <div class="pillar-text">Watching/listening first then trying is exactly the right instinct. Content that's 70–80% understandable is the sweet spot for acquisition — hard enough to stretch you, easy enough that your brain stays engaged. Italian cooking shows, dubbed Netflix shows you love, Italian sports commentary on things you follow.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY SCHEDULE -->
+<section id="schedule" class="schedule-wrap">
+  <div class="schedule-inner">
+    <div class="section-eyebrow" style="color:var(--terra-light)">The Non-Negotiable Daily Protocol</div>
+    <h2 class="section-title" style="color:var(--cream)">Your <em>Exact</em> Day</h2>
+    <p class="section-intro" style="color:var(--stone-light)">
+      You have three natural windows: morning, lunch, and wind-down. We fill each one with a specific activity so you never ask <em>"what do I do today?"</em> ever again. Total: ~55 minutes of structured learning + passive background exposure on top. Every minute is accounted for.
+    </p>
+    <div class="schedule-grid">
+      <div class="time-block morning">
+        <div class="time-block-header">
+          <div class="time-dot"></div>
+          <div class="time-label">Morning · Shower & Coffee</div>
+          <div class="time-duration">25m</div>
+        </div>
+        <div class="time-activity">
+          <div class="activity-name">☕ Pimsleur Audio Lesson</div>
+          <div class="activity-desc">One full Pimsleur lesson (exactly 25 minutes) plays during your morning routine — shower, coffee, getting ready. Hands-free, eyes-free. This is the perfect morning slot — your brain is fresh and Pimsleur's call-and-response builds your speaking reflex automatically. One lesson per day, every day. Never double up.</div>
+          <span class="activity-tag tag-listen">Listen + Speak</span>
+        </div>
+        <div class="time-activity" style="margin-top:1rem">
+          <div class="activity-name">🎵 Italian Music Playlist</div>
+          <div class="activity-desc">Italian music plays in the background while you get ready. Not studying it — just bathing in the sounds, rhythm, and melody of the language. Build a "Morning Italiano" playlist on Spotify.</div>
+          <span class="activity-tag tag-listen">Passive Immersion</span>
+        </div>
+      </div>
+
+      <div class="time-block lunch">
+        <div class="time-block-header">
+          <div class="time-dot"></div>
+          <div class="time-label">Lunch Break</div>
+          <div class="time-duration">20–25m</div>
+        </div>
+        <div class="time-activity">
+          <div class="activity-name">🃏 Anki — 15 Minutes</div>
+          <div class="activity-desc">Your daily Anki review on your phone. No exceptions, no skipping. Use the Italian Frequency Dictionary deck or a custom deck built from content you've watched. Each card has audio. You're not memorizing — you're recognizing.</div>
+          <span class="activity-tag tag-read">Vocabulary SRS</span>
+        </div>
+        <div class="time-activity" style="margin-top:1rem">
+          <div class="activity-name">🗣️ 5-Minute Italian Self-Talk</div>
+          <div class="activity-desc">Talk to yourself in Italian for 5 minutes. Describe your lunch. Narrate what you're doing. It feels ridiculous at first and then becomes addictive. This is your "speaking gym" — low stakes, high reps, massive output gains.</div>
+          <span class="activity-tag tag-speak">Output Practice</span>
+        </div>
+      </div>
+
+      <div class="time-block evening">
+        <div class="time-block-header">
+          <div class="time-dot"></div>
+          <div class="time-label">Wind-Down · Evening</div>
+          <div class="time-duration">30m</div>
+        </div>
+        <div class="time-activity">
+          <div class="activity-name">📺 Lingopie — Italian TV (20 min)</div>
+          <div class="activity-desc">Lingopie is purpose-built for language learners — real Italian TV with interactive subtitles where you can tap any word to save it as a flashcard. This is your primary evening immersion tool. Use the subtitle strategy below based on your current phase.</div>
+          <span class="activity-tag tag-watch">Active Immersion</span>
+        </div>
+        <div style="margin-top:1.25rem; background: rgba(255,255,255,0.04); border-left: 2px solid var(--gold); padding: 1rem 1.25rem; border-radius:0 3px 3px 0;">
+          <div style="font-family:'DM Mono',monospace; font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold-light); margin-bottom:0.75rem;">🎬 Subtitle Strategy — Follow This Progression</div>
+          <div style="font-size:0.82rem; color:var(--stone-light); line-height:1.7;">
+            <div style="margin-bottom:0.5rem;"><span style="color:var(--cream); font-weight:500;">Phase 1 (Month 1):</span> Italian audio + <span style="color:var(--terra-light)">English subtitles.</span> Focus on hearing the sounds and rhythm. Don't stress about catching every word. Let Lingopie's clickable subs save new vocab automatically.</div>
+            <div style="margin-bottom:0.5rem;"><span style="color:var(--cream); font-weight:500;">Phase 2 (Months 2–3):</span> Italian audio + <span style="color:var(--terra-light)">Italian subtitles.</span> This is the sweet spot. Your eyes read Italian while your ears hear it spoken — double reinforcement. Tap words you don't know. Review saved words in Lingopie's built-in flashcard deck.</div>
+            <div style="margin-bottom:0.5rem;"><span style="color:var(--cream); font-weight:500;">Phase 3 (Month 4+):</span> Italian audio + <span style="color:var(--terra-light)">no subtitles</span> for the first pass. Then rewatch with Italian subs to catch what you missed. This trains your ear to work without a safety net.</div>
+            <div style="color:var(--stone-light); font-style:italic; font-size:0.78rem; margin-top:0.5rem;">⚠️ Never use English subtitles past Month 1 — your brain will read instead of listen, defeating the entire purpose.</div>
+          </div>
+        </div>
+        <div class="time-activity" style="margin-top:1.25rem;">
+          <div class="activity-name">📺 What to Watch on Lingopie</div>
+          <div class="activity-desc">Start with short-episode content: Italian cooking shows, comedy sketches, reality TV. <strong>La Mia Cucina</strong>, <strong>Commesse</strong>, or any food/lifestyle show. Familiar topics (food, daily life) massively accelerate comprehension — you already know the context.</div>
+          <span class="activity-tag tag-watch">Lingopie Content</span>
+        </div>
+        <div class="time-activity" style="margin-top:1.25rem">
+          <div class="activity-name">📖 Assimil — 1 Lesson (5 min)</div>
+          <div class="activity-desc">One Assimil lesson after Lingopie: audio + text together. Your brain is already warm from Italian TV — Assimil now locks in the grammar patterns you just heard in the wild. Never push more than one lesson. This is a slow burn, not a sprint. Perfect final act before sleep.</div>
+          <span class="activity-tag tag-read">Structure + Input</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEEK VIEW -->
+    <div style="margin-top:4rem">
+      <div class="section-eyebrow" style="color:var(--terra-light)">Weekly Rhythm</div>
+      <div class="week-grid">
+        <div class="week-day"><div class="week-day-name">Mon</div><div class="week-day-focus">Standard Protocol</div><div class="week-day-detail">Full daily routine. Pimsleur lesson forward.</div></div>
+        <div class="week-day"><div class="week-day-name">Tue</div><div class="week-day-focus">Standard Protocol</div><div class="week-day-detail">Add 5 min shadow a podcast line you loved.</div></div>
+        <div class="week-day"><div class="week-day-name">Wed</div><div class="week-day-focus">Standard Protocol</div><div class="week-day-detail">Try one new Italian recipe — narrate it.</div></div>
+        <div class="week-day highlight"><div class="week-
