@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parlo - Flashcards</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav class="app-nav">
+        <a href="index.html" class="nav-logo">Parlo</a>
+        <div class="nav-modes">
+            <a href="flashcards.html" class="nav-mode active">Flashcards</a>
+            <a href="practice.html" class="nav-mode">Practice</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <p class="subtitle">Learn Italian, one phrase at a time</p>
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="italian-to-english">Italian → English</button>
+                <button class="mode-btn" data-mode="english-to-italian">English → Italian</button>
+                <button class="mode-btn" data-mode="mixed">Mixed</button>
+            </div>
+        </header>
+
+        <!-- SRS Stats Bar -->
+        <div class="srs-stats">
+            <div class="srs-stat">
+                <span class="srs-stat__num" id="statDue">0</span>
+                <span class="srs-stat__label">Due</span>
+            </div>
+            <div class="srs-stat">
+                <span class="srs-stat__num srs-stat__num--new" id="statNew">0</span>
+                <span class="srs-stat__label">New</span>
+            </div>
+            <div class="srs-stat">
+                <span class="srs-stat__num srs-stat__num--mastered" id="statMastered">0</span>
+                <span class="srs-stat__label">Mastered</span>
+            </div>
+            <button id="resetBtn" class="control-btn control-btn--danger srs-reset">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                    <path d="M21 3v5h-5"/>
+                </svg>
+                Reset
+            </button>
+        </div>
+
+        <!-- Flashcard -->
+        <div class="flashcard-container">
+            <div id="flashcard" class="flashcard">
+                <div class="card-face card-front">
+                    <button class="speaker-btn" id="speakerFront" title="Listen to pronunciation">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                        </svg>
+                    </button>
+                    <a class="forvo-btn" id="forvoBtnFront" target="_blank" rel="noopener" title="Open in Google Translate">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </a>
+                    <div class="card-content">
+                        <div class="language-label" id="frontLabel">Italiano</div>
+                        <div id="frontText" class="phrase-text"></div>
+                        <div id="frontPronunciation" class="pronunciation"></div>
+                        <div class="flip-hint" id="frontHint">Click to reveal answer</div>
+                    </div>
+                </div>
+                <div class="card-face card-back">
+                    <button class="speaker-btn" id="speakerBack" title="Listen to pronunciation">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                        </svg>
+                    </button>
+                    <a class="forvo-btn" id="forvoBtnBack" target="_blank" rel="noopener" title="Open in Google Translate">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </a>
+                    <div class="card-content">
+                        <div class="language-label" id="backLabel">English</div>
+                        <div id="backText" class="phrase-text"></div>
+                        <div id="backPronunciation" class="pronunciation"></div>
+                        <div class="flip-hint">How well did you know it?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pre-flip: Show Answer -->
+        <div id="srsReveal" class="srs-reveal">
+            <button id="showAnswerBtn" class="btn-show-answer">Show Answer</button>
+        </div>
+
+        <!-- Post-flip: Rating buttons -->
+        <div id="srsRating" class="srs-rating" style="display:none">
+            <button class="btn-srs btn-again" data-rating="0">
+                <span class="btn-srs__label">Again</span>
+                <span class="btn-srs__interval" id="intervalAgain">&lt;1d</span>
+            </button>
+            <button class="btn-srs btn-hard" data-rating="1">
+                <span class="btn-srs__label">Hard</span>
+                <span class="btn-srs__interval" id="intervalHard">—</span>
+            </button>
+            <button class="btn-srs btn-good" data-rating="2">
+                <span class="btn-srs__label">Good</span>
+                <span class="btn-srs__interval" id="intervalGood">—</span>
+            </button>
+            <button class="btn-srs btn-easy" data-rating="3">
+                <span class="btn-srs__label">Easy</span>
+                <span class="btn-srs__interval" id="intervalEasy">—</span>
+            </button>
+        </div>
+
+        <!-- Session complete -->
+        <div id="sessionComplete" class="session-complete" style="display:none">
+            <div class="session-complete__icon">🎉</div>
+            <h2 class="session-complete__title">Session done!</h2>
+            <p class="session-complete__sub" id="sessionSummary">You reviewed 0 cards today.</p>
+            <p class="session-complete__next" id="sessionNext"></p>
+            <button id="continueBtn" class="btn-action btn-action--primary" style="margin-top:1.5rem">Study More</button>
+        </div>
+
+        <footer>
+            <a href="index.html" class="back-link">← Back to Parlo</a>
+        </footer>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="flashcards.js"></script>
+</body>
+</html>

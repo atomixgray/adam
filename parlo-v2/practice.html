@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parlo - Practice</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav class="app-nav">
+        <a href="index.html" class="nav-logo">Parlo</a>
+        <div class="nav-modes">
+            <a href="flashcards.html" class="nav-mode">Flashcards</a>
+            <a href="practice.html" class="nav-mode active">Practice</a>
+        </div>
+    </nav>
+
+    <div class="container container--wide">
+        <header>
+            <p class="subtitle">Build better Italian sentences</p>
+        </header>
+
+        <div class="controls">
+            <button class="control-btn" id="newPromptBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+                </svg>
+                New Prompt
+            </button>
+            <div class="level-selector">
+                <select id="levelSelect" class="level-dropdown">
+                    <option value="A0">A0 - Beginner</option>
+                    <option value="A1">A1 - Elementary</option>
+                    <option value="A2">A2 - Pre-Intermediate</option>
+                    <option value="B1">B1 - Intermediate</option>
+                    <option value="B2">B2 - Upper Intermediate</option>
+                </select>
+            </div>
+            <div class="tense-selector">
+                <select id="tenseSelect" class="level-dropdown">
+                    <option value="present">Present</option>
+                    <option value="imperfetto">Imperfetto</option>
+                    <option value="passato">Passato Prossimo</option>
+                    <option value="mixed">Mixed Tenses</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="ai-section">
+            <label class="toggle-label">
+                <input type="checkbox" id="aiToggle" class="toggle-checkbox">
+                <span class="toggle-slider"></span>
+                <span class="toggle-text">AI Prompts & Feedback</span>
+            </label>
+            <span class="ai-status" id="aiStatus">Setup your API key to enable AI features</span>
+            <button class="btn-small" id="apiKeyBtn" style="display:none">API Key</button>
+        </div>
+
+        <div class="builder">
+            <div class="prompt-card">
+                <div class="prompt-label">Your Challenge</div>
+                <div id="promptText" class="prompt-text">Loading...</div>
+                <div class="prompt-meta">
+                    <span id="tenseLabel" class="badge badge--tense">Present</span>
+                    <span id="levelLabel" class="badge badge--level">A0</span>
+                </div>
+            </div>
+
+            <div class="answer-area">
+                <textarea
+                    id="answerInput"
+                    placeholder="Scrivi la tua frase in italiano... (Write your sentence in Italian...)"
+                    rows="4"
+                ></textarea>
+
+                <div class="answer-helpers">
+                    <button class="btn-helper" id="exampleBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        Generate Example (AI)
+                    </button>
+                    <div id="hintBox" class="hint-box" style="display:none">
+                        <span>💡</span>
+                        <span id="hintText"></span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-action btn-action--primary" id="doneBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        <span id="doneBtnText">Done</span>
+                    </button>
+                    <button class="btn-action btn-action--secondary" id="skipBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 4l10 8-10 8V4z"/>
+                            <line x1="19" y1="5" x2="19" y2="19"/>
+                        </svg>
+                        Skip
+                    </button>
+                </div>
+
+                <div class="tip-box">
+                    <div class="tip-label">💡 Tip</div>
+                    <div id="tipText" class="tip-text">Focus on using the correct tense and word order. Don't worry about being perfect!</div>
+                </div>
+
+                <div id="feedbackBox" class="feedback-box" style="display:none">
+                    <div class="feedback-header">
+                        <span class="feedback-title">✨ AI Feedback</span>
+                        <button class="btn-close" id="closeFeedback">×</button>
+                    </div>
+                    <div id="feedbackContent" class="feedback-content"></div>
+                    <div class="feedback-actions">
+                        <button class="btn-challenge" id="challengeBtn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                            Question This
+                        </button>
+                        <button class="btn-next" id="tryAnotherBtn">Try Another Prompt</button>
+                    </div>
+                </div>
+
+                <div id="challengeBox" class="challenge-box" style="display:none">
+                    <div class="challenge-title">💬 Challenge the Feedback</div>
+                    <textarea
+                        id="challengeInput"
+                        placeholder="Tell the AI why you think your answer was correct..."
+                        rows="3"
+                    ></textarea>
+                    <div class="challenge-actions">
+                        <button class="btn-action btn-action--primary" id="sendChallengeBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                            Send Challenge
+                        </button>
+                        <button class="btn-action btn-action--secondary" id="cancelChallengeBtn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-section">
+                <button class="btn-toggle" id="vocabToggle">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    Show Example Vocabulary
+                </button>
+                <div id="vocabContent" class="vocab-content" style="display:none">
+                    <div id="vocabGrid" class="vocab-grid"></div>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="statCompleted">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statStreak">0</div>
+                    <div class="stat-label">Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statWords">0</div>
+                    <div class="stat-label">Words</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <a href="index.html" class="back-link">← Back to Parlo</a>
+        </footer>
+    </div>
+
+    <!-- API Key Modal -->
+    <div id="apiModal" class="modal" style="display:none">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <h3>Setup AI Feedback</h3>
+            <p class="modal-desc">
+                To get AI feedback on your sentences, you'll need a Groq API key.
+                Your key is stored locally in your browser and never sent anywhere except Groq.
+            </p>
+            <p class="modal-desc">
+                <strong>Cost:</strong> 100% free — Groq offers free API access.
+            </p>
+            <div class="modal-link">
+                <a href="https://console.groq.com" target="_blank" rel="noopener">Get a free API key at console.groq.com →</a>
+            </div>
+            <input type="password" id="apiKeyInput" placeholder="gsk_..." autocomplete="off"/>
+            <div class="modal-actions">
+                <button id="saveApiKeyBtn" class="btn-modal btn-modal--primary">Save Key</button>
+                <button id="cancelApiKeyBtn" class="btn-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="practice.js"></script>
+</body>
+</html>
