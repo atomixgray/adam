@@ -19,9 +19,10 @@ const INTEL_FEEDS = {
     uscert: 'https://www.cisa.gov/uscert/ncas/current-activity.xml',
     talos: 'https://feeds.feedburner.com/feedburner/Talos',
     mitre: 'https://medium.com/feed/mitre-attack',
-    // NEW SOURCES ADDED
     crowdstrike: 'https://www.crowdstrike.com/blog/feed/',
     unit42: 'https://unit42.paloaltonetworks.com/feed/',
+    msrc: 'https://api.msrc.microsoft.com/update-guide/rss',
+    projectzero: 'https://googleprojectzero.blogspot.com/feeds/posts/default',
     // RAW EXPLOIT DATA
     exploitdb: 'https://www.exploit-db.com/rss.xml',
     akamai: 'https://feeds.feedburner.com/akamai/blog'

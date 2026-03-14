@@ -232,10 +232,23 @@ body {
     align-items: center;
 }
 
-.source-label {
+.source-group-label {
     color: #f093fb;
-    font-size: 0.85rem;
-    margin-right: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0 0.25rem;
+    opacity: 0.7;
+    align-self: center;
+    white-space: nowrap;
+}
+
+.source-group-label::before {
+    content: '— ';
+}
+
+.source-group-label::after {
+    content: ' —';
 }
 
 .source-btn {
