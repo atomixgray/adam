@@ -31,6 +31,17 @@ const INTEL_FEEDS = {
 // IMPORTANT: Replace this with your actual Cloudflare Worker URL after deployment
 const PROXY_URL = 'https://rss-proxy.adamlarkin.workers.dev';
 
+// MSRC publishes every CVE individually with no severity in the feed.
+// Filter to only high-signal vulnerability classes based on title keywords.
+const MSRC_ALLOW_KEYWORDS = [
+    'remote code execution',
+    'elevation of privilege',
+    'privilege escalation',
+    'security feature bypass',
+    'actively exploited',
+    'zero-day', '0-day'
+];
+
 // Critical security keywords to highlight
 const CRITICAL_KEYWORDS = [
     'zero-day', 'zero day', '0day', '0-day',
@@ -666,6 +677,13 @@ async function fetchFeed(source, feedUrl) {
                              item.querySelector('updated')?.textContent ||
                              new Date().toISOString();
                 
+                // Filter MSRC to high-signal vuln types only (feed has no severity field)
+                if (source === 'msrc') {
+                    const titleLower = title.toLowerCase();
+                    const passes = MSRC_ALLOW_KEYWORDS.some(kw => titleLower.includes(kw));
+                    if (!passes) return;
+                }
+
                 allArticles.push({
                     title: title.trim(),
                     link: link.trim(),
