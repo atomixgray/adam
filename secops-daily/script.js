@@ -709,6 +709,16 @@ function stripHtml(html) {
     return text.length > 200 ? text.substring(0, 200) + '...' : text;
 }
 
+// Escape HTML special characters to prevent XSS when interpolating into innerHTML
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 // Highlight critical keywords and CVEs
 function highlightKeywords(text) {
     let highlighted = text;
@@ -883,11 +893,8 @@ function displayArticles() {
     }
     
     if (filtered.length === 0) {
-        newsFeed.innerHTML = `
-            <div class="loading-indicator">
-                <div class="loading-text">No articles found${searchTerm ? ` matching "${searchTerm}"` : ' for this source'}.</div>
-            </div>
-        `;
+        const msg = searchTerm ? `No articles found matching "${escapeHtml(searchTerm)}".` : 'No articles found for this source.';
+        newsFeed.innerHTML = `<div class="loading-indicator"><div class="loading-text">${msg}</div></div>`;
         return;
     }
     
@@ -901,50 +908,52 @@ function displayArticles() {
         const bookmarkIcon = bookmarked ? '★' : '☆';
         const bookmarkClass = bookmarked ? 'bookmarked' : '';
         
+        const safeLink = escapeHtml(article.link);
+        const safeSource = escapeHtml(article.source);
         return `
-        <div class="news-item" data-link="${article.link}">
+        <div class="news-item" data-link="${safeLink}">
             <div class="news-meta">
                 <span class="news-time">[${formatTime(article.date)}]</span>
-                <span class="news-source">[${article.source}]</span>
+                <span class="news-source">[${safeSource}]</span>
                 ${typeBadge}
-                <button class="bookmark-btn ${bookmarkClass}" onclick="handleBookmarkClick('${article.link.replace(/'/g, "\\'")}', event)" title="${bookmarked ? 'Remove bookmark' : 'Bookmark this article'}">
+                <button class="bookmark-btn ${bookmarkClass}" data-link="${safeLink}" title="${bookmarked ? 'Remove bookmark' : 'Bookmark this article'}">
                     ${bookmarkIcon}
                 </button>
             </div>
             <div class="news-title">
-                <a href="${article.link}" target="_blank" rel="noopener">${highlightKeywords(article.title)}</a>
+                <a href="${safeLink}" target="_blank" rel="noopener">${highlightKeywords(escapeHtml(article.title))}</a>
             </div>
-            ${article.description ? `<div class="news-description">${highlightKeywords(article.description)}</div>` : ''}
+            ${article.description ? `<div class="news-description">${highlightKeywords(escapeHtml(article.description))}</div>` : ''}
         </div>
     `}).join('');
     
-    // Make bookmark buttons functional (need to attach after HTML is inserted)
-    window.handleBookmarkClick = function(link, event) {
-        event.stopPropagation();
-        
-        // Try to find in allArticles first
-        let article = allArticles.find(a => a.link === link);
-        
-        // If not found (e.g., we're in bookmarks view with filtered articles)
-        // reconstruct from the filtered list or bookmarks
-        if (!article && currentView === 'bookmarks') {
-            const bookmarks = getBookmarks();
-            const bookmark = bookmarks.find(b => b.link === link);
-            if (bookmark) {
-                article = {
-                    title: bookmark.title,
-                    link: bookmark.link,
-                    source: bookmark.source,
-                    date: new Date(bookmark.date),
-                    description: ''
-                };
+    // Attach bookmark button listeners via delegation (avoids inline onclick + link encoding issues)
+    newsFeed.querySelectorAll('.bookmark-btn').forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const link = btn.dataset.link;
+
+            let article = allArticles.find(a => a.link === link);
+
+            if (!article && currentView === 'bookmarks') {
+                const bookmarks = getBookmarks();
+                const bookmark = bookmarks.find(b => b.link === link);
+                if (bookmark) {
+                    article = {
+                        title: bookmark.title,
+                        link: bookmark.link,
+                        source: bookmark.source,
+                        date: new Date(bookmark.date),
+                        description: ''
+                    };
+                }
             }
-        }
-        
-        if (article) {
-            toggleBookmark(article);
-        }
-    };
+
+            if (article) {
+                toggleBookmark(article);
+            }
+        });
+    });
 }
 
 // Format timestamp
