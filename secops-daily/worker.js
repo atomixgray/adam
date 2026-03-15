@@ -1,6 +1,21 @@
 // This worker fetches RSS feeds and adds CORS headers with geo-fencing and referer checks
 // Also handles AI-powered threat analysis using Google Gemini
 
+// Maximum POST body size for /analyze-trends (1MB)
+const MAX_BODY_SIZE = 1 * 1024 * 1024;
+
+// Private/loopback IP ranges to block (SSRF protection)
+const PRIVATE_IP_PATTERNS = [
+  /^127\./,
+  /^10\./,
+  /^172\.(1[6-9]|2\d|3[01])\./,
+  /^192\.168\./,
+  /^169\.254\./,   // link-local / AWS metadata
+  /^::1$/,         // IPv6 loopback
+  /^fc00:/i,       // IPv6 unique local
+  /^fe80:/i,       // IPv6 link-local
+];
+
 // Allowed RSS feed domains (whitelist for security)
 const ALLOWED_DOMAINS = [
   'krebsonsecurity.com',
@@ -41,8 +56,12 @@ export default {
       return handleAIAnalysis(request, env, ctx);
     }
 
-    // TEST ENDPOINT: Check if Gemini API is accessible
+    // TEST ENDPOINT: Check if Groq API is accessible (secret token required)
     if (url.pathname === '/test-gemini' && request.method === 'GET') {
+      const token = url.searchParams.get('token');
+      if (!env.TEST_SECRET || token !== env.TEST_SECRET) {
+        return new Response('Not found', { status: 404 });
+      }
       return testGeminiAPI(env);
     }
 
@@ -107,15 +126,32 @@ export default {
       });
     }
 
-    // Security Check 3: Domain whitelist (more flexible matching)
+    // Security Check 3: HTTPS only — block http://, file://, ftp://, etc.
+    if (parsedFeedUrl.protocol !== 'https:') {
+      console.log(`Blocked non-HTTPS URL: ${feedUrl}`);
+      return new Response('Only HTTPS URLs are allowed', {
+        status: 400,
+        headers: { 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+
+    // Security Check 4: Block private/loopback IPs (SSRF protection)
     const hostname = parsedFeedUrl.hostname.toLowerCase();
+    if (hostname === 'localhost' || PRIVATE_IP_PATTERNS.some(p => p.test(hostname))) {
+      console.log(`Blocked private/loopback host: ${hostname}`);
+      return new Response('Domain not allowed', {
+        status: 403,
+        headers: { 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+
+    // Security Check 5: Domain whitelist (more flexible matching)
     const isAllowed = ALLOWED_DOMAINS.some(domain =>
       hostname === domain || hostname.endsWith('.' + domain)
     );
 
     if (!isAllowed) {
       console.log(`Blocked request for unauthorized domain: ${hostname}`);
-      console.log(`Allowed domains: ${ALLOWED_DOMAINS.join(', ')}`);
       return new Response('Domain not allowed', {
         status: 403,
         headers: { 'Access-Control-Allow-Origin': '*' }
@@ -229,10 +265,20 @@ async function handleAIAnalysis(request, env, ctx) {
     return cachedResponse;
   }
 
+  // Block oversized request bodies
+  const contentLength = parseInt(request.headers.get('Content-Length') || '0');
+  if (contentLength > MAX_BODY_SIZE) {
+    return new Response(JSON.stringify({ error: 'Request body too large' }), {
+      status: 413,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
+  }
+
   try {
     console.log('=== AI Analysis Starting ===');
-    console.log('API Key exists:', !!env.GEMINI_API_KEY);
-    console.log('API Key length:', env.GEMINI_API_KEY?.length);
 
     // Parse request body
     const { articles } = await request.json();
@@ -381,8 +427,7 @@ Only return the JSON array, no other text.`;
   } catch (error) {
     console.error('AI analysis error:', error.message, error.stack);
     return new Response(JSON.stringify({
-      error: 'Failed to generate AI analysis',
-      details: error.message
+      error: 'Failed to generate AI analysis'
     }), {
       status: 500,
       headers: {

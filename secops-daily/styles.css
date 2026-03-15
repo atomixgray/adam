@@ -313,6 +313,10 @@ body {
 }
 
 /* Trends Panel */
+.trends-panel.hidden {
+    display: none;
+}
+
 .trends-panel {
     margin-bottom: 1.5rem;
     padding: 1rem;

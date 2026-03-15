@@ -153,7 +153,7 @@ function toggleTrendsPanel() {
     const toggleBtn = document.getElementById('toggleTrendsBtn');
     
     if (showTrends) {
-        trendsPanel.style.display = 'block';
+        trendsPanel.classList.remove('hidden');
         toggleBtn.textContent = 'HIDE TRENDS';
         
         // Show AI analysis option at the top with close button
@@ -176,7 +176,7 @@ function closeTrendsPanel() {
     const trendsPanel = document.getElementById('trendsPanel');
     const toggleBtn = document.getElementById('toggleTrendsBtn');
     
-    trendsPanel.style.display = 'none';
+    trendsPanel.classList.add('hidden');
     toggleBtn.textContent = 'TRENDING';
 }
 
