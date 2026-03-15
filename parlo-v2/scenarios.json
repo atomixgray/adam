@@ -1,0 +1,90 @@
+[
+  {
+    "id": "meeting",
+    "title": "Ci Conosciamo",
+    "description": "Meet someone new at a language class",
+    "level": "A1",
+    "context": "You've just arrived at an Italian language class. Another student comes over to say hello.",
+    "opening": "Ciao! Sono Marco. È la tua prima lezione qui?",
+    "ai_role": "Italian student named Marco",
+    "user_role": "new student",
+    "vocab": ["piacere", "sono di", "studio italiano da", "quanti anni hai", "benvenuto"]
+  },
+  {
+    "id": "caffe",
+    "title": "Al Bar",
+    "description": "Order a coffee and a snack",
+    "level": "A1",
+    "context": "You're at an Italian coffee bar. The barista greets you from behind the counter.",
+    "opening": "Buongiorno! Cosa prende?",
+    "ai_role": "barista",
+    "user_role": "customer",
+    "vocab": ["un caffè", "un cornetto", "per favore", "quanto costa", "grazie mille"]
+  },
+  {
+    "id": "mercato",
+    "title": "Al Mercato",
+    "description": "Buy fruit and vegetables from a market stall",
+    "level": "A2",
+    "context": "You're at an outdoor market in Italy. A friendly vendor calls you over.",
+    "opening": "Buongiorno! Cosa le serve oggi? Abbiamo frutta fresca appena arrivata!",
+    "ai_role": "market vendor",
+    "user_role": "customer",
+    "vocab": ["vorrei", "mezzo chilo di", "quanto vengono", "sono freschi", "basta così"]
+  },
+  {
+    "id": "direzioni",
+    "title": "Mi Sono Perso",
+    "description": "Ask a local for directions",
+    "level": "A2",
+    "context": "You're a tourist in Florence and you're lost looking for the Uffizi Gallery. A local stops to help.",
+    "opening": "Scusi, posso aiutarla? Ha un'aria un po' persa!",
+    "ai_role": "helpful local in Florence",
+    "user_role": "tourist",
+    "vocab": ["dov'è", "sempre dritto", "girare a destra/sinistra", "è lontano", "ci vuole quanto"]
+  },
+  {
+    "id": "ristorante",
+    "title": "Una Serata al Ristorante",
+    "description": "Order dinner and chat with the waiter",
+    "level": "B1",
+    "context": "You're at a trattoria in Rome for dinner. The waiter comes to take your order.",
+    "opening": "Buonasera! Ha prenotato? Posso portarle il menu.",
+    "ai_role": "waiter at a Roman trattoria",
+    "user_role": "customer dining alone",
+    "vocab": ["cosa consiglia", "sono allergico a", "al dente", "il conto per favore", "è incluso il servizio"]
+  },
+  {
+    "id": "collega",
+    "title": "Chiacchiere con un Collega",
+    "description": "Monday morning small talk with an Italian colleague",
+    "level": "B1",
+    "context": "It's Monday morning at the office. Your Italian colleague Giulia stops by your desk.",
+    "opening": "Ciao! Com'è andata la settimana scorsa? Hai fatto qualcosa di bello nel weekend?",
+    "ai_role": "Italian colleague named Giulia",
+    "user_role": "colleague",
+    "vocab": ["ho passato il weekend a", "mi sono rilassato", "a proposito", "ho sentito dire che", "tra l'altro"]
+  },
+  {
+    "id": "colloquio",
+    "title": "Il Colloquio",
+    "description": "A job interview at an Italian company",
+    "level": "B2",
+    "context": "You're interviewing for a position at an Italian tech company in Milan. The hiring manager begins.",
+    "opening": "Buongiorno, si accomodi. Ho letto il suo CV con interesse. Può presentarsi brevemente?",
+    "ai_role": "hiring manager at an Italian tech company",
+    "user_role": "job candidate",
+    "vocab": ["ho lavorato per", "le mie competenze includono", "mi piacerebbe contribuire", "il mio punto di forza è", "sono disposto a"]
+  },
+  {
+    "id": "dibattito",
+    "title": "Una Discussione tra Amici",
+    "description": "Debate a local issue with an opinionated friend",
+    "level": "B2",
+    "context": "You're having coffee with your Italian friend Luca. He brings up a controversial local topic.",
+    "opening": "Allora, hai sentito? Vogliono costruire un nuovo centro commerciale dove c'era il parco. Una cosa assurda, no?",
+    "ai_role": "opinionated Italian friend named Luca who loves debating",
+    "user_role": "friend with your own views",
+    "vocab": ["sono d'accordo / non sono d'accordo", "da un lato... dall'altro", "bisogna considerare che", "in realtà", "mi sembra che"]
+  }
+]

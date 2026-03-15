@@ -16,6 +16,7 @@
         <div class="nav-modes">
             <a href="flashcards.html" class="nav-mode">Flashcards</a>
             <a href="practice.html" class="nav-mode active">Practice</a>
+            <a href="conversation.html" class="nav-mode">Conversation</a>
         </div>
     </nav>
 
@@ -57,7 +58,7 @@
                 <span class="toggle-text">AI Prompts & Feedback</span>
             </label>
             <span class="ai-status" id="aiStatus">Setup your API key to enable AI features</span>
-            <button class="btn-small" id="apiKeyBtn" style="display:none">API Key</button>
+            <button class="btn-small hidden" id="apiKeyBtn">API Key</button>
         </div>
 
         <div class="builder">
@@ -84,7 +85,7 @@
                         </svg>
                         Generate Example (AI)
                     </button>
-                    <div id="hintBox" class="hint-box" style="display:none">
+                    <div id="hintBox" class="hint-box hidden">
                         <span>💡</span>
                         <span id="hintText"></span>
                     </div>
@@ -111,7 +112,7 @@
                     <div id="tipText" class="tip-text">Focus on using the correct tense and word order. Don't worry about being perfect!</div>
                 </div>
 
-                <div id="feedbackBox" class="feedback-box" style="display:none">
+                <div id="feedbackBox" class="feedback-box hidden">
                     <div class="feedback-header">
                         <span class="feedback-title">✨ AI Feedback</span>
                         <button class="btn-close" id="closeFeedback">×</button>
@@ -130,7 +131,7 @@
                     </div>
                 </div>
 
-                <div id="challengeBox" class="challenge-box" style="display:none">
+                <div id="challengeBox" class="challenge-box hidden">
                     <div class="challenge-title">💬 Challenge the Feedback</div>
                     <textarea
                         id="challengeInput"
@@ -159,7 +160,7 @@
                     </svg>
                     Show Example Vocabulary
                 </button>
-                <div id="vocabContent" class="vocab-content" style="display:none">
+                <div id="vocabContent" class="vocab-content hidden">
                     <div id="vocabGrid" class="vocab-grid"></div>
                 </div>
             </div>
@@ -186,7 +187,7 @@
     </div>
 
     <!-- API Key Modal -->
-    <div id="apiModal" class="modal" style="display:none">
+    <div id="apiModal" class="modal hidden">
         <div class="modal-overlay" id="modalOverlay"></div>
         <div class="modal-content">
             <h3>Setup AI Feedback</h3>

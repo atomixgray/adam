@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://api.groq.com; object-src 'none'; base-uri 'self'; form-action 'none';">
+    <title>Parlo - Conversation</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <nav class="app-nav">
+        <a href="index.html" class="nav-logo">Parlo</a>
+        <div class="nav-modes">
+            <a href="flashcards.html" class="nav-mode">Flashcards</a>
+            <a href="practice.html" class="nav-mode">Practice</a>
+            <a href="conversation.html" class="nav-mode active">Conversation</a>
+        </div>
+    </nav>
+
+    <!-- Scenario Picker -->
+    <div class="container container--wide" id="scenarioView">
+        <header>
+            <p class="subtitle">Speak Italian on the spot</p>
+        </header>
+
+        <div id="noKeyBanner" class="no-key-banner hidden">
+            No Groq API key set — <a href="practice.html">add it in Practice mode</a> first.
+        </div>
+
+        <div id="scenarioGrid"></div>
+    </div>
+
+    <!-- Conversation View -->
+    <div class="container container--wide hidden" id="conversationView">
+        <div class="conv-header">
+            <div class="conv-header__left">
+                <div class="conv-title" id="convTitle"></div>
+                <div class="conv-context" id="convContext"></div>
+            </div>
+            <div class="conv-header__right">
+                <span class="turn-counter" id="turnCounter">1 / 6</span>
+                <button class="btn-end" id="endBtn">End</button>
+            </div>
+        </div>
+
+        <div id="chatWindow" class="chat-window"></div>
+
+        <div class="mic-area">
+            <div class="timer-bar-wrap">
+                <div id="timerBar" class="timer-bar"></div>
+            </div>
+            <div class="mic-row">
+                <button id="micBtn" class="mic-btn" disabled>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </button>
+                <div class="mic-right">
+                    <div id="transcriptPreview" class="transcript-preview"></div>
+                    <div id="micStatus" class="mic-status">Waiting…</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End View -->
+    <div class="container hidden" id="endView">
+        <div class="session-complete">
+            <div class="session-complete__icon">🇮🇹</div>
+            <h2 class="session-complete__title">Conversazione completata!</h2>
+            <p class="session-complete__sub">Here's what came up this session:</p>
+            <div id="summaryContent" class="summary-content"></div>
+            <button id="newConvBtn" class="btn-action btn-action--primary session-complete__action">New Conversation</button>
+            <a href="index.html" class="back-link">← Back to Parlo</a>
+        </div>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="conversation.js"></script>
+</body>
+</html>

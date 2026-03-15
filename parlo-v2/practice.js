@@ -443,7 +443,7 @@ exampleBtn.addEventListener('click', () => {
 });
 
 vocabToggle.addEventListener('click', () => {
-    const isVisible = vocabContent.style.display !== 'none';
+    const isVisible = vocabContent.style.display === 'block';
     vocabContent.style.display = isVisible ? 'none' : 'block';
     vocabToggle.textContent = isVisible ? '❓ Show Example Vocabulary' : '❓ Hide Example Vocabulary';
 });

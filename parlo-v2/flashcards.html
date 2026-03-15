@@ -16,6 +16,7 @@
         <div class="nav-modes">
             <a href="flashcards.html" class="nav-mode active">Flashcards</a>
             <a href="practice.html" class="nav-mode">Practice</a>
+            <a href="conversation.html" class="nav-mode">Conversation</a>
         </div>
     </nav>
 
@@ -108,7 +109,7 @@
         </div>
 
         <!-- Post-flip: Rating buttons -->
-        <div id="srsRating" class="srs-rating" style="display:none">
+        <div id="srsRating" class="srs-rating hidden">
             <button class="btn-srs btn-again" data-rating="0">
                 <span class="btn-srs__label">Again</span>
                 <span class="btn-srs__interval" id="intervalAgain">&lt;1d</span>
@@ -128,12 +129,12 @@
         </div>
 
         <!-- Session complete -->
-        <div id="sessionComplete" class="session-complete" style="display:none">
+        <div id="sessionComplete" class="session-complete hidden">
             <div class="session-complete__icon">🎉</div>
             <h2 class="session-complete__title">Session done!</h2>
             <p class="session-complete__sub" id="sessionSummary">You reviewed 0 cards today.</p>
             <p class="session-complete__next" id="sessionNext"></p>
-            <button id="continueBtn" class="btn-action btn-action--primary" style="margin-top:1.5rem">Study More</button>
+            <button id="continueBtn" class="btn-action btn-action--primary session-complete__action">Study More</button>
         </div>
 
         <footer>
