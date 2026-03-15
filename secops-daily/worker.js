@@ -69,7 +69,7 @@ export default {
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'https://adamlarkin.com',
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type',
         },
@@ -82,7 +82,7 @@ export default {
       console.log(`Blocked request from country: ${country}`);
       return new Response('Access denied: Geographic restriction', {
         status: 403,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
       });
     }
 
@@ -96,7 +96,7 @@ export default {
       console.log(`Blocked request with invalid referer: ${referer}`);
       return new Response('Access denied: Invalid referer', {
         status: 403,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
       });
     }
 
@@ -111,7 +111,7 @@ export default {
     if (!feedUrl) {
       return new Response('Missing "url" parameter', {
         status: 400,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
       });
     }
 
@@ -122,7 +122,7 @@ export default {
     } catch (e) {
       return new Response('Invalid URL', {
         status: 400,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
       });
     }
 
@@ -131,7 +131,7 @@ export default {
       console.log(`Blocked non-HTTPS URL: ${feedUrl}`);
       return new Response('Only HTTPS URLs are allowed', {
         status: 400,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
       });
     }
 
@@ -141,7 +141,7 @@ export default {
       console.log(`Blocked private/loopback host: ${hostname}`);
       return new Response('Domain not allowed', {
         status: 403,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
       });
     }
 
@@ -154,7 +154,7 @@ export default {
       console.log(`Blocked request for unauthorized domain: ${hostname}`);
       return new Response('Domain not allowed', {
         status: 403,
-        headers: { 'Access-Control-Allow-Origin': '*' }
+        headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
       });
     }
 
@@ -201,7 +201,7 @@ export default {
         console.error(`Error fetching feed: ${error.message}`);
         return new Response(`Error fetching feed: ${error.message}`, {
           status: 500,
-          headers: { 'Access-Control-Allow-Origin': '*' }
+          headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
         });
       }
     } else {
@@ -225,7 +225,7 @@ async function handleAIAnalysis(request, env, ctx) {
   if (country && !ALLOWED_COUNTRIES.includes(country)) {
     return new Response('Access denied: Geographic restriction', {
       status: 403,
-      headers: { 'Access-Control-Allow-Origin': '*' }
+      headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
     });
   }
 
@@ -237,7 +237,7 @@ async function handleAIAnalysis(request, env, ctx) {
   if (!isAllowedReferer && referer !== '') {
     return new Response('Access denied: Invalid referer', {
       status: 403,
-      headers: { 'Access-Control-Allow-Origin': '*' }
+      headers: { 'Access-Control-Allow-Origin': 'https://adamlarkin.com' }
     });
   }
 
@@ -250,7 +250,7 @@ async function handleAIAnalysis(request, env, ctx) {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://adamlarkin.com'
       }
     });
   }
@@ -272,7 +272,7 @@ async function handleAIAnalysis(request, env, ctx) {
       status: 413,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://adamlarkin.com'
       }
     });
   }
@@ -291,7 +291,7 @@ async function handleAIAnalysis(request, env, ctx) {
         status: 400,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': 'https://adamlarkin.com'
         }
       });
     }
@@ -311,7 +311,7 @@ async function handleAIAnalysis(request, env, ctx) {
       }), {
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': 'https://adamlarkin.com'
         }
       });
     }
@@ -413,7 +413,7 @@ Only return the JSON array, no other text.`;
     const response = new Response(JSON.stringify(responseData), {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://adamlarkin.com',
         'Cache-Control': 'public, max-age=3600' // Cache for 1 hour
       }
     });
@@ -432,7 +432,7 @@ Only return the JSON array, no other text.`;
       status: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://adamlarkin.com'
       }
     });
   }
@@ -447,7 +447,7 @@ async function testGeminiAPI(env) {
     }), {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://adamlarkin.com'
       }
     });
   }
@@ -483,7 +483,7 @@ async function testGeminiAPI(env) {
     }), {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://adamlarkin.com'
       }
     });
 
@@ -495,7 +495,7 @@ async function testGeminiAPI(env) {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': 'https://adamlarkin.com'
       }
     });
   }

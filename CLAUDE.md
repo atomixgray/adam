@@ -75,12 +75,6 @@ User-supplied Groq API keys are stored in `localStorage` (`parlo_v2_groq_key`). 
 
 JS and CSS files use `?v=X` version strings in `<script>` and `<link>` tags. When modifying a JS or CSS file in `secops-daily/` or `parlo-v2/`, bump the version string in the corresponding HTML file.
 
-## Security Backlog
-
-These are known issues to fix — flag them to Adam at the start of any session touching the relevant files:
-
-- **`secops-daily/script.js` — AI response content unescaped**: `displayAIAnalysis()` injects `threat.threat` and `threat.description` directly into `innerHTML` without escaping (lines ~336-337). A prompt injection via a malicious RSS title could reach these fields. Fix: wrap both in `escapeHtml()`.
-- **`secops-daily/worker.js` — CORS wildcard**: `Access-Control-Allow-Origin: '*'` on all responses means any origin can call the proxy. The referer check is the real guard, but requests with no Referer header pass unconditionally. Fix: change the ACAO header to `https://adamlarkin.com` (keep `*` only on the OPTIONS preflight if needed for dev).
 
 ## External Dependencies
 

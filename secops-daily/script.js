@@ -333,8 +333,8 @@ function displayAIAnalysis(data) {
                     <span class="ai-threat-number">#${index + 1}</span>
                     <span class="ai-threat-severity">${severityIcon} ${(threat.severity || 'medium').toUpperCase()}</span>
                 </div>
-                <div class="ai-threat-name">${threat.threat}</div>
-                <div class="ai-threat-description">${threat.description}</div>
+                <div class="ai-threat-name">${escapeHtml(threat.threat)}</div>
+                <div class="ai-threat-description">${escapeHtml(threat.description)}</div>
             </div>
         `;
     });
