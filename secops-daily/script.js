@@ -159,10 +159,10 @@ function toggleTrendsPanel() {
         // Show AI analysis option at the top with close button
         const trendsContent = document.getElementById('trendsContent');
         trendsContent.innerHTML = `
-            <button class="trends-close-btn" onclick="closeTrendsPanel()" title="Close">×</button>
+            <button class="trends-close-btn" data-action="close-trends" title="Close">×</button>
             <div class="trends-choice">
-                <button onclick="generateAIAnalysis()" class="ai-analysis-btn">🤖 AI THREAT ANALYSIS</button>
-                <button onclick="updateTrendsPanel()" class="keyword-analysis-btn">📊 KEYWORD TRENDS</button>
+                <button data-action="ai-analysis" class="ai-analysis-btn">🤖 AI THREAT ANALYSIS</button>
+                <button data-action="keyword-trends" class="keyword-analysis-btn">📊 KEYWORD TRENDS</button>
             </div>
         `;
     } else {
@@ -180,8 +180,6 @@ function closeTrendsPanel() {
     toggleBtn.textContent = 'TRENDING';
 }
 
-// Make closeTrendsPanel global for onclick
-window.closeTrendsPanel = closeTrendsPanel;
 
 function updateTrendsPanel() {
     const trends = analyzeTrends();
@@ -207,7 +205,7 @@ function updateTrendsPanel() {
             html += `
                 <div class="trend-item">
                     <div class="trend-label">
-                        <span class="trend-cve-filter" onclick="filterByCVE('${cve}')" title="Click to filter articles">${cve}</span>
+                        <span class="trend-cve-filter" data-action="filter-cve" data-value="${escapeHtml(cve)}" title="Click to filter articles">${cve}</span>
                         <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" class="trend-nvd-link" title="View on NVD">[NVD]</a>
                         <span class="trend-count">${count}</span>
                     </div>
@@ -228,7 +226,7 @@ function updateTrendsPanel() {
             html += `
                 <div class="trend-item">
                     <div class="trend-label">
-                        <span class="trend-keyword-filter" onclick="filterByKeyword('${keyword}')" title="Click to filter articles">${keyword.toUpperCase()}</span>
+                        <span class="trend-keyword-filter" data-action="filter-keyword" data-value="${escapeHtml(keyword)}" title="Click to filter articles">${keyword.toUpperCase()}</span>
                         <span class="trend-count">${count}</span>
                     </div>
                     <div class="trend-bar-container">
@@ -299,7 +297,7 @@ async function generateAIAnalysis() {
             <div class="ai-error">
                 ⚠️ AI analysis unavailable. ${error.message}
                 <br><br>
-                <button onclick="updateTrendsPanel()" class="ai-fallback-btn">Show keyword trends instead</button>
+                <button data-action="keyword-trends" class="ai-fallback-btn">Show keyword trends instead</button>
             </div>
         `;
     } finally {
@@ -344,7 +342,7 @@ function displayAIAnalysis(data) {
     html += '</div>';
     
     html += '<div class="ai-footer">';
-    html += '<button onclick="updateTrendsPanel()" class="ai-switch-btn">Switch to keyword trends</button>';
+    html += '<button data-action="keyword-trends" class="ai-switch-btn">Switch to keyword trends</button>';
     html += '</div>';
     
     trendsContent.innerHTML = html;
@@ -503,6 +501,21 @@ document.addEventListener('DOMContentLoaded', () => {
     refreshBtn.addEventListener('click', () => {
         console.log('Refresh button clicked');
         loadFeeds();
+    });
+
+    document.getElementById('toggleTrendsBtn').addEventListener('click', toggleTrendsPanel);
+
+    // Delegated listener for all trends panel actions (replaces inline onclick attributes)
+    document.getElementById('trendsPanel').addEventListener('click', (e) => {
+        const el = e.target.closest('[data-action]');
+        if (!el) return;
+        const action = el.dataset.action;
+        const value = el.dataset.value;
+        if (action === 'close-trends') closeTrendsPanel();
+        else if (action === 'ai-analysis') generateAIAnalysis();
+        else if (action === 'keyword-trends') updateTrendsPanel();
+        else if (action === 'filter-cve') filterByCVE(value);
+        else if (action === 'filter-keyword') filterByKeyword(value);
     });
     
     sourceButtons.forEach(btn => {
