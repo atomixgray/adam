@@ -138,8 +138,8 @@ function onHelpClick() {
     const textarea = $('inputTextarea');
     const question = textarea.value.trim();
     if (!question || state !== 'idle') {
-        // Prompt them to type their question
-        textarea.placeholder = 'Type your question in English…';
+        textarea.placeholder = 'Type your question in English, then tap Ask for help…';
+        setMicStatus('Type your question above first');
         textarea.focus();
         return;
     }
@@ -368,6 +368,7 @@ async function submitHelp(question) {
     }
 
     setState('idle');
+    setMicStatus('Ready — continue the conversation in Italian above');
     $('inputTextarea').focus();
 }
 
