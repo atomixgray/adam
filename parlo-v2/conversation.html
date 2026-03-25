@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self' https://api.groq.com; object-src 'none'; base-uri 'self'; form-action 'none';">
     <title>Parlo - Conversation</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -48,11 +48,12 @@
 
         <div id="chatWindow" class="chat-window"></div>
 
-        <div class="mic-area">
+        <div class="input-area">
             <div class="timer-bar-wrap">
                 <div id="timerBar" class="timer-bar"></div>
             </div>
-            <div class="mic-row">
+            <textarea id="inputTextarea" class="conv-textarea" rows="2" placeholder="Scrivi in italiano…" disabled></textarea>
+            <div class="input-row">
                 <button id="micBtn" class="mic-btn" disabled>
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
@@ -61,11 +62,23 @@
                         <line x1="8" y1="23" x2="16" y2="23"/>
                     </svg>
                 </button>
-                <div class="mic-right">
-                    <div id="transcriptPreview" class="transcript-preview"></div>
-                    <div id="micStatus" class="mic-status">Waiting…</div>
-                </div>
+                <span id="micStatus" class="mic-status">Waiting…</span>
+                <button id="sendBtn" class="btn-send" disabled>
+                    Send
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                </button>
             </div>
+            <button id="helpBtn" class="btn-help" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                Ask for help in English
+            </button>
         </div>
     </div>
 
@@ -82,6 +95,6 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="conversation.js"></script>
+    <script src="conversation.js?v=6"></script>
 </body>
 </html>

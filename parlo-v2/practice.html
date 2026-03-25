@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://api.groq.com; object-src 'none'; base-uri 'self'; form-action 'none';">
     <title>Parlo - Practice</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -25,158 +25,98 @@
             <p class="subtitle">Build better Italian sentences</p>
         </header>
 
-        <div class="controls">
-            <button class="control-btn" id="newPromptBtn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
-                </svg>
-                New Prompt
-            </button>
-            <div class="level-selector">
-                <select id="levelSelect" class="level-dropdown">
-                    <option value="A0">A0 - Beginner</option>
-                    <option value="A1">A1 - Elementary</option>
-                    <option value="A2">A2 - Pre-Intermediate</option>
-                    <option value="B1">B1 - Intermediate</option>
-                    <option value="B2">B2 - Upper Intermediate</option>
-                </select>
-            </div>
-            <div class="tense-selector">
-                <select id="tenseSelect" class="level-dropdown">
-                    <option value="present">Present</option>
-                    <option value="imperfetto">Imperfetto</option>
-                    <option value="passato">Passato Prossimo</option>
-                    <option value="mixed">Mixed Tenses</option>
-                </select>
-            </div>
-        </div>
-
         <div class="ai-section">
             <label class="toggle-label">
                 <input type="checkbox" id="aiToggle" class="toggle-checkbox">
                 <span class="toggle-slider"></span>
-                <span class="toggle-text">AI Prompts & Feedback</span>
+                <span class="toggle-text">AI Feedback</span>
             </label>
             <span class="ai-status" id="aiStatus">Setup your API key to enable AI features</span>
             <button class="btn-small hidden" id="apiKeyBtn">API Key</button>
         </div>
 
         <div class="builder">
-            <div class="prompt-card">
-                <div class="prompt-label">Your Challenge</div>
-                <div id="promptText" class="prompt-text">Loading...</div>
-                <div class="prompt-meta">
-                    <span id="tenseLabel" class="badge badge--tense">Present</span>
-                    <span id="levelLabel" class="badge badge--level">A0</span>
+
+            <!-- Scenario + round progress -->
+            <div class="session-header">
+                <div class="practice-scenario">
+                    <div class="scenario-label">Scenario</div>
+                    <div id="scenarioContext" class="scenario-context">Loading...</div>
+                </div>
+                <div class="round-dots" id="roundDots">
+                    <span class="round-dot" data-round="0"></span>
+                    <span class="round-dot" data-round="1"></span>
+                    <span class="round-dot" data-round="2"></span>
+                    <span class="round-dot" data-round="3"></span>
                 </div>
             </div>
 
-            <div class="answer-area">
-                <textarea
-                    id="answerInput"
-                    placeholder="Scrivi la tua frase in italiano... (Write your sentence in Italian...)"
-                    rows="4"
-                ></textarea>
+            <!-- Growing paragraph -->
+            <div class="paragraph-display">
+                <div class="paragraph-label" id="paragraphLabel">Starter sentence</div>
+                <div id="builtText" class="built-text"></div>
+            </div>
 
-                <div class="answer-helpers">
-                    <button class="btn-helper" id="exampleBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                        Generate Example (AI)
-                    </button>
-                    <div id="hintBox" class="hint-box hidden">
-                        <span>💡</span>
-                        <span id="hintText"></span>
-                    </div>
+            <!-- Target structure -->
+            <div class="target-card">
+                <div class="target-header">
+                    <div class="target-label">Your target</div>
+                    <div class="target-connector" id="targetConnector"></div>
                 </div>
+                <div class="target-hint" id="targetHint"></div>
+            </div>
 
+            <!-- Input -->
+            <div class="answer-area">
+                <textarea id="answerInput" rows="3"></textarea>
                 <div class="action-buttons">
-                    <button class="btn-action btn-action--primary" id="doneBtn">
+                    <button class="btn-action btn-action--primary" id="checkBtn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="20 6 9 17 4 12"/>
                         </svg>
-                        <span id="doneBtnText">Done</span>
+                        <span id="checkBtnText">Check</span>
                     </button>
-                    <button class="btn-action btn-action--secondary" id="skipBtn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 4l10 8-10 8V4z"/>
-                            <line x1="19" y1="5" x2="19" y2="19"/>
+                    <button class="btn-action btn-action--secondary" id="newScenarioBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
                         </svg>
-                        Skip
+                        New Scenario
                     </button>
                 </div>
-
-                <div class="tip-box">
-                    <div class="tip-label">💡 Tip</div>
-                    <div id="tipText" class="tip-text">Focus on using the correct tense and word order. Don't worry about being perfect!</div>
-                </div>
-
-                <div id="feedbackBox" class="feedback-box hidden">
-                    <div class="feedback-header">
-                        <span class="feedback-title">✨ AI Feedback</span>
-                        <button class="btn-close" id="closeFeedback">×</button>
-                    </div>
-                    <div id="feedbackContent" class="feedback-content"></div>
-                    <div class="feedback-actions">
-                        <button class="btn-challenge" id="challengeBtn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                                <line x1="12" y1="17" x2="12.01" y2="17"/>
-                            </svg>
-                            Question This
-                        </button>
-                        <button class="btn-next" id="tryAnotherBtn">Try Another Prompt</button>
-                    </div>
-                </div>
-
-                <div id="challengeBox" class="challenge-box hidden">
-                    <div class="challenge-title">💬 Challenge the Feedback</div>
-                    <textarea
-                        id="challengeInput"
-                        placeholder="Tell the AI why you think your answer was correct..."
-                        rows="3"
-                    ></textarea>
-                    <div class="challenge-actions">
-                        <button class="btn-action btn-action--primary" id="sendChallengeBtn">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="22" y1="2" x2="11" y2="13"/>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                            </svg>
-                            Send Challenge
-                        </button>
-                        <button class="btn-action btn-action--secondary" id="cancelChallengeBtn">Cancel</button>
-                    </div>
-                </div>
             </div>
 
-            <div class="vocab-section">
-                <button class="btn-toggle" id="vocabToggle">
+            <!-- Feedback -->
+            <div id="feedbackBox" class="feedback-box hidden">
+                <div id="feedbackContent" class="feedback-content"></div>
+                <button class="btn-next" id="continueBtn">Continue →</button>
+            </div>
+
+            <!-- Completion -->
+            <div id="completionBox" class="completion-box hidden">
+                <div class="completion-title">Ottimo lavoro!</div>
+                <div class="completion-subtitle">You built this paragraph</div>
+                <div id="completionText" class="completion-text"></div>
+                <button class="btn-action btn-action--primary" id="newScenarioBtn2">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
                     </svg>
-                    Show Example Vocabulary
+                    Try Another Scenario
                 </button>
-                <div id="vocabContent" class="vocab-content hidden">
-                    <div id="vocabGrid" class="vocab-grid"></div>
-                </div>
             </div>
 
+            <!-- Stats -->
             <div class="stats">
                 <div class="stat-card">
                     <div class="stat-number" id="statCompleted">0</div>
-                    <div class="stat-label">Completed</div>
+                    <div class="stat-label">Additions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statSessions">0</div>
+                    <div class="stat-label">Sessions</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number" id="statStreak">0</div>
                     <div class="stat-label">Streak</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="statWords">0</div>
-                    <div class="stat-label">Words</div>
                 </div>
             </div>
         </div>
@@ -210,6 +150,6 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="practice.js"></script>
+    <script src="practice.js?v=5"></script>
 </body>
 </html>

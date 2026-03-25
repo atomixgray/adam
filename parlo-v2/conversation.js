@@ -14,7 +14,6 @@ let timerInterval = null;
 let recognition = null;
 let recognitionSupported = false;
 let state = 'idle'; // 'idle' | 'listening' | 'processing'
-let currentTranscript = '';
 
 const getApiKey = () => localStorage.getItem('parlo_v2_groq_key') || '';
 const $ = id => document.getElementById(id);
@@ -40,6 +39,14 @@ async function init() {
 
     $('endBtn').addEventListener('click', endConversation);
     $('micBtn').addEventListener('click', onMicClick);
+    $('sendBtn').addEventListener('click', onSendClick);
+    $('helpBtn').addEventListener('click', onHelpClick);
+    $('inputTextarea').addEventListener('keydown', e => {
+        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+            e.preventDefault();
+            onSendClick();
+        }
+    });
     $('newConvBtn').addEventListener('click', () => {
         showView('scenarioView');
         renderPicker();
@@ -61,20 +68,14 @@ function setupSpeech() {
     recognition.onresult = e => {
         let transcript = '';
         for (const result of e.results) transcript += result[0].transcript;
-        currentTranscript = transcript;
-        $('transcriptPreview').textContent = currentTranscript;
-        setMicIcon(currentTranscript.trim() ? 'send' : 'mic');
+        $('inputTextarea').value = transcript;
     };
 
     recognition.onend = () => {
         if (state !== 'listening') return;
-        if (currentTranscript.trim()) {
-            setState('processing');
-            submitTurn(currentTranscript.trim());
-        } else {
-            setState('idle');
-            setMicStatus('Nothing heard — tap to try again');
-        }
+        setState('idle');
+        const text = $('inputTextarea').value.trim();
+        setMicStatus(text ? 'Tap Send or edit above' : 'Nothing heard — tap to try again');
     };
 
     recognition.onerror = e => {
@@ -85,39 +86,73 @@ function setupSpeech() {
 }
 
 function onMicClick() {
-    if (state === 'idle') {
-        currentTranscript = '';
-        $('transcriptPreview').textContent = '';
+    if (state === 'listening') {
+        recognition.stop(); // triggers onend
+    } else if (state === 'idle') {
+        $('inputTextarea').value = '';
         try {
             recognition.start();
             setState('listening');
         } catch (e) {
             console.error('Recognition start error:', e);
         }
-    } else if (state === 'listening') {
-        recognition.stop(); // triggers onend → submitTurn
     }
+}
+
+function onSendClick() {
+    const text = $('inputTextarea').value.trim();
+    if (!text || state !== 'idle') return;
+    $('inputTextarea').value = '';
+    setState('processing');
+    submitTurn(text);
+}
+
+function onHelpClick() {
+    const textarea = $('inputTextarea');
+    const question = textarea.value.trim();
+    if (!question || state !== 'idle') {
+        // Prompt them to type their question
+        textarea.placeholder = 'Type your question in English…';
+        textarea.focus();
+        return;
+    }
+    textarea.value = '';
+    textarea.placeholder = 'Scrivi in italiano…';
+    submitHelp(question);
 }
 
 function setState(newState) {
     state = newState;
-    const btn = $('micBtn');
+    const micBtn = $('micBtn');
+    const sendBtn = $('sendBtn');
+    const helpBtn = $('helpBtn');
+    const textarea = $('inputTextarea');
+
     if (newState === 'idle') {
-        btn.disabled = false;
-        btn.classList.remove('mic-btn--active', 'mic-btn--processing');
+        micBtn.disabled = !recognitionSupported;
+        micBtn.classList.remove('mic-btn--active', 'mic-btn--processing');
         setMicIcon('mic');
-        setMicStatus('Tap to speak');
+        sendBtn.disabled = false;
+        helpBtn.disabled = false;
+        textarea.disabled = false;
+        setMicStatus(recognitionSupported ? 'Tap mic to speak, or type above' : 'Type your response above');
     } else if (newState === 'listening') {
-        btn.disabled = false;
-        btn.classList.add('mic-btn--active');
-        btn.classList.remove('mic-btn--processing');
+        micBtn.disabled = false;
+        micBtn.classList.add('mic-btn--active');
+        micBtn.classList.remove('mic-btn--processing');
+        setMicIcon('stop');
+        sendBtn.disabled = true;
+        helpBtn.disabled = true;
+        textarea.disabled = false;
+        setMicStatus('Listening… tap to stop');
+    } else { // processing
+        micBtn.disabled = true;
+        micBtn.classList.remove('mic-btn--active');
+        micBtn.classList.add('mic-btn--processing');
         setMicIcon('mic');
-        setMicStatus('Listening…');
-    } else {
-        btn.disabled = true;
-        btn.classList.remove('mic-btn--active');
-        btn.classList.add('mic-btn--processing');
-        setMicIcon('mic');
+        sendBtn.disabled = true;
+        helpBtn.disabled = true;
+        textarea.disabled = true;
         setMicStatus('…');
     }
 }
@@ -129,12 +164,12 @@ const MIC_ICON = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" st
     <line x1="8" y1="23" x2="16" y2="23"/>
 </svg>`;
 
-const SEND_ICON = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <polyline points="20 6 9 17 4 12"/>
+const STOP_ICON = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="2"/>
 </svg>`;
 
 function setMicIcon(type) {
-    $('micBtn').innerHTML = type === 'send' ? SEND_ICON : MIC_ICON;
+    $('micBtn').innerHTML = type === 'stop' ? STOP_ICON : MIC_ICON;
 }
 
 function setMicStatus(text) { $('micStatus').textContent = text; }
@@ -201,7 +236,7 @@ function startConversation(scenario) {
     conversationHistory = [];
     feedbackLog = [];
     turnCount = 0;
-    currentTranscript = '';
+    $('inputTextarea').value = '';
 
     $('convTitle').textContent = scenario.title;
     $('convContext').textContent = scenario.context;
@@ -213,12 +248,7 @@ function startConversation(scenario) {
     conversationHistory.push({ role: 'assistant', content: scenario.opening });
 
     showView('conversationView');
-
-    if (!recognitionSupported) {
-        showFallback();
-    } else {
-        startUserTurn();
-    }
+    startUserTurn();
 }
 
 function buildSystemPrompt(scenario) {
@@ -236,8 +266,7 @@ Respond with valid JSON only — no markdown, no extra text:
 
 function startUserTurn() {
     updateTurnCounter();
-    $('transcriptPreview').textContent = '';
-    currentTranscript = '';
+    $('inputTextarea').value = '';
     startTimer();
     setState('idle');
 }
@@ -246,7 +275,6 @@ function startUserTurn() {
 
 async function submitTurn(text) {
     stopTimer();
-    $('transcriptPreview').textContent = '';
     turnCount++;
     updateTurnCounter();
 
@@ -255,7 +283,7 @@ async function submitTurn(text) {
     conversationHistory.push({ role: 'user', content: text });
 
     try {
-        const { reply, feedback, corrected } = await callGroq();
+        const { reply, feedback, corrected } = await callGroqConversation();
         thinkingEl.remove();
         addFeedback(userEl, feedback, corrected);
         feedbackLog.push({ text, feedback, corrected });
@@ -274,7 +302,44 @@ async function submitTurn(text) {
     }
 }
 
-async function callGroq() {
+async function submitHelp(question) {
+    setState('processing');
+    const helpEl = appendHelpBubble(question, null);
+
+    try {
+        const res = await fetch(GROQ_API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + getApiKey()
+            },
+            body: JSON.stringify({
+                model: GROQ_MODEL,
+                messages: [
+                    {
+                        role: 'system',
+                        content: `You are helping an Italian language learner who is mid-conversation practice. The scenario is: "${currentScenario.context}". The character they're speaking with is: ${currentScenario.ai_role}. Answer their question in plain English, briefly (1-3 sentences). If it's a grammar or vocabulary question, give a clear example. End with a short nudge to keep going.`
+                    },
+                    { role: 'user', content: question }
+                ],
+                temperature: 0.7,
+                max_tokens: 200
+            })
+        });
+
+        if (!res.ok) throw new Error('API error ' + res.status);
+        const data = await res.json();
+        const answer = data.choices?.[0]?.message?.content?.trim() || 'Sorry, I could not answer that.';
+        updateHelpBubble(helpEl, answer);
+    } catch (e) {
+        updateHelpBubble(helpEl, 'Could not get help — check your connection.');
+    }
+
+    setState('idle');
+    $('inputTextarea').focus();
+}
+
+async function callGroqConversation() {
     const res = await fetch(GROQ_API_URL, {
         method: 'POST',
         headers: {
@@ -344,6 +409,37 @@ function addFeedback(msgEl, feedback, corrected) {
     scrollChat();
 }
 
+function appendHelpBubble(question, answer) {
+    const el = document.createElement('div');
+    el.className = 'chat-help';
+
+    const label = document.createElement('div');
+    label.className = 'chat-help__label';
+    label.textContent = 'Help';
+
+    const q = document.createElement('div');
+    q.className = 'chat-help__q';
+    q.textContent = '\u201c' + question + '\u201d';
+
+    const a = document.createElement('div');
+    a.className = 'chat-help__a';
+    a.textContent = answer || '\u2026';
+    a.dataset.helpAnswer = 'true';
+
+    el.appendChild(label);
+    el.appendChild(q);
+    el.appendChild(a);
+    $('chatWindow').appendChild(el);
+    scrollChat();
+    return el;
+}
+
+function updateHelpBubble(el, answer) {
+    const a = el.querySelector('[data-help-answer]');
+    if (a) a.textContent = answer;
+    scrollChat();
+}
+
 function appendThinking() {
     const el = document.createElement('div');
     el.className = 'chat-msg chat-msg--ai';
@@ -395,7 +491,7 @@ function stopTimer() {
 function endConversation() {
     stopTimer();
     if (state === 'listening') {
-        state = 'idle'; // prevent onend submitting
+        state = 'idle';
         try { recognition.stop(); } catch (e) {}
     }
 
@@ -436,35 +532,6 @@ function endConversation() {
     }
 
     showView('endView');
-}
-
-// ── Fallback (no SpeechRecognition) ──────────────────────────────────
-
-function showFallback() {
-    const micArea = document.querySelector('.mic-area');
-
-    const note = document.createElement('div');
-    note.className = 'fallback-note';
-    note.textContent = 'Speech recognition is not available in this browser. Type your Italian instead:';
-
-    const textarea = document.createElement('textarea');
-    textarea.className = 'fallback-textarea';
-    textarea.rows = 3;
-    textarea.placeholder = 'Scrivi in italiano…';
-
-    const btn = document.createElement('button');
-    btn.className = 'btn-action btn-action--primary';
-    btn.textContent = 'Send';
-    btn.addEventListener('click', () => {
-        const text = textarea.value.trim();
-        if (text) { textarea.value = ''; submitTurn(text); }
-    });
-
-    micArea.innerHTML = '';
-    micArea.appendChild(note);
-    micArea.appendChild(textarea);
-    micArea.appendChild(btn);
-    startTimer();
 }
 
 // ── Views ─────────────────────────────────────────────────────────────
