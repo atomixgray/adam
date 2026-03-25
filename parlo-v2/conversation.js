@@ -11,9 +11,12 @@ let conversationHistory = [];
 let feedbackLog = [];
 let turnCount = 0;
 let timerInterval = null;
+let recognitionTimeout = null;
 let recognition = null;
 let recognitionSupported = false;
 let state = 'idle'; // 'idle' | 'listening' | 'processing'
+
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 const getApiKey = () => localStorage.getItem('parlo_v2_groq_key') || '';
 const $ = id => document.getElementById(id);
@@ -72,6 +75,7 @@ function setupSpeech() {
     };
 
     recognition.onend = () => {
+        clearRecognitionTimeout();
         if (state !== 'listening') return;
         setState('idle');
         const text = $('inputTextarea').value.trim();
@@ -79,23 +83,46 @@ function setupSpeech() {
     };
 
     recognition.onerror = e => {
+        clearRecognitionTimeout();
         if (state !== 'listening') return;
         setState('idle');
         if (e.error !== 'aborted') setMicStatus('Error: ' + e.error + ' — tap to try again');
     };
 }
 
+function startRecognitionTimeout() {
+    clearRecognitionTimeout();
+    recognitionTimeout = setTimeout(() => {
+        if (state !== 'listening') return;
+        try { recognition.stop(); } catch (e) {}
+        setState('idle');
+        setMicStatus('Timed out — tap to try again');
+    }, 10000);
+}
+
+function clearRecognitionTimeout() {
+    if (recognitionTimeout) { clearTimeout(recognitionTimeout); recognitionTimeout = null; }
+}
+
 function onMicClick() {
     if (state === 'listening') {
+        clearRecognitionTimeout();
         recognition.stop(); // triggers onend
     } else if (state === 'idle') {
         $('inputTextarea').value = '';
-        try {
-            recognition.start();
-            setState('listening');
-        } catch (e) {
-            console.error('Recognition start error:', e);
-        }
+        setState('listening');
+        // Yield to the event loop before starting — prevents Safari from blocking the UI thread
+        setTimeout(() => {
+            try {
+                recognition.start();
+                startRecognitionTimeout();
+            } catch (e) {
+                clearRecognitionTimeout();
+                setState('idle');
+                setMicStatus('Could not start mic — try again');
+                console.error('Recognition start error:', e);
+            }
+        }, 0);
     }
 }
 
@@ -248,6 +275,11 @@ function startConversation(scenario) {
     conversationHistory.push({ role: 'assistant', content: scenario.opening });
 
     showView('conversationView');
+
+    if (isSafari && recognitionSupported) {
+        setMicStatus('Voice input is experimental in Safari — typing is more reliable');
+    }
+
     startUserTurn();
 }
 
