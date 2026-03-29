@@ -2160,6 +2160,13 @@ textarea:focus-visible {
     margin-bottom: 0.8rem;
 }
 
+.drill-verb-en {
+    font-size: 0.85rem;
+    color: #6a6a7a;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
 .drill-meta {
     display: flex;
     align-items: center;

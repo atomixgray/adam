@@ -498,6 +498,14 @@ const DRILLS = {
     ],
 };
 
+const VERB_EN = {
+    essere: 'to be', avere: 'to have', fare: 'to do / make',
+    andare: 'to go', venire: 'to come', potere: 'can / to be able to',
+    volere: 'to want', dovere: 'must / to have to', sapere: 'to know',
+    dire: 'to say / tell', stare: 'to stay / be', vedere: 'to see',
+    prendere: 'to take',
+};
+
 // ---- Drill state ----
 let drillQueue = [];
 let drillCurrent = null;
@@ -506,6 +514,7 @@ let drillSessionStats = { correct: 0, wrong: 0, streak: 0, total: 0 };
 // ---- Drill DOM refs ----
 const drillFocusEl    = document.getElementById('drillFocus');
 const drillVerbEl     = document.getElementById('drillVerb');
+const drillVerbEnEl   = document.getElementById('drillVerbEn');
 const drillPersonEl   = document.getElementById('drillPerson');
 const drillTenseBadge = document.getElementById('drillTenseBadge');
 const drillInput      = document.getElementById('drillInput');
@@ -544,6 +553,7 @@ function nextDrillCard() {
     if (drillQueue.length === 0) { initDrill(); return; }
     drillCurrent = drillQueue.shift();
     drillVerbEl.textContent = drillCurrent.verb;
+    drillVerbEnEl.textContent = VERB_EN[drillCurrent.verb] || '';
     drillPersonEl.textContent = drillCurrent.person;
     drillTenseBadge.textContent = drillCurrent.tense;
     drillFeedback.classList.add('hidden');
@@ -570,7 +580,7 @@ function checkDrillAnswer() {
     } else {
         drillSessionStats.wrong++;
         drillSessionStats.streak = 0;
-        drillResult.textContent = '✗ You wrote "' + typed + '" — correct: ' + drillCurrent.display;
+        drillResult.textContent = '✗ Incorrect — the correct form is: ' + drillCurrent.display;
         drillResult.className = 'drill-result drill-result--wrong';
         drillQueue.push(drillCurrent); // re-queue wrong answers
     }
