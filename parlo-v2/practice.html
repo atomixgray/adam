@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://api.groq.com; object-src 'none'; base-uri 'self'; form-action 'none';">
     <title>Parlo - Practice</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -35,7 +35,72 @@
             <button class="btn-small hidden" id="apiKeyBtn">API Key</button>
         </div>
 
-        <div class="builder">
+        <!-- Mode selector -->
+        <div class="mode-selector practice-modes">
+            <button class="mode-btn active" id="modeBuildBtn">Build</button>
+            <button class="mode-btn" id="modeDrillBtn">Drill</button>
+        </div>
+
+        <!-- Drill section -->
+        <div id="drillSection" class="builder hidden">
+
+            <div class="drill-controls">
+                <select id="drillFocus" class="level-dropdown">
+                    <option value="congiuntivo">Congiuntivo Presente</option>
+                    <option value="condizionale">Condizionale Presente</option>
+                    <option value="passato">Passato Prossimo Irregolari</option>
+                    <option value="mixed">Mixed</option>
+                </select>
+                <button class="control-btn" id="drillResetBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                    New Session
+                </button>
+            </div>
+
+            <div class="drill-card" id="drillCard">
+                <div class="drill-verb" id="drillVerb"></div>
+                <div class="drill-meta">
+                    <span class="drill-person" id="drillPerson"></span>
+                    <span class="drill-tense-badge" id="drillTenseBadge"></span>
+                </div>
+            </div>
+
+            <div class="answer-area">
+                <input type="text" id="drillInput" class="drill-input"
+                    placeholder="Type the conjugation…"
+                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <div class="action-buttons">
+                    <button class="btn-action btn-action--primary" id="drillCheckBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span id="drillCheckBtnText">Check</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="drillFeedback" class="drill-feedback hidden">
+                <div id="drillResult" class="drill-result"></div>
+                <div id="drillExample" class="drill-example"></div>
+                <button class="btn-next" id="drillNextBtn">Next →</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="drillCorrectCount">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="drillStreak">0</div>
+                    <div class="stat-label">Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="drillAccuracy">—</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Build section -->
+        <div id="buildSection" class="builder">
 
             <!-- Scenario + round progress -->
             <div class="session-header">
@@ -150,6 +215,6 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="practice.js?v=5"></script>
+    <script src="practice.js?v=6"></script>
 </body>
 </html>

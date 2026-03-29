@@ -377,6 +377,225 @@ function loadPrefs() {
     } catch {}
 }
 
+// ---- Mode switching ----
+let practiceMode = 'build';
+
+document.getElementById('modeBuildBtn').addEventListener('click', () => setMode('build'));
+document.getElementById('modeDrillBtn').addEventListener('click', () => setMode('drill'));
+
+function setMode(mode) {
+    practiceMode = mode;
+    document.getElementById('buildSection').classList.toggle('hidden', mode !== 'build');
+    document.getElementById('drillSection').classList.toggle('hidden', mode !== 'drill');
+    document.getElementById('modeBuildBtn').classList.toggle('active', mode === 'build');
+    document.getElementById('modeDrillBtn').classList.toggle('active', mode === 'drill');
+    if (mode === 'drill' && drillQueue.length === 0) initDrill();
+}
+
+// ============================================================
+// Drill mode — verb conjugation practice
+// ============================================================
+
+// Helper: generate drill cards for a verb across all 6 persons.
+// altForms = feminine/plural variants for essere-aux verbs.
+function mkd(verb, tense, forms, examples, altForms) {
+    return ['io', 'tu', 'lui/lei', 'noi', 'voi', 'loro'].map((p, i) => ({
+        verb, person: p, tense,
+        answers: altForms ? [forms[i], altForms[i]] : [forms[i]],
+        display: altForms ? forms[i] + ' / ' + altForms[i] : forms[i],
+        example: examples[i]
+    }));
+}
+
+const DRILLS = {
+    congiuntivo: [
+        ...mkd('essere', 'congiuntivo presente',
+            ['sia', 'sia', 'sia', 'siamo', 'siate', 'siano'],
+            ['Penso che io sia troppo stanco per uscire.', 'Non credo che tu sia pronto.', 'Sembra che lei sia già partita.', 'Bisogna che noi siamo puntuali.', 'Voglio che voi siate onesti.', 'È importante che loro siano presenti.']),
+        ...mkd('avere', 'congiuntivo presente',
+            ['abbia', 'abbia', 'abbia', 'abbiamo', 'abbiate', 'abbiano'],
+            ['Spero che io abbia capito bene.', 'Non credo che tu abbia ragione.', 'Pare che lui abbia cambiato idea.', 'È necessario che noi abbiamo pazienza.', 'Voglio che voi abbiate rispetto.', 'Speriamo che loro abbiano successo.']),
+        ...mkd('fare', 'congiuntivo presente',
+            ['faccia', 'faccia', 'faccia', 'facciamo', 'facciate', 'facciano'],
+            ['Dubito che io faccia in tempo.', 'Voglio che tu faccia del tuo meglio.', 'Sembra che lei faccia yoga ogni giorno.', 'Bisogna che noi facciamo presto.', 'È ora che voi facciate qualcosa.', 'Spero che loro facciano attenzione.']),
+        ...mkd('andare', 'congiuntivo presente',
+            ['vada', 'vada', 'vada', 'andiamo', 'andiate', 'vadano'],
+            ['Non credo che io vada al lavoro domani.', 'Voglio che tu vada a letto presto.', 'Sembra che lei vada in Italia questa estate.', 'È importante che noi andiamo insieme.', 'Spero che voi andiate d\'accordo.', 'Bisogna che loro vadano via subito.']),
+        ...mkd('venire', 'congiuntivo presente',
+            ['venga', 'venga', 'venga', 'veniamo', 'veniate', 'vengano'],
+            ['Non so se io venga alla festa.', 'Voglio che tu venga con me.', 'Sembra che lui venga da Milano.', 'È bello che noi veniamo tutti insieme.', 'Spero che voi veniate presto.', 'Voglio che loro vengano alla riunione.']),
+        ...mkd('potere', 'congiuntivo presente',
+            ['possa', 'possa', 'possa', 'possiamo', 'possiate', 'possano'],
+            ['Non credo che io possa venire.', 'Spero che tu possa aiutarmi.', 'Sembra che lei non possa dormire.', 'Bisogna che noi possiamo parlare.', 'È strano che voi non possiate entrare.', 'Spero che loro possano capire.']),
+        ...mkd('volere', 'congiuntivo presente',
+            ['voglia', 'voglia', 'voglia', 'vogliamo', 'vogliate', 'vogliano'],
+            ['Non so se io voglia davvero andare.', 'È strano che tu voglia restare a casa.', 'Sembra che lui voglia cambiare lavoro.', 'È bene che noi vogliamo migliorare.', 'Spero che voi vogliate provare.', 'Sembra che loro vogliano partire.']),
+        ...mkd('dovere', 'congiuntivo presente',
+            ['debba', 'debba', 'debba', 'dobbiamo', 'dobbiate', 'debbano'],
+            ['Non credo che io debba preoccuparmi.', 'È importante che tu debba sapere.', 'Sembra che lui debba lavorare di più.', 'È strano che noi dobbiamo aspettare ancora.', 'Non credo che voi dobbiate pagare.', 'Sembra che loro debbano ricominciare.']),
+        ...mkd('sapere', 'congiuntivo presente',
+            ['sappia', 'sappia', 'sappia', 'sappiamo', 'sappiate', 'sappiano'],
+            ['Non credo che io sappia la risposta.', 'È importante che tu sappia la verità.', 'Sembra che lei sappia già tutto.', 'Bisogna che noi sappiamo cosa fare.', 'È strano che voi non sappiate niente.', 'Spero che loro sappiano cavarsela.']),
+        ...mkd('dire', 'congiuntivo presente',
+            ['dica', 'dica', 'dica', 'diciamo', 'diciate', 'dicano'],
+            ['Non credo che io dica la cosa giusta.', 'Voglio che tu dica la verità.', 'Sembra che lei dica sempre bugie.', 'È importante che noi diciamo la verità.', 'Voglio che voi diciate cosa pensate.', 'Spero che loro dicano di sì.']),
+    ],
+
+    condizionale: [
+        ...mkd('essere', 'condizionale presente',
+            ['sarei', 'saresti', 'sarebbe', 'saremmo', 'sareste', 'sarebbero'],
+            ['Sarei molto felice di venire.', 'Saresti un ottimo professore.', 'Sarebbe bello vivere in Italia.', 'Saremmo più felici in campagna.', 'Sareste benvenuti a casa mia.', 'Sarebbero perfetti per questo lavoro.']),
+        ...mkd('avere', 'condizionale presente',
+            ['avrei', 'avresti', 'avrebbe', 'avremmo', 'avreste', 'avrebbero'],
+            ['Avrei voglia di un caffè.', 'Avresti il tempo di aiutarmi?', 'Avrebbe bisogno di riposo.', 'Avremmo bisogno di più tempo.', 'Avreste paura di parlare in pubblico?', 'Avrebbero tutto ciò che vogliono.']),
+        ...mkd('fare', 'condizionale presente',
+            ['farei', 'faresti', 'farebbe', 'faremmo', 'fareste', 'farebbero'],
+            ['Farei volentieri una passeggiata.', 'Faresti lo stesso al mio posto?', 'Farebbe di tutto per aiutarti.', 'Faremmo meglio ad aspettare.', 'Fareste bene a studiare di più.', 'Farebbero qualsiasi cosa per riuscire.']),
+        ...mkd('andare', 'condizionale presente',
+            ['andrei', 'andresti', 'andrebbe', 'andremmo', 'andreste', 'andrebbero'],
+            ['Andrei volentieri in vacanza adesso.', 'Andresti a vivere in Italia?', 'Andrebbe tutto bene con più pratica.', 'Andremmo al mare se non piovesse.', 'Andreste a piedi o in macchina?', 'Andrebbero d\'accordo se si conoscessero.']),
+        ...mkd('venire', 'condizionale presente',
+            ['verrei', 'verresti', 'verrebbe', 'verremmo', 'verreste', 'verrebbero'],
+            ['Verrei alla festa, ma sono stanco.', 'Verresti con me a Roma?', 'Verrebbe, ma ha altri impegni.', 'Verremmo volentieri alla cena.', 'Verreste a trovarci in estate?', 'Verrebbero subito se li chiamassi.']),
+        ...mkd('potere', 'condizionale presente',
+            ['potrei', 'potresti', 'potrebbe', 'potremmo', 'potreste', 'potrebbero'],
+            ['Potrei aiutarti domani mattina.', 'Potresti parlarmi più lentamente?', 'Potrebbe essere una buona idea.', 'Potremmo provare un approccio diverso.', 'Potreste ripetere, per favore?', 'Potrebbero arrivare in ritardo.']),
+        ...mkd('volere', 'condizionale presente',
+            ['vorrei', 'vorresti', 'vorrebbe', 'vorremmo', 'vorreste', 'vorrebbero'],
+            ['Vorrei un caffè e un cornetto.', 'Vorresti venire al cinema stasera?', 'Vorrebbe imparare a cucinare.', 'Vorremmo prenotare un tavolo.', 'Vorreste vivere in Italia?', 'Vorrebbero partire prima possibile.']),
+        ...mkd('dovere', 'condizionale presente',
+            ['dovrei', 'dovresti', 'dovrebbe', 'dovremmo', 'dovreste', 'dovrebbero'],
+            ['Dovrei studiare di più.', 'Dovresti dormire di più.', 'Dovrebbe chiamare i suoi genitori.', 'Dovremmo arrivare entro le nove.', 'Dovreste fare più attenzione.', 'Dovrebbero scusarsi per il ritardo.']),
+        ...mkd('sapere', 'condizionale presente',
+            ['saprei', 'sapresti', 'saprebbe', 'sapremmo', 'sapreste', 'saprebbero'],
+            ['Saprei come risolvere il problema.', 'Sapresti spiegarmi come funziona?', 'Saprebbe cosa fare in questa situazione.', 'Sapremmo dove andare con una mappa.', 'Sapreste guidare in Italia?', 'Saprebbero la risposta se studiassero.']),
+        ...mkd('stare', 'condizionale presente',
+            ['starei', 'staresti', 'starebbe', 'staremmo', 'stareste', 'starebbero'],
+            ['Starei meglio con un po\' di riposo.', 'Staresti bene in montagna.', 'Starebbe meglio se mangiasse di più.', 'Staremmo volentieri ancora un po\'.', 'Stareste più comodi in albergo.', 'Starebbero meglio con meno stress.']),
+    ],
+
+    passato: [
+        ...mkd('fare', 'passato prossimo',
+            ['ho fatto', 'hai fatto', 'ha fatto', 'abbiamo fatto', 'avete fatto', 'hanno fatto'],
+            ['Ho fatto colazione tardi questa mattina.', 'Hai fatto bene a dirmelo.', 'Ha fatto una passeggiata nel parco.', 'Abbiamo fatto un ottimo lavoro.', 'Avete fatto una bella scelta.', 'Hanno fatto tardi ieri sera.']),
+        ...mkd('venire', 'passato prossimo',
+            ['sono venuto', 'sei venuto', 'è venuto', 'siamo venuti', 'siete venuti', 'sono venuti'],
+            ['Sono venuto a piedi dall\'ufficio.', 'Sei venuto alla festa di sabato?', 'È venuto da Roma apposta.', 'Siamo venuti prima del previsto.', 'Siete venuti con la macchina?', 'Sono venuti tutti e tre insieme.'],
+            ['sono venuta', 'sei venuta', 'è venuta', 'siamo venute', 'siete venute', 'sono venute']),
+        ...mkd('essere', 'passato prossimo',
+            ['sono stato', 'sei stato', 'è stato', 'siamo stati', 'siete stati', 'sono stati'],
+            ['Sono stato in Italia l\'anno scorso.', 'Sei stato mai a Firenze?', 'È stato molto gentile.', 'Siamo stati in ritardo per il traffico.', 'Siete stati bravi questa settimana.', 'Sono stati i migliori della classe.'],
+            ['sono stata', 'sei stata', 'è stata', 'siamo state', 'siete state', 'sono state']),
+        ...mkd('dire', 'passato prossimo',
+            ['ho detto', 'hai detto', 'ha detto', 'abbiamo detto', 'avete detto', 'hanno detto'],
+            ['Ho detto la verità a tutti.', 'Hai detto una cosa molto importante.', 'Ha detto che arriverà tardi.', 'Abbiamo detto di sì alla proposta.', 'Avete detto tutto quello che pensavate?', 'Hanno detto che non possono venire.']),
+        ...mkd('vedere', 'passato prossimo',
+            ['ho visto', 'hai visto', 'ha visto', 'abbiamo visto', 'avete visto', 'hanno visto'],
+            ['Ho visto un bel film ieri sera.', 'Hai visto Marco ultimamente?', 'Ha visto la partita ieri sera?', 'Abbiamo visto una cosa incredibile.', 'Avete visto l\'ultimo episodio?', 'Hanno visto il problema troppo tardi.']),
+        ...mkd('prendere', 'passato prossimo',
+            ['ho preso', 'hai preso', 'ha preso', 'abbiamo preso', 'avete preso', 'hanno preso'],
+            ['Ho preso il treno delle otto.', 'Hai preso la decisione giusta.', 'Ha preso un caffè al bar.', 'Abbiamo preso un appartamento in centro.', 'Avete preso troppo sole oggi.', 'Hanno preso la strada sbagliata.']),
+    ],
+};
+
+// ---- Drill state ----
+let drillQueue = [];
+let drillCurrent = null;
+let drillSessionStats = { correct: 0, wrong: 0, streak: 0, total: 0 };
+
+// ---- Drill DOM refs ----
+const drillFocusEl    = document.getElementById('drillFocus');
+const drillVerbEl     = document.getElementById('drillVerb');
+const drillPersonEl   = document.getElementById('drillPerson');
+const drillTenseBadge = document.getElementById('drillTenseBadge');
+const drillInput      = document.getElementById('drillInput');
+const drillCheckBtn   = document.getElementById('drillCheckBtn');
+const drillCheckBtnTx = document.getElementById('drillCheckBtnText');
+const drillFeedback   = document.getElementById('drillFeedback');
+const drillResult     = document.getElementById('drillResult');
+const drillExample    = document.getElementById('drillExample');
+const drillNextBtn    = document.getElementById('drillNextBtn');
+const drillResetBtn   = document.getElementById('drillResetBtn');
+const drillCorrectEl  = document.getElementById('drillCorrectCount');
+const drillStreakEl   = document.getElementById('drillStreak');
+const drillAccEl      = document.getElementById('drillAccuracy');
+
+function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function initDrill() {
+    const focus = drillFocusEl.value;
+    const pool = focus === 'mixed'
+        ? [...DRILLS.congiuntivo, ...DRILLS.condizionale, ...DRILLS.passato]
+        : DRILLS[focus];
+    drillQueue = shuffle(pool);
+    drillSessionStats = { correct: 0, wrong: 0, streak: 0, total: 0 };
+    updateDrillStats();
+    nextDrillCard();
+}
+
+function nextDrillCard() {
+    if (drillQueue.length === 0) { initDrill(); return; }
+    drillCurrent = drillQueue.shift();
+    drillVerbEl.textContent = drillCurrent.verb;
+    drillPersonEl.textContent = drillCurrent.person;
+    drillTenseBadge.textContent = drillCurrent.tense;
+    drillFeedback.classList.add('hidden');
+    drillInput.value = '';
+    drillCheckBtn.disabled = false;
+    drillCheckBtnTx.textContent = 'Check';
+    setTimeout(() => drillInput.focus(), 100);
+}
+
+function checkDrillAnswer() {
+    const typed = drillInput.value.trim().toLowerCase();
+    if (!typed) { drillInput.focus(); return; }
+
+    drillCheckBtn.disabled = true;
+    drillSessionStats.total++;
+
+    const correct = drillCurrent.answers.some(a => a.toLowerCase() === typed);
+
+    if (correct) {
+        drillSessionStats.correct++;
+        drillSessionStats.streak++;
+        drillResult.textContent = '✓ Correct — ' + drillCurrent.display;
+        drillResult.className = 'drill-result drill-result--correct';
+    } else {
+        drillSessionStats.wrong++;
+        drillSessionStats.streak = 0;
+        drillResult.textContent = '✗ You wrote "' + typed + '" — correct: ' + drillCurrent.display;
+        drillResult.className = 'drill-result drill-result--wrong';
+        drillQueue.push(drillCurrent); // re-queue wrong answers
+    }
+
+    drillExample.textContent = drillCurrent.example;
+    drillFeedback.classList.remove('hidden');
+    updateDrillStats();
+    drillFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function updateDrillStats() {
+    drillCorrectEl.textContent = drillSessionStats.correct;
+    drillStreakEl.textContent  = drillSessionStats.streak;
+    drillAccEl.textContent     = drillSessionStats.total > 0
+        ? Math.round((drillSessionStats.correct / drillSessionStats.total) * 100) + '%'
+        : '—';
+}
+
+// ---- Drill events ----
+drillCheckBtn.addEventListener('click', checkDrillAnswer);
+drillInput.addEventListener('keydown', e => { if (e.key === 'Enter') checkDrillAnswer(); });
+drillNextBtn.addEventListener('click', nextDrillCard);
+drillResetBtn.addEventListener('click', initDrill);
+drillFocusEl.addEventListener('change', initDrill);
+
 // ---- Init ----
 function init() {
     loadPrefs();
