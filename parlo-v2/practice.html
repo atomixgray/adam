@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://api.groq.com; object-src 'none'; base-uri 'self'; form-action 'none';">
     <title>Parlo - Practice</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -46,9 +46,9 @@
 
             <div class="drill-controls">
                 <select id="drillFocus" class="level-dropdown">
-                    <option value="congiuntivo">Congiuntivo Presente</option>
-                    <option value="condizionale">Condizionale Presente</option>
-                    <option value="passato">Passato Prossimo Irregolari</option>
+                    <option value="presente">Presente</option>
+                    <option value="passato">Passato Prossimo</option>
+                    <option value="imperfetto">Imperfetto</option>
                     <option value="mixed">Mixed</option>
                 </select>
                 <button class="control-btn" id="drillResetBtn">
@@ -216,6 +216,6 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="practice.js?v=7"></script>
+    <script src="practice.js?v=8"></script>
 </body>
 </html>
