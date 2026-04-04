@@ -3,7 +3,7 @@
 // ============================================================
 
 const GROQ_API = 'https://api.groq.com/openai/v1/chat/completions';
-const GROQ_MODEL = 'llama3-8b-8192';
+const GROQ_MODEL = 'llama-3.1-8b-instant';
 const API_KEY_STORAGE = 'parlo_v2_groq_key';
 const STATS_STORAGE = 'parlo_v2_practice_stats';
 const PREFS_STORAGE = 'parlo_v2_practice_prefs';
@@ -445,6 +445,54 @@ const DRILLS = {
         ...mkd('uscire', 'presente',
             ['esco', 'esci', 'esce', 'usciamo', 'uscite', 'escono'],
             ['Esco di casa alle otto.', 'A che ora esci?', 'Esce sempre con gli amici.', 'Usciamo stasera?', 'A che ora uscite dall\'ufficio?', 'Escono ogni venerdì sera.']),
+        // -are regular verbs
+        ...mkd('parlare', 'presente',
+            ['parlo', 'parli', 'parla', 'parliamo', 'parlate', 'parlano'],
+            ['Parlo italiano un po\'.', 'Parli troppo veloce.', 'Parla tre lingue.', 'Parliamo dopo.', 'Di cosa parlate?', 'Parlano sempre di calcio.']),
+        ...mkd('mangiare', 'presente',
+            ['mangio', 'mangi', 'mangia', 'mangiamo', 'mangiate', 'mangiano'],
+            ['Mangio la pasta ogni giorno.', 'Cosa mangi a pranzo?', 'Mangia sempre tardi.', 'Mangiamo fuori stasera?', 'Mangiate carne?', 'Mangiano molto pesce.']),
+        ...mkd('lavorare', 'presente',
+            ['lavoro', 'lavori', 'lavora', 'lavoriamo', 'lavorate', 'lavorano'],
+            ['Lavoro in centro.', 'Dove lavori?', 'Lavora da casa.', 'Lavoriamo insieme da anni.', 'Lavorate il sabato?', 'Lavorano in un\'agenzia.']),
+        ...mkd('abitare', 'presente',
+            ['abito', 'abiti', 'abita', 'abitiamo', 'abitate', 'abitano'],
+            ['Abito vicino al centro.', 'Dove abiti?', 'Abita con i suoi genitori.', 'Abitiamo in un appartamento grande.', 'Abitate in città o in campagna?', 'Abitano in periferia.']),
+        ...mkd('ascoltare', 'presente',
+            ['ascolto', 'ascolti', 'ascolta', 'ascoltiamo', 'ascoltate', 'ascoltano'],
+            ['Ascolto musica mentre cammino.', 'Ascolti mai i podcast in italiano?', 'Ascolta sempre i consigli degli amici.', 'Ascoltiamo la radio in macchina.', 'Ascoltate musica italiana?', 'Ascoltano le lezioni con attenzione.']),
+        ...mkd('comprare', 'presente',
+            ['compro', 'compri', 'compra', 'compriamo', 'comprate', 'comprano'],
+            ['Compro il pane ogni mattina.', 'Cosa compri al mercato?', 'Compra sempre troppo.', 'Compriamo i biglietti online.', 'Dove comprate la frutta?', 'Comprano tutto al supermercato.']),
+        // -ere regular verbs
+        ...mkd('leggere', 'presente',
+            ['leggo', 'leggi', 'legge', 'leggiamo', 'leggete', 'leggono'],
+            ['Leggo un libro alla settimana.', 'Leggi il giornale?', 'Legge molto prima di dormire.', 'Leggiamo lo stesso romanzo.', 'Leggete in italiano?', 'Leggono articoli online.']),
+        ...mkd('scrivere', 'presente',
+            ['scrivo', 'scrivi', 'scrive', 'scriviamo', 'scrivete', 'scrivono'],
+            ['Scrivo una email adesso.', 'Scrivi spesso a mano?', 'Scrive molto bene.', 'Scriviamo in italiano.', 'Scrivete i compiti a casa?', 'Scrivono un libro insieme.']),
+        ...mkd('vivere', 'presente',
+            ['vivo', 'vivi', 'vive', 'viviamo', 'vivete', 'vivono'],
+            ['Vivo a Roma da tre anni.', 'Dove vivi adesso?', 'Vive da sola.', 'Viviamo bene qui.', 'Vivete ancora in città?', 'Vivono in una bella casa.']),
+        ...mkd('credere', 'presente',
+            ['credo', 'credi', 'crede', 'crediamo', 'credete', 'credono'],
+            ['Non credo sia vero.', 'Credi in quello che dici?', 'Crede di avere ragione.', 'Crediamo che sia possibile.', 'Credete a questa storia?', 'Credono di essere i migliori.']),
+        // -ire regular verbs
+        ...mkd('dormire', 'presente',
+            ['dormo', 'dormi', 'dorme', 'dormiamo', 'dormite', 'dormono'],
+            ['Dormo poco durante la settimana.', 'Dormi bene di solito?', 'Dorme ancora.', 'Dormiamo tardi il weekend.', 'Dormite con la finestra aperta?', 'Dormono sempre fino a tardi.']),
+        ...mkd('partire', 'presente',
+            ['parto', 'parti', 'parte', 'partiamo', 'partite', 'partono'],
+            ['Parto domani mattina.', 'A che ora parti?', 'Parte per Milano oggi.', 'Partiamo presto.', 'Da dove partite?', 'Partono con il treno delle nove.']),
+        ...mkd('sentire', 'presente',
+            ['sento', 'senti', 'sente', 'sentiamo', 'sentite', 'sentono'],
+            ['Sento della musica.', 'Senti quel rumore?', 'Sente freddo.', 'Sentiamo le ultime notizie.', 'Sentite qualcosa di strano?', 'Sentono solo quello che vogliono.']),
+        ...mkd('finire', 'presente',
+            ['finisco', 'finisci', 'finisce', 'finiamo', 'finite', 'finiscono'],
+            ['Finisco di lavorare alle sei.', 'Quando finisci la scuola?', 'Finisce sempre in ritardo.', 'Finiamo presto stasera.', 'A che ora finite?', 'Finiscono la riunione alle tre.']),
+        ...mkd('capire', 'presente',
+            ['capisco', 'capisci', 'capisce', 'capiamo', 'capite', 'capiscono'],
+            ['Capisco l\'italiano abbastanza bene.', 'Capisci quando parlano veloce?', 'Capisce tutto ma non parla.', 'Capiamo il problema.', 'Capite quello che dice?', 'Capiscono subito.']),
     ],
 
     imperfetto: [
@@ -511,6 +559,11 @@ const VERB_EN = {
     dire: 'to say / tell', stare: 'to stay / be', vedere: 'to see',
     prendere: 'to take',
     uscire: 'to go out',
+    parlare: 'to speak', mangiare: 'to eat', lavorare: 'to work',
+    abitare: 'to live / reside', ascoltare: 'to listen', comprare: 'to buy',
+    leggere: 'to read', scrivere: 'to write', vivere: 'to live',
+    credere: 'to believe', dormire: 'to sleep', partire: 'to leave / depart',
+    sentire: 'to hear / feel', finire: 'to finish', capire: 'to understand',
 };
 
 // ---- Drill state ----
@@ -564,13 +617,14 @@ function nextDrillCard() {
     drillPersonEl.textContent = drillCurrent.person;
     drillTenseBadge.textContent = drillCurrent.tense;
     drillFeedback.classList.add('hidden');
+    document.getElementById('drillAiFeedback').classList.add('hidden');
     drillInput.value = '';
     drillCheckBtn.disabled = false;
     drillCheckBtnTx.textContent = 'Check';
     setTimeout(() => drillInput.focus(), 100);
 }
 
-function checkDrillAnswer() {
+async function checkDrillAnswer() {
     const typed = drillInput.value.trim().toLowerCase();
     if (!typed) { drillInput.focus(); return; }
 
@@ -596,6 +650,31 @@ function checkDrillAnswer() {
     drillFeedback.classList.remove('hidden');
     updateDrillStats();
     drillFeedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // AI feedback — only if API key is set
+    const drillAiFeedbackEl = document.getElementById('drillAiFeedback');
+    if (getApiKey()) {
+        drillAiFeedbackEl.textContent = 'Thinking…';
+        drillAiFeedbackEl.classList.remove('hidden');
+        drillAiFeedbackEl.classList.add('loading');
+        try {
+            const verbEn = VERB_EN[drillCurrent.verb] || drillCurrent.verb;
+            let prompt;
+            if (correct) {
+                prompt = `The student correctly conjugated the Italian verb "${drillCurrent.verb}" (${verbEn}) in the ${drillCurrent.tense} for "${drillCurrent.person}" as "${drillCurrent.display}". Give one short tip (max 15 words) about when or how this form is used in natural speech.`;
+            } else {
+                prompt = `Italian verb conjugation drill. Verb: "${drillCurrent.verb}" (${verbEn}), tense: ${drillCurrent.tense}, person: "${drillCurrent.person}". The student answered "${typed}" but the correct form is "${drillCurrent.display}". In one short sentence (max 20 words), explain what went wrong or the pattern to remember. Be direct and encouraging.`;
+            }
+            const feedback = await callGroq([{ role: 'user', content: prompt }], 80);
+            drillAiFeedbackEl.textContent = feedback;
+        } catch (_) {
+            drillAiFeedbackEl.classList.add('hidden');
+        } finally {
+            drillAiFeedbackEl.classList.remove('loading');
+        }
+    } else {
+        drillAiFeedbackEl.classList.add('hidden');
+    }
 }
 
 function updateDrillStats() {

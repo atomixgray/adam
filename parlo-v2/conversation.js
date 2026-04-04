@@ -234,13 +234,23 @@ function renderPicker() {
             desc.className = 'scenario-card__desc';
             desc.textContent = s.description;
 
-            const role = document.createElement('div');
+            const footer = document.createElement('div');
+            footer.className = 'scenario-card__footer';
+
+            const levelBadge = document.createElement('span');
+            levelBadge.className = 'scenario-card__level scenario-level--' + s.level.toLowerCase();
+            levelBadge.textContent = s.level;
+
+            const role = document.createElement('span');
             role.className = 'scenario-card__role';
             role.textContent = 'You: ' + s.user_role;
 
+            footer.appendChild(levelBadge);
+            footer.appendChild(role);
+
             card.appendChild(title);
             card.appendChild(desc);
-            card.appendChild(role);
+            card.appendChild(footer);
             card.addEventListener('click', () => startConversation(s));
             row.appendChild(card);
         });

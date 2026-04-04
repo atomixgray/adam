@@ -2248,3 +2248,91 @@ textarea:focus-visible {
     color: #b0b0c0;
     line-height: 1.5;
 }
+
+.drill-ai-feedback {
+    font-size: 0.85rem;
+    color: #a0a8c0;
+    line-height: 1.5;
+    border-left: 2px solid rgba(160, 168, 192, 0.3);
+    padding-left: 10px;
+    margin-top: 4px;
+}
+
+.drill-ai-feedback.loading {
+    color: rgba(160, 168, 192, 0.5);
+}
+
+/* ---- Conversation card accent (teal) ---- */
+.mode-card--conversation:hover {
+    background: rgba(34, 211, 238, 0.08);
+    border-color: rgba(34, 211, 238, 0.3);
+    box-shadow: 0 12px 40px rgba(34, 211, 238, 0.12);
+}
+
+.mode-card--conversation .mode-card__icon {
+    background: rgba(34, 211, 238, 0.12);
+    border-color: rgba(34, 211, 238, 0.2);
+    color: #67e8d4;
+}
+
+/* ---- Practice: smaller secondary action button ---- */
+.btn-action--sm {
+    flex: 0 0 auto;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.85rem;
+}
+
+/* ---- Build mode: keyboard shortcut hint ---- */
+.input-hint {
+    font-size: 0.75rem;
+    color: #4a4a5a;
+    text-align: right;
+    margin-top: -0.4rem;
+}
+
+/* ---- Drill stats: always 3-col ---- */
+.stats--horizontal {
+    grid-template-columns: repeat(3, 1fr) !important;
+}
+
+/* ---- Conversation: scenario level badge ---- */
+.scenario-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.scenario-card__level {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.scenario-level--a1 {
+    background: rgba(103, 232, 162, 0.15);
+    border: 1px solid rgba(103, 232, 162, 0.25);
+    color: #67e8a2;
+}
+
+.scenario-level--a2 {
+    background: rgba(102, 126, 234, 0.15);
+    border: 1px solid rgba(102, 126, 234, 0.25);
+    color: #a8b5ff;
+}
+
+.scenario-level--b1 {
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    color: #fbbf24;
+}
+
+.scenario-level--b2 {
+    background: rgba(251, 146, 60, 0.12);
+    border: 1px solid rgba(251, 146, 60, 0.25);
+    color: #fb923c;
+}
