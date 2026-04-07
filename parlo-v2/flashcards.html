@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
     <title>Parlo - Flashcards</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -72,6 +72,7 @@
                     </a>
                     <div class="card-content">
                         <div class="language-label" id="frontLabel">Italiano</div>
+                        <span class="cefr-badge" id="cefrBadge"></span>
                         <div id="frontText" class="phrase-text"></div>
                         <div id="frontPronunciation" class="pronunciation"></div>
                         <div class="flip-hint" id="frontHint">Click to reveal answer</div>
@@ -141,6 +142,6 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="flashcards.js"></script>
+    <script src="flashcards.js?v=2"></script>
 </body>
 </html>

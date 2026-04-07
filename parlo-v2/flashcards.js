@@ -42,6 +42,7 @@ const resetBtn        = document.getElementById('resetBtn');
 const statDue         = document.getElementById('statDue');
 const statNew         = document.getElementById('statNew');
 const statMastered    = document.getElementById('statMastered');
+const cefrBadge       = document.getElementById('cefrBadge');
 
 // ---- SRS Persistence ----
 
@@ -213,6 +214,11 @@ function showCard(phraseIndex) {
         speakerFront.classList.add('hidden');
         speakerBack.classList.remove('hidden');
     }
+
+    // CEFR badge
+    const level = (phrase.difficulty || '').toLowerCase();
+    cefrBadge.textContent = phrase.difficulty || '';
+    cefrBadge.className = 'cefr-badge cefr-' + level;
 
     italianTextForSpeech = phrase.italian;
     const lookupUrl = `https://translate.google.com/?sl=it&tl=en&text=${encodeURIComponent(phrase.italian)}&op=translate`;

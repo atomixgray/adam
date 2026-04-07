@@ -2303,6 +2303,41 @@ textarea:focus-visible {
     margin-top: 0.5rem;
 }
 
+/* CEFR badge on flashcard */
+.cefr-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    padding: 0.1rem 0.45rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+}
+
+.cefr-a1 {
+    background: rgba(103, 232, 162, 0.15);
+    border: 1px solid rgba(103, 232, 162, 0.25);
+    color: #67e8a2;
+}
+
+.cefr-a2 {
+    background: rgba(102, 126, 234, 0.15);
+    border: 1px solid rgba(102, 126, 234, 0.25);
+    color: #a8b5ff;
+}
+
+.cefr-b1 {
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    color: #fbbf24;
+}
+
+.cefr-b2 {
+    background: rgba(251, 146, 60, 0.12);
+    border: 1px solid rgba(251, 146, 60, 0.25);
+    color: #fb923c;
+}
+
 .scenario-card__level {
     display: inline-block;
     font-size: 0.7rem;
