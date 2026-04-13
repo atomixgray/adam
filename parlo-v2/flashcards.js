@@ -426,7 +426,7 @@ async function init() {
     loadSRS();
 
     try {
-        const res = await fetch('phrases.json');
+        const res = await fetch('phrases.json?v=2');
         phrases = await res.json();
     } catch {
         frontText.textContent = 'Error loading phrases.';
