@@ -43,6 +43,18 @@ const statDue         = document.getElementById('statDue');
 const statNew         = document.getElementById('statNew');
 const statMastered    = document.getElementById('statMastered');
 const cefrBadge       = document.getElementById('cefrBadge');
+const tenseBadge      = document.getElementById('tenseBadge');
+
+const TENSE_LABELS = {
+    presente:          'Presente',
+    passato_prossimo:  'Passato Prossimo',
+    imperfetto:        'Imperfetto',
+    futuro:            'Futuro',
+    condizionale:      'Condizionale',
+    congiuntivo:       'Congiuntivo',
+    imperativo:        'Imperativo',
+    trapassato:        'Trapassato Prossimo',
+};
 
 // ---- SRS Persistence ----
 
@@ -219,6 +231,8 @@ function showCard(phraseIndex) {
     const level = (phrase.difficulty || '').toLowerCase();
     cefrBadge.textContent = phrase.difficulty || '';
     cefrBadge.className = 'cefr-badge cefr-' + level;
+
+    tenseBadge.textContent = TENSE_LABELS[phrase.tense] || '';
 
     italianTextForSpeech = phrase.italian;
     const lookupUrl = `https://translate.google.com/?sl=it&tl=en&text=${encodeURIComponent(phrase.italian)}&op=translate`;
