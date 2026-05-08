@@ -75,7 +75,7 @@
   {"italian": "Ho trovato un ristorante ottimo vicino a casa.", "pronunciation": "OH troh-VAH-toh oon rees-toh-RAN-teh OT-tee-moh vee-CHEE-noh ah KAH-zah", "english": "I found a great restaurant near home.", "tags": ["trovare", "food", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Mi trovavo bene in quel lavoro.", "pronunciation": "mee troh-VAH-voh BEH-neh een kwel lah-VOH-roh", "english": "I felt comfortable in that job.", "tags": ["trovare", "work", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Metti giù il telefono.", "pronunciation": "MET-tee JOO eel teh-LEH-foh-noh", "english": "Put down your phone.", "tags": ["mettere", "everyday", "direct"], "difficulty": "A1", "tense": "presente"},
+  {"italian": "Metti giù il telefono.", "pronunciation": "MET-tee JOO eel teh-LEH-foh-noh", "english": "Put down your phone.", "tags": ["mettere", "everyday", "direct"], "difficulty": "A1", "tense": "imperativo"},
   {"italian": "Ho messo tutto nello zaino.", "pronunciation": "OH MES-soh TOOT-toh NEL-loh DZAH-ee-noh", "english": "I put everything in the bag.", "tags": ["mettere", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Ci mettevo un'ora ad arrivare al lavoro.", "pronunciation": "chee met-TEH-voh oon-OH-rah ad ar-ree-VAH-reh al lah-VOH-roh", "english": "It used to take me an hour to get to work.", "tags": ["mettere", "work", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
@@ -111,7 +111,7 @@
   {"italian": "Sono tornato tardi ieri sera.", "pronunciation": "SOH-noh tor-NAH-toh TAR-dee YEH-ree SEH-rah", "english": "I got back late last night.", "tags": ["tornare", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Tornavo sempre a casa alle sette.", "pronunciation": "tor-NAH-voh SEM-preh ah KAH-zah AL-leh SET-teh", "english": "I used to always get home at seven.", "tags": ["tornare", "everyday", "past"], "difficulty": "A2", "tense": "imperfetto"},
 
-  {"italian": "Aspetta, ci penso su.", "pronunciation": "ah-SPET-tah, chee PEN-soh soo", "english": "Wait, let me think about it.", "tags": ["aspettare", "everyday", "expressions"], "difficulty": "A2", "tense": "presente"},
+  {"italian": "Aspetta, ci penso su.", "pronunciation": "ah-SPET-tah, chee PEN-soh soo", "english": "Wait, let me think about it.", "tags": ["aspettare", "everyday", "expressions"], "difficulty": "A2", "tense": "imperativo"},
   {"italian": "Ho aspettato un'ora prima che arrivasse.", "pronunciation": "OH ah-spet-TAH-toh oon-OH-rah PREE-mah keh ar-ree-VAS-seh", "english": "I waited an hour before he arrived.", "tags": ["aspettare", "everyday", "past"], "difficulty": "B1", "tense": "passato_prossimo"},
   {"italian": "Ti aspettavo da mezzogiorno.", "pronunciation": "tee ah-spet-TAH-voh dah met-tsoh-JOR-noh", "english": "I'd been waiting for you since noon.", "tags": ["aspettare", "everyday", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
@@ -123,11 +123,11 @@
   {"italian": "L'ho conosciuto a una festa.", "pronunciation": "LOH koh-noh-SHOO-toh ah OO-nah FES-tah", "english": "I met him at a party.", "tags": ["conoscere", "social", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Non lo conoscevo ancora bene.", "pronunciation": "nohn loh koh-noh-SHEH-voh an-KOH-rah BEH-neh", "english": "I didn't know him well yet.", "tags": ["conoscere", "relationships", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Lascia perdere.", "pronunciation": "LAH-shah PER-deh-reh", "english": "Forget it. Let it go.", "tags": ["lasciare", "expressions", "everyday"], "difficulty": "A1", "tense": "presente"},
+  {"italian": "Lascia perdere.", "pronunciation": "LAH-shah PER-deh-reh", "english": "Forget it. Let it go.", "tags": ["lasciare", "expressions", "everyday"], "difficulty": "A1", "tense": "imperativo"},
   {"italian": "Ho lasciato il lavoro il mese scorso.", "pronunciation": "OH lah-SHAH-toh eel lah-VOH-roh eel MEH-zeh SKOR-soh", "english": "I left my job last month.", "tags": ["lasciare", "work", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Lasciava sempre tutto in disordine.", "pronunciation": "lah-SHAH-vah SEM-preh TOOT-toh een dee-ZOR-dee-neh", "english": "He always left everything in a mess.", "tags": ["lasciare", "everyday", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Aprimi la porta, per favore.", "pronunciation": "ah-PREE-mee lah POR-tah, pehr fah-VOH-reh", "english": "Open the door for me, please.", "tags": ["aprire", "everyday", "polite"], "difficulty": "A2", "tense": "presente"},
+  {"italian": "Aprimi la porta, per favore.", "pronunciation": "ah-PREE-mee lah POR-tah, pehr fah-VOH-reh", "english": "Open the door for me, please.", "tags": ["aprire", "everyday", "polite"], "difficulty": "A2", "tense": "imperativo"},
   {"italian": "Hanno appena aperto un nuovo ristorante.", "pronunciation": "AN-noh ap-PEH-nah ah-PER-toh oon NWOH-voh rees-toh-RAN-teh", "english": "They just opened a new restaurant.", "tags": ["aprire", "social", "past"], "difficulty": "B1", "tense": "passato_prossimo"},
   {"italian": "Apriva il negozio alle otto ogni mattina.", "pronunciation": "ah-PREE-vah eel neh-GOT-tsyoh AL-leh OT-toh ON-yee mat-TEE-nah", "english": "She used to open the shop at eight every morning.", "tags": ["aprire", "work", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
@@ -139,7 +139,7 @@
   {"italian": "Me l'ha chiesto tre volte.", "pronunciation": "meh LAH KYES-toh TREH VOL-teh", "english": "He asked me three times.", "tags": ["chiedere", "everyday", "past"], "difficulty": "B1", "tense": "passato_prossimo"},
   {"italian": "Chiedeva sempre il permesso prima di farlo.", "pronunciation": "kyeh-DEH-vah SEM-preh eel per-MES-soh PREE-mah dee FAR-loh", "english": "He always used to ask permission before doing it.", "tags": ["chiedere", "everyday", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Rispondi quando puoi.", "pronunciation": "ree-SPON-dee KWAN-doh PWOY", "english": "Reply when you can.", "tags": ["rispondere", "everyday", "communication"], "difficulty": "A2", "tense": "presente"},
+  {"italian": "Rispondi quando puoi.", "pronunciation": "ree-SPON-dee KWAN-doh PWOY", "english": "Reply when you can.", "tags": ["rispondere", "everyday", "communication"], "difficulty": "A2", "tense": "imperativo"},
   {"italian": "Non ha ancora risposto.", "pronunciation": "nohn AH an-KOH-rah ree-SPOS-toh", "english": "He hasn't responded yet.", "tags": ["rispondere", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Rispondeva sempre con un messaggio breve.", "pronunciation": "ree-spon-DEH-vah SEM-preh kon oon mes-SAD-joh BREH-veh", "english": "He always used to reply with a short message.", "tags": ["rispondere", "communication", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
@@ -191,11 +191,11 @@
   {"italian": "Ha deciso di cambiare lavoro.", "pronunciation": "AH deh-CHEE-zoh dee kam-BYAH-reh lah-VOH-roh", "english": "He decided to change jobs.", "tags": ["decidere", "work", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Non riusciva a decidere cosa fare.", "pronunciation": "nohn ryoo-SHEE-vah ah deh-CHEE-deh-reh KOH-zah FAH-reh", "english": "He couldn't make up his mind about what to do.", "tags": ["decidere", "feelings", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Provaci ancora.", "pronunciation": "PROH-vah-chee an-KOH-rah", "english": "Try again.", "tags": ["provare", "encouraging", "everyday"], "difficulty": "A2", "tense": "presente"},
+  {"italian": "Provaci ancora.", "pronunciation": "PROH-vah-chee an-KOH-rah", "english": "Try again.", "tags": ["provare", "encouraging", "everyday"], "difficulty": "A2", "tense": "imperativo"},
   {"italian": "L'ho provato e non mi piace.", "pronunciation": "LOH proh-VAH-toh eh nohn mee PYAH-cheh", "english": "I tried it and I don't like it.", "tags": ["provare", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Provava sempre nuovi ristoranti.", "pronunciation": "proh-VAH-vah SEM-preh NWOH-vee rees-toh-RAN-tee", "english": "She always used to try new restaurants.", "tags": ["provare", "food", "past"], "difficulty": "A2", "tense": "imperfetto"},
 
-  {"italian": "Scegli tu, non mi importa.", "pronunciation": "SHEL-yee too, nohn mee eem-POR-tah", "english": "You choose, I don't mind.", "tags": ["scegliere", "everyday", "casual"], "difficulty": "A2", "tense": "presente"},
+  {"italian": "Scegli tu, non mi importa.", "pronunciation": "SHEL-yee too, nohn mee eem-POR-tah", "english": "You choose, I don't mind.", "tags": ["scegliere", "everyday", "casual"], "difficulty": "A2", "tense": "imperativo"},
   {"italian": "L'ho scelto con cura.", "pronunciation": "LOH SHEL-toh kon KOO-rah", "english": "I chose it carefully.", "tags": ["scegliere", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Sceglieva sempre il momento peggiore.", "pronunciation": "shel-YEH-vah SEM-preh eel moh-MEN-toh ped-JOH-reh", "english": "She always picked the worst moment.", "tags": ["scegliere", "humor", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
@@ -311,7 +311,7 @@
   {"italian": "Mi sono lavato i capelli stamattina.", "pronunciation": "mee SOH-noh lah-VAH-toh ee kah-PEL-lee stah-mat-TEE-nah", "english": "I washed my hair this morning.", "tags": ["lavarsi", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Si lavava sempre prima di andare a letto.", "pronunciation": "see lah-VAH-vah SEM-preh PREE-mah dee an-DAH-reh ah LET-toh", "english": "He always used to wash before going to bed.", "tags": ["lavarsi", "habits", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Fermati un momento.", "pronunciation": "fer-MAH-tee oon moh-MEN-toh", "english": "Stop for a moment.", "tags": ["fermarsi", "everyday", "direct"], "difficulty": "A1", "tense": "presente"},
+  {"italian": "Fermati un momento.", "pronunciation": "fer-MAH-tee oon moh-MEN-toh", "english": "Stop for a moment.", "tags": ["fermarsi", "everyday", "direct"], "difficulty": "A1", "tense": "imperativo"},
   {"italian": "Mi sono fermato a fare benzina.", "pronunciation": "mee SOH-noh fer-MAH-toh ah FAH-reh ben-DZEE-nah", "english": "I stopped to get petrol.", "tags": ["fermarsi", "transport", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Si fermava sempre a parlare con tutti.", "pronunciation": "see fer-MAH-vah SEM-preh ah par-LAH-reh kon TOOT-tee", "english": "He always used to stop and talk to everyone.", "tags": ["fermarsi", "social", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
@@ -327,7 +327,7 @@
   {"italian": "Non mi è bastato il tempo.", "pronunciation": "nohn mee EH bas-TAH-toh eel TEM-poh", "english": "I didn't have enough time.", "tags": ["bastare", "everyday", "past"], "difficulty": "B1", "tense": "passato_prossimo"},
   {"italian": "Non bastava mai quello che faceva.", "pronunciation": "nohn bas-TAH-vah MAH-ee KWEL-loh keh fah-CHEH-vah", "english": "What he did was never enough.", "tags": ["bastare", "relationships", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Entra pure!", "pronunciation": "EN-trah POO-reh", "english": "Come right in!", "tags": ["entrare", "everyday", "welcoming"], "difficulty": "A1", "tense": "presente"},
+  {"italian": "Entra pure!", "pronunciation": "EN-trah POO-reh", "english": "Come right in!", "tags": ["entrare", "everyday", "welcoming"], "difficulty": "A1", "tense": "imperativo"},
   {"italian": "Sono entrato senza bussare.", "pronunciation": "SOH-noh en-TRAH-toh SEN-tsah boos-SAH-reh", "english": "I walked in without knocking.", "tags": ["entrare", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Entrava sempre senza bussare.", "pronunciation": "en-TRAH-vah SEM-preh SEN-tsah boos-SAH-reh", "english": "He always used to come in without knocking.", "tags": ["entrare", "habits", "past"], "difficulty": "A2", "tense": "imperfetto"},
 
@@ -355,7 +355,7 @@
   {"italian": "L'ho ringraziato per il suo aiuto.", "pronunciation": "LOH reen-grat-SYAH-toh pehr eel SOO-oh ah-YOO-toh", "english": "I thanked him for his help.", "tags": ["ringraziare", "gratitude", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Ringraziava sempre tutti.", "pronunciation": "reen-grat-SYAH-vah SEM-preh TOOT-tee", "english": "She always used to thank everyone.", "tags": ["ringraziare", "habits", "past"], "difficulty": "A2", "tense": "imperfetto"},
 
-  {"italian": "Non dimenticare di salutarli.", "pronunciation": "nohn dee-men-tee-KAH-reh dee sah-loo-TAR-lee", "english": "Don't forget to say hi to them.", "tags": ["salutare", "everyday", "social"], "difficulty": "A2", "tense": "presente"},
+  {"italian": "Non dimenticare di salutarli.", "pronunciation": "nohn dee-men-tee-KAH-reh dee sah-loo-TAR-lee", "english": "Don't forget to say hi to them.", "tags": ["salutare", "everyday", "social"], "difficulty": "A2", "tense": "imperativo"},
   {"italian": "L'ho salutato ma non ha risposto.", "pronunciation": "LOH sah-loo-TAH-toh mah nohn AH ree-SPOS-toh", "english": "I said hello but he didn't respond.", "tags": ["salutare", "social", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Salutava sempre tutti con un sorriso.", "pronunciation": "sah-loo-TAH-vah SEM-preh TOOT-tee kon oon sor-REE-zoh", "english": "She always used to greet everyone with a smile.", "tags": ["salutare", "habits", "past"], "difficulty": "A2", "tense": "imperfetto"},
 
@@ -379,7 +379,7 @@
   {"italian": "Ho corso per dieci chilometri.", "pronunciation": "OH KOR-soh pehr DYEH-chee kee-LOH-meh-tree", "english": "I ran ten kilometres.", "tags": ["correre", "sport", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Correva ogni giorno per tenersi in forma.", "pronunciation": "kor-REH-vah ON-yee JOR-noh pehr teh-NER-see een FOR-mah", "english": "He used to run every day to stay in shape.", "tags": ["correre", "health", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Siediti pure.", "pronunciation": "SYED-ee-tee POO-reh", "english": "Please, sit down.", "tags": ["sedersi", "everyday", "welcoming"], "difficulty": "A1", "tense": "presente"},
+  {"italian": "Siediti pure.", "pronunciation": "SYED-ee-tee POO-reh", "english": "Please, sit down.", "tags": ["sedersi", "everyday", "welcoming"], "difficulty": "A1", "tense": "imperativo"},
   {"italian": "Mi sono seduto vicino alla finestra.", "pronunciation": "mee SOH-noh seh-DOO-toh vee-CHEE-noh AL-lah fee-NES-trah", "english": "I sat down near the window.", "tags": ["sedersi", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Si sedeva sempre nello stesso posto.", "pronunciation": "see seh-DEH-vah SEM-preh NEL-loh STES-soh POS-toh", "english": "He always used to sit in the same spot.", "tags": ["sedersi", "habits", "past"], "difficulty": "A2", "tense": "imperfetto"},
 
@@ -391,7 +391,7 @@
   {"italian": "Ho cercato ma non l'ho trovato.", "pronunciation": "OH cher-KAH-toh mah nohn LOH troh-VAH-toh", "english": "I looked but couldn't find it.", "tags": ["cercare", "everyday", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Cercava sempre di fare del suo meglio.", "pronunciation": "cher-KAH-vah SEM-preh dee FAH-reh del SOO-oh MEL-yoh", "english": "She always tried to do her best.", "tags": ["cercare", "habits", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
-  {"italian": "Raccontami tutto.", "pronunciation": "rak-KON-tah-mee TOOT-toh", "english": "Tell me everything.", "tags": ["raccontare", "everyday", "expressions"], "difficulty": "A1", "tense": "presente"},
+  {"italian": "Raccontami tutto.", "pronunciation": "rak-KON-tah-mee TOOT-toh", "english": "Tell me everything.", "tags": ["raccontare", "everyday", "expressions"], "difficulty": "A1", "tense": "imperativo"},
   {"italian": "Mi ha raccontato una storia bellissima.", "pronunciation": "mee AH rak-kon-TAH-toh OO-nah STOR-yah bel-LEES-see-mah", "english": "He told me a wonderful story.", "tags": ["raccontare", "social", "past"], "difficulty": "A2", "tense": "passato_prossimo"},
   {"italian": "Raccontava sempre le stesse barzellette.", "pronunciation": "rak-kon-TAH-vah SEM-preh leh STES-seh bar-tsel-LET-teh", "english": "He always used to tell the same jokes.", "tags": ["raccontare", "humor", "past"], "difficulty": "B1", "tense": "imperfetto"},
 
@@ -409,7 +409,7 @@
   {"italian": "Capito?", "pronunciation": "kah-PEE-toh", "english": "Got it?", "tags": ["capire", "everyday", "quick"], "difficulty": "A1", "tense": "misto"},
   {"italian": "Non è colpa mia.", "pronunciation": "nohn EH KOL-pah MEE-ah", "english": "It's not my fault.", "tags": ["essere", "everyday", "defensive"], "difficulty": "A1", "tense": "presente"},
   {"italian": "Siamo in ritardo.", "pronunciation": "SYAH-moh een ree-TAR-doh", "english": "We're late.", "tags": ["essere", "everyday", "practical"], "difficulty": "A1", "tense": "presente"},
-  {"italian": "Facciamo così.", "pronunciation": "fah-CHAH-moh koh-ZEE", "english": "Let's do it this way.", "tags": ["fare", "everyday", "decisions"], "difficulty": "A2", "tense": "presente"},
+  {"italian": "Facciamo così.", "pronunciation": "fah-CHAH-moh koh-ZEE", "english": "Let's do it this way.", "tags": ["fare", "everyday", "decisions"], "difficulty": "A2", "tense": "imperativo"},
   {"italian": "Non ci sto.", "pronunciation": "nohn chee STOH", "english": "I'm not having it. I disagree.", "tags": ["stare", "expressions", "direct"], "difficulty": "B1", "tense": "presente"},
   {"italian": "Te l'avevo detto!", "pronunciation": "teh lah-VEH-voh DET-toh", "english": "I told you so!", "tags": ["dire", "everyday", "expressions"], "difficulty": "A2", "tense": "imperfetto"},
   {"italian": "Non me lo aspettavo.", "pronunciation": "nohn meh loh ah-spet-TAH-voh", "english": "I didn't expect that.", "tags": ["aspettare", "everyday", "surprise"], "difficulty": "B1", "tense": "imperfetto"},
