@@ -305,13 +305,18 @@ function nextCard() {
 
 // ---- Speech ----
 
+let cachedVoices = [];
+speechSynthesis.addEventListener('voiceschanged', () => {
+    cachedVoices = speechSynthesis.getVoices();
+});
+
 function speakItalian(text) {
     if (!text) return;
     if (speechSynthesis.speaking) speechSynthesis.cancel();
     const utt = new SpeechSynthesisUtterance(text);
     utt.lang = 'it-IT';
     utt.rate = 0.85;
-    const voices = speechSynthesis.getVoices();
+    const voices = cachedVoices.length ? cachedVoices : speechSynthesis.getVoices();
     const italianVoice =
         voices.find(v => v.lang.startsWith('it') && (
             v.name.toLowerCase().includes('luca') ||
