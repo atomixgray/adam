@@ -312,34 +312,25 @@ speechSynthesis.addEventListener('voiceschanged', () => {
 
 function speakItalian(text) {
     if (!text) return;
+    if (speechSynthesis.speaking) speechSynthesis.cancel();
 
-    const doSpeak = () => {
-        // Refresh cache each call — iOS loads voices incrementally, keep the largest list
-        const current = speechSynthesis.getVoices();
-        if (current.length >= cachedVoices.length) cachedVoices = current;
+    // Refresh cache — only replace if we got a larger list (guards against empty returns)
+    const current = speechSynthesis.getVoices();
+    if (current.length > cachedVoices.length) cachedVoices = current;
 
-        const utt = new SpeechSynthesisUtterance(text);
-        utt.lang = 'it-IT';
-        utt.rate = 0.85;
-        const italianVoice =
-            cachedVoices.find(v => v.lang.startsWith('it') && (
-                v.name.toLowerCase().includes('luca') ||
-                v.name.toLowerCase().includes('diego') ||
-                v.name.toLowerCase().includes('cosimo') ||
-                v.name.toLowerCase().includes('giorgio')
-            )) ||
-            cachedVoices.find(v => v.lang.startsWith('it'));
-        if (italianVoice) utt.voice = italianVoice;
-        speechSynthesis.speak(utt);
-    };
-
-    // iOS Safari silently fails if speak() is called too soon after cancel()
-    if (speechSynthesis.speaking) {
-        speechSynthesis.cancel();
-        setTimeout(doSpeak, 100);
-    } else {
-        doSpeak();
-    }
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang = 'it-IT';
+    utt.rate = 0.85;
+    const italianVoice =
+        cachedVoices.find(v => v.lang.startsWith('it') && (
+            v.name.toLowerCase().includes('luca') ||
+            v.name.toLowerCase().includes('diego') ||
+            v.name.toLowerCase().includes('cosimo') ||
+            v.name.toLowerCase().includes('giorgio')
+        )) ||
+        cachedVoices.find(v => v.lang.startsWith('it'));
+    if (italianVoice) utt.voice = italianVoice;
+    speechSynthesis.speak(utt);
 }
 
 // ---- Mode ----
