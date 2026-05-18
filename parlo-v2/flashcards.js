@@ -305,37 +305,22 @@ function nextCard() {
 
 // ---- Speech ----
 
-let cachedVoices = speechSynthesis.getVoices();
-speechSynthesis.addEventListener('voiceschanged', () => {
-    cachedVoices = speechSynthesis.getVoices();
-});
-
 function speakItalian(text) {
     if (!text) return;
     if (speechSynthesis.speaking) speechSynthesis.cancel();
-
-    // Refresh cache — only replace if we got a larger list (guards against empty returns)
-    const current = speechSynthesis.getVoices();
-    if (current.length > cachedVoices.length) cachedVoices = current;
-
     const utt = new SpeechSynthesisUtterance(text);
     utt.lang = 'it-IT';
     utt.rate = 0.85;
+    const voices = speechSynthesis.getVoices();
     const italianVoice =
-        cachedVoices.find(v => v.lang.startsWith('it') && (
+        voices.find(v => v.lang.startsWith('it') && (
             v.name.toLowerCase().includes('luca') ||
             v.name.toLowerCase().includes('diego') ||
             v.name.toLowerCase().includes('cosimo') ||
             v.name.toLowerCase().includes('giorgio')
         )) ||
-        cachedVoices.find(v => v.lang.startsWith('it'));
+        voices.find(v => v.lang.startsWith('it') && !v.name.toLowerCase().includes('alice'));
     if (italianVoice) utt.voice = italianVoice;
-    // DEBUG: tap speaker twice quickly to see available voices
-    if (window._debugVoices) {
-        alert('Italian voices:\n' + cachedVoices.filter(v => v.lang.startsWith('it')).map(v => v.name + ' (' + v.lang + ')').join('\n') || 'none found');
-        window._debugVoices = false;
-        return;
-    }
     speechSynthesis.speak(utt);
 }
 
@@ -370,8 +355,8 @@ flashcard.addEventListener('click', e => {
 
 showAnswerBtn.addEventListener('click', revealAnswer);
 
-speakerFront.addEventListener('click', () => { window._debugVoices = window._lastSpeakerTap && Date.now() - window._lastSpeakerTap < 500; window._lastSpeakerTap = Date.now(); speakItalian(italianTextForSpeech); });
-speakerBack.addEventListener('click',  () => { window._debugVoices = window._lastSpeakerTap && Date.now() - window._lastSpeakerTap < 500; window._lastSpeakerTap = Date.now(); speakItalian(italianTextForSpeech); });
+speakerFront.addEventListener('click', () => speakItalian(italianTextForSpeech));
+speakerBack.addEventListener('click',  () => speakItalian(italianTextForSpeech));
 
 document.querySelectorAll('.btn-srs').forEach(btn => {
     btn.addEventListener('click', () => {
