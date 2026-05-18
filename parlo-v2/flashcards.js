@@ -305,7 +305,7 @@ function nextCard() {
 
 // ---- Speech ----
 
-let cachedVoices = [];
+let cachedVoices = speechSynthesis.getVoices();
 speechSynthesis.addEventListener('voiceschanged', () => {
     cachedVoices = speechSynthesis.getVoices();
 });
