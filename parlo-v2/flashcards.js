@@ -313,18 +313,22 @@ speechSynthesis.addEventListener('voiceschanged', () => {
 function speakItalian(text) {
     if (!text) return;
     if (speechSynthesis.speaking) speechSynthesis.cancel();
+
+    // Refresh cache each call — iOS loads voices incrementally, keep the largest list
+    const current = speechSynthesis.getVoices();
+    if (current.length >= cachedVoices.length) cachedVoices = current;
+
     const utt = new SpeechSynthesisUtterance(text);
     utt.lang = 'it-IT';
     utt.rate = 0.85;
-    const voices = cachedVoices.length ? cachedVoices : speechSynthesis.getVoices();
     const italianVoice =
-        voices.find(v => v.lang.startsWith('it') && (
+        cachedVoices.find(v => v.lang.startsWith('it') && (
             v.name.toLowerCase().includes('luca') ||
             v.name.toLowerCase().includes('diego') ||
             v.name.toLowerCase().includes('cosimo') ||
             v.name.toLowerCase().includes('giorgio')
         )) ||
-        voices.find(v => v.lang.startsWith('it'));
+        cachedVoices.find(v => v.lang.startsWith('it'));
     if (italianVoice) utt.voice = italianVoice;
     speechSynthesis.speak(utt);
 }
