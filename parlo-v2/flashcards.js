@@ -330,6 +330,12 @@ function speakItalian(text) {
         )) ||
         cachedVoices.find(v => v.lang.startsWith('it'));
     if (italianVoice) utt.voice = italianVoice;
+    // DEBUG: tap speaker twice quickly to see available voices
+    if (window._debugVoices) {
+        alert('Italian voices:\n' + cachedVoices.filter(v => v.lang.startsWith('it')).map(v => v.name + ' (' + v.lang + ')').join('\n') || 'none found');
+        window._debugVoices = false;
+        return;
+    }
     speechSynthesis.speak(utt);
 }
 
@@ -364,8 +370,8 @@ flashcard.addEventListener('click', e => {
 
 showAnswerBtn.addEventListener('click', revealAnswer);
 
-speakerFront.addEventListener('click', () => speakItalian(italianTextForSpeech));
-speakerBack.addEventListener('click',  () => speakItalian(italianTextForSpeech));
+speakerFront.addEventListener('click', () => { window._debugVoices = window._lastSpeakerTap && Date.now() - window._lastSpeakerTap < 500; window._lastSpeakerTap = Date.now(); speakItalian(italianTextForSpeech); });
+speakerBack.addEventListener('click',  () => { window._debugVoices = window._lastSpeakerTap && Date.now() - window._lastSpeakerTap < 500; window._lastSpeakerTap = Date.now(); speakItalian(italianTextForSpeech); });
 
 document.querySelectorAll('.btn-srs').forEach(btn => {
     btn.addEventListener('click', () => {
