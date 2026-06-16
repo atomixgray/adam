@@ -61,7 +61,9 @@ const HIGH_KEYWORDS = [
 
 let allArticles = [];
 let currentFilter = 'all';
-let currentView = 'all'; // 'all' or 'bookmarks'
+let currentView = 'all';
+let readSet = new Set();
+
 // Bookmark management
 function getBookmarks() {
     const bookmarks = localStorage.getItem('secops_bookmarks');
@@ -93,6 +95,48 @@ function toggleBookmark(article) {
     
     localStorage.setItem('secops_bookmarks', JSON.stringify(bookmarks));
     displayArticles(); // Refresh display to update bookmark icons
+}
+
+// Read tracking
+function loadReadArticles() {
+    const stored = localStorage.getItem('secops_read');
+    readSet = stored ? new Set(JSON.parse(stored)) : new Set();
+}
+
+function markAsRead(link) {
+    readSet.add(link);
+    localStorage.setItem('secops_read', JSON.stringify([...readSet]));
+}
+
+function isRead(link) {
+    return readSet.has(link);
+}
+
+function markAllAsRead() {
+    allArticles.forEach(a => readSet.add(a.link));
+    localStorage.setItem('secops_read', JSON.stringify([...readSet]));
+    displayArticles();
+    updateSourceBadges();
+    updatePageTitle();
+}
+
+function updateSourceBadges() {
+    document.querySelectorAll('.source-btn[data-source]').forEach(btn => {
+        if (!btn.dataset.label) btn.dataset.label = btn.textContent.trim();
+        const source = btn.dataset.source;
+        const articles = source === 'all'
+            ? allArticles
+            : allArticles.filter(a => a.source.toLowerCase() === source);
+        const unread = articles.filter(a => !isRead(a.link)).length;
+        btn.textContent = unread > 0 ? `${btn.dataset.label} (${unread})` : btn.dataset.label;
+    });
+}
+
+function updatePageTitle() {
+    const unread = allArticles.filter(a => !isRead(a.link)).length;
+    document.title = unread > 0
+        ? `(${unread}) SecOps Daily - Security News Feed`
+        : 'SecOps Daily - Security News Feed';
 }
 
 // Filter articles by CVE (global for onclick)
@@ -237,11 +281,26 @@ function handleKeyboardShortcuts(e) {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     console.log('SecOps Daily initialized');
-    
-    // Set greeting immediately
+
+    loadReadArticles();
     setGreeting();
-    
     loadFeeds();
+
+    // Mark article as read when its title link is clicked
+    newsFeed.addEventListener('click', (e) => {
+        const a = e.target.closest('.news-title a');
+        if (a) {
+            const item = a.closest('.news-item');
+            if (item) {
+                markAsRead(item.dataset.link);
+                item.classList.add('news-item--read');
+                updateSourceBadges();
+                updatePageTitle();
+            }
+        }
+    });
+
+    document.getElementById('markAllReadBtn').addEventListener('click', markAllAsRead);
     
     refreshBtn.addEventListener('click', () => {
         console.log('Refresh button clicked');
@@ -349,7 +408,9 @@ async function loadFeeds() {
         updateTimestamp();
         updateStats();
         displayArticles();
-        
+        updateSourceBadges();
+        updatePageTitle();
+
     } catch (error) {
         console.error('Error loading feeds:', error);
         feedStatus.textContent = 'ERROR';
@@ -649,8 +710,9 @@ function displayArticles() {
         
         const safeLink = escapeHtml(article.link);
         const safeSource = escapeHtml(article.source);
+        const readClass = isRead(article.link) ? ' news-item--read' : '';
         return `
-        <div class="news-item" data-link="${safeLink}">
+        <div class="news-item${readClass}" data-link="${safeLink}">
             <div class="news-meta">
                 <span class="news-time">[${formatTime(article.date)}]</span>
                 <span class="news-source">[${safeSource}]</span>

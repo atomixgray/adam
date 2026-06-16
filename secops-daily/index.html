@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src https://rss-proxy.adamlarkin.workers.dev; img-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
 
     <title>SecOps Daily - Security News Feed</title>
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
     <div class="terminal-container">
@@ -39,6 +39,7 @@
                 <div class="header-controls">
                     <button class="view-btn active" data-view="all">ALL FEEDS</button>
                     <button class="view-btn" data-view="bookmarks">BOOKMARKS</button>
+                    <button id="markAllReadBtn" class="refresh-btn">[MARK ALL READ]</button>
                     <button id="refreshBtn" class="refresh-btn">[REFRESH]</button>
                 </div>
             </div>
@@ -135,6 +136,6 @@
         </div>
     </div>
 
-    <script src="script.js?v=20260616"></script>
+    <script src="script.js?v=20260617"></script>
 </body>
 </html>
