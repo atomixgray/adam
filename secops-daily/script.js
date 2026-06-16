@@ -62,10 +62,6 @@ const HIGH_KEYWORDS = [
 let allArticles = [];
 let currentFilter = 'all';
 let currentView = 'all'; // 'all' or 'bookmarks'
-let showTrends = false; // Toggle for trends panel
-let aiAnalysisCache = null; // Cache AI analysis for 1 hour
-let aiAnalysisLoading = false; // Loading state for AI analysis
-
 // Bookmark management
 function getBookmarks() {
     const bookmarks = localStorage.getItem('secops_bookmarks');
@@ -97,255 +93,6 @@ function toggleBookmark(article) {
     
     localStorage.setItem('secops_bookmarks', JSON.stringify(bookmarks));
     displayArticles(); // Refresh display to update bookmark icons
-}
-
-// Trends analysis
-function analyzeTrends() {
-    if (allArticles.length === 0) return null;
-    
-    // Extract all CVEs
-    const cvePattern = /CVE-\d{4}-\d{4,}/gi;
-    const cveCount = {};
-    
-    allArticles.forEach(article => {
-        const text = article.title + ' ' + article.description;
-        const matches = text.match(cvePattern);
-        if (matches) {
-            matches.forEach(cve => {
-                const normalized = cve.toUpperCase();
-                cveCount[normalized] = (cveCount[normalized] || 0) + 1;
-            });
-        }
-    });
-    
-    // Count critical keywords
-    const keywordCount = {};
-    const trackKeywords = [
-        'ransomware', 'zero-day', '0-day', 'RCE', 'data breach', 
-        'critical vulnerability', 'exploit', 'malware', 'APT',
-        'phishing', 'supply chain', 'backdoor'
-    ];
-    
-    allArticles.forEach(article => {
-        const text = (article.title + ' ' + article.description).toLowerCase();
-        trackKeywords.forEach(keyword => {
-            if (text.includes(keyword.toLowerCase())) {
-                keywordCount[keyword] = (keywordCount[keyword] || 0) + 1;
-            }
-        });
-    });
-    
-    // Get top items
-    const topCVEs = Object.entries(cveCount)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 5);
-    
-    const topKeywords = Object.entries(keywordCount)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 8);
-    
-    return { topCVEs, topKeywords };
-}
-
-function toggleTrendsPanel() {
-    showTrends = !showTrends;
-    const trendsPanel = document.getElementById('trendsPanel');
-    const toggleBtn = document.getElementById('toggleTrendsBtn');
-    
-    if (showTrends) {
-        trendsPanel.classList.remove('hidden');
-        toggleBtn.textContent = 'HIDE TRENDS';
-        
-        // Show AI analysis option at the top with close button
-        const trendsContent = document.getElementById('trendsContent');
-        trendsContent.innerHTML = `
-            <button class="trends-close-btn" data-action="close-trends" title="Close">×</button>
-            <div class="trends-choice">
-                <button data-action="ai-analysis" class="ai-analysis-btn">🤖 AI THREAT ANALYSIS</button>
-                <button data-action="keyword-trends" class="keyword-analysis-btn">📊 KEYWORD TRENDS</button>
-            </div>
-        `;
-    } else {
-        closeTrendsPanel();
-    }
-}
-
-// Close trends panel helper
-function closeTrendsPanel() {
-    showTrends = false;
-    const trendsPanel = document.getElementById('trendsPanel');
-    const toggleBtn = document.getElementById('toggleTrendsBtn');
-    
-    trendsPanel.classList.add('hidden');
-    toggleBtn.textContent = 'TRENDING';
-}
-
-
-function updateTrendsPanel() {
-    const trends = analyzeTrends();
-    const trendsContent = document.getElementById('trendsContent');
-    
-    if (!trends || (trends.topCVEs.length === 0 && trends.topKeywords.length === 0)) {
-        trendsContent.innerHTML = '<div class="trends-empty">No trend data available yet. Refresh feeds to analyze.</div>';
-        return;
-    }
-    
-    const maxCount = Math.max(
-        trends.topCVEs.length > 0 ? trends.topCVEs[0][1] : 0,
-        trends.topKeywords.length > 0 ? trends.topKeywords[0][1] : 0
-    );
-    
-    let html = '';
-    
-    // Top CVEs section
-    if (trends.topCVEs.length > 0) {
-        html += '<div class="trends-section"><h3 class="trends-title">[TOP CVEs TODAY - CLICK TO FILTER]</h3>';
-        trends.topCVEs.forEach(([cve, count]) => {
-            const percentage = (count / maxCount) * 100;
-            html += `
-                <div class="trend-item">
-                    <div class="trend-label">
-                        <span class="trend-cve-filter" data-action="filter-cve" data-value="${escapeHtml(cve)}" title="Click to filter articles">${cve}</span>
-                        <a href="https://nvd.nist.gov/vuln/detail/${cve}" target="_blank" class="trend-nvd-link" title="View on NVD">[NVD]</a>
-                        <span class="trend-count">${count}</span>
-                    </div>
-                    <div class="trend-bar-container">
-                        <div class="trend-bar trend-bar-cve" style="width: ${percentage}%"></div>
-                    </div>
-                </div>
-            `;
-        });
-        html += '</div>';
-    }
-    
-    // Top Keywords section
-    if (trends.topKeywords.length > 0) {
-        html += '<div class="trends-section"><h3 class="trends-title">[TRENDING THREATS - CLICK TO FILTER]</h3>';
-        trends.topKeywords.forEach(([keyword, count]) => {
-            const percentage = (count / maxCount) * 100;
-            html += `
-                <div class="trend-item">
-                    <div class="trend-label">
-                        <span class="trend-keyword-filter" data-action="filter-keyword" data-value="${escapeHtml(keyword)}" title="Click to filter articles">${keyword.toUpperCase()}</span>
-                        <span class="trend-count">${count}</span>
-                    </div>
-                    <div class="trend-bar-container">
-                        <div class="trend-bar trend-bar-keyword" style="width: ${percentage}%"></div>
-                    </div>
-                </div>
-            `;
-        });
-        html += '</div>';
-    }
-    
-    trendsContent.innerHTML = html;
-}
-
-// AI-powered threat analysis
-async function generateAIAnalysis() {
-    const trendsContent = document.getElementById('trendsContent');
-    const toggleBtn = document.getElementById('toggleTrendsBtn');
-    
-    // Check cache first (1 hour)
-    if (aiAnalysisCache && aiAnalysisCache.timestamp > Date.now() - 3600000) {
-        displayAIAnalysis(aiAnalysisCache.data);
-        return;
-    }
-    
-    if (aiAnalysisLoading) return; // Prevent duplicate requests
-    
-    aiAnalysisLoading = true;
-    toggleBtn.textContent = 'ANALYZING...';
-    toggleBtn.disabled = true;
-    
-    trendsContent.innerHTML = '<div class="ai-loading">🤖 AI analyzing threat landscape...</div>';
-    
-    try {
-        // Prepare articles data for AI
-        const articlesData = allArticles.map(a => ({
-            title: a.title,
-            source: a.source,
-            date: a.date.toISOString(),
-            description: a.description
-        }));
-        
-        const response = await fetch(`${PROXY_URL}/analyze-trends`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ articles: articlesData })
-        });
-        
-        if (!response.ok) {
-            throw new Error(`AI analysis failed: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        // Cache the result
-        aiAnalysisCache = {
-            data,
-            timestamp: Date.now()
-        };
-        
-        displayAIAnalysis(data);
-        
-    } catch (error) {
-        console.error('AI analysis error:', error);
-        trendsContent.innerHTML = `
-            <div class="ai-error">
-                ⚠️ AI analysis unavailable. ${error.message}
-                <br><br>
-                <button data-action="keyword-trends" class="ai-fallback-btn">Show keyword trends instead</button>
-            </div>
-        `;
-    } finally {
-        aiAnalysisLoading = false;
-        toggleBtn.textContent = 'AI ANALYSIS';
-        toggleBtn.disabled = false;
-    }
-}
-
-// Display AI analysis results
-function displayAIAnalysis(data) {
-    const trendsContent = document.getElementById('trendsContent');
-    
-    if (!data.threats || data.threats.length === 0) {
-        trendsContent.innerHTML = '<div class="ai-empty">No significant threats detected in recent articles.</div>';
-        return;
-    }
-    
-    let html = '<div class="ai-analysis-header">';
-    html += '<h3 class="trends-title">🤖 [AI THREAT ANALYSIS - LAST 24H]</h3>';
-    html += `<div class="ai-meta">Analyzed ${data.analyzed_count} articles • Updated ${new Date(data.timestamp).toLocaleTimeString()}</div>`;
-    html += '</div>';
-    
-    html += '<div class="ai-threats">';
-    
-    data.threats.forEach((threat, index) => {
-        const severityClass = `severity-${threat.severity || 'medium'}`;
-        const severityIcon = threat.severity === 'critical' ? '🔴' : threat.severity === 'high' ? '🟠' : '🟡';
-        
-        html += `
-            <div class="ai-threat-card ${severityClass}">
-                <div class="ai-threat-header">
-                    <span class="ai-threat-number">#${index + 1}</span>
-                    <span class="ai-threat-severity">${severityIcon} ${(threat.severity || 'medium').toUpperCase()}</span>
-                </div>
-                <div class="ai-threat-name">${escapeHtml(threat.threat)}</div>
-                <div class="ai-threat-description">${escapeHtml(threat.description)}</div>
-            </div>
-        `;
-    });
-    
-    html += '</div>';
-    
-    html += '<div class="ai-footer">';
-    html += '<button data-action="keyword-trends" class="ai-switch-btn">Switch to keyword trends</button>';
-    html += '</div>';
-    
-    trendsContent.innerHTML = html;
 }
 
 // Filter articles by CVE (global for onclick)
@@ -482,8 +229,6 @@ function handleKeyboardShortcuts(e) {
             // Close modal or trends panel
             if (shortcutsModal && shortcutsModal.style.display === 'flex') {
                 shortcutsModal.style.display = 'none';
-            } else if (showTrends) {
-                closeTrendsPanel();
             }
             break;
     }
@@ -503,21 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadFeeds();
     });
 
-    document.getElementById('toggleTrendsBtn').addEventListener('click', toggleTrendsPanel);
-
-    // Delegated listener for all trends panel actions (replaces inline onclick attributes)
-    document.getElementById('trendsPanel').addEventListener('click', (e) => {
-        const el = e.target.closest('[data-action]');
-        if (!el) return;
-        const action = el.dataset.action;
-        const value = el.dataset.value;
-        if (action === 'close-trends') closeTrendsPanel();
-        else if (action === 'ai-analysis') generateAIAnalysis();
-        else if (action === 'keyword-trends') updateTrendsPanel();
-        else if (action === 'filter-cve') filterByCVE(value);
-        else if (action === 'filter-keyword') filterByKeyword(value);
-    });
-    
     sourceButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             sourceButtons.forEach(b => b.classList.remove('active'));
@@ -620,10 +350,6 @@ async function loadFeeds() {
         updateStats();
         displayArticles();
         
-        // Update trends panel if visible
-        if (showTrends) {
-            updateTrendsPanel();
-        }
     } catch (error) {
         console.error('Error loading feeds:', error);
         feedStatus.textContent = 'ERROR';
