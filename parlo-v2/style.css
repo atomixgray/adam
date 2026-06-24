@@ -1087,6 +1087,33 @@ footer {
 
 .back-link:hover { color: #a8b5ff; }
 
+.footer-data {
+    margin-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.footer-data-btn {
+    background: none;
+    border: none;
+    color: #4a4a5a;
+    font-size: 0.8rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0;
+    font-family: inherit;
+}
+
+.footer-data-btn:hover { color: #a8b5ff; }
+
+.footer-data-sep {
+    color: #3a3a4a;
+    font-size: 0.8rem;
+}
+
 /* ---- Modal ---- */
 .modal {
     position: fixed;

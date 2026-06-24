@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';">
     <title>Parlo - Flashcards</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=14">
+    <link rel="stylesheet" href="style.css?v=15">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -51,22 +51,6 @@
                     <path d="M21 3v5h-5"/>
                 </svg>
                 Reset
-            </button>
-            <button id="exportBtn" class="control-btn srs-reset" title="Export SRS backup">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                </svg>
-                Export
-            </button>
-            <button id="importBtn" class="control-btn srs-reset" title="Import SRS backup">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="17 8 12 3 7 8"/>
-                    <line x1="12" y1="3" x2="12" y2="15"/>
-                </svg>
-                Import
             </button>
             <input type="file" id="importFile" accept=".json" style="display:none">
         </div>
@@ -168,10 +152,15 @@
 
         <footer>
             <a href="index.html" class="back-link">← Back to Parlo</a>
+            <div class="footer-data">
+                <button id="exportBtn" class="footer-data-btn">export</button>
+                <span class="footer-data-sep">·</span>
+                <button id="importBtn" class="footer-data-btn">import</button>
+            </div>
         </footer>
     </div>
 
     <script src="particles.js"></script>
-    <script src="flashcards.js?v=11"></script>
+    <script src="flashcards.js?v=12"></script>
 </body>
 </html>
