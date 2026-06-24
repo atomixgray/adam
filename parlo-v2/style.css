@@ -1456,6 +1456,84 @@ textarea:focus-visible {
 /* ---- Utility ---- */
 .hidden { display: none; }
 
+/* ---- Type-in mode ---- */
+.typein-area {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.typein-input {
+    width: 100%;
+    max-width: 550px;
+    padding: 1rem 1.2rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.typein-input:focus {
+    border-color: rgba(102, 126, 234, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.typein-result {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    text-align: center;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.typein-status {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.typein-yours {
+    color: #8a8a9a;
+    font-size: 0.85rem;
+}
+
+.typein-yours em {
+    font-style: normal;
+    color: #c0c0d0;
+}
+
+.typein-answer {
+    font-size: 0.85rem;
+    color: #a8b5ff;
+}
+
+.typein-result--correct {
+    background: rgba(103, 232, 162, 0.1);
+    border: 1px solid rgba(103, 232, 162, 0.25);
+    color: #67e8a2;
+}
+
+.typein-result--close {
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    color: #fbbf24;
+}
+
+.typein-result--wrong {
+    background: rgba(255, 107, 107, 0.08);
+    border: 1px solid rgba(255, 107, 107, 0.2);
+    color: #ff9090;
+}
+
 /* ---- Session complete action button ---- */
 .session-complete__action { margin-top: 1.5rem; }
 

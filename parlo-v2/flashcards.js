@@ -45,6 +45,14 @@ const statMastered    = document.getElementById('statMastered');
 const cefrBadge       = document.getElementById('cefrBadge');
 const tenseBadge      = document.getElementById('tenseBadge');
 
+const typeInArea      = document.getElementById('typeInArea');
+const typeInInput     = document.getElementById('typeInInput');
+const typeInCheckBtn  = document.getElementById('typeInCheckBtn');
+const typeInResult    = document.getElementById('typeInResult');
+const exportBtn       = document.getElementById('exportBtn');
+const importBtn       = document.getElementById('importBtn');
+const importFile      = document.getElementById('importFile');
+
 const TENSE_LABELS = {
     presente:          'Presente',
     passato_prossimo:  'Passato Prossimo',
@@ -201,7 +209,7 @@ function showCard(phraseIndex) {
     const phrase = phrases[phraseIndex];
     const showItalianFirst = studyMode === 'italian-to-english'
         ? true
-        : studyMode === 'english-to-italian'
+        : (studyMode === 'english-to-italian' || studyMode === 'type-in')
             ? false
             : Math.random() < 0.5;
 
@@ -243,11 +251,17 @@ function showCard(phraseIndex) {
     isFlipped = false;
     flashcard.classList.remove('flipped');
 
-    // Show reveal button, hide ratings
-    srsReveal.style.display = 'flex';
+    // Show reveal button or type-in area, hide ratings
+    const isTypeIn = studyMode === 'type-in';
+    srsReveal.style.display = isTypeIn ? 'none' : 'flex';
+    typeInArea.style.display = isTypeIn ? 'flex' : 'none';
+    typeInInput.value = '';
+    typeInResult.style.display = 'none';
     srsRating.style.display = 'none';
     sessionComplete.style.display = 'none';
     flashcard.parentElement.style.display = 'flex';
+
+    if (isTypeIn) setTimeout(() => typeInInput.focus(), 50);
 
     // Update interval previews
     const intervals = previewIntervals(phraseIndex);
@@ -262,12 +276,15 @@ function revealAnswer() {
     isFlipped = true;
     flashcard.classList.add('flipped');
     srsReveal.style.display = 'none';
+    typeInArea.style.display = 'none';
     srsRating.style.display = 'flex';
 }
 
 function showSessionComplete() {
     flashcard.parentElement.style.display = 'none';
     srsReveal.style.display = 'none';
+    typeInArea.style.display = 'none';
+    typeInResult.style.display = 'none';
     srsRating.style.display = 'none';
     sessionComplete.style.display = 'flex';
     sessionSummary.textContent = `You reviewed ${sessionReviewed} card${sessionReviewed !== 1 ? 's' : ''} today.`;
@@ -402,6 +419,7 @@ continueBtn.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', e => {
+    if (document.activeElement === typeInInput) return;
     if (e.key === ' ' || e.key === 'Enter') {
         e.preventDefault();
         if (!isFlipped) {
@@ -431,6 +449,113 @@ flashcard.addEventListener('touchend', e => {
         else        document.querySelector('[data-rating="0"]').click(); // swipe left = again
     }
 }, { passive: true });
+
+// ---- Type-in mode ----
+
+function normalizeAnswer(str) {
+    return str.trim().toLowerCase()
+        .replace(/[.,!?;:'"]/g, '')
+        .replace(/\s+/g, ' ');
+}
+
+function normalizeLoose(str) {
+    return normalizeAnswer(str)
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '');
+}
+
+function checkTypeIn() {
+    const typed = typeInInput.value;
+    const correct = italianTextForSpeech;
+
+    const isExact = normalizeAnswer(typed) === normalizeAnswer(correct);
+    const isClose = !isExact && normalizeLoose(typed) === normalizeLoose(correct);
+
+    typeInResult.className = 'typein-result';
+    typeInResult.innerHTML = '';
+
+    const statusEl = document.createElement('span');
+    statusEl.className = 'typein-status';
+
+    if (isExact) {
+        typeInResult.classList.add('typein-result--correct');
+        statusEl.textContent = '✓ Correct!';
+        typeInResult.appendChild(statusEl);
+    } else {
+        typeInResult.classList.add(isClose ? 'typein-result--close' : 'typein-result--wrong');
+        statusEl.textContent = isClose ? '~ Almost — check the accents' : '✗ Not quite';
+
+        const yoursEl = document.createElement('span');
+        yoursEl.className = 'typein-yours';
+        const yoursEm = document.createElement('em');
+        yoursEm.textContent = typed || '—';
+        yoursEl.append('You: ', yoursEm);
+
+        const answerEl = document.createElement('span');
+        answerEl.className = 'typein-answer';
+        answerEl.textContent = '✓ ' + correct;
+
+        typeInResult.append(statusEl, yoursEl, answerEl);
+    }
+
+    typeInResult.style.display = 'flex';
+    revealAnswer();
+}
+
+typeInInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); checkTypeIn(); }
+});
+typeInCheckBtn.addEventListener('click', checkTypeIn);
+
+// ---- Export / Import ----
+
+function exportSRS() {
+    const payload = { version: 1, exported: today(), cardData };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `parlo-srs-${today()}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+function importSRS(file) {
+    const reader = new FileReader();
+    reader.onload = e => {
+        try {
+            const raw = JSON.parse(e.target.result);
+            const imported = raw.cardData ?? raw;
+            if (typeof imported !== 'object' || Array.isArray(imported)) throw new Error();
+            const dateStr = raw.exported ? ` from ${raw.exported}` : '';
+            if (!confirm(`Import backup${dateStr}? This replaces your current SRS progress.`)) return;
+            cardData = imported;
+            saveSRS();
+            sessionReviewed = 0;
+            const count = buildQueue();
+            updateStats();
+            if (count > 0) {
+                showCard(sessionQueue[0]);
+            } else {
+                showSessionComplete();
+                sessionSummary.textContent = "Progress restored! You're all caught up for today.";
+                sessionNext.textContent = '';
+            }
+        } catch {
+            alert('Could not import: invalid or corrupted backup file.');
+        }
+    };
+    reader.readAsText(file);
+}
+
+exportBtn.addEventListener('click', exportSRS);
+importBtn.addEventListener('click', () => importFile.click());
+importFile.addEventListener('change', e => {
+    if (e.target.files[0]) importSRS(e.target.files[0]);
+    e.target.value = '';
+});
 
 // ---- Init ----
 
