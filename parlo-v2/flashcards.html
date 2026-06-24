@@ -52,7 +52,6 @@
                 </svg>
                 Reset
             </button>
-            <input type="file" id="importFile" accept=".json" style="display:none">
         </div>
 
         <!-- Flashcard -->
@@ -111,7 +110,7 @@
         </div>
 
         <!-- Type-in input (only in type-in mode) -->
-        <div id="typeInArea" class="typein-area" style="display:none">
+        <div id="typeInArea" class="typein-area hidden">
             <input type="text" id="typeInInput" class="typein-input"
                    placeholder="Type the Italian phrase…"
                    autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
@@ -119,7 +118,7 @@
         </div>
 
         <!-- Type-in result -->
-        <div id="typeInResult" class="typein-result" style="display:none"></div>
+        <div id="typeInResult" class="typein-result hidden"></div>
 
         <!-- Post-flip: Rating buttons -->
         <div id="srsRating" class="srs-rating hidden">
@@ -156,11 +155,12 @@
                 <button id="exportBtn" class="footer-data-btn">export</button>
                 <span class="footer-data-sep">·</span>
                 <button id="importBtn" class="footer-data-btn">import</button>
+                <input type="file" id="importFile" accept=".json" class="hidden">
             </div>
         </footer>
     </div>
 
     <script src="particles.js"></script>
-    <script src="flashcards.js?v=12"></script>
+    <script src="flashcards.js?v=13"></script>
 </body>
 </html>
