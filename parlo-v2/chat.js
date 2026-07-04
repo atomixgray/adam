@@ -9,6 +9,12 @@ let chatRecognitionSupported = false;
 let chatRecognitionTimeout = null;
 let chatInited = false;
 
+const SCENARIO_EMOJI = {
+    caffe: '☕', mercato: '🛒', direzioni: '🗺️', ristorante: '🍝',
+    meeting: '👋', collega: '💼', medico: '🏥', hotel: '🏨',
+    treno: '🚆', farmacia: '💊', banca: '🏦', sport: '⚽',
+};
+
 function initChat() {
     if (chatInited) return;
     chatInited = true;
@@ -17,72 +23,47 @@ function initChat() {
 
     fetch('scenarios.json')
         .then(r => r.json())
-        .then(data => { chatScenarios = data; renderScenarioPicker(); })
+        .then(data => { chatScenarios = data; renderChips(); })
         .catch(e => console.error('Failed to load scenarios', e));
 
     document.getElementById('chatEndBtn').addEventListener('click', chatEnd);
     document.getElementById('chatMicBtn').addEventListener('click', chatOnMic);
     document.getElementById('chatSendBtn').addEventListener('click', chatOnSend);
     document.getElementById('chatInput').addEventListener('keydown', e => {
-        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); chatOnSend(); }
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatOnSend(); }
     });
 }
 
-// ── Scenario picker ───────────────────────────────────────────────────────
+// ── Scenario chips ────────────────────────────────────────────────────────
 
-function renderScenarioPicker() {
-    const grid = document.getElementById('chatScenarioGrid');
-    grid.innerHTML = '';
+const FREE_CHAT = {
+    id: 'free',
+    title: 'Free Chat',
+    level: null,
+    opening: 'Ciao! Di che cosa vuoi parlare oggi?',
+    ai_role: 'Italian friend',
+    user_role: 'friend',
+    context: null,
+};
 
-    ['A1', 'A2', 'B1', 'B2'].forEach(level => {
-        const levelScenarios = chatScenarios.filter(s => s.level === level);
-        if (!levelScenarios.length) return;
+function renderChips() {
+    const container = document.getElementById('chatChips');
+    container.innerHTML = '';
 
-        const group = document.createElement('div');
-        group.className = 'scenario-group';
+    // Free chat chip first
+    const freeChip = document.createElement('button');
+    freeChip.className = 'chat-chip chat-chip--free';
+    freeChip.innerHTML = `<span class="chip-emoji">💬</span><span class="chip-title">Free Chat</span><span class="chip-level">any level</span>`;
+    freeChip.addEventListener('click', () => chatStart(FREE_CHAT));
+    container.appendChild(freeChip);
 
-        const label = document.createElement('div');
-        label.className = 'scenario-group-label';
-        label.textContent = level;
-        group.appendChild(label);
-
-        const row = document.createElement('div');
-        row.className = 'scenario-row';
-
-        levelScenarios.forEach(s => {
-            const card = document.createElement('div');
-            card.className = 'scenario-card';
-
-            const title = document.createElement('div');
-            title.className = 'scenario-card__title';
-            title.textContent = s.title;
-
-            const desc = document.createElement('div');
-            desc.className = 'scenario-card__desc';
-            desc.textContent = s.description;
-
-            const footer = document.createElement('div');
-            footer.className = 'scenario-card__footer';
-
-            const badge = document.createElement('span');
-            badge.className = `scenario-card__level scenario-level--${s.level.toLowerCase()}`;
-            badge.textContent = s.level;
-
-            const role = document.createElement('span');
-            role.className = 'scenario-card__role';
-            role.textContent = 'You: ' + s.user_role;
-
-            footer.appendChild(badge);
-            footer.appendChild(role);
-            card.appendChild(title);
-            card.appendChild(desc);
-            card.appendChild(footer);
-            card.addEventListener('click', () => chatStart(s));
-            row.appendChild(card);
-        });
-
-        group.appendChild(row);
-        grid.appendChild(group);
+    chatScenarios.forEach(s => {
+        const chip = document.createElement('button');
+        chip.className = `chat-chip chat-chip--${s.level.toLowerCase()}`;
+        const emoji = SCENARIO_EMOJI[s.id] || '💬';
+        chip.innerHTML = `<span class="chip-emoji">${emoji}</span><span class="chip-title">${s.title}</span><span class="chip-level">${s.level}</span>`;
+        chip.addEventListener('click', () => chatStart(s));
+        container.appendChild(chip);
     });
 }
 
@@ -92,19 +73,15 @@ function chatStart(scenario) {
     chatCurrentScenario = scenario;
     chatHistory = [];
 
-    document.getElementById('chatTitle').textContent   = scenario.title;
-    document.getElementById('chatContext').textContent = scenario.context;
-    document.getElementById('chatWindow').innerHTML    = '';
-    document.getElementById('chatCorrection').classList.add('hidden');
+    document.getElementById('chatTitle').textContent = scenario.title;
+    document.getElementById('chatWindow').innerHTML  = '';
 
     document.getElementById('chatScenarioView').classList.add('hidden');
     document.getElementById('chatConvView').classList.remove('hidden');
 
-    // Opening line comes from scenarios.json — push to history as assistant turn
-    chatAppendAI(scenario.opening, null);
+    chatAppendAI(scenario.opening, null, null);
     chatHistory.push({ role: 'assistant', content: scenario.opening });
     parlo.speakItalian(scenario.opening);
-
     chatSetState('idle');
 }
 
@@ -136,13 +113,14 @@ async function chatSubmit(text) {
     const thinking = chatAppendThinking();
 
     try {
-        const data = await parlo.callClaude('chat', chatHistory, {
+        const options = chatCurrentScenario.context ? {
             scenario: {
                 context:   chatCurrentScenario.context,
                 ai_role:   chatCurrentScenario.ai_role,
                 user_role: chatCurrentScenario.user_role,
             },
-        });
+        } : {};
+        const data = await parlo.callClaude('chat', chatHistory, options);
 
         thinking.remove();
 
@@ -155,24 +133,16 @@ async function chatSubmit(text) {
             english    = parsed.english    || '';
             correction = parsed.correction || null;
         } catch {
-            italian = data.content?.[0]?.text || 'Sorry, something went wrong.';
+            italian = data.content?.[0]?.text || 'Scusa, qualcosa è andato storto.';
         }
 
         chatHistory.push({ role: 'assistant', content: italian });
-        chatAppendAI(italian, english);
+        chatAppendAI(italian, english, correction);
         parlo.speakItalian(italian);
-
-        const corrBox = document.getElementById('chatCorrection');
-        if (correction) {
-            corrBox.textContent = correction;
-            corrBox.classList.remove('hidden');
-        } else {
-            corrBox.classList.add('hidden');
-        }
 
     } catch (e) {
         thinking.remove();
-        chatAppendError('Could not reach tutor — check your connection and try again.');
+        chatAppendError('Could not connect — check your connection and try again.');
     }
 
     chatSetState('idle');
@@ -180,7 +150,7 @@ async function chatSubmit(text) {
 
 // ── DOM helpers ───────────────────────────────────────────────────────────
 
-function chatAppendAI(italian, english) {
+function chatAppendAI(italian, english, correction) {
     const el     = document.createElement('div');
     el.className = 'chat-msg chat-msg--ai';
 
@@ -193,13 +163,34 @@ function chatAppendAI(italian, english) {
     bubble.appendChild(italianEl);
 
     if (english) {
+        const revealBtn = document.createElement('button');
+        revealBtn.className = 'chat-reveal-btn';
+        revealBtn.textContent = 'show translation';
+
         const engEl = document.createElement('div');
         engEl.className = 'chat-translation';
+        engEl.style.display = 'none';
         engEl.textContent = english;
+
+        revealBtn.addEventListener('click', () => {
+            const visible = engEl.style.display !== 'none';
+            engEl.style.display = visible ? 'none' : 'block';
+            revealBtn.textContent = visible ? 'show translation' : 'hide';
+        });
+
+        bubble.appendChild(revealBtn);
         bubble.appendChild(engEl);
     }
 
     el.appendChild(bubble);
+
+    if (correction) {
+        const corrEl = document.createElement('div');
+        corrEl.className = 'chat-correction-note';
+        corrEl.textContent = '💡 ' + correction;
+        el.appendChild(corrEl);
+    }
+
     document.getElementById('chatWindow').appendChild(el);
     chatScrollBottom();
     return el;
@@ -222,7 +213,7 @@ function chatAppendThinking() {
     el.className = 'chat-msg chat-msg--ai';
     const bubble = document.createElement('div');
     bubble.className = 'chat-bubble chat-bubble--thinking';
-    bubble.textContent = '…';
+    bubble.innerHTML = '<span></span><span></span><span></span>';
     el.appendChild(bubble);
     document.getElementById('chatWindow').appendChild(el);
     chatScrollBottom();
@@ -263,9 +254,14 @@ function setupChatSpeech() {
     chatRecognition.onend = () => {
         clearChatRecognitionTimeout();
         if (chatState !== 'listening') return;
-        chatSetState('idle');
         const text = document.getElementById('chatInput').value.trim();
-        chatSetMicStatus(text ? 'Tap Send or edit above' : 'Nothing heard — tap to try again');
+        if (text) {
+            chatSubmit(text);
+            document.getElementById('chatInput').value = '';
+        } else {
+            chatSetState('idle');
+            chatSetMicStatus('Nothing heard — tap to try again');
+        }
     };
 
     chatRecognition.onerror = e => {
@@ -277,6 +273,7 @@ function setupChatSpeech() {
 }
 
 function chatOnMic() {
+    if (!chatRecognitionSupported) return;
     if (chatState === 'listening') {
         clearChatRecognitionTimeout();
         try { chatRecognition.stop(); } catch (e) {}
@@ -289,8 +286,6 @@ function chatOnMic() {
                 chatRecognitionTimeout = setTimeout(() => {
                     if (chatState !== 'listening') return;
                     try { chatRecognition.stop(); } catch (e) {}
-                    chatSetState('idle');
-                    chatSetMicStatus('Timed out — tap to try again');
                 }, 10000);
             } catch (e) {
                 chatSetState('idle');
@@ -306,8 +301,8 @@ function clearChatRecognitionTimeout() {
 
 // ── UI state ──────────────────────────────────────────────────────────────
 
-const CHAT_MIC_SVG  = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`;
-const CHAT_STOP_SVG = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>`;
+const CHAT_MIC_SVG  = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`;
+const CHAT_STOP_SVG = `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>`;
 
 function chatSetState(newState) {
     chatState = newState;
@@ -316,28 +311,28 @@ function chatSetState(newState) {
     const input = document.getElementById('chatInput');
 
     if (newState === 'idle') {
-        mic.disabled  = !chatRecognitionSupported;
         mic.innerHTML = CHAT_MIC_SVG;
-        mic.classList.remove('mic-btn--active', 'mic-btn--processing');
+        mic.classList.remove('mic-btn-hero--active', 'mic-btn-hero--processing');
+        mic.disabled   = !chatRecognitionSupported;
         send.disabled  = false;
         input.disabled = false;
-        chatSetMicStatus(chatRecognitionSupported ? 'Tap mic to speak, or type above' : 'Type your response above');
+        chatSetMicStatus(chatRecognitionSupported ? 'Tap to speak' : 'Type below');
     } else if (newState === 'listening') {
-        mic.disabled  = false;
         mic.innerHTML = CHAT_STOP_SVG;
-        mic.classList.add('mic-btn--active');
-        mic.classList.remove('mic-btn--processing');
+        mic.classList.add('mic-btn-hero--active');
+        mic.classList.remove('mic-btn-hero--processing');
+        mic.disabled   = false;
         send.disabled  = true;
         input.disabled = false;
-        chatSetMicStatus('Listening… tap to stop');
+        chatSetMicStatus('Listening…');
     } else {
-        mic.disabled  = true;
         mic.innerHTML = CHAT_MIC_SVG;
-        mic.classList.remove('mic-btn--active');
-        mic.classList.add('mic-btn--processing');
+        mic.classList.remove('mic-btn-hero--active');
+        mic.classList.add('mic-btn-hero--processing');
+        mic.disabled   = true;
         send.disabled  = true;
         input.disabled = true;
-        chatSetMicStatus('Luca is thinking…');
+        chatSetMicStatus('…');
     }
 }
 
