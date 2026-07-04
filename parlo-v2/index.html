@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -51,7 +51,10 @@
                 </div>
                 <div id="chatChips" class="chat-chips"></div>
                 <div id="chatHistorySection" class="chat-history-section hidden">
-                    <div class="chat-history-heading">Recent</div>
+                    <div class="chat-history-header">
+                        <div class="chat-history-heading">Recent</div>
+                        <button id="chatClearHistoryBtn" class="btn-ghost btn-sm">Clear</button>
+                    </div>
                     <div id="chatHistoryList" class="chat-history-list"></div>
                 </div>
             </div>
@@ -225,7 +228,7 @@
 
     <script src="particles.js"></script>
     <script src="app.js?v=2"></script>
-    <script src="chat.js?v=8"></script>
+    <script src="chat.js?v=9"></script>
     <script src="vocab.js?v=3"></script>
     <script src="translate.js?v=9"></script>
 </body>

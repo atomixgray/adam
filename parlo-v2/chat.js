@@ -30,6 +30,10 @@ function initChat() {
         .catch(e => console.error('Failed to load scenarios', e));
 
     document.getElementById('chatEndBtn').addEventListener('click', chatEnd);
+    document.getElementById('chatClearHistoryBtn').addEventListener('click', () => {
+        localStorage.removeItem(CHAT_HISTORY_KEY);
+        renderHistory();
+    });
     document.getElementById('chatRestartBtn').addEventListener('click', chatRestart);
     document.getElementById('chatMicBtn').addEventListener('click', chatOnMic);
     document.getElementById('chatSendBtn').addEventListener('click', chatOnSend);

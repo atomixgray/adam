@@ -2773,7 +2773,8 @@ textarea:focus-visible {
 .chat-topbar-actions { display: flex; gap: 0.5rem; align-items: center; }
 
 .chat-history-section { margin-top: 1.5rem; }
-.chat-history-heading { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.4; margin-bottom: 0.5rem; }
+.chat-history-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+.chat-history-heading { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.4; }
 .chat-history-list { display: flex; flex-direction: column; gap: 0.4rem; }
 .chat-history-item {
     display: flex; align-items: center; justify-content: space-between;
