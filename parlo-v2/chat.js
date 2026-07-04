@@ -1,9 +1,12 @@
 'use strict';
 
+const CHAT_HISTORY_KEY = 'parlo_v2_chat_history';
+const MAX_SAVED_CHATS  = 10;
+
 let chatScenarios = [];
 let chatCurrentScenario = null;
 let chatHistory = [];
-let chatState = 'idle'; // 'idle' | 'listening' | 'processing'
+let chatState = 'idle'; // 'idle' | 'listening' | 'processing' | 'reviewing'
 let chatRecognition = null;
 let chatRecognitionSupported = false;
 let chatRecognitionTimeout = null;
@@ -23,10 +26,11 @@ function initChat() {
 
     fetch('scenarios.json')
         .then(r => r.json())
-        .then(data => { chatScenarios = data; renderChips(); })
+        .then(data => { chatScenarios = data; renderChips(); renderHistory(); })
         .catch(e => console.error('Failed to load scenarios', e));
 
     document.getElementById('chatEndBtn').addEventListener('click', chatEnd);
+    document.getElementById('chatRestartBtn').addEventListener('click', chatRestart);
     document.getElementById('chatMicBtn').addEventListener('click', chatOnMic);
     document.getElementById('chatSendBtn').addEventListener('click', chatOnSend);
     document.getElementById('chatInput').addEventListener('keydown', e => {
@@ -67,6 +71,63 @@ function renderChips() {
     });
 }
 
+// ── Conversation history ──────────────────────────────────────────────────
+
+function loadSavedChats() {
+    try { return JSON.parse(localStorage.getItem(CHAT_HISTORY_KEY) || '[]'); } catch { return []; }
+}
+
+function saveChat(scenario, messages) {
+    if (messages.filter(m => m.role === 'user').length === 0) return;
+    const saved = loadSavedChats();
+    saved.unshift({
+        id: Date.now(),
+        title: scenario.title || 'Free Chat',
+        scenarioId: scenario.id,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        messages,
+    });
+    localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(saved.slice(0, MAX_SAVED_CHATS)));
+}
+
+function renderHistory() {
+    const saved = loadSavedChats();
+    const section = document.getElementById('chatHistorySection');
+    const list    = document.getElementById('chatHistoryList');
+    if (!saved.length) { section.classList.add('hidden'); return; }
+
+    section.classList.remove('hidden');
+    list.innerHTML = '';
+    saved.forEach(chat => {
+        const item = document.createElement('button');
+        item.className = 'chat-history-item';
+        const userTurns = chat.messages.filter(m => m.role === 'user').length;
+        item.innerHTML = `
+            <span class="history-title">${chat.title}</span>
+            <span class="history-meta">${chat.date} · ${userTurns} turn${userTurns !== 1 ? 's' : ''}</span>`;
+        item.addEventListener('click', () => chatViewHistory(chat));
+        list.appendChild(item);
+    });
+}
+
+function chatViewHistory(saved) {
+    chatCurrentScenario = chatScenarios.find(s => s.id === saved.scenarioId) || { ...FREE_CHAT, title: saved.title };
+    chatHistory = [];
+
+    document.getElementById('chatTitle').textContent = saved.title;
+    document.getElementById('chatWindow').innerHTML  = '';
+    document.getElementById('chatRestartBtn').classList.remove('hidden');
+    document.getElementById('chatScenarioView').classList.add('hidden');
+    document.getElementById('chatConvView').classList.remove('hidden');
+
+    saved.messages.forEach(m => {
+        if (m.role === 'assistant') chatAppendAI(m.content, null, null);
+        else chatAppendUser(m.content);
+    });
+
+    chatSetState('reviewing');
+}
+
 // ── Conversation ──────────────────────────────────────────────────────────
 
 function chatStart(scenario) {
@@ -89,11 +150,20 @@ function chatEnd() {
     if (chatState === 'listening') {
         try { chatRecognition.stop(); } catch (e) {}
     }
+    if (chatState !== 'reviewing') saveChat(chatCurrentScenario, chatHistory);
     chatSetState('idle');
     chatHistory = [];
     chatCurrentScenario = null;
+    document.getElementById('chatRestartBtn').classList.add('hidden');
     document.getElementById('chatConvView').classList.add('hidden');
     document.getElementById('chatScenarioView').classList.remove('hidden');
+    renderHistory();
+}
+
+function chatRestart() {
+    const scenario = chatCurrentScenario;
+    chatEnd();
+    if (scenario) chatStart(scenario);
 }
 
 // ── Turn submission ───────────────────────────────────────────────────────
@@ -157,10 +227,22 @@ function chatAppendAI(italian, english, correction) {
     const bubble = document.createElement('div');
     bubble.className = 'chat-bubble';
 
+    const italianRow = document.createElement('div');
+    italianRow.className = 'chat-italian-row';
+
     const italianEl = document.createElement('div');
     italianEl.className = 'chat-italian';
     italianEl.textContent = italian;
-    bubble.appendChild(italianEl);
+
+    const replayBtn = document.createElement('button');
+    replayBtn.className = 'chat-replay-btn';
+    replayBtn.title = 'Replay';
+    replayBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+    replayBtn.addEventListener('click', () => parlo.speakItalian(italian));
+
+    italianRow.appendChild(italianEl);
+    italianRow.appendChild(replayBtn);
+    bubble.appendChild(italianRow);
 
     if (english) {
         const revealBtn = document.createElement('button');
@@ -307,6 +389,15 @@ function chatSetState(newState) {
     const mic   = document.getElementById('chatMicBtn');
     const send  = document.getElementById('chatSendBtn');
     const input = document.getElementById('chatInput');
+
+    if (newState === 'reviewing') {
+        mic.disabled   = true;
+        send.disabled  = true;
+        input.disabled = true;
+        mic.classList.remove('mic-btn-hero--active', 'mic-btn-hero--processing');
+        chatSetMicStatus('Reviewing past conversation');
+        return;
+    }
 
     if (newState === 'idle') {
         mic.innerHTML = CHAT_MIC_SVG;

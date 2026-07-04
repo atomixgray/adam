@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -50,13 +50,20 @@
                     <p>Pick a scenario — just start talking</p>
                 </div>
                 <div id="chatChips" class="chat-chips"></div>
+                <div id="chatHistorySection" class="chat-history-section hidden">
+                    <div class="chat-history-heading">Recent</div>
+                    <div id="chatHistoryList" class="chat-history-list"></div>
+                </div>
             </div>
 
             <!-- Conversation -->
             <div id="chatConvView" class="hidden">
                 <div class="chat-topbar">
                     <span id="chatTitle" class="chat-topbar__title"></span>
-                    <button id="chatEndBtn" class="btn-ghost btn-sm">← Scenarios</button>
+                    <div class="chat-topbar-actions">
+                        <button id="chatRestartBtn" class="btn-ghost btn-sm hidden">↺ Restart</button>
+                        <button id="chatEndBtn" class="btn-ghost btn-sm">← Scenarios</button>
+                    </div>
                 </div>
                 <div id="chatWindow" class="chat-window"></div>
                 <div class="chat-bottom">
@@ -218,7 +225,7 @@
 
     <script src="particles.js"></script>
     <script src="app.js?v=2"></script>
-    <script src="chat.js?v=7"></script>
+    <script src="chat.js?v=8"></script>
     <script src="vocab.js?v=3"></script>
     <script src="translate.js?v=9"></script>
 </body>
