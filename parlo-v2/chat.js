@@ -279,19 +279,17 @@ function chatOnMic() {
         try { chatRecognition.stop(); } catch (e) {}
     } else if (chatState === 'idle') {
         document.getElementById('chatInput').value = '';
-        chatSetState('listening');
-        setTimeout(() => {
-            try {
-                chatRecognition.start();
-                chatRecognitionTimeout = setTimeout(() => {
-                    if (chatState !== 'listening') return;
-                    try { chatRecognition.stop(); } catch (e) {}
-                }, 10000);
-            } catch (e) {
-                chatSetState('idle');
-                chatSetMicStatus('Could not start mic — try again');
-            }
-        }, 0);
+        try {
+            chatRecognition.start();
+            chatSetState('listening');
+            chatRecognitionTimeout = setTimeout(() => {
+                if (chatState !== 'listening') return;
+                try { chatRecognition.stop(); } catch (e) {}
+            }, 10000);
+        } catch (e) {
+            chatSetState('idle');
+            chatSetMicStatus('Could not start mic — try again');
+        }
     }
 }
 

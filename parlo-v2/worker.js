@@ -3,7 +3,7 @@
 //   CLAUDE_API_KEY   — your Anthropic API key
 //   PARLO_PASSPHRASE — the passphrase the app sends in X-Parlo-Auth
 
-const ALLOWED_ORIGINS = ['https://adamlarkin.com', 'http://localhost:8080', 'http://localhost:3000'];
+const ALLOWED_ORIGINS = ['https://adamlarkin.com', 'https://www.adamlarkin.com', 'http://localhost:8080', 'http://localhost:3000'];
 const ALLOWED_REFERERS = ['adamlarkin.com', 'www.adamlarkin.com', 'localhost'];
 const ALLOWED_COUNTRIES = ['US', 'CA', 'IT'];
 const CLAUDE_API_URL = 'https://api.anthropic.com/v1/messages';
