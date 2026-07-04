@@ -5,10 +5,12 @@
 
 const SRS_KEY     = 'parlo_v2_srs';
 const MODE_KEY    = 'parlo_v2_study_mode';
+const CUSTOM_KEY  = 'parlo_v2_custom';
 const NEW_PER_DAY = 20;
 
-let phrases      = [];
-let cardData     = {};
+let phrases         = [];
+let phrasesBaseLen  = 0; // length of phrases.json; custom cards come after
+let cardData        = {};
 let sessionQueue = [];
 let sessionPos   = 0;
 let studyMode    = 'italian-to-english';
@@ -213,9 +215,10 @@ function showCard(phraseIndex) {
         speakerBack.classList.remove('hidden');
     }
 
+    const isCustom = phraseIndex >= phrasesBaseLen;
     const level = (phrase.difficulty || '').toLowerCase();
-    cefrBadge.textContent = phrase.difficulty || '';
-    cefrBadge.className   = 'cefr-badge cefr-' + level;
+    cefrBadge.textContent = isCustom ? 'Custom' : (phrase.difficulty || '');
+    cefrBadge.className   = isCustom ? 'cefr-badge cefr-custom' : 'cefr-badge cefr-' + level;
     tenseBadge.textContent = TENSE_LABELS[phrase.tense] || '';
 
     italianTextForSpeech = phrase.italian;
@@ -407,7 +410,9 @@ typeInCheckBtn.addEventListener('click', checkTypeIn);
 // ── Export / Import ───────────────────────────────────────────────────────
 
 exportBtn.addEventListener('click', () => {
-    const blob = new Blob([JSON.stringify({ version: 1, exported: vocabToday(), cardData }, null, 2)], { type: 'application/json' });
+    let customCards = [];
+    try { customCards = JSON.parse(localStorage.getItem(CUSTOM_KEY) || '[]'); } catch {}
+    const blob = new Blob([JSON.stringify({ version: 2, exported: vocabToday(), cardData, customCards }, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url; a.download = `parlo-srs-${vocabToday()}.json`;
@@ -429,6 +434,10 @@ importFile.addEventListener('change', e => {
             if (!confirm(`Import backup${dateStr}? This replaces your current progress.`)) return;
             cardData = imported;
             saveSRS();
+            if (Array.isArray(raw.customCards)) {
+                localStorage.setItem(CUSTOM_KEY, JSON.stringify(raw.customCards));
+                phrases = phrases.slice(0, phrasesBaseLen).concat(raw.customCards);
+            }
             sessionReviewed = 0;
             const count = buildQueue();
             updateStats();
@@ -458,6 +467,12 @@ async function initVocab() {
         frontText.textContent = 'Error loading phrases.';
         return;
     }
+    phrasesBaseLen = phrases.length;
+
+    try {
+        const custom = JSON.parse(localStorage.getItem(CUSTOM_KEY) || '[]');
+        if (custom.length) phrases = phrases.concat(custom);
+    } catch {}
 
     updateStats();
     const count = buildQueue();

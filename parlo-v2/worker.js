@@ -3,6 +3,7 @@
 //   CLAUDE_API_KEY   — your Anthropic API key
 //   PARLO_PASSPHRASE — the passphrase the app sends in X-Parlo-Auth
 
+const ALLOWED_ORIGINS = ['https://adamlarkin.com', 'http://localhost:8080', 'http://localhost:3000'];
 const ALLOWED_REFERERS = ['adamlarkin.com', 'www.adamlarkin.com', 'localhost'];
 const ALLOWED_COUNTRIES = ['US', 'CA', 'IT'];
 const CLAUDE_API_URL = 'https://api.anthropic.com/v1/messages';
@@ -12,11 +13,14 @@ const MAX_TOKENS_CAP = 2048;
 const MAX_MESSAGES = 20;
 const MAX_MESSAGE_CHARS = 1000;
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': 'https://adamlarkin.com',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, X-Parlo-Auth',
-};
+function corsHeaders(origin) {
+  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : 'https://adamlarkin.com';
+  return {
+    'Access-Control-Allow-Origin': allowed,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Parlo-Auth',
+  };
+}
 
 const MAX_SCENARIO_CHARS = 400;
 
@@ -37,28 +41,34 @@ Respond with a JSON object in this exact format:
   "pronunciation": "pronunciation guide using simple phonetics",
   "breakdown": [
     { "word": "original word", "translation": "word translation", "grammar": "brief grammar note" }
+  ],
+  "examples": [
+    { "italian": "example sentence in Italian", "english": "English translation" },
+    { "italian": "another example sentence", "english": "English translation" }
   ]
 }
 
-No extra text outside the JSON. If the input is English, translate to Italian. If Italian, translate to English.`
+No extra text outside the JSON. If the input is English, translate to Italian. If Italian, translate to English. Always include 2 natural example sentences showing the word or phrase in context.`
 };
-
-function deny(message, status = 403) {
-  return new Response(message, { status, headers: CORS_HEADERS });
-}
-
-function jsonError(message, status = 400) {
-  return new Response(JSON.stringify({ error: message }), {
-    status,
-    headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
-  });
-}
 
 export default {
   async fetch(request, env) {
+    const origin = request.headers.get('Origin') || '';
+    const ch = corsHeaders(origin);
+
+    function deny(message, status = 403) {
+      return new Response(message, { status, headers: ch });
+    }
+    function jsonError(message, status = 400) {
+      return new Response(JSON.stringify({ error: message }), {
+        status,
+        headers: { ...ch, 'Content-Type': 'application/json' },
+      });
+    }
+
     // CORS preflight
     if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: CORS_HEADERS });
+      return new Response(null, { status: 204, headers: ch });
     }
 
     // POST only
@@ -151,12 +161,12 @@ export default {
       const data = await claudeRes.json();
       return new Response(JSON.stringify(data), {
         status: claudeRes.status,
-        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+        headers: { ...ch, 'Content-Type': 'application/json' },
       });
     } catch (err) {
       return new Response(JSON.stringify({ error: err.message }), {
         status: 500,
-        headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
+        headers: { ...ch, 'Content-Type': 'application/json' },
       });
     }
   },

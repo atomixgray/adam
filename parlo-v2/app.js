@@ -125,14 +125,14 @@ function launchApp() {
     loadStats();
     updateStreak();
     initTabs();
-    // Boot the default tab
-    if (typeof initChat === 'function') { tabInited.chat = true; initChat(); }
+    // Boot the default tab (Cards/vocab)
+    if (typeof initVocab === 'function') { tabInited.vocab = true; initVocab(); }
 }
 
 // ── Tabs ──────────────────────────────────────────────────────────────────
 
 const tabInited = {};
-const tabInitFns = { chat: 'initChat', alphabet: 'initAlphabet', vocab: 'initVocab', translate: 'initTranslate' };
+const tabInitFns = { chat: 'initChat', vocab: 'initVocab', translate: 'initTranslate' };
 
 function initTabs() {
     document.querySelectorAll('.tab-btn').forEach(btn => {

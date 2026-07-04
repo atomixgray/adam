@@ -148,8 +148,9 @@ async function chatSubmit(text) {
 
         let italian = '', english = '', correction = null;
         try {
-            const raw    = data.content?.[0]?.text || '{}';
-            const parsed = JSON.parse(raw);
+            const raw     = data.content?.[0]?.text || '{}';
+            const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+            const parsed  = JSON.parse(cleaned);
             italian    = parsed.italian    || '';
             english    = parsed.english    || '';
             correction = parsed.correction || null;
