@@ -268,7 +268,7 @@ function setupChatSpeech() {
         clearChatRecognitionTimeout();
         if (chatState !== 'listening') return;
         chatSetState('idle');
-        if (e.error !== 'aborted') chatSetMicStatus('Mic error — tap to try again');
+        if (e.error !== 'aborted') chatSetMicStatus(`Mic error: ${e.error} — tap to try again`);
     };
 }
 
