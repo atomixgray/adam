@@ -3,65 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
-    <title>Parlo - Learn Italian</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none';">
+    <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
     <canvas id="particles"></canvas>
 
-    <div class="container">
-        <header>
-            <h1>Parlo</h1>
-            <p class="subtitle">Learn Italian, one step at a time</p>
-        </header>
+    <!-- First-time passphrase setup -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-modal">
+            <div class="auth-logo">Parlo</div>
+            <p class="auth-subtitle">Learn Italian</p>
+            <p class="auth-prompt">Enter your passphrase to continue</p>
+            <input type="password" id="authInput" class="auth-input" placeholder="Passphrase" autocomplete="off">
+            <button id="authBtn" class="auth-btn">Continue</button>
+            <p id="authError" class="auth-error hidden">Incorrect passphrase — try again</p>
+        </div>
+    </div>
 
-        <div class="mode-cards">
-            <a href="flashcards.html" class="mode-card">
-                <div class="mode-card__icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="5" width="20" height="14" rx="2"/>
-                        <line x1="2" y1="10" x2="22" y2="10"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="mode-card__title">Flashcards</div>
-                    <div class="mode-card__desc">Learn vocabulary and phrases with flip cards and audio pronunciation</div>
-                </div>
-            </a>
+    <!-- App shell (shown after auth) -->
+    <div id="app" class="app hidden">
 
-            <a href="conversation.html" class="mode-card mode-card--conversation">
-                <div class="mode-card__icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="mode-card__title">Conversation</div>
-                    <div class="mode-card__desc">Speak Italian on the spot with timed AI conversation partners</div>
-                </div>
-            </a>
+        <div class="app-header">
+            <a href="index.html" class="app-logo">Parlo</a>
+            <div class="app-stats">
+                <div class="app-stat"><span>🔥</span><span id="streakCount">0</span></div>
+                <div class="app-stat"><span>📚</span><span id="wordsCount">0</span></div>
+            </div>
+        </div>
 
-            <a href="practice.html" class="mode-card mode-card--practice">
-                <div class="mode-card__icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 20h9"/>
-                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-                    </svg>
+        <nav class="tab-nav">
+            <button class="tab-btn" data-tab="chat">Chat</button>
+<button class="tab-btn active" data-tab="vocab">Cards</button>
+            <button class="tab-btn" data-tab="translate">Translate</button>
+        </nav>
+
+        <!-- ══ CHAT TAB ══ -->
+        <div id="tab-chat" class="tab-panel hidden">
+
+            <!-- Scenario picker -->
+            <div id="chatScenarioView">
+                <div class="chat-picker-header">
+                    <h2>Cosa vuoi fare?</h2>
+                    <p>Pick a scenario — just start talking</p>
                 </div>
-                <div>
-                    <div class="mode-card__title">Practice</div>
-                    <div class="mode-card__desc">Build Italian sentences with AI-powered feedback on your writing</div>
+                <div id="chatChips" class="chat-chips"></div>
+            </div>
+
+            <!-- Conversation -->
+            <div id="chatConvView" class="hidden">
+                <div class="chat-topbar">
+                    <span id="chatTitle" class="chat-topbar__title"></span>
+                    <button id="chatEndBtn" class="btn-ghost btn-sm">← Scenarios</button>
                 </div>
-            </a>
+                <div id="chatWindow" class="chat-window"></div>
+                <div class="chat-bottom">
+                    <div class="chat-mic-area">
+                        <button id="chatMicBtn" class="mic-btn-hero">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                <line x1="12" y1="19" x2="12" y2="23"/>
+                                <line x1="8" y1="23" x2="16" y2="23"/>
+                            </svg>
+                        </button>
+                        <div id="chatMicStatus" class="mic-status-hero">Tap to speak</div>
+                    </div>
+                    <div class="chat-text-row">
+                        <textarea id="chatInput" class="chat-textarea" placeholder="or type in Italian…" rows="1" autocorrect="off" spellcheck="false" data-gramm="false" data-gramm_editor="false"></textarea>
+                        <button id="chatSendBtn" class="btn-send">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"/>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<!-- ══ VOCAB TAB ══ -->
+        <div id="tab-vocab" class="tab-panel active">
+
+            <div class="srs-stats">
+                <div class="srs-stat">
+                    <span class="srs-stat__num" id="statDue">—</span>
+                    <span class="srs-stat__label">Due</span>
+                </div>
+                <div class="srs-stat">
+                    <span class="srs-stat__num srs-stat__num--new" id="statNew">—</span>
+                    <span class="srs-stat__label">New</span>
+                </div>
+                <div class="srs-stat">
+                    <span class="srs-stat__num srs-stat__num--mastered" id="statMastered">—</span>
+                    <span class="srs-stat__label">Mastered</span>
+                </div>
+            </div>
+
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="italian-to-english">It → En</button>
+                <button class="mode-btn" data-mode="english-to-italian">En → It</button>
+                <button class="mode-btn" data-mode="random">Random</button>
+                <button class="mode-btn" data-mode="type-in">Type</button>
+            </div>
+
+            <div class="flashcard-container">
+                <div id="flashcard" class="flashcard">
+                    <div class="card-face card-front">
+                        <button class="speaker-btn hidden" id="speakerFront" title="Listen">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        </button>
+                        <a class="forvo-btn hidden" id="forvoBtnFront" href="#" target="_blank" rel="noopener" title="Look up">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                        <div class="card-content">
+                            <div class="language-label" id="frontLabel">Italiano</div>
+                            <span class="cefr-badge" id="cefrBadge"></span>
+                            <div id="frontText" class="phrase-text"></div>
+                            <div id="frontPronunciation" class="pronunciation"></div>
+                            <div class="flip-hint" id="frontHint">Click to reveal answer</div>
+                        </div>
+                    </div>
+                    <div class="card-face card-back">
+                        <button class="speaker-btn hidden" id="speakerBack" title="Listen">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                        </button>
+                        <a class="forvo-btn hidden" id="forvoBtnBack" href="#" target="_blank" rel="noopener" title="Look up">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                        <div class="card-content">
+                            <div class="language-label" id="backLabel">English</div>
+                            <div id="backText" class="phrase-text"></div>
+                            <div id="backPronunciation" class="pronunciation"></div>
+                            <div id="tenseBadge" class="tense-badge"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="typeInArea" class="typein-area" style="display:none">
+                <input type="text" id="typeInInput" class="typein-input" placeholder="Type the Italian phrase…" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                <button id="typeInCheckBtn" class="btn-show-answer">Check</button>
+            </div>
+
+            <div id="typeInResult" class="typein-result" style="display:none"></div>
+
+            <div id="srsReveal" class="srs-reveal" style="display:flex">
+                <button id="showAnswerBtn" class="btn-show-answer">Show Answer</button>
+            </div>
+
+            <div id="srsRating" class="srs-rating" style="display:none">
+                <button class="btn-srs btn-again" data-rating="0">
+                    <span class="btn-srs__label">Again</span>
+                    <span class="btn-srs__interval" id="intervalAgain">&lt;1d</span>
+                </button>
+                <button class="btn-srs btn-hard" data-rating="1">
+                    <span class="btn-srs__label">Hard</span>
+                    <span class="btn-srs__interval" id="intervalHard">—</span>
+                </button>
+                <button class="btn-srs btn-good" data-rating="2">
+                    <span class="btn-srs__label">Good</span>
+                    <span class="btn-srs__interval" id="intervalGood">—</span>
+                </button>
+                <button class="btn-srs btn-easy" data-rating="3">
+                    <span class="btn-srs__label">Easy</span>
+                    <span class="btn-srs__interval" id="intervalEasy">—</span>
+                </button>
+            </div>
+
+            <div id="sessionComplete" class="session-complete" style="display:none">
+                <div class="session-complete__icon">🎉</div>
+                <h2 class="session-complete__title">Session done!</h2>
+                <p class="session-complete__sub" id="sessionSummary"></p>
+                <p class="session-complete__next" id="sessionNext"></p>
+                <button id="continueBtn" class="btn-action btn-action--primary session-complete__action">Study More</button>
+            </div>
+
+            <div class="vocab-footer">
+                <button id="resetBtn" class="btn-ghost btn-sm">Reset progress</button>
+                <button id="exportBtn" class="btn-ghost btn-sm">Export</button>
+                <button id="importBtn" class="btn-ghost btn-sm">Import</button>
+                <input type="file" id="importFile" accept=".json" class="hidden">
+            </div>
+
+        </div>
+
+        <!-- ══ TRANSLATE TAB ══ -->
+        <div id="tab-translate" class="tab-panel hidden">
+            <div class="tab-intro">
+                <h2>Translate</h2>
+                <p>English ↔ Italian with word breakdown</p>
+            </div>
+            <div class="translate-form">
+                <textarea id="translateInput" class="translate-textarea" placeholder="Type English or Italian…" rows="3" autocorrect="off" spellcheck="false" data-gramm="false" data-gramm_editor="false"></textarea>
+                <button id="translateBtn" class="btn-action">Translate</button>
+            </div>
+            <div id="translateResult" class="translate-result hidden">
+                <div class="translate-result__main" id="translateMain"></div>
+                <div class="translate-result__pronun" id="translatePronun"></div>
+                <div class="translate-result__breakdown" id="translateBreakdown"></div>
+                <div id="translateExamples" class="translate-examples"></div>
+                <button id="addToCardsBtn" class="btn-add-card">+ Add to Cards</button>
+            </div>
         </div>
 
         <footer>
             <a href="/" class="back-link">← Back to adamlarkin.com</a>
         </footer>
+
     </div>
 
     <script src="particles.js"></script>
+    <script src="app.js?v=2"></script>
+    <script src="chat.js?v=5"></script>
+    <script src="vocab.js?v=3"></script>
+    <script src="translate.js?v=9"></script>
 </body>
 </html>
