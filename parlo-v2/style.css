@@ -2022,15 +2022,17 @@ textarea:focus-visible {
 
     .mode-card { min-height: 160px; flex-direction: row; text-align: left; padding: 1.5rem; }
 
+    /* 2×2 grid is far more compact than a 4-tall vertical stack */
     .mode-selector {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         width: 100%;
         gap: 0.3rem;
     }
 
-    .mode-btn { width: 100%; padding: 0.7rem 1rem; }
+    .mode-btn { padding: 0.65rem 0.5rem; }
 
-    .flashcard { height: 320px; }
+    .flashcard { height: min(320px, 52vw); }
 
     .card-face { padding: 2rem 1.5rem; }
 
@@ -2584,7 +2586,7 @@ textarea:focus-visible {
     z-index: 2;
     max-width: 700px;
     margin: 0 auto;
-    padding: 0 1rem 3rem;
+    padding: 0 1rem max(2rem, env(safe-area-inset-bottom));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -3086,12 +3088,37 @@ textarea:focus-visible {
 
 /* ── Mobile ── */
 @media (max-width: 480px) {
-    .tab-btn      { font-size: 0.76rem; padding: 0.5rem 0.25rem; }
-    .chat-window  { max-height: 280px; }
+    /* Safe-area aware bottom padding (home indicator) */
+    .app { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
+
+    /* Tighter vertical rhythm */
+    .tab-panel { gap: 0.8rem; }
+
+    .tab-btn { font-size: 0.8rem; padding: 0.58rem 0.25rem; min-height: 40px; }
+
+    /* Stats bar — slightly more compact */
+    .srs-stats { padding: 0.6rem 0.9rem; margin-bottom: 0.85rem; }
+    .srs-stat__num { font-size: 1.2rem; }
+
+    /* Show Answer — full width is easier to tap */
+    .btn-show-answer { width: 100%; padding: 0.95rem 1rem; }
+
+    /* SRS rating row — ensure comfortable touch targets */
+    .btn-srs { padding: 0.85rem 0.35rem; }
+
+    /* Chat: taller window using small viewport height */
+    .chat-window { max-height: calc(100svh - 370px); min-height: 160px; }
+
+    /* Vocab footer — tighter */
+    .vocab-footer { gap: 0.35rem; padding-top: 0.75rem; }
+
+    /* Translate */
+    .translate-result__main { font-size: 1.15rem; }
+
+    /* Alphabet (legacy) */
     .alphabet-grid { grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); }
     .alphabet-example { gap: 1rem; padding: 0.9rem 1rem; }
     .alphabet-example__letter { font-size: 2.4rem; }
-    .translate-result__main { font-size: 1.15rem; }
 }
 
 .translate-examples { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
