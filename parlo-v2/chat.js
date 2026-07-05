@@ -357,8 +357,9 @@ function setupChatSpeech() {
         if (chatState !== 'listening') return;
         const text = document.getElementById('chatInput').value.trim();
         if (text) {
-            chatSubmit(text);
-            document.getElementById('chatInput').value = '';
+            chatSetState('idle');
+            chatSetMicStatus('Tap to speak');
+            document.getElementById('chatInput').focus();
         } else {
             chatSetState('idle');
             chatSetMicStatus('Nothing heard — tap to try again');
