@@ -41,12 +41,19 @@ const parlo = window.parlo = {
         const utt = new SpeechSynthesisUtterance(text);
         utt.lang = 'it-IT';
         utt.rate = 0.85;
-        const voices = speechSynthesis.getVoices();
-        const itVoices = voices.filter(v => v.lang.startsWith('it'));
-        const voice = itVoices.find(v => /luca|enhanced|premium/i.test(v.name)) || itVoices[0];
-        if (voice) utt.voice = voice;
-        alert(`Voice: ${voice ? voice.name : 'none'}\nAll: ${itVoices.map(v => v.name).join(', ')}`);
-        speechSynthesis.speak(utt);
+        const doSpeak = () => {
+            const voices = speechSynthesis.getVoices();
+            const itVoices = voices.filter(v => v.lang.startsWith('it'));
+            const voice = itVoices.find(v => /luca|enhanced|premium/i.test(v.name)) || itVoices[0];
+            if (voice) utt.voice = voice;
+            alert(`Voice: ${voice ? voice.name : 'none'}\nAll: ${itVoices.map(v => v.name).join(', ')}`);
+            speechSynthesis.speak(utt);
+        };
+        if (speechSynthesis.getVoices().length) {
+            doSpeak();
+        } else {
+            speechSynthesis.onvoiceschanged = () => { speechSynthesis.onvoiceschanged = null; doSpeak(); };
+        }
     },
 
     incrementWords(n = 1) {
