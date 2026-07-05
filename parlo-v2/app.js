@@ -41,16 +41,7 @@ const parlo = window.parlo = {
         const utt = new SpeechSynthesisUtterance(text);
         utt.lang = 'it-IT';
         utt.rate = 0.85;
-        const doSpeak = () => {
-            const voice = speechSynthesis.getVoices().find(v => v.lang.startsWith('it'));
-            if (voice) utt.voice = voice;
-            speechSynthesis.speak(utt);
-        };
-        if (speechSynthesis.getVoices().length) {
-            doSpeak();
-        } else {
-            speechSynthesis.onvoiceschanged = () => { speechSynthesis.onvoiceschanged = null; doSpeak(); };
-        }
+        speechSynthesis.speak(utt);
     },
 
     incrementWords(n = 1) {
