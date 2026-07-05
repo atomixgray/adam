@@ -103,13 +103,27 @@ function renderHistory() {
     section.classList.remove('hidden');
     list.innerHTML = '';
     saved.forEach(chat => {
-        const item = document.createElement('button');
+        const item = document.createElement('div');
         item.className = 'chat-history-item';
         const userTurns = chat.messages.filter(m => m.role === 'user').length;
-        item.innerHTML = `
-            <span class="history-title">${chat.title}</span>
-            <span class="history-meta">${chat.date} · ${userTurns} turn${userTurns !== 1 ? 's' : ''}</span>`;
-        item.addEventListener('click', () => chatViewHistory(chat));
+
+        const main = document.createElement('button');
+        main.className = 'chat-history-main';
+        main.innerHTML = `<span class="history-title">${chat.title}</span><span class="history-meta">${chat.date} · ${userTurns} turn${userTurns !== 1 ? 's' : ''}</span>`;
+        main.addEventListener('click', () => chatViewHistory(chat));
+
+        const del = document.createElement('button');
+        del.className = 'chat-history-delete';
+        del.textContent = '×';
+        del.title = 'Delete';
+        del.addEventListener('click', () => {
+            const chats = loadSavedChats().filter(c => c.id !== chat.id);
+            localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(chats));
+            renderHistory();
+        });
+
+        item.appendChild(main);
+        item.appendChild(del);
         list.appendChild(item);
     });
 }

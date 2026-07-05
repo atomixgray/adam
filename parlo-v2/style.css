@@ -2779,13 +2779,27 @@ textarea:focus-visible {
 .chat-history-heading { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.4; }
 .chat-history-list { display: flex; flex-direction: column; gap: 0.4rem; }
 .chat-history-item {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.65rem 0.9rem;
+    display: flex; align-items: center;
     background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 10px; cursor: pointer; font-family: inherit; color: inherit;
-    text-align: left; transition: background 0.15s; width: 100%;
+    border-radius: 10px; overflow: hidden; transition: background 0.15s;
 }
 .chat-history-item:hover { background: rgba(255,255,255,0.06); }
+
+.chat-history-main {
+    flex: 1; display: flex; align-items: center; justify-content: space-between;
+    padding: 0.65rem 0.9rem; background: none; border: none;
+    font-family: inherit; color: inherit; text-align: left; cursor: pointer;
+    min-width: 0;
+}
+
+.chat-history-delete {
+    flex-shrink: 0; padding: 0.65rem 0.8rem;
+    background: none; border: none; border-left: 1px solid rgba(255,255,255,0.06);
+    color: #3a3a5a; font-size: 1.1rem; line-height: 1; cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+}
+.chat-history-delete:hover { color: #ff8080; background: rgba(255,80,80,0.08); }
+
 .history-title { font-size: 0.88rem; font-weight: 500; color: #b0b0cc; }
 .history-meta  { font-size: 0.75rem; color: #4a4a6a; }
 
