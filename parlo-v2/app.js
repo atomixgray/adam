@@ -49,11 +49,11 @@ const parlo = window.parlo = {
         const dbg = document.getElementById('voiceDebug') || (() => {
             const d = document.createElement('div');
             d.id = 'voiceDebug';
-            d.style = 'position:fixed;bottom:0;left:0;right:0;background:#111;color:#0f0;font-size:11px;padding:6px;z-index:9999;max-height:120px;overflow:auto;';
+            d.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#111;color:#0f0;font-size:11px;padding:8px;z-index:9999;max-height:120px;overflow:auto;';
             document.body.appendChild(d);
             return d;
         })();
-        dbg.innerHTML = `<b>Using:</b> ${voice ? voice.name : 'none'}<br><b>All IT:</b> ${itVoices.map(v => v.name).join(', ')}`;
+        dbg.textContent = `Using: ${voice ? voice.name : 'none'} | All IT: ${itVoices.map(v => v.name).join(', ')}`;
         speechSynthesis.speak(utt);
     },
 
