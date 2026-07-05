@@ -201,7 +201,8 @@ async function chatSubmit(text) {
         let italian = '', english = '', correction = null;
         try {
             const raw     = data.content?.[0]?.text || '{}';
-            const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+            const match   = raw.match(/\{[\s\S]*\}/);
+            const cleaned = match ? match[0] : raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
             const parsed  = JSON.parse(cleaned);
             italian    = parsed.italian    || '';
             english    = parsed.english    || '';
