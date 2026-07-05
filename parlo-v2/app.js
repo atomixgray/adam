@@ -41,6 +41,11 @@ const parlo = window.parlo = {
         const utt = new SpeechSynthesisUtterance(text);
         utt.lang = 'it-IT';
         utt.rate = 0.85;
+        const voices = speechSynthesis.getVoices();
+        const itVoices = voices.filter(v => v.lang.startsWith('it'));
+        console.log('Italian voices:', itVoices.map(v => v.name + ' / ' + v.lang));
+        const voice = itVoices.find(v => /enhanced|premium/i.test(v.name)) || itVoices[0];
+        if (voice) { utt.voice = voice; console.log('Using voice:', voice.name); }
         speechSynthesis.speak(utt);
     },
 
