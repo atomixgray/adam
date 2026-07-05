@@ -43,9 +43,17 @@ const parlo = window.parlo = {
         utt.rate = 0.85;
         const voices = speechSynthesis.getVoices();
         const itVoices = voices.filter(v => v.lang.startsWith('it'));
-        console.log('Italian voices:', itVoices.map(v => v.name + ' / ' + v.lang));
-        const voice = itVoices.find(v => /enhanced|premium/i.test(v.name)) || itVoices[0];
-        if (voice) { utt.voice = voice; console.log('Using voice:', voice.name); }
+        const voice = itVoices.find(v => /luca|enhanced|premium/i.test(v.name)) || itVoices[0];
+        if (voice) utt.voice = voice;
+        // Temporary: show voice list on screen for iPhone debugging
+        const dbg = document.getElementById('voiceDebug') || (() => {
+            const d = document.createElement('div');
+            d.id = 'voiceDebug';
+            d.style = 'position:fixed;bottom:0;left:0;right:0;background:#111;color:#0f0;font-size:11px;padding:6px;z-index:9999;max-height:120px;overflow:auto;';
+            document.body.appendChild(d);
+            return d;
+        })();
+        dbg.innerHTML = `<b>Using:</b> ${voice ? voice.name : 'none'}<br><b>All IT:</b> ${itVoices.map(v => v.name).join(', ')}`;
         speechSynthesis.speak(utt);
     },
 
