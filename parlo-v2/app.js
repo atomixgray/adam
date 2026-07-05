@@ -42,11 +42,8 @@ const parlo = window.parlo = {
         utt.lang = 'it-IT';
         utt.rate = 0.85;
         const doSpeak = () => {
-            const voices = speechSynthesis.getVoices();
-            const itVoices = voices.filter(v => v.lang.startsWith('it'));
-            const voice = itVoices.find(v => /luca|enhanced|premium/i.test(v.name)) || itVoices[0];
+            const voice = speechSynthesis.getVoices().find(v => v.lang.startsWith('it'));
             if (voice) utt.voice = voice;
-            alert(`Voice: ${voice ? voice.name : 'none'}\nAll: ${itVoices.map(v => v.name).join(', ')}`);
             speechSynthesis.speak(utt);
         };
         if (speechSynthesis.getVoices().length) {
