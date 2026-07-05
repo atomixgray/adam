@@ -41,12 +41,8 @@ const parlo = window.parlo = {
         const utt = new SpeechSynthesisUtterance(text);
         utt.lang = 'it-IT';
         utt.rate = 0.85;
-        // Voice selection runs after voices are loaded
         const setVoice = () => {
-            const voices = speechSynthesis.getVoices();
-            const voice =
-                voices.find(v => v.lang.startsWith('it') && /luca|alice|cosimo|giorgio|diego/i.test(v.name)) ||
-                voices.find(v => v.lang.startsWith('it'));
+            const voice = speechSynthesis.getVoices().find(v => v.lang.startsWith('it'));
             if (voice) utt.voice = voice;
             speechSynthesis.speak(utt);
         };
