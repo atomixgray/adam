@@ -110,6 +110,9 @@ function scheduleCard(i, rating) {
         reps++;
     }
 
+    // Fuzz ±10% so cards reviewed together don't all come back on the same day
+    if (interval > 1) interval = Math.max(1, Math.round(interval * (0.9 + Math.random() * 0.2)));
+
     const next = new Date();
     next.setDate(next.getDate() + interval);
     cardData[i] = { interval, ease, reps, lapses, nextReview: next.toISOString().slice(0, 10) };
@@ -153,6 +156,11 @@ function buildQueue(includeExtra = false) {
         else if (!d.nextReview)                 newCards.push(i);
     });
 
+    // Shuffle new cards so introduction order isn't always phrases.json order
+    for (let i = newCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newCards[i], newCards[j]] = [newCards[j], newCards[i]];
+    }
     const newSlots = includeExtra ? newCards.length : NEW_PER_DAY;
     sessionQueue = [...due, ...newCards.slice(0, newSlots)];
 
