@@ -5,7 +5,7 @@ const AUTH_KEY    = 'parlo_v2_auth';
 const STREAK_KEY  = 'parlo_v2_streak';
 const WORDS_KEY   = 'parlo_v2_words';
 const EL_KEY_STORE   = 'parlo_v2_el_key';
-const EL_VOICE_ID    = 'JfjzwHPmCw6p6fdGVt4Y';
+const EL_VOICE_ID    = 'pNInz6obpgDQGcFmaJgB'; // Adam — free tier compatible
 
 // ── Shared API ────────────────────────────────────────────────────────────
 
