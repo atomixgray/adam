@@ -57,10 +57,13 @@ const parlo = window.parlo = {
                     const url  = URL.createObjectURL(blob);
                     const audio = new Audio(url);
                     audio.onended = () => URL.revokeObjectURL(url);
-                    audio.play();
+                    await audio.play();
                     return;
                 }
-            } catch { /* fall through to system TTS */ }
+                console.warn('ElevenLabs failed:', res.status, await res.text());
+            } catch (e) {
+                console.warn('ElevenLabs error, falling back to system TTS:', e);
+            }
         }
 
         // Fallback: system TTS (Luca Enhanced on iPhone, Alice on Mac)
