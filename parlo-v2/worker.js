@@ -26,12 +26,12 @@ const MAX_SCENARIO_CHARS = 400;
 
 // System prompts locked server-side — clients send action + optional scenario context
 const SYSTEM_PROMPTS = {
-  chat: `You are Marco, a young Italian guy living in Milan. You're chatting with a foreign friend who is learning Italian. You speak naturally — not like a teacher. Keep replies short and conversational (1-3 sentences). Respond only in Italian.
+  chat: `You are Marco, a young Italian guy living in Milan. You're chatting with a foreign friend who is learning Italian. You speak naturally — not like a teacher. Keep replies short and conversational (1-3 sentences).
 
-Respond with valid JSON only — no markdown, no extra text:
-{"italian": "your natural Italian reply", "english": "English translation of your reply", "correction": null}
+Always respond with valid JSON only — no markdown, no extra text. All three fields are always required:
+{"italian": "your reply in Italian", "english": "English translation of your Italian reply", "correction": null}
 
-If the user made a meaningful grammar or vocabulary mistake, set "correction" to one short friendly note in English (e.g. "use 'mi piace' not 'io piace'"). Set to null if their Italian was fine or the mistake was minor. Never lecture — just flag it once, casually.`,
+The "italian" field is always in Italian. The "english" field is always the English translation — never leave it empty. If the user made a meaningful grammar or vocabulary mistake, set "correction" to one short friendly note in English (e.g. "use 'mi piace' not 'io piace'"). Set to null if their Italian was fine or the mistake was minor. Never lecture — just flag it once, casually.`,
 
   translate: `You are an Italian language assistant. The user will send a word, phrase, or sentence in either English or Italian.
 
@@ -88,6 +88,13 @@ export default {
       return deny('Access denied');
     }
 
+    // Rate limit — requires RATE_LIMITER binding in Cloudflare dashboard
+    if (env.RATE_LIMITER) {
+      const clientIP = request.headers.get('CF-Connecting-IP') || 'unknown';
+      const { success } = await env.RATE_LIMITER.limit({ key: clientIP });
+      if (!success) return deny('Too many requests', 429);
+    }
+
     // Passphrase gate
     const auth = request.headers.get('X-Parlo-Auth') || '';
     if (!env.PARLO_PASSPHRASE || auth !== env.PARLO_PASSPHRASE) {
@@ -118,13 +125,15 @@ export default {
       return jsonError(`too many messages (max ${MAX_MESSAGES})`);
     }
 
-    // Validate each message — role and length
+    // Validate each message — role, content type, and length
     for (const msg of body.messages) {
       if (!['user', 'assistant'].includes(msg.role)) {
         return jsonError('invalid message role — only user and assistant allowed');
       }
-      const content = typeof msg.content === 'string' ? msg.content : JSON.stringify(msg.content);
-      if (content.length > MAX_MESSAGE_CHARS) {
+      if (typeof msg.content !== 'string') {
+        return jsonError('message content must be a plain string');
+      }
+      if (msg.content.length > MAX_MESSAGE_CHARS) {
         return jsonError(`message too long (max ${MAX_MESSAGE_CHARS} characters)`);
       }
     }
@@ -163,8 +172,8 @@ export default {
         status: claudeRes.status,
         headers: { ...ch, 'Content-Type': 'application/json' },
       });
-    } catch (err) {
-      return new Response(JSON.stringify({ error: err.message }), {
+    } catch {
+      return new Response(JSON.stringify({ error: 'Internal server error' }), {
         status: 500,
         headers: { ...ch, 'Content-Type': 'application/json' },
       });
