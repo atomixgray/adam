@@ -4,6 +4,8 @@ const WORKER_URL  = 'https://parlo-proxy.adamlarkin.workers.dev';
 const AUTH_KEY    = 'parlo_v2_auth';
 const STREAK_KEY  = 'parlo_v2_streak';
 const WORDS_KEY   = 'parlo_v2_words';
+const EL_KEY_STORE   = 'parlo_v2_el_key';
+const EL_VOICE_ID    = 'pNInz6obpgDQGcFmaJgB'; // Adam — eleven_multilingual_v2
 
 // ── Shared API ────────────────────────────────────────────────────────────
 
@@ -35,8 +37,34 @@ const parlo = window.parlo = {
         return res.json();
     },
 
-    speakItalian(text) {
-        if (!text || !window.speechSynthesis) return;
+    async speakItalian(text) {
+        if (!text) return;
+
+        const elKey = localStorage.getItem(EL_KEY_STORE);
+        if (elKey) {
+            try {
+                const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE_ID}`, {
+                    method: 'POST',
+                    headers: { 'xi-api-key': elKey, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        text,
+                        model_id: 'eleven_multilingual_v2',
+                        voice_settings: { stability: 0.5, similarity_boost: 0.75 },
+                    }),
+                });
+                if (res.ok) {
+                    const blob = await res.blob();
+                    const url  = URL.createObjectURL(blob);
+                    const audio = new Audio(url);
+                    audio.onended = () => URL.revokeObjectURL(url);
+                    audio.play();
+                    return;
+                }
+            } catch { /* fall through to system TTS */ }
+        }
+
+        // Fallback: system TTS (Luca Enhanced on iPhone, Alice on Mac)
+        if (!window.speechSynthesis) return;
         if (speechSynthesis.speaking) speechSynthesis.cancel();
         const utt = new SpeechSynthesisUtterance(text);
         utt.lang = 'it-IT';
@@ -105,6 +133,30 @@ function initAuth() {
     setTimeout(() => input.focus(), 100);
 }
 
+// ── Settings ──────────────────────────────────────────────────────────────
+
+function initSettings() {
+    const btn     = document.getElementById('settingsBtn');
+    const modal   = document.getElementById('settingsModal');
+    const overlay = document.getElementById('settingsOverlay');
+    const input   = document.getElementById('elKeyInput');
+    const save    = document.getElementById('settingsSaveBtn');
+    const cancel  = document.getElementById('settingsCancelBtn');
+
+    const open  = () => { input.value = localStorage.getItem(EL_KEY_STORE) || ''; modal.classList.remove('hidden'); };
+    const close = () => modal.classList.add('hidden');
+
+    btn.addEventListener('click', open);
+    overlay.addEventListener('click', close);
+    cancel.addEventListener('click', close);
+    save.addEventListener('click', () => {
+        const val = input.value.trim();
+        if (val) localStorage.setItem(EL_KEY_STORE, val);
+        else localStorage.removeItem(EL_KEY_STORE);
+        close();
+    });
+}
+
 // ── App launch ────────────────────────────────────────────────────────────
 
 function launchApp() {
@@ -112,6 +164,7 @@ function launchApp() {
     loadStats();
     updateStreak();
     initTabs();
+    initSettings();
     // Boot the default tab (Cards/vocab)
     if (typeof initVocab === 'function') { tabInited.vocab = true; initVocab(); }
 }

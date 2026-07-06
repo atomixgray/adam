@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev https://api.elevenlabs.io; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=12">
+    <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -31,6 +31,23 @@
             <div class="app-stats">
                 <div class="app-stat"><span>🔥</span><span id="streakCount">0</span></div>
                 <div class="app-stat"><span>📚</span><span id="wordsCount">0</span></div>
+                <button id="settingsBtn" class="settings-btn" title="Settings">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Settings modal -->
+        <div id="settingsModal" class="modal hidden">
+            <div id="settingsOverlay" class="modal-overlay"></div>
+            <div class="modal-content">
+                <h3>Settings</h3>
+                <p class="modal-desc">Add your ElevenLabs API key for better Italian voice quality. Leave blank to use the system voice.</p>
+                <input type="password" id="elKeyInput" placeholder="ElevenLabs API key (optional)" autocomplete="off">
+                <div class="modal-actions">
+                    <button id="settingsCancelBtn" class="btn-modal">Cancel</button>
+                    <button id="settingsSaveBtn" class="btn-modal btn-modal--primary">Save</button>
+                </div>
             </div>
         </div>
 
@@ -228,7 +245,7 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="app.js?v=11"></script>
+    <script src="app.js?v=12"></script>
     <script src="chat.js?v=13"></script>
     <script src="vocab.js?v=3"></script>
     <script src="translate.js?v=9"></script>

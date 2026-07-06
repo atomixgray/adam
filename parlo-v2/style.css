@@ -2629,6 +2629,21 @@ textarea:focus-visible {
     border: 1px solid rgba(255,255,255,0.06);
 }
 
+/* ── Settings button ── */
+.settings-btn {
+    background: none;
+    border: none;
+    color: #4a4a6a;
+    cursor: pointer;
+    padding: 0.28rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: color 0.15s;
+}
+.settings-btn:hover { color: #9090b0; }
+
 /* ── Tab nav ── */
 .tab-nav {
     display: flex;
