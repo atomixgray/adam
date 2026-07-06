@@ -35,6 +35,10 @@ function initChat() {
         renderHistory();
     });
     document.getElementById('chatRestartBtn').addEventListener('click', chatRestart);
+    document.getElementById('chatContinueBtn').addEventListener('click', () => {
+        chatSetState('idle');
+        chatSetMicStatus('Tap to speak');
+    });
     document.getElementById('chatMicBtn').addEventListener('click', chatOnMic);
     document.getElementById('chatSendBtn').addEventListener('click', chatOnSend);
     document.getElementById('chatInput').addEventListener('keydown', e => {
@@ -130,7 +134,7 @@ function renderHistory() {
 
 function chatViewHistory(saved) {
     chatCurrentScenario = chatScenarios.find(s => s.id === saved.scenarioId) || { ...FREE_CHAT, title: saved.title };
-    chatHistory = [];
+    chatHistory = [...saved.messages];
 
     document.getElementById('chatTitle').textContent = saved.title;
     document.getElementById('chatWindow').innerHTML  = '';
@@ -173,6 +177,7 @@ function chatEnd() {
     chatHistory = [];
     chatCurrentScenario = null;
     document.getElementById('chatRestartBtn').classList.add('hidden');
+    document.getElementById('chatContinueBtn').classList.add('hidden');
     document.getElementById('chatConvView').classList.add('hidden');
     document.getElementById('chatScenarioView').classList.remove('hidden');
     renderHistory();
@@ -410,14 +415,17 @@ function chatSetState(newState) {
     const send  = document.getElementById('chatSendBtn');
     const input = document.getElementById('chatInput');
 
+    const continueBtn = document.getElementById('chatContinueBtn');
     if (newState === 'reviewing') {
         mic.disabled   = true;
         send.disabled  = true;
         input.disabled = true;
         mic.classList.remove('mic-btn-hero--active', 'mic-btn-hero--processing');
+        continueBtn.classList.remove('hidden');
         chatSetMicStatus('Reviewing past conversation');
         return;
     }
+    continueBtn.classList.add('hidden');
 
     if (newState === 'idle') {
         mic.innerHTML = CHAT_MIC_SVG;
