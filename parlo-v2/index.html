@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev https://api.elevenlabs.io; img-src 'self' data:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -53,8 +53,9 @@
 
         <nav class="tab-nav">
             <button class="tab-btn" data-tab="chat">Chat</button>
-<button class="tab-btn active" data-tab="vocab">Cards</button>
+            <button class="tab-btn active" data-tab="vocab">Cards</button>
             <button class="tab-btn" data-tab="translate">Translate</button>
+            <button class="tab-btn" data-tab="verbs">Verbs</button>
         </nav>
 
         <!-- ══ CHAT TAB ══ -->
@@ -238,6 +239,23 @@
             </div>
         </div>
 
+        <!-- ══ VERBS TAB ══ -->
+        <div id="tab-verbs" class="tab-panel hidden">
+            <div class="tab-intro">
+                <h2>Verbs</h2>
+                <p>Conjugate any Italian verb across 4 tenses</p>
+            </div>
+            <div class="verb-search-row">
+                <div class="verb-search-wrap">
+                    <input type="text" id="verbInput" class="verb-input" placeholder="Enter an Italian verb…" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
+                    <div id="verbSuggestions" class="verb-suggestions hidden"></div>
+                </div>
+                <button id="verbRandomBtn" class="btn-ghost btn-sm verb-random-btn">&#127922; Random</button>
+                <button id="verbConjugateBtn" class="btn-action btn-action--primary verb-conjugate-btn">Go</button>
+            </div>
+            <div id="verbResult" class="verb-result hidden"></div>
+        </div>
+
         <footer>
             <a href="/" class="back-link">← Back to adamlarkin.com</a>
         </footer>
@@ -245,9 +263,10 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="app.js?v=15"></script>
+    <script src="app.js?v=16"></script>
     <script src="chat.js?v=13"></script>
     <script src="vocab.js?v=4"></script>
     <script src="translate.js?v=9"></script>
+    <script src="verbs.js?v=1"></script>
 </body>
 </html>

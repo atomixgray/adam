@@ -3191,3 +3191,267 @@ textarea:focus-visible {
 
 /* Re-declared after component styles so it always wins */
 .hidden { display: none; }
+
+/* ============================================================
+   Verbs tab
+   ============================================================ */
+
+.verb-search-row {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    position: relative;
+}
+
+.verb-search-wrap {
+    flex: 1;
+    position: relative;
+}
+
+.verb-input {
+    width: 100%;
+    padding: 0.75rem 1.1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 12px;
+    color: #e0e0e0;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.verb-input:focus { border-color: rgba(102,126,234,0.4); background: rgba(255,255,255,0.07); }
+
+.verb-suggestions {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #16172a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    z-index: 100;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+.verb-suggestion-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.65rem 1.1rem;
+    background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: inherit;
+}
+
+.verb-suggestion-item:last-child { border-bottom: none; }
+.verb-suggestion-item:hover { background: rgba(102,126,234,0.12); }
+
+.verb-sug-verb {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #c8c8e0;
+}
+
+.verb-sug-en {
+    font-size: 0.8rem;
+    color: #5a5a7a;
+    font-style: italic;
+}
+
+.verb-random-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.verb-conjugate-btn {
+    flex-shrink: 0;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.9rem;
+}
+
+/* Result area */
+.verb-result {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: fadeInUp 0.25s ease-out;
+}
+
+.verb-loading {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 2rem;
+}
+
+.verb-loading span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #5a5a8a;
+    animation: dot-bounce 1.2s ease-in-out infinite;
+}
+
+.verb-loading span:nth-child(2) { animation-delay: 0.2s; }
+.verb-loading span:nth-child(3) { animation-delay: 0.4s; }
+
+.verb-error {
+    text-align: center;
+    padding: 1.5rem;
+    color: #ff9090;
+    font-size: 0.9rem;
+    background: rgba(255,80,80,0.06);
+    border: 1px solid rgba(255,80,80,0.15);
+    border-radius: 12px;
+}
+
+/* Verb header */
+.verb-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(102,126,234,0.07);
+    border: 1px solid rgba(102,126,234,0.18);
+    border-radius: 12px;
+}
+
+.verb-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.01em;
+}
+
+.verb-english {
+    font-size: 0.9rem;
+    color: #6a6a8a;
+    font-style: italic;
+    flex: 1;
+}
+
+.verb-speak-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 9px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #8a8a9a;
+    transition: all 0.18s;
+    flex-shrink: 0;
+}
+
+.verb-speak-btn:hover {
+    background: rgba(102,126,234,0.15);
+    border-color: rgba(102,126,234,0.3);
+    color: #a8b5ff;
+}
+
+/* Conjugation table */
+.verb-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.07);
+}
+
+.verb-table {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+
+.verb-table thead th {
+    padding: 0.7rem 0.8rem;
+    text-align: center;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    white-space: nowrap;
+}
+
+.verb-table thead th:first-child {
+    width: 68px;
+    text-align: left;
+}
+
+.tense-name {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #a8b5ff;
+    letter-spacing: 0.01em;
+}
+
+.tense-english {
+    display: block;
+    font-size: 0.68rem;
+    color: #4a4a6a;
+    font-style: italic;
+    margin-top: 0.1rem;
+}
+
+.verb-pronoun {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #6a6a9a;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+}
+
+.verb-form {
+    padding: 0.65rem 0.8rem;
+    text-align: center;
+    color: #d0d0e8;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    vertical-align: middle;
+}
+
+.verb-form:hover {
+    background: rgba(102,126,234,0.1);
+    color: #fff;
+}
+
+.verb-table tbody tr:last-child .verb-pronoun,
+.verb-table tbody tr:last-child .verb-form {
+    border-bottom: none;
+}
+
+.verb-table tbody tr:nth-child(even) .verb-form,
+.verb-table tbody tr:nth-child(even) .verb-pronoun {
+    background: rgba(255,255,255,0.015);
+}
+
+.verb-table tbody tr:nth-child(even) .verb-form:hover {
+    background: rgba(102,126,234,0.1);
+}
+
+@media (max-width: 480px) {
+    .verb-search-row { flex-wrap: wrap; }
+    .verb-search-wrap { flex: 1 1 100%; order: -1; }
+    .verb-random-btn  { flex: 1; }
+    .verb-conjugate-btn { flex: 1; }
+    .verb-table { min-width: 440px; font-size: 0.82rem; }
+    .verb-form, .verb-pronoun { padding: 0.55rem 0.55rem; }
+}

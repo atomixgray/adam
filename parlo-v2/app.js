@@ -175,7 +175,7 @@ function launchApp() {
 // ── Tabs ──────────────────────────────────────────────────────────────────
 
 const tabInited = {};
-const tabInitFns = { chat: 'initChat', vocab: 'initVocab', translate: 'initTranslate' };
+const tabInitFns = { chat: 'initChat', vocab: 'initVocab', translate: 'initTranslate', verbs: 'initVerbs' };
 
 function initTabs() {
     document.querySelectorAll('.tab-btn').forEach(btn => {
