@@ -264,10 +264,24 @@ function renderConjugation(container, data) {
         data.tenses.forEach(t => {
             const td = document.createElement('td');
             td.className = 'verb-form';
-            const form = (t.forms && t.forms[pronoun]) || '—';
-            td.textContent = form;
+            const raw = t.forms && t.forms[pronoun];
+            const italian = raw ? (raw.italian || raw) : '—';
+            const english = raw && raw.english ? raw.english : null;
+
+            const itEl = document.createElement('span');
+            itEl.className = 'verb-form-it';
+            itEl.textContent = italian;
+            td.appendChild(itEl);
+
+            if (english) {
+                const enEl = document.createElement('span');
+                enEl.className = 'verb-form-en';
+                enEl.textContent = english;
+                td.appendChild(enEl);
+            }
+
             td.title = 'Tap to hear';
-            td.addEventListener('click', () => parlo.speakItalian(form));
+            td.addEventListener('click', () => parlo.speakItalian(italian));
             tr.appendChild(td);
         });
 

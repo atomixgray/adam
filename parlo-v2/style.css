@@ -3421,11 +3421,25 @@ textarea:focus-visible {
 .verb-form {
     padding: 0.65rem 0.8rem;
     text-align: center;
-    color: #d0d0e8;
     border-bottom: 1px solid rgba(255,255,255,0.04);
     cursor: pointer;
-    transition: background 0.15s, color 0.15s;
+    transition: background 0.15s;
     vertical-align: middle;
+    display: table-cell;
+}
+
+.verb-form-it {
+    display: block;
+    color: #d0d0e8;
+    font-size: 0.88rem;
+}
+
+.verb-form-en {
+    display: block;
+    color: #3e3e5e;
+    font-size: 0.7rem;
+    font-style: italic;
+    margin-top: 0.18rem;
 }
 
 .verb-form:hover {
