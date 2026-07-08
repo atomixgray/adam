@@ -1,6 +1,7 @@
 'use strict';
 
 const PRONOUNS = ['io', 'tu', 'lui/lei', 'noi', 'voi', 'loro'];
+const VERB_CACHE_KEY = 'parlo_v2_verb_cache';
 
 const COMMON_VERBS = [
     { verb: 'essere',         english: 'to be' },
@@ -171,10 +172,32 @@ function initVerbs() {
     });
 }
 
+function getCachedVerb(verb) {
+    try {
+        const cache = JSON.parse(localStorage.getItem(VERB_CACHE_KEY) || '{}');
+        return cache[verb.toLowerCase()] || null;
+    } catch { return null; }
+}
+
+function setCachedVerb(verb, data) {
+    try {
+        const cache = JSON.parse(localStorage.getItem(VERB_CACHE_KEY) || '{}');
+        cache[verb.toLowerCase()] = data;
+        localStorage.setItem(VERB_CACHE_KEY, JSON.stringify(cache));
+    } catch {}
+}
+
 async function conjugateVerb(verb) {
     if (!verb) return;
     const result = document.getElementById('verbResult');
     result.classList.remove('hidden');
+
+    const cached = getCachedVerb(verb);
+    if (cached) {
+        renderConjugation(result, cached);
+        return;
+    }
+
     result.innerHTML = '<div class="verb-loading"><span></span><span></span><span></span></div>';
 
     try {
@@ -192,6 +215,7 @@ async function conjugateVerb(verb) {
             return;
         }
 
+        setCachedVerb(verb, parsed);
         renderConjugation(result, parsed);
     } catch {
         result.innerHTML = '';
