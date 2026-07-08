@@ -331,7 +331,7 @@ h1 {
 .flashcard {
     width: 100%;
     max-width: 550px;
-    height: 380px;
+    height: clamp(220px, calc(100svh - 450px), 380px);
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2032,7 +2032,7 @@ textarea:focus-visible {
 
     .mode-btn { padding: 0.65rem 0.5rem; }
 
-    .flashcard { height: min(320px, 52vw); }
+    .flashcard { height: min(clamp(200px, calc(100svh - 450px), 320px), 52vw); }
 
     .card-face { padding: 2rem 1.5rem; }
 
