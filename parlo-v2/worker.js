@@ -43,7 +43,9 @@ async function getLockout(env, ip) {
 async function recordFailure(env, ip) {
   if (!env.PARLO_SECURITY) return;
   const existing = await getLockout(env, ip);
-  const count = (existing?.count || 0) + 1;
+  // If previous lockout already expired, start the count fresh
+  const prevExpired = existing?.lockedUntil && Date.now() >= existing.lockedUntil;
+  const count = prevExpired ? 1 : (existing?.count || 0) + 1;
   const now = Date.now();
   const data = { count, lastAttempt: now, lockedUntil: null };
   let ttl = FAIL_WINDOW_TTL;
@@ -56,7 +58,9 @@ async function recordFailure(env, ip) {
     console.warn(`[parlo-security] Failed auth attempt ${count}/${MAX_FAIL_ATTEMPTS} from IP ${ip}`);
   }
 
-  await env.PARLO_SECURITY.put(`lock_${ip}`, JSON.stringify(data), { expirationTtl: ttl });
+  try {
+    await env.PARLO_SECURITY.put(`lock_${ip}`, JSON.stringify(data), { expirationTtl: ttl });
+  } catch {}
 }
 
 async function clearFailures(env, ip) {
@@ -216,7 +220,8 @@ export default {
 
     // Passphrase gate
     const auth = request.headers.get('X-Parlo-Auth') || '';
-    if (!env.PARLO_PASSPHRASE || auth !== env.PARLO_PASSPHRASE) {
+    const passphrase = (env.PARLO_PASSPHRASE || '').trim();
+    if (!passphrase || auth !== passphrase) {
       await recordFailure(env, clientIP);
       return authError('Unauthorized', false);
     }
