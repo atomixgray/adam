@@ -25,7 +25,8 @@ const parlo = window.parlo = {
             body: JSON.stringify({ action, messages, ...options }),
         });
         if (res.status === 401) {
-            // Wrong passphrase — clear it and reload to re-prompt
+            const body = await res.json().catch(() => ({}));
+            sessionStorage.setItem('parlo_auth_err', body.locked ? 'locked' : 'wrong');
             localStorage.removeItem(AUTH_KEY);
             location.reload();
             throw new Error('Unauthorized');
@@ -120,6 +121,15 @@ function initAuth() {
         overlay.classList.add('hidden');
         launchApp();
         return;
+    }
+
+    const prevErr = sessionStorage.getItem('parlo_auth_err');
+    if (prevErr) {
+        sessionStorage.removeItem('parlo_auth_err');
+        error.textContent = prevErr === 'locked'
+            ? 'Access temporarily locked. Please try again later.'
+            : 'Incorrect passphrase — try again';
+        error.classList.remove('hidden');
     }
 
     function attempt() {
