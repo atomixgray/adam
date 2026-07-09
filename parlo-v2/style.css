@@ -2767,7 +2767,17 @@ textarea:focus-visible {
     gap: 0.75rem;
     padding: 0.25rem 0;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(102,126,234,0.25) transparent;
 }
+
+.chat-window::-webkit-scrollbar { width: 4px; }
+.chat-window::-webkit-scrollbar-track { background: transparent; }
+.chat-window::-webkit-scrollbar-thumb {
+    background: rgba(102,126,234,0.25);
+    border-radius: 4px;
+}
+.chat-window::-webkit-scrollbar-thumb:hover { background: rgba(102,126,234,0.45); }
 
 .chat-italian { font-size: 1.05rem; color: #dcdce8; line-height: 1.55; }
 
