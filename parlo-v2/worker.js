@@ -232,8 +232,17 @@ export default {
       return deny('Invalid JSON', 400);
     }
 
-    // Action whitelist
     const action = body.action;
+
+    // Ping — passphrase validation only, no Claude call
+    if (action === 'ping') {
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { ...ch, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Action whitelist
     if (!action || !SYSTEM_PROMPTS[action]) {
       return jsonError('action must be "chat", "translate", or "conjugate"');
     }

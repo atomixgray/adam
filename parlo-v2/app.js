@@ -132,13 +132,47 @@ function initAuth() {
         error.classList.remove('hidden');
     }
 
-    function attempt() {
+    async function attempt() {
         const val = input.value.trim();
         if (!val) return;
         error.classList.add('hidden');
-        localStorage.setItem(AUTH_KEY, val);
-        overlay.classList.add('hidden');
-        launchApp();
+        btn.disabled = true;
+        btn.textContent = '…';
+
+        try {
+            const res = await fetch(WORKER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-Parlo-Auth': val },
+                body: JSON.stringify({ action: 'ping' }),
+            });
+
+            if (res.status === 401) {
+                const body = await res.json().catch(() => ({}));
+                error.textContent = body.locked
+                    ? 'Access temporarily locked. Please try again later.'
+                    : 'Incorrect passphrase — try again';
+                error.classList.remove('hidden');
+                btn.disabled = false;
+                btn.textContent = 'Continue';
+                return;
+            }
+
+            if (res.ok) {
+                localStorage.setItem(AUTH_KEY, val);
+                overlay.classList.add('hidden');
+                launchApp();
+                return;
+            }
+
+            throw new Error(`HTTP ${res.status}`);
+        } catch (e) {
+            if (e.message !== 'Unauthorized') {
+                error.textContent = 'Connection error — please try again';
+                error.classList.remove('hidden');
+            }
+            btn.disabled = false;
+            btn.textContent = 'Continue';
+        }
     }
 
     btn.addEventListener('click', attempt);
