@@ -80,8 +80,11 @@ const parlo = window.parlo = {
                     const blob = await res.blob();
                     const url  = URL.createObjectURL(blob);
                     const audio = new Audio(url);
-                    audio.onended = () => URL.revokeObjectURL(url);
-                    await audio.play();
+                    await new Promise(resolve => {
+                        audio.onended = () => { URL.revokeObjectURL(url); resolve(); };
+                        audio.onerror = () => { URL.revokeObjectURL(url); resolve(); };
+                        audio.play().catch(resolve);
+                    });
                     return;
                 }
                 console.warn('ElevenLabs failed:', res.status, await res.text());
@@ -93,10 +96,14 @@ const parlo = window.parlo = {
         // Fallback: system TTS (Luca Enhanced on iPhone, Alice on Mac)
         if (!window.speechSynthesis) return;
         if (speechSynthesis.speaking) speechSynthesis.cancel();
-        const utt = new SpeechSynthesisUtterance(text);
-        utt.lang = 'it-IT';
-        utt.rate = 0.85;
-        speechSynthesis.speak(utt);
+        await new Promise(resolve => {
+            const utt = new SpeechSynthesisUtterance(text);
+            utt.lang = 'it-IT';
+            utt.rate = 0.85;
+            utt.onend = resolve;
+            utt.onerror = resolve;
+            speechSynthesis.speak(utt);
+        });
     },
 
     incrementWords(n = 1) {

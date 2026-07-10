@@ -330,18 +330,17 @@ async function rtStartRound(original, userItalian, userEnglish) {
             phrase = 'Scusa, qualcosa è andato storto.';
         }
 
-        // Show Marco's feedback (with English shown immediately as subtitle)
+        // Show Marco's feedback, wait for it to finish before showing the phrase
         if (feedback) {
             chatAppendAI(feedback, feedbackEn, correction, true);
-            parlo.speakItalian(feedback);
+            await parlo.speakItalian(feedback);
         }
 
-        // Show the phrase to repeat
+        // Show and speak the phrase to repeat
         if (phrase) {
             rtCurrentPhrase = phrase;
             rtAppendPhrase(phrase);
-            // Auto-play phrase after brief delay so it doesn't clash with feedback TTS
-            setTimeout(() => parlo.speakItalian(phrase), feedback ? 800 : 0);
+            await parlo.speakItalian(phrase);
         }
 
         document.getElementById('rtItalianInput').value = '';
