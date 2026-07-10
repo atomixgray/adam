@@ -16,6 +16,7 @@ let chatInited = false;
 let rtMode = false;
 let rtCurrentPhrase = '';
 let rtMicListening = false;
+let rtEnMicListening = false;
 
 const SCENARIO_EMOJI = {
     caffe: '☕', mercato: '🛒', direzioni: '🗺️', ristorante: '🍝',
@@ -53,6 +54,7 @@ function initChat() {
     // RT controls
     document.getElementById('rtSendBtn').addEventListener('click', rtOnSend);
     document.getElementById('rtMicBtn').addEventListener('click', rtOnMic);
+    document.getElementById('rtEnMicBtn').addEventListener('click', rtOnEnMic);
     document.getElementById('rtEnglishInput').addEventListener('keydown', e => {
         if (e.key === 'Enter') rtOnSend();
     });
@@ -201,6 +203,7 @@ function chatStart(scenario) {
         document.getElementById('chatRTArea').classList.remove('hidden');
         if (!chatRecognitionSupported) {
             document.getElementById('rtMicBtn').classList.add('hidden');
+            document.getElementById('rtEnMicBtn').classList.add('hidden');
         }
         rtStartRound(null, null, null);
         return;
@@ -216,8 +219,9 @@ function chatEnd() {
     if (chatState === 'listening') {
         try { chatRecognition.stop(); } catch (e) {}
     }
-    if (rtMicListening) {
+    if (rtMicListening || rtEnMicListening) {
         rtMicListening = false;
+        rtEnMicListening = false;
         try { chatRecognition.stop(); } catch (e) {}
     }
     if (chatState !== 'reviewing') saveChat(chatCurrentScenario, chatHistory);
@@ -230,9 +234,11 @@ function chatEnd() {
     rtMode = false;
     rtCurrentPhrase = '';
     rtMicListening = false;
+    rtEnMicListening = false;
     document.getElementById('chatNormalInput').classList.remove('hidden');
     document.getElementById('chatRTArea').classList.add('hidden');
     document.getElementById('rtMicBtn').classList.remove('hidden');
+    document.getElementById('rtEnMicBtn').classList.remove('hidden');
 
     document.getElementById('chatRestartBtn').classList.add('hidden');
     document.getElementById('chatContinueBtn').classList.add('hidden');
@@ -364,7 +370,7 @@ function rtOnSend() {
 }
 
 function rtOnMic() {
-    if (!chatRecognitionSupported) return;
+    if (!chatRecognitionSupported || rtEnMicListening) return;
     if (rtMicListening) {
         rtMicListening = false;
         try { chatRecognition.stop(); } catch (e) {}
@@ -372,17 +378,38 @@ function rtOnMic() {
     } else if (chatState === 'idle') {
         document.getElementById('rtItalianInput').value = '';
         try {
+            chatRecognition.lang = 'it-IT';
             chatRecognition.start();
             rtMicListening = true;
             updateRTMicBtn(true);
-        } catch (e) {
-            chatSetMicStatus('Could not start mic');
-        }
+        } catch (e) {}
+    }
+}
+
+function rtOnEnMic() {
+    if (!chatRecognitionSupported || rtMicListening) return;
+    if (rtEnMicListening) {
+        rtEnMicListening = false;
+        try { chatRecognition.stop(); } catch (e) {}
+        updateRTEnMicBtn(false);
+    } else if (chatState === 'idle') {
+        document.getElementById('rtEnglishInput').value = '';
+        try {
+            chatRecognition.lang = 'en-US';
+            chatRecognition.start();
+            rtEnMicListening = true;
+            updateRTEnMicBtn(true);
+        } catch (e) {}
     }
 }
 
 function updateRTMicBtn(active) {
     const btn = document.getElementById('rtMicBtn');
+    if (btn) btn.classList.toggle('rt-mic-btn--active', active);
+}
+
+function updateRTEnMicBtn(active) {
+    const btn = document.getElementById('rtEnMicBtn');
     if (btn) btn.classList.toggle('rt-mic-btn--active', active);
 }
 
@@ -563,8 +590,9 @@ function setupChatSpeech() {
     chatRecognition.onresult = e => {
         let t = '';
         for (const r of e.results) t += r[0].transcript;
-        // Route to the correct input depending on mode
-        if (rtMicListening) {
+        if (rtEnMicListening) {
+            document.getElementById('rtEnglishInput').value = t;
+        } else if (rtMicListening) {
             document.getElementById('rtItalianInput').value = t;
         } else {
             document.getElementById('chatInput').value = t;
@@ -573,6 +601,11 @@ function setupChatSpeech() {
 
     chatRecognition.onend = () => {
         clearChatRecognitionTimeout();
+        if (rtEnMicListening) {
+            rtEnMicListening = false;
+            updateRTEnMicBtn(false);
+            return;
+        }
         if (rtMicListening) {
             rtMicListening = false;
             updateRTMicBtn(false);
@@ -592,6 +625,11 @@ function setupChatSpeech() {
 
     chatRecognition.onerror = e => {
         clearChatRecognitionTimeout();
+        if (rtEnMicListening) {
+            rtEnMicListening = false;
+            updateRTEnMicBtn(false);
+            return;
+        }
         if (rtMicListening) {
             rtMicListening = false;
             updateRTMicBtn(false);
@@ -640,15 +678,17 @@ function chatSetState(newState) {
     const input = document.getElementById('chatInput');
 
     // RT button states
-    const rtSend = document.getElementById('rtSendBtn');
-    const rtMic  = document.getElementById('rtMicBtn');
-    const rtIt   = document.getElementById('rtItalianInput');
-    const rtEn   = document.getElementById('rtEnglishInput');
+    const rtSend  = document.getElementById('rtSendBtn');
+    const rtMic   = document.getElementById('rtMicBtn');
+    const rtEnMic = document.getElementById('rtEnMicBtn');
+    const rtIt    = document.getElementById('rtItalianInput');
+    const rtEn    = document.getElementById('rtEnglishInput');
     const processing = newState === 'processing';
-    if (rtSend) rtSend.disabled = processing;
-    if (rtMic && chatRecognitionSupported)  rtMic.disabled = processing;
-    if (rtIt)  rtIt.disabled  = processing;
-    if (rtEn)  rtEn.disabled  = processing;
+    if (rtSend)  rtSend.disabled  = processing;
+    if (rtMic   && chatRecognitionSupported) rtMic.disabled   = processing;
+    if (rtEnMic && chatRecognitionSupported) rtEnMic.disabled = processing;
+    if (rtIt)   rtIt.disabled   = processing;
+    if (rtEn)   rtEn.disabled   = processing;
 
     const continueBtn = document.getElementById('chatContinueBtn');
     if (newState === 'reviewing') {
