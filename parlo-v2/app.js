@@ -38,6 +38,29 @@ const parlo = window.parlo = {
         return res.json();
     },
 
+    async callRepeat(original, userItalian, userEnglish) {
+        const res = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Parlo-Auth': this.getPassphrase(),
+            },
+            body: JSON.stringify({ action: 'repeat', original, userItalian, userEnglish }),
+        });
+        if (res.status === 401) {
+            const body = await res.json().catch(() => ({}));
+            sessionStorage.setItem('parlo_auth_err', body.locked ? 'locked' : 'wrong');
+            localStorage.removeItem(AUTH_KEY);
+            location.reload();
+            throw new Error('Unauthorized');
+        }
+        if (!res.ok) {
+            const err = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
+            throw new Error(err.error || `HTTP ${res.status}`);
+        }
+        return res.json();
+    },
+
     async speakItalian(text) {
         if (!text) return;
 

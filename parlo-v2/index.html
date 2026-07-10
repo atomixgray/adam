@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev https://api.elevenlabs.io; img-src 'self' data:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div id="chatWindow" class="chat-window"></div>
-                <div class="chat-bottom">
+                <div class="chat-bottom" id="chatNormalInput">
                     <div class="chat-mic-area">
                         <button id="chatMicBtn" class="mic-btn-hero">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -109,6 +109,29 @@
                             </svg>
                         </button>
                     </div>
+                </div>
+
+                <!-- Repeat & Translate input (shown only in RT mode) -->
+                <div id="chatRTArea" class="chat-rt-area hidden">
+                    <div class="rt-field">
+                        <label class="rt-label">Repeat in Italian</label>
+                        <div class="rt-input-row">
+                            <textarea id="rtItalianInput" class="chat-textarea" placeholder="Type in Italian…" rows="1" autocorrect="off" spellcheck="false" data-gramm="false"></textarea>
+                            <button id="rtMicBtn" class="rt-mic-btn" title="Push to talk">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                    <line x1="12" y1="19" x2="12" y2="23"/>
+                                    <line x1="8" y1="23" x2="16" y2="23"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="rt-field">
+                        <label class="rt-label">What does it mean?</label>
+                        <input type="text" id="rtEnglishInput" class="rt-english-input" placeholder="English meaning…" autocorrect="off" spellcheck="false">
+                    </div>
+                    <button id="rtSendBtn" class="btn-action btn-action--primary rt-send-btn">Send</button>
                 </div>
             </div>
 
@@ -263,8 +286,8 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="app.js?v=18"></script>
-    <script src="chat.js?v=13"></script>
+    <script src="app.js?v=19"></script>
+    <script src="chat.js?v=14"></script>
     <script src="vocab.js?v=4"></script>
     <script src="translate.js?v=9"></script>
     <script src="verbs.js?v=3"></script>

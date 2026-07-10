@@ -80,6 +80,21 @@ Always respond with valid JSON only — no markdown, no extra text. All three fi
 
 The "italian" field is always in Italian. The "english" field is always the English translation — never leave it empty. If the user made a meaningful grammar or vocabulary mistake, set "correction" to one short friendly note in English (e.g. "use 'mi piace' not 'io piace'"). Set to null if their Italian was fine or the mistake was minor. Never lecture — just flag it once, casually.`,
 
+  repeat: `You are Marco, a young Italian guy running a "Repeat & Translate" drill with a student.
+
+Each turn you receive: the phrase you gave last time (null on the first round), the student's Italian repeat of it, and their English meaning.
+
+Respond with JSON only — no markdown, no extra text:
+{
+  "feedback": "Brief casual reaction in Italian — warm and natural, 1-2 sentences (null on first round)",
+  "feedback_en": "English translation of your feedback (null on first round)",
+  "phrase": "A fresh Italian sentence for the next round, A1/A2 level, 6-12 words",
+  "correction": "One short correction note in English if their Italian repeat had a meaningful error (null if fine or first round)"
+}
+
+Phrase rules: everyday topics, simple present or past tense, common vocabulary. No subjunctive. Short natural sentences a beginner would encounter.
+Feedback style: casual like a friend. Acknowledge if they got it right, gently note if something was off. Never stiff or teacherly.`,
+
   conjugate: `You are an Italian language assistant. Given an Italian verb (in any form), return its conjugation in 4 key tenses. Each form must include the Italian conjugation AND its natural English translation.
 
 Respond with valid JSON only — no markdown, no extra text:
@@ -249,7 +264,45 @@ export default {
 
     // Action whitelist
     if (!action || !SYSTEM_PROMPTS[action]) {
-      return jsonError('action must be "chat", "translate", or "conjugate"');
+      return jsonError('action must be "chat", "translate", "conjugate", or "repeat"');
+    }
+
+    // ── Repeat & Translate — no messages array needed ─────────────────────
+    if (action === 'repeat') {
+      const original    = typeof body.original    === 'string' ? body.original.slice(0, 200)    : null;
+      const userItalian = typeof body.userItalian === 'string' ? body.userItalian.slice(0, 200) : null;
+      const userEnglish = typeof body.userEnglish === 'string' ? body.userEnglish.slice(0, 200) : null;
+
+      const userMsg = original
+        ? `Phrase I gave: "${original}"\nTheir Italian repeat: "${userItalian || '(not provided)'}"\nTheir English meaning: "${userEnglish || '(not provided)'}"`
+        : 'First round — give me the first phrase.';
+
+      try {
+        const claudeRes = await fetch(CLAUDE_API_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': env.CLAUDE_API_KEY,
+            'anthropic-version': '2023-06-01',
+          },
+          body: JSON.stringify({
+            model: MODEL,
+            max_tokens: 512,
+            system: SYSTEM_PROMPTS.repeat,
+            messages: [{ role: 'user', content: userMsg }],
+          }),
+        });
+        const data = await claudeRes.json();
+        return new Response(JSON.stringify(data), {
+          status: claudeRes.status,
+          headers: { ...ch, 'Content-Type': 'application/json' },
+        });
+      } catch {
+        return new Response(JSON.stringify({ error: 'Internal server error' }), {
+          status: 500,
+          headers: { ...ch, 'Content-Type': 'application/json' },
+        });
+      }
     }
 
     // Validate messages array

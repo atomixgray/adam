@@ -12,6 +12,11 @@ let chatRecognitionSupported = false;
 let chatRecognitionTimeout = null;
 let chatInited = false;
 
+// ── Repeat & Translate state ──────────────────────────────────────────────
+let rtMode = false;
+let rtCurrentPhrase = '';
+let rtMicListening = false;
+
 const SCENARIO_EMOJI = {
     caffe: '☕', mercato: '🛒', direzioni: '🗺️', ristorante: '🍝',
     meeting: '👋', collega: '💼', medico: '🏥', hotel: '🏨',
@@ -44,6 +49,16 @@ function initChat() {
     document.getElementById('chatInput').addEventListener('keydown', e => {
         if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatOnSend(); }
     });
+
+    // RT controls
+    document.getElementById('rtSendBtn').addEventListener('click', rtOnSend);
+    document.getElementById('rtMicBtn').addEventListener('click', rtOnMic);
+    document.getElementById('rtEnglishInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') rtOnSend();
+    });
+    document.getElementById('rtItalianInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); rtOnSend(); }
+    });
 }
 
 // ── Scenario chips ────────────────────────────────────────────────────────
@@ -58,16 +73,33 @@ const FREE_CHAT = {
     context: null,
 };
 
+const REPEAT_TRANSLATE = {
+    id: 'repeat',
+    title: 'Repeat & Translate',
+    level: 'A1',
+    opening: null,
+    ai_role: null,
+    user_role: null,
+    context: null,
+};
+
 function renderChips() {
     const container = document.getElementById('chatChips');
     container.innerHTML = '';
 
-    // Free chat chip first
+    // Free chat chip
     const freeChip = document.createElement('button');
     freeChip.className = 'chat-chip chat-chip--free';
     freeChip.innerHTML = `<span class="chip-emoji">💬</span><span class="chip-title">Free Chat</span><span class="chip-level">any level</span>`;
     freeChip.addEventListener('click', () => chatStart(FREE_CHAT));
     container.appendChild(freeChip);
+
+    // Repeat & Translate chip
+    const rtChip = document.createElement('button');
+    rtChip.className = 'chat-chip chat-chip--repeat';
+    rtChip.innerHTML = `<span class="chip-emoji">🔁</span><span class="chip-title">Repeat & Translate</span><span class="chip-level">A1–A2 drill</span>`;
+    rtChip.addEventListener('click', () => chatStart(REPEAT_TRANSLATE));
+    container.appendChild(rtChip);
 
     chatScenarios.forEach(s => {
         const chip = document.createElement('button');
@@ -162,6 +194,18 @@ function chatStart(scenario) {
     document.getElementById('chatScenarioView').classList.add('hidden');
     document.getElementById('chatConvView').classList.remove('hidden');
 
+    if (scenario.id === 'repeat') {
+        rtMode = true;
+        rtCurrentPhrase = '';
+        document.getElementById('chatNormalInput').classList.add('hidden');
+        document.getElementById('chatRTArea').classList.remove('hidden');
+        if (!chatRecognitionSupported) {
+            document.getElementById('rtMicBtn').classList.add('hidden');
+        }
+        rtStartRound(null, null, null);
+        return;
+    }
+
     chatAppendAI(scenario.opening, null, null);
     chatHistory.push({ role: 'assistant', content: scenario.opening });
     parlo.speakItalian(scenario.opening);
@@ -172,10 +216,24 @@ function chatEnd() {
     if (chatState === 'listening') {
         try { chatRecognition.stop(); } catch (e) {}
     }
+    if (rtMicListening) {
+        rtMicListening = false;
+        try { chatRecognition.stop(); } catch (e) {}
+    }
     if (chatState !== 'reviewing') saveChat(chatCurrentScenario, chatHistory);
+
     chatSetState('idle');
     chatHistory = [];
     chatCurrentScenario = null;
+
+    // Reset RT mode
+    rtMode = false;
+    rtCurrentPhrase = '';
+    rtMicListening = false;
+    document.getElementById('chatNormalInput').classList.remove('hidden');
+    document.getElementById('chatRTArea').classList.add('hidden');
+    document.getElementById('rtMicBtn').classList.remove('hidden');
+
     document.getElementById('chatRestartBtn').classList.add('hidden');
     document.getElementById('chatContinueBtn').classList.add('hidden');
     document.getElementById('chatConvView').classList.add('hidden');
@@ -242,9 +300,152 @@ async function chatSubmit(text) {
     chatSetState('idle');
 }
 
+// ── Repeat & Translate ────────────────────────────────────────────────────
+
+async function rtStartRound(original, userItalian, userEnglish) {
+    chatSetState('processing');
+    const thinking = chatAppendThinking();
+
+    try {
+        const data = await parlo.callRepeat(original, userItalian, userEnglish);
+        thinking.remove();
+
+        let feedback = null, feedbackEn = null, phrase = '', correction = null;
+        try {
+            const raw     = data.content?.[0]?.text || '{}';
+            const match   = raw.match(/\{[\s\S]*\}/);
+            const cleaned = match ? match[0] : raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+            const parsed  = JSON.parse(cleaned);
+            feedback   = parsed.feedback    || null;
+            feedbackEn = parsed.feedback_en || null;
+            phrase     = parsed.phrase      || '';
+            correction = parsed.correction  || null;
+        } catch {
+            phrase = 'Scusa, qualcosa è andato storto.';
+        }
+
+        // Show Marco's feedback (with English shown immediately as subtitle)
+        if (feedback) {
+            chatAppendAI(feedback, feedbackEn, correction, true);
+            parlo.speakItalian(feedback);
+        }
+
+        // Show the phrase to repeat
+        if (phrase) {
+            rtCurrentPhrase = phrase;
+            rtAppendPhrase(phrase);
+            // Auto-play phrase after brief delay so it doesn't clash with feedback TTS
+            setTimeout(() => parlo.speakItalian(phrase), feedback ? 800 : 0);
+        }
+
+        document.getElementById('rtItalianInput').value = '';
+        document.getElementById('rtEnglishInput').value = '';
+        document.getElementById('rtItalianInput').focus();
+
+    } catch (e) {
+        thinking.remove();
+        chatAppendError('Could not connect — check your connection and try again.');
+    }
+
+    chatSetState('idle');
+}
+
+function rtOnSend() {
+    if (chatState !== 'idle') return;
+    const italian = document.getElementById('rtItalianInput').value.trim();
+    const english = document.getElementById('rtEnglishInput').value.trim();
+    if (!italian && !english) return;
+
+    const prevPhrase = rtCurrentPhrase;
+    rtAppendUserAnswer(italian || '(skipped)', english || '(skipped)');
+    document.getElementById('rtItalianInput').value = '';
+    document.getElementById('rtEnglishInput').value = '';
+    rtStartRound(prevPhrase, italian || null, english || null);
+}
+
+function rtOnMic() {
+    if (!chatRecognitionSupported) return;
+    if (rtMicListening) {
+        rtMicListening = false;
+        try { chatRecognition.stop(); } catch (e) {}
+        updateRTMicBtn(false);
+    } else if (chatState === 'idle') {
+        document.getElementById('rtItalianInput').value = '';
+        try {
+            chatRecognition.start();
+            rtMicListening = true;
+            updateRTMicBtn(true);
+        } catch (e) {
+            chatSetMicStatus('Could not start mic');
+        }
+    }
+}
+
+function updateRTMicBtn(active) {
+    const btn = document.getElementById('rtMicBtn');
+    if (btn) btn.classList.toggle('rt-mic-btn--active', active);
+}
+
+function rtAppendPhrase(phrase) {
+    const el     = document.createElement('div');
+    el.className = 'chat-msg chat-msg--ai';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble rt-phrase-bubble';
+
+    const label = document.createElement('div');
+    label.className = 'rt-phrase-label';
+    label.textContent = 'Repeat this:';
+
+    const row = document.createElement('div');
+    row.className = 'chat-italian-row';
+
+    const text = document.createElement('div');
+    text.className = 'chat-italian rt-phrase-text';
+    text.textContent = phrase;
+
+    const replayBtn = document.createElement('button');
+    replayBtn.className = 'chat-replay-btn';
+    replayBtn.title = 'Replay';
+    replayBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+    replayBtn.addEventListener('click', () => parlo.speakItalian(phrase));
+
+    row.appendChild(text);
+    row.appendChild(replayBtn);
+    bubble.appendChild(label);
+    bubble.appendChild(row);
+    el.appendChild(bubble);
+
+    document.getElementById('chatWindow').appendChild(el);
+    chatScrollBottom();
+}
+
+function rtAppendUserAnswer(italian, english) {
+    const el     = document.createElement('div');
+    el.className = 'chat-msg chat-msg--user';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble';
+
+    const itLine = document.createElement('div');
+    itLine.className = 'rt-answer-italian';
+    itLine.textContent = italian;
+
+    const enLine = document.createElement('div');
+    enLine.className = 'rt-answer-english';
+    enLine.textContent = `"${english}"`;
+
+    bubble.appendChild(itLine);
+    bubble.appendChild(enLine);
+    el.appendChild(bubble);
+
+    document.getElementById('chatWindow').appendChild(el);
+    chatScrollBottom();
+}
+
 // ── DOM helpers ───────────────────────────────────────────────────────────
 
-function chatAppendAI(italian, english, correction) {
+function chatAppendAI(italian, english, correction, autoShowEnglish = false) {
     const el     = document.createElement('div');
     el.className = 'chat-msg chat-msg--ai';
 
@@ -269,23 +470,31 @@ function chatAppendAI(italian, english, correction) {
     bubble.appendChild(italianRow);
 
     if (english) {
-        const revealBtn = document.createElement('button');
-        revealBtn.className = 'chat-reveal-btn';
-        revealBtn.textContent = 'show translation';
+        if (autoShowEnglish) {
+            const engEl = document.createElement('div');
+            engEl.className = 'chat-translation';
+            engEl.style.display = 'block';
+            engEl.textContent = english;
+            bubble.appendChild(engEl);
+        } else {
+            const revealBtn = document.createElement('button');
+            revealBtn.className = 'chat-reveal-btn';
+            revealBtn.textContent = 'show translation';
 
-        const engEl = document.createElement('div');
-        engEl.className = 'chat-translation';
-        engEl.style.display = 'none';
-        engEl.textContent = english;
+            const engEl = document.createElement('div');
+            engEl.className = 'chat-translation';
+            engEl.style.display = 'none';
+            engEl.textContent = english;
 
-        revealBtn.addEventListener('click', () => {
-            const visible = engEl.style.display !== 'none';
-            engEl.style.display = visible ? 'none' : 'block';
-            revealBtn.textContent = visible ? 'show translation' : 'hide';
-        });
+            revealBtn.addEventListener('click', () => {
+                const visible = engEl.style.display !== 'none';
+                engEl.style.display = visible ? 'none' : 'block';
+                revealBtn.textContent = visible ? 'show translation' : 'hide';
+            });
 
-        bubble.appendChild(revealBtn);
-        bubble.appendChild(engEl);
+            bubble.appendChild(revealBtn);
+            bubble.appendChild(engEl);
+        }
     }
 
     el.appendChild(bubble);
@@ -354,11 +563,21 @@ function setupChatSpeech() {
     chatRecognition.onresult = e => {
         let t = '';
         for (const r of e.results) t += r[0].transcript;
-        document.getElementById('chatInput').value = t;
+        // Route to the correct input depending on mode
+        if (rtMicListening) {
+            document.getElementById('rtItalianInput').value = t;
+        } else {
+            document.getElementById('chatInput').value = t;
+        }
     };
 
     chatRecognition.onend = () => {
         clearChatRecognitionTimeout();
+        if (rtMicListening) {
+            rtMicListening = false;
+            updateRTMicBtn(false);
+            return;
+        }
         if (chatState !== 'listening') return;
         const text = document.getElementById('chatInput').value.trim();
         if (text) {
@@ -373,6 +592,11 @@ function setupChatSpeech() {
 
     chatRecognition.onerror = e => {
         clearChatRecognitionTimeout();
+        if (rtMicListening) {
+            rtMicListening = false;
+            updateRTMicBtn(false);
+            return;
+        }
         if (chatState !== 'listening') return;
         chatSetState('idle');
         if (e.error !== 'aborted') chatSetMicStatus(`Mic error: ${e.error} — tap to try again`);
@@ -414,6 +638,17 @@ function chatSetState(newState) {
     const mic   = document.getElementById('chatMicBtn');
     const send  = document.getElementById('chatSendBtn');
     const input = document.getElementById('chatInput');
+
+    // RT button states
+    const rtSend = document.getElementById('rtSendBtn');
+    const rtMic  = document.getElementById('rtMicBtn');
+    const rtIt   = document.getElementById('rtItalianInput');
+    const rtEn   = document.getElementById('rtEnglishInput');
+    const processing = newState === 'processing';
+    if (rtSend) rtSend.disabled = processing;
+    if (rtMic && chatRecognitionSupported)  rtMic.disabled = processing;
+    if (rtIt)  rtIt.disabled  = processing;
+    if (rtEn)  rtEn.disabled  = processing;
 
     const continueBtn = document.getElementById('chatContinueBtn');
     if (newState === 'reviewing') {
