@@ -6,6 +6,8 @@ const STREAK_KEY  = 'parlo_v2_streak';
 const WORDS_KEY   = 'parlo_v2_words';
 const EL_KEY_STORE   = 'parlo_v2_el_key';
 const EL_VOICE_ID    = 'pNInz6obpgDQGcFmaJgB'; // Adam — free tier compatible
+const SYNC_META_KEY  = 'parlo_v2_synced_at';
+const SYNC_DATA_KEYS = ['parlo_v2_srs', 'parlo_v2_custom', 'parlo_v2_streak', 'parlo_v2_words'];
 
 // ── Shared API ────────────────────────────────────────────────────────────
 
@@ -35,6 +37,26 @@ const parlo = window.parlo = {
             const err = await res.json().catch(() => ({ error: `HTTP ${res.status}` }));
             throw new Error(err.error || `HTTP ${res.status}`);
         }
+        return res.json();
+    },
+
+    async callSync(action, payload = {}) {
+        const res = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Parlo-Auth': this.getPassphrase(),
+            },
+            body: JSON.stringify({ action, ...payload }),
+        });
+        if (res.status === 401) {
+            const body = await res.json().catch(() => ({}));
+            sessionStorage.setItem('parlo_auth_err', body.locked ? 'locked' : 'wrong');
+            localStorage.removeItem(AUTH_KEY);
+            location.reload();
+            throw new Error('Unauthorized');
+        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
     },
 
@@ -234,14 +256,68 @@ function initSettings() {
     });
 }
 
+// ── Cross-device sync ─────────────────────────────────────────────────────
+
+async function syncPull() {
+    try {
+        const res = await parlo.callSync('syncPull');
+        if (!res?.data) return;
+
+        const remoteSyncedAt = res.data.syncedAt || 0;
+        const localSyncedAt  = parseInt(localStorage.getItem(SYNC_META_KEY) || '0', 10);
+        if (remoteSyncedAt <= localSyncedAt) return; // local is already up to date
+
+        for (const key of SYNC_DATA_KEYS) {
+            if (res.data[key] == null) continue;
+            if (key === WORDS_KEY) {
+                // Words can only grow — take the max across devices
+                const remoteVal = parseInt(res.data[key], 10) || 0;
+                const localVal  = parseInt(localStorage.getItem(key) || '0', 10);
+                localStorage.setItem(key, String(Math.max(remoteVal, localVal)));
+            } else {
+                const val = res.data[key];
+                localStorage.setItem(key, typeof val === 'string' ? val : JSON.stringify(val));
+            }
+        }
+        localStorage.setItem(SYNC_META_KEY, String(remoteSyncedAt));
+    } catch (e) {
+        console.warn('Sync pull failed:', e);
+    }
+}
+
+async function syncPush() {
+    try {
+        const now  = Date.now();
+        const data = { syncedAt: now };
+        for (const key of SYNC_DATA_KEYS) {
+            const raw = localStorage.getItem(key);
+            if (raw == null) continue;
+            try { data[key] = JSON.parse(raw); } catch { data[key] = raw; }
+        }
+        await parlo.callSync('syncPush', { data });
+        localStorage.setItem(SYNC_META_KEY, String(now));
+    } catch (e) {
+        console.warn('Sync push failed:', e);
+    }
+}
+
+function initSync() {
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') syncPush();
+    });
+    window.addEventListener('pagehide', syncPush);
+}
+
 // ── App launch ────────────────────────────────────────────────────────────
 
-function launchApp() {
+async function launchApp() {
     document.getElementById('app').classList.remove('hidden');
+    await syncPull(); // pull before rendering so stats and SRS data are current
     loadStats();
     updateStreak();
     initTabs();
     initSettings();
+    initSync();
     // Boot the default tab (Cards/vocab)
     if (typeof initVocab === 'function') { tabInited.vocab = true; initVocab(); }
 }
