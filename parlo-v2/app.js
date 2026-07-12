@@ -229,7 +229,7 @@ function initSettings() {
     save.addEventListener('click', () => {
         const val = input.value.trim();
         if (val) localStorage.setItem(EL_KEY_STORE, val);
-        else localStorage.removeItem(EL_KEY_STORE);
+        // If empty, leave existing key alone — don't silently delete it
         close();
     });
 }
