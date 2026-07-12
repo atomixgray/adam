@@ -3202,7 +3202,7 @@ textarea:focus-visible {
 }
 
 /* Re-declared after component styles so it always wins */
-.hidden { display: none; }
+.hidden { display: none !important; }
 
 /* ============================================================
    Verbs tab
