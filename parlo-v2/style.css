@@ -3129,6 +3129,9 @@ textarea:focus-visible {
 
 /* ── Mobile ── */
 @media (max-width: 480px) {
+    /* Prevent iOS auto-zoom on input focus (requires font-size >= 16px) */
+    .chat-textarea, .rt-english-input { font-size: 1rem; }
+
     /* Safe-area aware bottom padding (home indicator) */
     .app { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
 
