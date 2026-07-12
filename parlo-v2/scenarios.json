@@ -66,6 +66,39 @@
     "vocab": ["ho passato il weekend a", "mi sono rilassato", "a proposito", "ho sentito dire che", "tra l'altro"]
   },
   {
+    "id": "opinioni",
+    "title": "Cosa ne Pensi?",
+    "description": "Exchange opinions and push back — drills presente congiuntivo",
+    "level": "B2",
+    "context": "You're having aperitivo with Marco. He wants your take on things — Italian life, culture, choices. He'll always push back to keep it going. Use 'penso che', 'credo che', 'mi sembra che', 'non sono sicuro che' followed by congiuntivo. Marco will model the structure in his own replies.",
+    "opening": "Allora dimmi — pensi che sia meglio vivere in una grande città o in un paesino? Io ho le mie idee ma voglio sentire la tua!",
+    "ai_role": "Marco — opinionated friend who models 'penso che' + congiuntivo in every reply",
+    "user_role": "friend sharing genuine opinions",
+    "vocab": ["penso che sia", "credo che abbia", "mi sembra che", "non sono sicuro che", "dubito che"]
+  },
+  {
+    "id": "ipotesi",
+    "title": "E Se Potessi...?",
+    "description": "Hypothetical what-ifs — drills condizionale",
+    "level": "B2",
+    "context": "Marco loves what-if games. He throws hypothetical scenarios at you — where would you go, what would you change, what would you do. Answer using condizionale: 'vorrei', 'potrei', 'andrei', 'sarei', 'farei'. Marco uses condizionale naturally in his own replies to model it.",
+    "opening": "Gioco mentale: se potessi vivere in qualsiasi città italiana, dove andresti? E perché?",
+    "ai_role": "Marco — playful friend who asks hypothetical questions and uses condizionale naturally",
+    "user_role": "friend playing along with the hypotheticals",
+    "vocab": ["vorrei", "potrei", "andrei", "sarei", "farei", "se potessi", "mi piacerebbe"]
+  },
+  {
+    "id": "speranze",
+    "title": "Speriamo Bene",
+    "description": "Hopes, fears and uncertain past events — drills passato congiuntivo",
+    "level": "B2",
+    "context": "Marco had a stressful week and wants to debrief. Talk about things that may or may not have happened, uncertain outcomes, hopes about the past. Use 'spero che sia andato', 'non credo che abbia fatto', 'temo che sia successo', 'è possibile che abbia' + passato congiuntivo.",
+    "opening": "Uffa, che settimana! Ho fatto un esame importante ieri e non so com'è andata... pensi che sia andato bene o che abbia sbagliato tutto?",
+    "ai_role": "Marco — anxious friend expressing hopes and doubts about recent past events",
+    "user_role": "supportive friend trying to help him process what happened",
+    "vocab": ["spero che sia andato", "non credo che abbia", "temo che sia successo", "è possibile che abbia", "dubito che sia"]
+  },
+  {
     "id": "colloquio",
     "title": "Il Colloquio",
     "description": "A job interview at an Italian company",

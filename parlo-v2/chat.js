@@ -22,6 +22,7 @@ const SCENARIO_EMOJI = {
     caffe: '☕', mercato: '🛒', direzioni: '🗺️', ristorante: '🍝',
     meeting: '👋', collega: '💼', medico: '🏥', hotel: '🏨',
     treno: '🚆', farmacia: '💊', banca: '🏦', sport: '⚽',
+    opinioni: '🗣️', ipotesi: '💭', speranze: '🤞',
 };
 
 function initChat() {
