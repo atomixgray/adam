@@ -4,8 +4,9 @@
 //   PARLO_PASSPHRASE — the passphrase the app sends in X-Parlo-Auth
 //
 // Bindings required:
-//   RATE_LIMITER  — Rate Limiting binding (30 req/min)
+//   RATE_LIMITER   — Rate Limiting binding (30 req/min)
 //   PARLO_SECURITY — KV Namespace binding (lockout tracking)
+//   PARLO_DATA     — KV Namespace binding (cross-device progress sync)
 
 const ALLOWED_ORIGINS = ['https://adamlarkin.com', 'https://www.adamlarkin.com', 'http://localhost:8080', 'http://localhost:3000'];
 const ALLOWED_REFERERS = ['adamlarkin.com', 'www.adamlarkin.com', 'localhost'];
@@ -78,7 +79,7 @@ const SYSTEM_PROMPTS = {
 Always respond with valid JSON only — no markdown, no extra text. All three fields are always required:
 {"italian": "your reply in Italian", "english": "English translation of your Italian reply", "correction": null}
 
-The "italian" field is always in Italian. The "english" field is always the English translation — never leave it empty. If the user made a meaningful grammar or vocabulary mistake, set "correction" to one short friendly note in English (e.g. "use 'mi piace' not 'io piace'"). Set to null if their Italian was fine or the mistake was minor. Never lecture — just flag it once, casually.`,
+The "italian" field is always in Italian. The "english" field is always the English translation — never leave it empty. If the user made a meaningful grammar or vocabulary mistake, set "correction" to one short friendly note in English. Be playful about it — tease them a little, maybe throw in a mild Italian expression of disbelief like "Madonna...", "Dai!", "Ma cosa stai dicendo?", or even the occasional light swear like "cazzo" or "porco cane" if the mistake is really bad. Keep it funny, never mean. Set to null if their Italian was fine or the mistake was minor.`,
 
   repeat: `You are Marco, a young Italian guy running a "Repeat & Translate" drill with a student.
 
@@ -93,7 +94,7 @@ Respond with JSON only — no markdown, no extra text:
 }
 
 Phrase rules: everyday topics, simple present or past tense, common vocabulary. No subjunctive. Short natural sentences a beginner would encounter.
-Feedback style: casual like a friend. Acknowledge if they got it right, gently note if something was off. Never stiff or teacherly.`,
+Feedback style: casual like a friend. Celebrate when they get it right. When they get it wrong, tease them a bit — throw in a mild Italian expression like "Madonna...", "Dai!", "Ma che dici?", or a light swear like "cazzo" or "porco cane" if it's really off. Keep it funny and warm, never mean.`,
 
   conjugate: `You are an Italian language assistant. Given an Italian verb (in any form), return its conjugation in 4 key tenses. Each form must include the Italian conjugation AND its natural English translation.
 
@@ -262,9 +263,36 @@ export default {
       });
     }
 
+    // ── Cross-device sync ─────────────────────────────────────────────────
+    if (action === 'syncPull') {
+      const data = env.PARLO_DATA
+        ? await env.PARLO_DATA.get('user_data', 'json').catch(() => null)
+        : null;
+      return new Response(JSON.stringify({ data: data || null }), {
+        status: 200,
+        headers: { ...ch, 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (action === 'syncPush') {
+      const data = body.data;
+      if (!data || typeof data !== 'object') return jsonError('data object required');
+      const json = JSON.stringify(data);
+      if (json.length > 500_000) return jsonError('data too large');
+      if (env.PARLO_DATA) {
+        try { await env.PARLO_DATA.put('user_data', json); } catch (e) {
+          console.error('KV sync write failed:', e);
+        }
+      }
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { ...ch, 'Content-Type': 'application/json' },
+      });
+    }
+
     // Action whitelist
     if (!action || !SYSTEM_PROMPTS[action]) {
-      return jsonError('action must be "chat", "translate", "conjugate", or "repeat"');
+      return jsonError('action must be "chat", "translate", "conjugate", "repeat", "syncPull", or "syncPush"');
     }
 
     // ── Repeat & Translate — no messages array needed ─────────────────────
