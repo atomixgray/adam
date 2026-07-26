@@ -3087,6 +3087,8 @@ textarea:focus-visible {
 
 /* ── Translate tab ── */
 .translate-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.translate-form-actions { display: flex; align-items: center; gap: 0.75rem; }
+.translate-form-actions .btn-action { flex: 1; }
 
 .translate-textarea {
     width: 100%;
