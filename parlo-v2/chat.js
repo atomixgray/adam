@@ -335,6 +335,8 @@ async function rtStartRound(original, userItalian, userEnglish) {
         if (feedback) {
             chatAppendAI(feedback, feedbackEn, correction, true);
             await parlo.speakItalian(feedback);
+            // Small gap so back-to-back ElevenLabs calls don't trip its burst/rate limit
+            await new Promise(resolve => setTimeout(resolve, 600));
         }
 
         // Show and speak the phrase to repeat
