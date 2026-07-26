@@ -148,6 +148,15 @@ const parlo = window.parlo = {
             || italian[0];
     },
 
+    parseJSON(raw) {
+        if (!raw) return null;
+        const braceMatch = raw.match(/\{[\s\S]*\}/);
+        const cleaned = braceMatch
+            ? braceMatch[0]
+            : raw.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+        try { return JSON.parse(cleaned); } catch { return null; }
+    },
+
     incrementWords(n = 1) {
         const current = parseInt(localStorage.getItem(WORDS_KEY) || '0', 10);
         const next = current + n;
@@ -345,7 +354,7 @@ async function launchApp() {
 // ── Tabs ──────────────────────────────────────────────────────────────────
 
 const tabInited = {};
-const tabInitFns = { chat: 'initChat', vocab: 'initVocab', translate: 'initTranslate', verbs: 'initVerbs' };
+const tabInitFns = { chat: 'initChat', vocab: 'initVocab', translate: 'initTranslate', immerse: 'initImmerse' };
 
 function initTabs() {
     document.querySelectorAll('.tab-btn').forEach(btn => {

@@ -2746,6 +2746,33 @@ textarea:focus-visible {
 .chat-chip--a2 { border-left: 2px solid #60a5fa; }
 .chat-chip--b1 { border-left: 2px solid #a78bfa; }
 .chat-chip--b2 { border-left: 2px solid #f472b6; }
+.chat-chip--immerse { border-left: 2px solid #38bdf8; }
+
+/* ── Immersion: level picker ── */
+.level-pill-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.level-pill {
+    flex: 1;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.04);
+    color: #8a8aa8;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.level-pill--a1.active { border-color: #34d399; color: #34d399; background: rgba(52,211,153,0.1); }
+.level-pill--a2.active { border-color: #60a5fa; color: #60a5fa; background: rgba(96,165,250,0.1); }
+.level-pill--b1.active { border-color: #a78bfa; color: #a78bfa; background: rgba(167,139,250,0.1); }
+.level-pill--b2.active { border-color: #f472b6; color: #f472b6; background: rgba(244,114,182,0.1); }
+
+.immerse-play-btn { width: 100%; margin-top: 0.75rem; }
 
 /* ── Chat: conversation ── */
 .chat-topbar {
