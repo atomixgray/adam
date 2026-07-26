@@ -115,17 +115,37 @@ const parlo = window.parlo = {
             }
         }
 
-        // Fallback: system TTS (Luca Enhanced on iPhone, Alice on Mac)
+        // Fallback: system TTS — prefer an Enhanced/Premium Italian voice (e.g. Luca) over the OS default
         if (!window.speechSynthesis) return;
         if (speechSynthesis.speaking) speechSynthesis.cancel();
+        const voice = await this.pickItalianVoice();
+        console.log('System TTS voice:', voice ? voice.name : 'browser default (no it-* voice found)');
         await new Promise(resolve => {
             const utt = new SpeechSynthesisUtterance(text);
             utt.lang = 'it-IT';
             utt.rate = 0.85;
+            if (voice) utt.voice = voice;
             utt.onend = resolve;
             utt.onerror = resolve;
             speechSynthesis.speak(utt);
         });
+    },
+
+    async pickItalianVoice() {
+        let voices = speechSynthesis.getVoices();
+        if (!voices.length) {
+            // Voice list loads async on first call in some browsers (esp. Chrome)
+            await new Promise(resolve => {
+                speechSynthesis.onvoiceschanged = resolve;
+                setTimeout(resolve, 300);
+            });
+            voices = speechSynthesis.getVoices();
+        }
+        const italian = voices.filter(v => v.lang.startsWith('it'));
+        if (!italian.length) return null;
+        return italian.find(v => /luca/i.test(v.name))
+            || italian.find(v => /enhanced|premium/i.test(v.name))
+            || italian[0];
     },
 
     incrementWords(n = 1) {
