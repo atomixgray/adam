@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev https://api.elevenlabs.io; img-src 'self' data:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=23">
+    <link rel="stylesheet" href="style.css?v=24">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -301,7 +301,10 @@
                     </div>
                 </div>
                 <div id="immerseWindow" class="chat-window"></div>
-                <button id="immersePlayBtn" class="btn-action btn-action--primary immerse-play-btn">▶ Listen</button>
+                <div class="immerse-actions">
+                    <button id="immersePlayBtn" class="btn-action btn-action--primary immerse-play-btn">▶ Listen</button>
+                    <button id="immerseContinueBtn" class="btn-ghost btn-sm immerse-continue-btn">↻ Keep Going</button>
+                </div>
             </div>
 
         </div>
@@ -317,6 +320,6 @@
     <script src="chat.js?v=18"></script>
     <script src="vocab.js?v=4"></script>
     <script src="translate.js?v=11"></script>
-    <script src="immerse.js?v=1"></script>
+    <script src="immerse.js?v=2"></script>
 </body>
 </html>

@@ -9,10 +9,13 @@ const IMMERSION_TOPICS = [
     { id: 'weekend', emoji: '🎉', title: 'The Weekend',  prompt: 'Talk about what you did last weekend or what you are planning to do next weekend.' },
 ];
 
-let immerseInited  = false;
-let immerseLevel   = 'A2';
+let immerseInited   = false;
+let immerseLevel    = 'A2';
 let immerseSegments = [];
+let immerseTopic    = null;
+let immerseHistory  = []; // messages sent/received so far, for "keep going" continuity
 let immersePlaying  = false;
+let immerseBusy     = false; // guards start/continue calls from overlapping each other
 
 function initImmerse() {
     if (immerseInited) return;
@@ -23,6 +26,7 @@ function initImmerse() {
 
     document.getElementById('immerseNewBtn').addEventListener('click', immerseShowTopics);
     document.getElementById('immersePlayBtn').addEventListener('click', immersePlayAll);
+    document.getElementById('immerseContinueBtn').addEventListener('click', immerseContinue);
 }
 
 function renderImmerseLevels() {
@@ -53,13 +57,16 @@ async function immerseStart(topic) {
     document.getElementById('immerseWindow').innerHTML = '';
     document.getElementById('immerseTitle').textContent = topic.title;
     immerseSegments = [];
+    immerseTopic    = topic;
+    immerseHistory  = [];
 
-    const thinking = immerseAppendThinking();
+    const thinking = immerseSetBusy(true);
 
     try {
-        const data = await parlo.callClaude('narrate', [
+        const messages = [
             { role: 'user', content: `Topic: ${topic.prompt}\nLevel: ${immerseLevel}` }
-        ], { max_tokens: 1024 });
+        ];
+        const data = await parlo.callClaude('narrate', messages, { max_tokens: 1024 });
 
         thinking.remove();
 
@@ -72,27 +79,79 @@ async function immerseStart(topic) {
         }
 
         immerseSegments = parsed.segments;
+        immerseHistory  = [...messages, { role: 'assistant', content: raw }];
         document.getElementById('immerseTitle').textContent = parsed.title || topic.title;
         parsed.segments.forEach(seg => immerseAppendBubble(seg.italian, seg.english));
 
     } catch (e) {
         thinking.remove();
         immerseAppendError('Could not connect — check your connection and try again.');
+    } finally {
+        immerseSetBusy(false);
     }
+}
+
+async function immerseContinue() {
+    if (immerseBusy || immersePlaying || !immerseHistory.length) return;
+
+    const thinking = immerseSetBusy(true);
+
+    try {
+        const continueMsg = { role: 'user', content: 'Continue narrating from here — same topic and level, don’t repeat or restart, just keep going naturally.' };
+        const messages = [...immerseHistory, continueMsg];
+        const data = await parlo.callClaude('narrate', messages, { max_tokens: 1024 });
+
+        thinking.remove();
+
+        const raw    = data.content?.[0]?.text || '{}';
+        const parsed = parlo.parseJSON(raw);
+
+        if (!parsed || !Array.isArray(parsed.segments) || !parsed.segments.length) {
+            immerseAppendError('Marco ran out of things to say — try a new topic.');
+            return;
+        }
+
+        immerseSegments = immerseSegments.concat(parsed.segments);
+        immerseHistory  = [...messages, { role: 'assistant', content: raw }];
+        parsed.segments.forEach(seg => immerseAppendBubble(seg.italian, seg.english));
+
+    } catch (e) {
+        thinking.remove();
+        immerseAppendError('Could not connect — check your connection and try again.');
+    } finally {
+        immerseSetBusy(false);
+    }
+}
+
+function immerseSetBusy(busy) {
+    immerseBusy = busy;
+    const continueBtn = document.getElementById('immerseContinueBtn');
+    const playBtn      = document.getElementById('immersePlayBtn');
+    continueBtn.disabled = busy;
+    playBtn.disabled     = busy;
+    if (busy) {
+        continueBtn.textContent = 'Thinking…';
+        return immerseAppendThinking();
+    }
+    continueBtn.textContent = '↻ Keep Going';
 }
 
 function immerseShowTopics() {
     document.getElementById('immerseEpisodeView').classList.add('hidden');
     document.getElementById('immerseTopicView').classList.remove('hidden');
     immerseSegments = [];
+    immerseTopic    = null;
+    immerseHistory  = [];
 }
 
 async function immersePlayAll() {
-    if (immersePlaying || !immerseSegments.length) return;
+    if (immersePlaying || immerseBusy || !immerseSegments.length) return;
     immersePlaying = true;
-    const btn = document.getElementById('immersePlayBtn');
+    const btn         = document.getElementById('immersePlayBtn');
+    const continueBtn = document.getElementById('immerseContinueBtn');
     btn.disabled = true;
     btn.textContent = 'Listening…';
+    continueBtn.disabled = true;
 
     try {
         for (const seg of immerseSegments) {
@@ -103,6 +162,7 @@ async function immersePlayAll() {
         immersePlaying = false;
         btn.disabled = false;
         btn.textContent = '▶ Listen';
+        continueBtn.disabled = false;
     }
 }
 

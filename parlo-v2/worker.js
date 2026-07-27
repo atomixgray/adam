@@ -173,7 +173,9 @@ Break the narration into natural sentence-level or clause-level segments so it c
   ]
 }
 
-Stay in character as Marco talking naturally about the topic — a story, his day, local news, an opinion, a memory, etc. Never address the learner directly or ask a question; this is pure narration, not conversation. Keep each segment short enough to show as one reading bubble (roughly one sentence or clause, max ~20 words).`,
+Stay in character as Marco talking naturally about the topic — a story, his day, local news, an opinion, a memory, etc. Never address the learner directly or ask a question; this is pure narration, not conversation. Keep each segment short enough to show as one reading bubble (roughly one sentence or clause, max ~20 words).
+
+If the conversation history already contains a previous episode and the latest message asks you to continue, pick up naturally from exactly where you left off — do not repeat or re-summarize what was already said, and do not restart the scene. Just keep the same topic and level moving forward with new content.`,
 
   translate: `You are an Italian language assistant. The user will send a word, phrase, or sentence in either English or Italian.
 
