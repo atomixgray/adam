@@ -9,6 +9,8 @@ const EL_VOICE_ID    = 'pNInz6obpgDQGcFmaJgB'; // Adam — free tier compatible
 const SYNC_META_KEY  = 'parlo_v2_synced_at';
 const SYNC_DATA_KEYS = ['parlo_v2_srs', 'parlo_v2_custom', 'parlo_v2_streak', 'parlo_v2_words'];
 
+let activeStop = null; // set by speakItalian while audio/speech is playing; lets stopSpeaking() interrupt it
+
 // ── Shared API ────────────────────────────────────────────────────────────
 
 const parlo = window.parlo = {
@@ -104,9 +106,11 @@ const parlo = window.parlo = {
                     const url  = URL.createObjectURL(blob);
                     const audio = new Audio(url);
                     await new Promise(resolve => {
-                        audio.onended = () => { URL.revokeObjectURL(url); resolve(); };
-                        audio.onerror = () => { URL.revokeObjectURL(url); resolve(); };
-                        audio.play().catch(resolve);
+                        const finish = () => { URL.revokeObjectURL(url); activeStop = null; resolve(); };
+                        audio.onended = finish;
+                        audio.onerror = finish;
+                        activeStop = () => { audio.pause(); finish(); };
+                        audio.play().catch(finish);
                     });
                     return;
                 }
@@ -126,10 +130,16 @@ const parlo = window.parlo = {
             utt.lang = 'it-IT';
             utt.rate = 0.85;
             if (voice) utt.voice = voice;
-            utt.onend = resolve;
-            utt.onerror = resolve;
+            const finish = () => { activeStop = null; resolve(); };
+            utt.onend = finish;
+            utt.onerror = finish;
+            activeStop = () => { speechSynthesis.cancel(); finish(); };
             speechSynthesis.speak(utt);
         });
+    },
+
+    stopSpeaking() {
+        if (activeStop) activeStop();
     },
 
     async pickItalianVoice() {

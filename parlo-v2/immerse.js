@@ -15,6 +15,7 @@ let immerseSegments = [];
 let immerseTopic    = null;
 let immerseHistory  = []; // messages sent/received so far, for "keep going" continuity
 let immersePlaying  = false;
+let immerseStopRequested = false;
 let immerseBusy     = false; // guards start/continue calls from overlapping each other
 
 function initImmerse() {
@@ -137,6 +138,8 @@ function immerseSetBusy(busy) {
 }
 
 function immerseShowTopics() {
+    parlo.stopSpeaking();
+    immerseStopRequested = true;
     document.getElementById('immerseEpisodeView').classList.add('hidden');
     document.getElementById('immerseTopicView').classList.remove('hidden');
     immerseSegments = [];
@@ -145,22 +148,31 @@ function immerseShowTopics() {
 }
 
 async function immersePlayAll() {
-    if (immersePlaying || immerseBusy || !immerseSegments.length) return;
+    if (immersePlaying) {
+        // Already playing — this click means Stop
+        immerseStopRequested = true;
+        parlo.stopSpeaking();
+        return;
+    }
+    if (immerseBusy || !immerseSegments.length) return;
+
     immersePlaying = true;
+    immerseStopRequested = false;
     const btn         = document.getElementById('immersePlayBtn');
     const continueBtn = document.getElementById('immerseContinueBtn');
-    btn.disabled = true;
-    btn.textContent = 'Listening…';
+    btn.textContent = '⏹ Stop';
     continueBtn.disabled = true;
 
     try {
         for (const seg of immerseSegments) {
+            if (immerseStopRequested) break;
             await parlo.speakItalian(seg.italian);
+            if (immerseStopRequested) break;
             await new Promise(resolve => setTimeout(resolve, 400));
         }
     } finally {
         immersePlaying = false;
-        btn.disabled = false;
+        immerseStopRequested = false;
         btn.textContent = '▶ Listen';
         continueBtn.disabled = false;
     }
