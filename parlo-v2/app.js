@@ -40,7 +40,7 @@ const parlo = window.parlo = {
         return res.json();
     },
 
-    async callSync(action, payload = {}) {
+    async callSync(action, payload = {}, opts = {}) {
         const res = await fetch(WORKER_URL, {
             method: 'POST',
             headers: {
@@ -48,6 +48,7 @@ const parlo = window.parlo = {
                 'X-Parlo-Auth': this.getPassphrase(),
             },
             body: JSON.stringify({ action, ...payload }),
+            ...(opts.keepalive ? { keepalive: true } : {}),
         });
         if (res.status === 401) {
             const body = await res.json().catch(() => ({}));
@@ -326,7 +327,7 @@ async function syncPush() {
             if (raw == null) continue;
             try { data[key] = JSON.parse(raw); } catch { data[key] = raw; }
         }
-        await parlo.callSync('syncPush', { data });
+        await parlo.callSync('syncPush', { data }, { keepalive: true });
         localStorage.setItem(SYNC_META_KEY, String(now));
     } catch (e) {
         console.warn('Sync push failed:', e);
