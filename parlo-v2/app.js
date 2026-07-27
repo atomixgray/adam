@@ -119,7 +119,7 @@ const parlo = window.parlo = {
         if (!window.speechSynthesis) return;
         if (speechSynthesis.speaking) speechSynthesis.cancel();
         const voice = await this.pickItalianVoice();
-        console.log('System TTS voice:', voice ? voice.name : 'browser default (no it-* voice found)');
+        console.log('System TTS voice:', voice ? voice.name : 'browser default (no confident it-* match — deferring to OS default)');
         await new Promise(resolve => {
             const utt = new SpeechSynthesisUtterance(text);
             utt.lang = 'it-IT';
@@ -143,9 +143,12 @@ const parlo = window.parlo = {
         }
         const italian = voices.filter(v => v.lang.startsWith('it'));
         if (!italian.length) return null;
+        // Only force a specific voice on a confident match — iOS Safari only exposes a
+        // small subset of installed voices here, so a blind "first available" fallback
+        // can override a correct OS-level default (e.g. Luca) with something worse (Alice).
         return italian.find(v => /luca/i.test(v.name))
             || italian.find(v => /enhanced|premium/i.test(v.name))
-            || italian[0];
+            || null;
     },
 
     parseJSON(raw) {
