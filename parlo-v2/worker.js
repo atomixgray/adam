@@ -1,7 +1,9 @@
 // Parlo v2 — Claude API proxy
-// Deploy to Cloudflare Workers. Set two secrets in the dashboard:
+// Deploy to Cloudflare Workers. Set secrets in the dashboard:
 //   CLAUDE_API_KEY   — your Anthropic API key
 //   PARLO_PASSPHRASE — the passphrase the app sends in X-Parlo-Auth
+//   RESEND_API_KEY   — Resend API key, used to email a lockout alert (optional — no-ops if unset)
+//   ALERT_EMAIL      — where to send the lockout alert (optional — no-ops if unset)
 //
 // Bindings required:
 //   RATE_LIMITER   — Rate Limiting binding (30 req/min)
@@ -55,6 +57,7 @@ async function recordFailure(env, ip) {
     data.lockedUntil = now + LOCKOUT_MS;
     ttl = Math.ceil(LOCKOUT_MS / 1000) + 60;
     console.warn(`[parlo-security] LOCKOUT — IP ${ip} after ${count} failed attempts`);
+    await sendLockoutAlert(env, ip, count);
   } else {
     console.warn(`[parlo-security] Failed auth attempt ${count}/${MAX_FAIL_ATTEMPTS} from IP ${ip}`);
   }
@@ -62,6 +65,27 @@ async function recordFailure(env, ip) {
   try {
     await env.PARLO_SECURITY.put(`lock_${ip}`, JSON.stringify(data), { expirationTtl: ttl });
   } catch {}
+}
+
+async function sendLockoutAlert(env, ip, count) {
+  if (!env.RESEND_API_KEY || !env.ALERT_EMAIL) return;
+  try {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Parlo Security <onboarding@resend.dev>',
+        to: [env.ALERT_EMAIL],
+        subject: 'Parlo: IP locked out after repeated failed logins',
+        text: `An IP address was locked out of Parlo after ${count} failed passphrase attempts.\n\nIP: ${ip}\nTime: ${new Date().toISOString()}\nLockout duration: ${Math.round(LOCKOUT_MS / 60000)} minute(s)`,
+      }),
+    });
+  } catch (e) {
+    console.warn('[parlo-security] Failed to send lockout alert email:', e);
+  }
 }
 
 async function clearFailures(env, ip) {
