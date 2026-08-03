@@ -19,7 +19,7 @@ let isFlipped    = false;
 let sessionReviewed = 0;
 let vocabInited  = false;
 
-const vocabToday = () => new Date().toISOString().slice(0, 10);
+const vocabToday = () => parlo.localDateStr();
 
 // DOM refs — resolved after DOMContentLoaded (scripts are at end of body)
 const flashcard       = document.getElementById('flashcard');
@@ -78,15 +78,69 @@ function saveSRS() {
 }
 
 function getCard(i) {
-    return cardData[i] || { interval: 0, ease: 2.5, reps: 0, lapses: 0, nextReview: null };
+    return cardData[i] || { interval: 0, ease: 2.5, reps: 0, lapses: 0, nextReview: null, learningStep: 0 };
+}
+
+// Re-insert a card partway through the current session queue instead of at the
+// very end, so it resurfaces sooner (roughly simulating Anki's short in-session
+// learning-step delays without needing real wall-clock timers).
+function requeueSoon(i, offset) {
+    const pos = Math.min(sessionPos + offset, sessionQueue.length);
+    sessionQueue.splice(pos, 0, i);
+}
+
+function graduate(i, d, interval, ease) {
+    cardData[i] = { interval, ease, reps: 1, lapses: d.lapses, nextReview: parlo.localDateStr(addDays(interval)), learningStep: 0 };
+    saveSRS();
+    parlo.incrementWords();
+}
+
+function addDays(n) {
+    const d = new Date();
+    d.setDate(d.getDate() + n);
+    return d;
 }
 
 // ── SM-2 Algorithm ────────────────────────────────────────────────────────
+//
+// Brand-new cards (nextReview === null) go through two short in-session
+// "learning steps" before they graduate into real day-based intervals — a
+// single lucky Good isn't strong enough evidence you've actually learned it.
+// Easy skips straight to graduation, matching Anki. Once graduated, a card
+// never re-enters learning (lapses use the existing short-interval reset
+// below, unchanged).
 
 function scheduleCard(i, rating) {
     const d = getCard(i);
+    const inLearning = d.nextReview === null;
+
+    if (inLearning) {
+        const learningStep = d.learningStep || 0;
+
+        if (rating === 0) {
+            requeueSoon(i, 3);
+            cardData[i] = { ...d, learningStep: 0 };
+            saveSRS();
+        } else if (rating === 1) {
+            requeueSoon(i, 6);
+            cardData[i] = { ...d, learningStep };
+            saveSRS();
+        } else if (rating === 2) {
+            if (learningStep === 0) {
+                requeueSoon(i, 12);
+                cardData[i] = { ...d, learningStep: 1 };
+                saveSRS();
+            } else {
+                graduate(i, d, 3, d.ease);
+            }
+        } else {
+            graduate(i, d, 4, Math.min(3.0, d.ease + 0.15));
+        }
+        return;
+    }
+
+    // Already graduated — standard SM-2 update, unchanged from before.
     let { interval, ease, reps, lapses } = d;
-    const isNew = reps === 0;
 
     if (rating === 0) {
         lapses++;
@@ -104,8 +158,7 @@ function scheduleCard(i, rating) {
         else                 interval = Math.round(interval * ease);
         reps++;
     } else {
-        if (reps === 0) interval = 4;
-        else            interval = Math.round(interval * ease * 1.3);
+        interval = reps === 0 ? 4 : Math.round(interval * ease * 1.3);
         ease = Math.min(3.0, ease + 0.15);
         reps++;
     }
@@ -113,19 +166,18 @@ function scheduleCard(i, rating) {
     // Fuzz ±10% so cards reviewed together don't all come back on the same day
     if (interval > 1) interval = Math.max(1, Math.round(interval * (0.9 + Math.random() * 0.2)));
 
-    const next = new Date();
-    next.setDate(next.getDate() + interval);
-    cardData[i] = { interval, ease, reps, lapses, nextReview: next.toISOString().slice(0, 10) };
+    cardData[i] = { interval, ease, reps, lapses, nextReview: parlo.localDateStr(addDays(interval)), learningStep: 0 };
     saveSRS();
-
-    // Count first-time Good/Easy reviews as words learned
-    if (isNew && (rating === 2 || rating === 3)) {
-        parlo.incrementWords();
-    }
 }
 
 function previewIntervals(i) {
-    const { interval, ease, reps } = getCard(i);
+    const d = getCard(i);
+    if (d.nextReview === null) {
+        // Still in learning steps — only Good (on the 2nd pass) and Easy produce a real interval
+        const learningStep = d.learningStep || 0;
+        return [null, null, learningStep === 0 ? null : 3, 4];
+    }
+    const { interval, ease, reps } = d;
     const calc = r => {
         if (r === 0) return 0;
         if (r === 1) return reps === 0 ? 1 : Math.max(1, Math.round(interval * 1.2));
@@ -137,6 +189,7 @@ function previewIntervals(i) {
 }
 
 function formatInterval(days) {
+    if (days === null) return 'soon';
     if (days === 0) return 'now';
     if (days === 1) return '1d';
     if (days < 30)  return `${days}d`;
@@ -275,7 +328,7 @@ function showSessionComplete() {
 
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
-    const tomorrowStr = tomorrow.toISOString().slice(0, 10);
+    const tomorrowStr = parlo.localDateStr(tomorrow);
     const dueTomorrow = phrases.filter((_, i) => getCard(i).nextReview === tomorrowStr).length;
     sessionNext.textContent = dueTomorrow > 0
         ? `${dueTomorrow} card${dueTomorrow !== 1 ? 's' : ''} due tomorrow.`

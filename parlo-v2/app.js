@@ -171,6 +171,15 @@ const parlo = window.parlo = {
         try { return JSON.parse(cleaned); } catch { return null; }
     },
 
+    // Local calendar date as YYYY-MM-DD — NOT toISOString(), which is UTC and can
+    // land on the wrong day depending on timezone and time of day.
+    localDateStr(date = new Date()) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, '0');
+        const d = String(date.getDate()).padStart(2, '0');
+        return `${y}-${m}-${d}`;
+    },
+
     incrementWords(n = 1) {
         const current = parseInt(localStorage.getItem(WORDS_KEY) || '0', 10);
         const next = current + n;
@@ -183,8 +192,8 @@ const parlo = window.parlo = {
 // ── Streak ────────────────────────────────────────────────────────────────
 
 function updateStreak() {
-    const today = new Date().toISOString().slice(0, 10);
-    const yesterday = (() => { const d = new Date(); d.setDate(d.getDate() - 1); return d.toISOString().slice(0, 10); })();
+    const today = parlo.localDateStr();
+    const yesterday = (() => { const d = new Date(); d.setDate(d.getDate() - 1); return parlo.localDateStr(d); })();
     let streak = JSON.parse(localStorage.getItem(STREAK_KEY) || '{"count":0,"lastDate":null}');
 
     if (streak.lastDate !== today) {
