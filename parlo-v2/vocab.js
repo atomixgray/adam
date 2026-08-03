@@ -173,9 +173,12 @@ function scheduleCard(i, rating) {
 function previewIntervals(i) {
     const d = getCard(i);
     if (d.nextReview === null) {
-        // Still in learning steps — only Good (on the 2nd pass) and Easy produce a real interval
+        // Still in learning steps — Again/Hard/first Good all requeue within this session
+        // rather than producing a real day-based interval, but at staggered distances
+        // (see requeueSoon offsets in scheduleCard), so label them distinctly rather
+        // than showing the same "soon" three times.
         const learningStep = d.learningStep || 0;
-        return [null, null, learningStep === 0 ? null : 3, 4];
+        return ['soon', 'a bit', learningStep === 0 ? 'later' : 3, 4];
     }
     const { interval, ease, reps } = d;
     const calc = r => {
@@ -189,7 +192,7 @@ function previewIntervals(i) {
 }
 
 function formatInterval(days) {
-    if (days === null) return 'soon';
+    if (typeof days === 'string') return days;
     if (days === 0) return 'now';
     if (days === 1) return '1d';
     if (days < 30)  return `${days}d`;
