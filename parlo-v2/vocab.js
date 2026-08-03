@@ -317,7 +317,7 @@ function revealAnswer() {
     srsRating.style.display    = 'flex';
 }
 
-function showSessionComplete() {
+function showSessionComplete(celebrate = false) {
     flashcard.parentElement.style.display = 'none';
     srsReveal.style.display    = 'none';
     typeInArea.style.display   = 'none';
@@ -333,13 +333,36 @@ function showSessionComplete() {
     sessionNext.textContent = dueTomorrow > 0
         ? `${dueTomorrow} card${dueTomorrow !== 1 ? 's' : ''} due tomorrow.`
         : 'Nothing due tomorrow — check back in a few days!';
+
+    if (celebrate) {
+        sessionComplete.classList.add('session-complete--celebrate');
+        confettiBurst();
+        setTimeout(() => sessionComplete.classList.remove('session-complete--celebrate'), 900);
+    }
+}
+
+function confettiBurst() {
+    const colors = ['#667eea', '#f093fb', '#34d399', '#60a5fa', '#fbbf24'];
+    const burst = document.createElement('div');
+    burst.className = 'confetti-burst';
+    for (let i = 0; i < 26; i++) {
+        const piece = document.createElement('span');
+        piece.className = 'confetti-piece';
+        piece.style.setProperty('--x', `${(Math.random() - 0.5) * 260}px`);
+        piece.style.setProperty('--rot', `${(Math.random() - 0.5) * 720}deg`);
+        piece.style.setProperty('--delay', `${(Math.random() * 0.15).toFixed(2)}s`);
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        burst.appendChild(piece);
+    }
+    document.body.appendChild(burst);
+    setTimeout(() => burst.remove(), 1400);
 }
 
 function nextCard() {
     sessionPos++;
     if (sessionPos >= sessionQueue.length) {
         updateStats();
-        showSessionComplete();
+        showSessionComplete(true);
         return;
     }
     showCard(sessionQueue[sessionPos]);
