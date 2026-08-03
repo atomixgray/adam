@@ -3370,5 +3370,1084 @@
     ],
     "difficulty": "A2",
     "tense": "presente"
+  },
+  {
+    "italian": "Fa caldo oggi.",
+    "pronunciation": "fah KAL-doh OJ-jee",
+    "english": "It's hot today.",
+    "tags": [
+      "weather",
+      "everyday"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Piove.",
+    "pronunciation": "PYOH-veh",
+    "english": "It's raining.",
+    "tags": [
+      "weather"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "C'è il sole.",
+    "pronunciation": "cheh eel SOH-leh",
+    "english": "It's sunny.",
+    "tags": [
+      "weather"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Ieri ha nevicato molto.",
+    "pronunciation": "YEH-ree ah neh-vee-KAH-toh MOHL-toh",
+    "english": "Yesterday it snowed a lot.",
+    "tags": [
+      "weather",
+      "past"
+    ],
+    "difficulty": "A2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Che tempo fa oggi?",
+    "pronunciation": "keh TEM-poh fah OJ-jee",
+    "english": "What's the weather like today?",
+    "tags": [
+      "weather",
+      "questions"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Domani pioverà tutto il giorno.",
+    "pronunciation": "doh-MAH-nee pyoh-veh-RAH TOOT-toh eel JOR-noh",
+    "english": "Tomorrow it will rain all day.",
+    "tags": [
+      "weather",
+      "plans"
+    ],
+    "difficulty": "B1",
+    "tense": "futuro"
+  },
+  {
+    "italian": "Da bambino non mi piaceva l'inverno.",
+    "pronunciation": "dah bam-BEE-noh nohn mee pyah-CHEH-vah leen-VEHR-noh",
+    "english": "As a child I didn't like winter.",
+    "tags": [
+      "weather",
+      "childhood"
+    ],
+    "difficulty": "B1",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "Anche se avevano previsto pioggia, non è ancora piovuto.",
+    "pronunciation": "AN-keh seh ah-VEH-vah-noh preh-VEES-toh PYOJ-jah nohn eh an-KOH-rah pyoh-VOO-toh",
+    "english": "Even though they had predicted rain, it still hasn't rained.",
+    "tags": [
+      "weather",
+      "opinions"
+    ],
+    "difficulty": "B2",
+    "tense": "misto"
+  },
+  {
+    "italian": "Sono le tre.",
+    "pronunciation": "SOH-noh leh TREH",
+    "english": "It's three o'clock.",
+    "tags": [
+      "time",
+      "numbers"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Ho trentadue anni.",
+    "pronunciation": "oh trehn-tah-DOO-eh AN-nee",
+    "english": "I am thirty-two years old.",
+    "tags": [
+      "numbers",
+      "everyday"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Oggi è il cinque maggio.",
+    "pronunciation": "OJ-jee eh eel CHEEN-kweh MAJ-joh",
+    "english": "Today is May fifth.",
+    "tags": [
+      "dates"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Quanto costa?",
+    "pronunciation": "KWAN-toh KOHS-tah",
+    "english": "How much does it cost?",
+    "tags": [
+      "numbers",
+      "shopping",
+      "questions"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Ci vediamo alle otto e mezza.",
+    "pronunciation": "chee veh-DYAH-moh AL-leh OT-toh eh MED-dzah",
+    "english": "We'll meet at half past eight.",
+    "tags": [
+      "time",
+      "plans"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "L'appuntamento è tra due settimane.",
+    "pronunciation": "lap-poon-tah-MEN-toh eh trah DOO-eh set-tee-MAH-neh",
+    "english": "The appointment is in two weeks.",
+    "tags": [
+      "time",
+      "plans",
+      "practical"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Sono nato nel millenovecentonovanta.",
+    "pronunciation": "SOH-noh NAH-toh nel meel-leh-noh-veh-chen-toh-noh-VAN-tah",
+    "english": "I was born in nineteen ninety.",
+    "tags": [
+      "dates",
+      "numbers"
+    ],
+    "difficulty": "A2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Di solito mi sveglio verso le sette.",
+    "pronunciation": "dee SOH-lee-toh mee ZVEH-lyoh VEHR-soh leh SET-teh",
+    "english": "I usually wake up around seven.",
+    "tags": [
+      "time",
+      "habits",
+      "routine"
+    ],
+    "difficulty": "B1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Avevamo appuntamento alle nove ma sono arrivati in ritardo.",
+    "pronunciation": "ah-veh-VAH-moh ap-poon-tah-MEN-toh AL-leh NOH-veh mah SOH-noh ar-ree-VAH-tee een ree-TAR-doh",
+    "english": "We had an appointment at nine but they arrived late.",
+    "tags": [
+      "time",
+      "past",
+      "practical"
+    ],
+    "difficulty": "B1",
+    "tense": "misto"
+  },
+  {
+    "italian": "Entro la fine del mese dovrò aver completato tutti i documenti.",
+    "pronunciation": "EN-troh lah FEE-neh del MEH-zeh doh-VROH ah-VEHR kom-pleh-TAH-toh TOOT-tee ee doh-koo-MEN-tee",
+    "english": "By the end of the month I'll have to have completed all the documents.",
+    "tags": [
+      "time",
+      "bureaucracy",
+      "deadlines"
+    ],
+    "difficulty": "B2",
+    "tense": "futuro"
+  },
+  {
+    "italian": "Dov'è la stazione?",
+    "pronunciation": "doh-VEH lah stah-TSYOH-neh",
+    "english": "Where is the station?",
+    "tags": [
+      "directions",
+      "questions"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "È vicino o lontano?",
+    "pronunciation": "eh vee-CHEE-noh oh lohn-TAH-noh",
+    "english": "Is it close or far?",
+    "tags": [
+      "directions",
+      "questions"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Vada sempre dritto e poi giri a destra.",
+    "pronunciation": "VAH-dah SEM-preh DREET-toh eh poy JEE-ree ah DEHS-trah",
+    "english": "Go straight ahead and then turn right.",
+    "tags": [
+      "directions",
+      "formal"
+    ],
+    "difficulty": "A2",
+    "tense": "imperativo"
+  },
+  {
+    "italian": "Mi sono perso in centro.",
+    "pronunciation": "mee SOH-noh PEHR-soh een CHEN-troh",
+    "english": "I got lost downtown.",
+    "tags": [
+      "directions",
+      "past"
+    ],
+    "difficulty": "A2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Quanto tempo ci vuole a piedi?",
+    "pronunciation": "KWAN-toh TEM-poh chee VWOH-leh ah PYEH-dee",
+    "english": "How long does it take on foot?",
+    "tags": [
+      "directions",
+      "time",
+      "questions"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Prenda la seconda a sinistra dopo il semaforo.",
+    "pronunciation": "PREN-dah lah seh-KOHN-dah ah see-NEES-trah DOH-poh eel seh-MAH-foh-roh",
+    "english": "Take the second left after the traffic light.",
+    "tags": [
+      "directions",
+      "formal"
+    ],
+    "difficulty": "B1",
+    "tense": "imperativo"
+  },
+  {
+    "italian": "Non ricordavo più come si arrivava alla piazza.",
+    "pronunciation": "nohn ree-kor-DAH-voh pyoo KOH-meh see ar-ree-VAH-vah AL-lah PYAT-tsah",
+    "english": "I no longer remembered how to get to the square.",
+    "tags": [
+      "directions",
+      "past"
+    ],
+    "difficulty": "B1",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "Se non avessi seguito il navigatore, mi sarei perso di sicuro.",
+    "pronunciation": "seh nohn ah-VES-see seh-GWEE-toh eel nah-vee-gah-TOH-reh mee sah-REY PEHR-soh dee see-KOO-roh",
+    "english": "If I hadn't followed the GPS, I definitely would have gotten lost.",
+    "tags": [
+      "directions",
+      "hypothetical",
+      "congiuntivo"
+    ],
+    "difficulty": "B2",
+    "tense": "misto"
+  },
+  {
+    "italian": "Vorrei comprare questo, per favore.",
+    "pronunciation": "voh-REY kom-PRAH-reh KWES-toh pehr fah-VOH-reh",
+    "english": "I would like to buy this, please.",
+    "tags": [
+      "shopping",
+      "polite"
+    ],
+    "difficulty": "A1",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Accettate carte di credito?",
+    "pronunciation": "ach-chet-TAH-teh KAR-teh dee KREH-dee-toh",
+    "english": "Do you accept credit cards?",
+    "tags": [
+      "shopping",
+      "money",
+      "questions"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Ho speso troppo questo mese.",
+    "pronunciation": "oh SPEH-zoh TROP-poh KWES-toh MEH-zeh",
+    "english": "I spent too much this month.",
+    "tags": [
+      "money",
+      "past"
+    ],
+    "difficulty": "A2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "C'è uno sconto su questo articolo?",
+    "pronunciation": "cheh OO-noh SKOHN-toh soo KWES-toh ar-TEE-koh-loh",
+    "english": "Is there a discount on this item?",
+    "tags": [
+      "shopping",
+      "money",
+      "questions"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Posso pagare in contanti?",
+    "pronunciation": "POHS-soh pah-GAH-reh een kon-TAN-tee",
+    "english": "Can I pay in cash?",
+    "tags": [
+      "shopping",
+      "money",
+      "questions"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Stavo risparmiando per comprare una macchina nuova.",
+    "pronunciation": "STAH-voh rees-par-MYAN-doh pehr kom-PRAH-reh OO-nah MAK-kee-nah NWOH-vah",
+    "english": "I was saving up to buy a new car.",
+    "tags": [
+      "money",
+      "plans"
+    ],
+    "difficulty": "B1",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "Se avessi più soldi, viaggerei di più.",
+    "pronunciation": "seh ah-VES-see pyoo SOL-dee vyad-jeh-REY dee pyoo",
+    "english": "If I had more money, I would travel more.",
+    "tags": [
+      "money",
+      "hypothetical",
+      "congiuntivo"
+    ],
+    "difficulty": "B1",
+    "tense": "misto"
+  },
+  {
+    "italian": "Bisogna tener conto delle spese impreviste quando si fa un budget.",
+    "pronunciation": "bee-ZOH-nyah teh-NEHR KOHN-toh DEL-leh SPEH-zeh eem-preh-VEES-teh KWAN-doh see fah oon BUH-jet",
+    "english": "You need to account for unexpected expenses when making a budget.",
+    "tags": [
+      "money",
+      "practical"
+    ],
+    "difficulty": "B2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Ho bisogno di un documento d'identità.",
+    "pronunciation": "oh bee-ZOH-nyoh dee oon doh-koo-MEN-toh dee-den-tee-TAH",
+    "english": "I need an ID document.",
+    "tags": [
+      "bureaucracy",
+      "documents",
+      "practical"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Dove devo firmare?",
+    "pronunciation": "DOH-veh DEH-voh feer-MAH-reh",
+    "english": "Where do I need to sign?",
+    "tags": [
+      "bureaucracy",
+      "documents",
+      "questions"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Dovrei presentare questi documenti in tribunale.",
+    "pronunciation": "doh-VREY preh-zen-TAH-reh KWES-tee doh-koo-MEN-tee een tree-boo-NAH-leh",
+    "english": "I should submit these documents to the court.",
+    "tags": [
+      "bureaucracy",
+      "formal",
+      "legal"
+    ],
+    "difficulty": "B1",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Il mio avvocato mi ha consigliato di aspettare.",
+    "pronunciation": "eel MEE-oh av-voh-KAH-toh mee ah kon-see-LYAH-toh dee as-pet-TAH-reh",
+    "english": "My lawyer advised me to wait.",
+    "tags": [
+      "bureaucracy",
+      "legal",
+      "past"
+    ],
+    "difficulty": "B1",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "La pratica è ancora in corso.",
+    "pronunciation": "lah PRAH-tee-kah eh an-KOH-rah een KOR-soh",
+    "english": "The paperwork is still in progress.",
+    "tags": [
+      "bureaucracy",
+      "practical"
+    ],
+    "difficulty": "B1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Mi scusi, a che ora apre l'ufficio?",
+    "pronunciation": "mee SKOO-zee ah keh OH-rah AH-preh loof-FEE-choh",
+    "english": "Excuse me, what time does the office open?",
+    "tags": [
+      "bureaucracy",
+      "formal",
+      "questions",
+      "polite"
+    ],
+    "difficulty": "B1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Vorrei sapere lo stato della mia pratica.",
+    "pronunciation": "voh-REY sah-PEH-reh loh STAH-toh DEL-lah MEE-ah PRAH-tee-kah",
+    "english": "I would like to know the status of my case.",
+    "tags": [
+      "bureaucracy",
+      "formal",
+      "polite"
+    ],
+    "difficulty": "B1",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Una volta ottenuta la cittadinanza, potrò richiedere il passaporto.",
+    "pronunciation": "OO-nah VOL-tah ot-teh-NOO-tah lah cheet-tah-dee-NAN-tsah poh-TROH ree-kyeh-DEH-reh eel pas-sah-POR-toh",
+    "english": "Once I've obtained citizenship, I'll be able to apply for a passport.",
+    "tags": [
+      "bureaucracy",
+      "legal"
+    ],
+    "difficulty": "B2",
+    "tense": "futuro"
+  },
+  {
+    "italian": "È fondamentale che tutti i documenti siano tradotti e legalizzati.",
+    "pronunciation": "eh fon-dah-men-TAH-leh keh TOOT-tee ee doh-koo-MEN-tee SYAH-noh trah-DOT-tee eh leh-gah-leet-TSAH-tee",
+    "english": "It's essential that all the documents be translated and legalized.",
+    "tags": [
+      "bureaucracy",
+      "documents",
+      "congiuntivo",
+      "formal"
+    ],
+    "difficulty": "B2",
+    "tense": "congiuntivo"
+  },
+  {
+    "italian": "Il giudice ha rinviato l'udienza al mese prossimo.",
+    "pronunciation": "eel JOO-dee-cheh ah reen-VYAH-toh loo-DYEN-tsah al MEH-zeh PROS-see-moh",
+    "english": "The judge postponed the hearing to next month.",
+    "tags": [
+      "bureaucracy",
+      "legal",
+      "past"
+    ],
+    "difficulty": "B2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Spero che la pratica si concluda entro l'anno.",
+    "pronunciation": "SPEH-roh keh lah PRAH-tee-kah see kon-KLOO-dah EN-troh LAN-noh",
+    "english": "I hope the case concludes within the year.",
+    "tags": [
+      "bureaucracy",
+      "congiuntivo"
+    ],
+    "difficulty": "B2",
+    "tense": "congiuntivo"
+  },
+  {
+    "italian": "Bisogna rivolgersi all'ufficio anagrafe per il certificato di nascita.",
+    "pronunciation": "bee-ZOH-nyah ree-VOL-jer-see al-loof-FEE-choh ah-NAH-grah-feh pehr eel cher-tee-fee-KAH-toh dee NAH-shee-tah",
+    "english": "You need to go to the registry office for the birth certificate.",
+    "tags": [
+      "bureaucracy",
+      "documents",
+      "formal"
+    ],
+    "difficulty": "B2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Il mio telefono non ha più batteria.",
+    "pronunciation": "eel MEE-oh teh-LEH-foh-noh nohn ah pyoo baht-teh-REE-ah",
+    "english": "My phone is out of battery.",
+    "tags": [
+      "technology",
+      "everyday"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Mi puoi mandare un messaggio?",
+    "pronunciation": "mee PWOY man-DAH-reh oon mes-SAJ-joh",
+    "english": "Can you send me a message?",
+    "tags": [
+      "technology",
+      "communication",
+      "questions"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Non trovo il wifi in questa zona.",
+    "pronunciation": "nohn TROH-voh eel WEE-fee een KWES-tah DZOH-nah",
+    "english": "I can't find wifi in this area.",
+    "tags": [
+      "technology",
+      "practical"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Ho perso tutti i contatti quando ho cambiato telefono.",
+    "pronunciation": "oh PEHR-soh TOOT-tee ee kon-TAT-tee KWAN-doh oh kam-BYAH-toh teh-LEH-foh-noh",
+    "english": "I lost all my contacts when I changed phones.",
+    "tags": [
+      "technology",
+      "past"
+    ],
+    "difficulty": "B1",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Di solito controllo le email la mattina presto.",
+    "pronunciation": "dee SOH-lee-toh kon-TROL-loh leh EE-mayl lah mat-TEE-nah PRES-toh",
+    "english": "I usually check my email early in the morning.",
+    "tags": [
+      "technology",
+      "habits"
+    ],
+    "difficulty": "B1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Il sito non funzionava ieri sera.",
+    "pronunciation": "eel SEE-toh nohn foon-tsyoh-NAH-vah YEH-ree SEH-rah",
+    "english": "The website wasn't working last night.",
+    "tags": [
+      "technology",
+      "past"
+    ],
+    "difficulty": "B1",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "Bisognerebbe aggiornare il sistema prima di usarlo.",
+    "pronunciation": "bee-zoh-nyeh-REB-beh ad-jor-NAH-reh eel sees-TEH-mah PREE-mah dee oo-ZAR-loh",
+    "english": "The system should be updated before using it.",
+    "tags": [
+      "technology",
+      "practical"
+    ],
+    "difficulty": "B2",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Nonostante i progressi tecnologici, preferisco ancora scrivere a mano.",
+    "pronunciation": "non-oh-STAN-teh ee proh-GRES-see tek-noh-LOH-jee-chee preh-feh-REES-koh an-KOH-rah SKREE-veh-reh ah MAH-noh",
+    "english": "Despite technological progress, I still prefer to write by hand.",
+    "tags": [
+      "technology",
+      "opinions"
+    ],
+    "difficulty": "B2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Aiuto!",
+    "pronunciation": "ah-YOO-toh",
+    "english": "Help!",
+    "tags": [
+      "emergency"
+    ],
+    "difficulty": "A1",
+    "tense": "imperativo"
+  },
+  {
+    "italian": "Chiama un'ambulanza, per favore!",
+    "pronunciation": "KYAH-mah oo-nam-boo-LAN-tsah pehr fah-VOH-reh",
+    "english": "Call an ambulance, please!",
+    "tags": [
+      "emergency"
+    ],
+    "difficulty": "A2",
+    "tense": "imperativo"
+  },
+  {
+    "italian": "Ho perso il portafoglio.",
+    "pronunciation": "oh PEHR-soh eel por-tah-FOH-lyoh",
+    "english": "I lost my wallet.",
+    "tags": [
+      "emergency",
+      "practical",
+      "past"
+    ],
+    "difficulty": "A2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Qual è il numero di emergenza qui?",
+    "pronunciation": "kwahl eh eel NOO-meh-roh dee eh-mer-JEN-tsah kwee",
+    "english": "What's the emergency number here?",
+    "tags": [
+      "emergency",
+      "questions"
+    ],
+    "difficulty": "B1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Non sapevo a chi rivolgermi in quella situazione.",
+    "pronunciation": "nohn sah-PEH-voh ah kee ree-VOL-jer-mee een KWEL-lah see-twah-TSYOH-neh",
+    "english": "I didn't know who to turn to in that situation.",
+    "tags": [
+      "emergency",
+      "past"
+    ],
+    "difficulty": "B1",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "In caso di emergenza, è meglio restare calmi e chiamare subito aiuto.",
+    "pronunciation": "een KAH-zoh dee eh-mer-JEN-tsah eh MEH-lyoh res-TAH-reh KAL-mee eh kyah-MAH-reh SOO-bee-toh ah-YOO-toh",
+    "english": "In case of an emergency, it's best to stay calm and call for help right away.",
+    "tags": [
+      "emergency",
+      "practical"
+    ],
+    "difficulty": "B2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Mi piace leggere.",
+    "pronunciation": "mee PYAH-cheh LEJ-jeh-reh",
+    "english": "I like reading.",
+    "tags": [
+      "hobbies",
+      "everyday"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Gioco a calcio la domenica.",
+    "pronunciation": "JOH-koh ah KAL-choh lah doh-MEH-nee-kah",
+    "english": "I play soccer on Sundays.",
+    "tags": [
+      "hobbies",
+      "sport"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Da piccolo suonavo il piano.",
+    "pronunciation": "dah PEEK-koh-loh swoh-NAH-voh eel PYAH-noh",
+    "english": "As a kid I used to play the piano.",
+    "tags": [
+      "hobbies",
+      "childhood"
+    ],
+    "difficulty": "A2",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "Il weekend scorso ho fatto un'escursione in montagna.",
+    "pronunciation": "eel WEE-kend SKOR-soh oh FAT-toh oo-nes-koor-SYOH-neh een mon-TAN-yah",
+    "english": "Last weekend I went on a hike in the mountains.",
+    "tags": [
+      "hobbies",
+      "past",
+      "travel"
+    ],
+    "difficulty": "A2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Ti va di guardare un film stasera?",
+    "pronunciation": "tee vah dee gwar-DAH-reh oon feelm stah-SEH-rah",
+    "english": "Do you feel like watching a movie tonight?",
+    "tags": [
+      "hobbies",
+      "plans",
+      "questions"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Vorrei imparare a suonare la chitarra.",
+    "pronunciation": "voh-REY eem-pah-RAH-reh ah swoh-NAH-reh lah kee-TAR-rah",
+    "english": "I'd like to learn to play guitar.",
+    "tags": [
+      "hobbies",
+      "plans"
+    ],
+    "difficulty": "B1",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Passavo ore intere a disegnare quando ero giovane.",
+    "pronunciation": "pas-SAH-voh OH-reh een-TEH-reh ah dee-zeh-NYAH-reh KWAN-doh EH-roh JOH-vah-neh",
+    "english": "I used to spend hours drawing when I was young.",
+    "tags": [
+      "hobbies",
+      "childhood"
+    ],
+    "difficulty": "B1",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "Nonostante il poco tempo libero, cerco sempre di dedicarmi ai miei hobby.",
+    "pronunciation": "non-oh-STAN-teh eel POH-koh TEM-poh LEE-beh-roh CHER-koh SEM-preh dee deh-dee-KAR-mee ai MYEY OB-bee",
+    "english": "Despite having little free time, I always try to dedicate myself to my hobbies.",
+    "tags": [
+      "hobbies",
+      "opinions"
+    ],
+    "difficulty": "B2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Posso avere il conto, per favore?",
+    "pronunciation": "POHS-soh ah-VEH-reh eel KOHN-toh pehr fah-VOH-reh",
+    "english": "Can I have the check, please?",
+    "tags": [
+      "restaurant",
+      "polite"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Vorremmo un tavolo per due.",
+    "pronunciation": "vor-REM-moh oon TAH-voh-loh pehr DOO-eh",
+    "english": "We would like a table for two.",
+    "tags": [
+      "restaurant",
+      "polite"
+    ],
+    "difficulty": "A1",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Cosa mi consiglia?",
+    "pronunciation": "KOH-zah mee kon-SEE-lyah",
+    "english": "What do you recommend?",
+    "tags": [
+      "restaurant",
+      "questions",
+      "formal"
+    ],
+    "difficulty": "A1",
+    "tense": "presente"
+  },
+  {
+    "italian": "Vorrei prenotare un tavolo per stasera.",
+    "pronunciation": "voh-REY preh-noh-TAH-reh oon TAH-voh-loh pehr stah-SEH-rah",
+    "english": "I'd like to book a table for tonight.",
+    "tags": [
+      "restaurant",
+      "plans"
+    ],
+    "difficulty": "A2",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Abbiamo già ordinato, grazie.",
+    "pronunciation": "ab-BYAH-moh jah or-dee-NAH-toh GRAH-tsyeh",
+    "english": "We've already ordered, thanks.",
+    "tags": [
+      "restaurant",
+      "past"
+    ],
+    "difficulty": "A2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Questo piatto è piccante?",
+    "pronunciation": "KWES-toh PYAT-toh eh peek-KAN-teh",
+    "english": "Is this dish spicy?",
+    "tags": [
+      "restaurant",
+      "food",
+      "questions"
+    ],
+    "difficulty": "A2",
+    "tense": "presente"
+  },
+  {
+    "italian": "L'ultima volta che siamo usciti a cena, il servizio era lentissimo.",
+    "pronunciation": "LOOL-tee-mah VOL-tah keh SYAH-moh oo-SHEE-tee ah CHEH-nah eel ser-VEE-tsyoh EH-rah len-TEES-see-moh",
+    "english": "The last time we went out to dinner, the service was extremely slow.",
+    "tags": [
+      "restaurant",
+      "past"
+    ],
+    "difficulty": "B1",
+    "tense": "misto"
+  },
+  {
+    "italian": "Preferirei sedermi vicino alla finestra, se possibile.",
+    "pronunciation": "preh-feh-ree-REY seh-DEHR-mee vee-CHEE-noh AL-lah fee-NES-trah seh pos-SEE-bee-leh",
+    "english": "I'd prefer to sit near the window, if possible.",
+    "tags": [
+      "restaurant",
+      "polite"
+    ],
+    "difficulty": "B1",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Anche se non sono d'accordo, rispetto la tua opinione.",
+    "pronunciation": "AN-keh seh nohn SOH-noh dak-KOR-doh rees-PET-toh lah TOO-ah oh-pee-NYOH-neh",
+    "english": "Even though I don't agree, I respect your opinion.",
+    "tags": [
+      "opinions",
+      "social"
+    ],
+    "difficulty": "B2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Dubito che sia una buona idea.",
+    "pronunciation": "DOO-bee-toh keh SEE-ah OO-nah BWOH-nah ee-DEH-ah",
+    "english": "I doubt it's a good idea.",
+    "tags": [
+      "opinions",
+      "congiuntivo"
+    ],
+    "difficulty": "B2",
+    "tense": "congiuntivo"
+  },
+  {
+    "italian": "Se avessi saputo prima, avrei organizzato tutto diversamente.",
+    "pronunciation": "seh ah-VES-see sah-POO-toh PREE-mah ah-VREY or-gah-need-DZAH-toh TOOT-toh dee-vehr-sah-MEN-teh",
+    "english": "If I had known earlier, I would have organized everything differently.",
+    "tags": [
+      "hypothetical",
+      "congiuntivo",
+      "plans"
+    ],
+    "difficulty": "B2",
+    "tense": "misto"
+  },
+  {
+    "italian": "Nonostante le difficoltà, siamo riusciti a portare a termine il progetto.",
+    "pronunciation": "non-oh-STAN-teh leh deef-fee-kol-TAH SYAH-moh ryoo-SHEE-tee ah por-TAH-reh ah TEHR-mee-neh eel proh-JET-toh",
+    "english": "Despite the difficulties, we managed to finish the project.",
+    "tags": [
+      "work",
+      "past"
+    ],
+    "difficulty": "B2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "A quanto pare, la riunione è stata rimandata.",
+    "pronunciation": "ah KWAN-toh PAH-reh lah ryoo-NYOH-neh eh STAH-tah ree-man-DAH-tah",
+    "english": "Apparently, the meeting has been postponed.",
+    "tags": [
+      "work",
+      "expressions"
+    ],
+    "difficulty": "B2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Mi rendo conto che non è stato facile per te.",
+    "pronunciation": "mee REN-doh KOHN-toh keh nohn eh STAH-toh FAH-chee-leh pehr teh",
+    "english": "I realize it wasn't easy for you.",
+    "tags": [
+      "feelings",
+      "relationships"
+    ],
+    "difficulty": "B2",
+    "tense": "presente"
+  },
+  {
+    "italian": "Avrei dovuto pensarci prima di rispondere.",
+    "pronunciation": "ah-VREY doh-VOO-toh pen-SAR-chee PREE-mah dee rees-POHN-deh-reh",
+    "english": "I should have thought about it before answering.",
+    "tags": [
+      "regret",
+      "communication"
+    ],
+    "difficulty": "B2",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Da quando si è trasferito, ci sentiamo molto meno.",
+    "pronunciation": "dah KWAN-doh see eh trahs-feh-REE-toh chee sen-TYAH-moh MOHL-toh MEH-noh",
+    "english": "Since he moved, we talk to each other much less.",
+    "tags": [
+      "relationships",
+      "past"
+    ],
+    "difficulty": "B2",
+    "tense": "misto"
+  },
+  {
+    "italian": "Per quanto ne so, la decisione non è stata ancora presa.",
+    "pronunciation": "pehr KWAN-toh neh soh lah deh-chee-ZYOH-neh nohn eh STAH-tah an-KOH-rah PREH-zah",
+    "english": "As far as I know, the decision hasn't been made yet.",
+    "tags": [
+      "opinions",
+      "expressions"
+    ],
+    "difficulty": "B2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Mi sarebbe piaciuto restare più a lungo.",
+    "pronunciation": "mee sah-REB-beh pyah-CHOO-toh res-TAH-reh pyoo ah LOON-goh",
+    "english": "I would have liked to stay longer.",
+    "tags": [
+      "feelings",
+      "travel"
+    ],
+    "difficulty": "B2",
+    "tense": "condizionale"
+  },
+  {
+    "italian": "Bisogna ammettere che aveva ragione lui.",
+    "pronunciation": "bee-ZOH-nyah am-MET-teh-reh keh ah-VEH-vah rah-JOH-neh LOO-ee",
+    "english": "You have to admit he was right.",
+    "tags": [
+      "opinions"
+    ],
+    "difficulty": "B2",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "Nel caso in cui cambiassi idea, fammi sapere.",
+    "pronunciation": "nel KAH-zoh een KOO-ee kam-BYAS-see ee-DEH-ah FAM-mee sah-PEH-reh",
+    "english": "In case you change your mind, let me know.",
+    "tags": [
+      "congiuntivo",
+      "communication"
+    ],
+    "difficulty": "B2",
+    "tense": "congiuntivo"
+  },
+  {
+    "italian": "Ho l'impressione che qualcosa non vada.",
+    "pronunciation": "oh leem-pres-SYOH-neh keh kwal-KOH-zah nohn VAH-dah",
+    "english": "I have the feeling something's wrong.",
+    "tags": [
+      "feelings",
+      "congiuntivo"
+    ],
+    "difficulty": "B2",
+    "tense": "congiuntivo"
+  },
+  {
+    "italian": "Malgrado tutto, sono contento di come sia andata.",
+    "pronunciation": "mal-GRAH-doh TOOT-toh SOH-noh kon-TEN-toh dee KOH-meh SEE-ah an-DAH-tah",
+    "english": "Despite everything, I'm happy with how it went.",
+    "tags": [
+      "feelings",
+      "congiuntivo"
+    ],
+    "difficulty": "B2",
+    "tense": "congiuntivo"
+  },
+  {
+    "italian": "Immagino che tu sia stanco dopo il viaggio.",
+    "pronunciation": "eem-mah-JEE-noh keh too SEE-ah STAN-koh DOH-poh eel VYAJ-joh",
+    "english": "I imagine you're tired after the trip.",
+    "tags": [
+      "congiuntivo",
+      "travel"
+    ],
+    "difficulty": "B2",
+    "tense": "congiuntivo"
+  },
+  {
+    "italian": "A dire il vero, non mi aspettavo una risposta così.",
+    "pronunciation": "ah DEE-reh eel VEH-roh nohn mee as-pet-TAH-voh OO-nah rees-POHS-tah koh-ZEE",
+    "english": "To tell the truth, I wasn't expecting an answer like that.",
+    "tags": [
+      "expressions",
+      "communication"
+    ],
+    "difficulty": "B2",
+    "tense": "imperfetto"
+  },
+  {
+    "italian": "Ci siamo persi di vista negli ultimi anni.",
+    "pronunciation": "chee SYAH-moh PEHR-see dee VEES-tah NEL-yee ool-TEE-mee AN-nee",
+    "english": "We lost touch over the last few years.",
+    "tags": [
+      "relationships",
+      "past"
+    ],
+    "difficulty": "B2",
+    "tense": "passato_prossimo"
+  },
+  {
+    "italian": "Prima o poi dovremo affrontare il problema.",
+    "pronunciation": "PREE-mah oh poy doh-VREH-moh af-fron-TAH-reh eel proh-BLEH-mah",
+    "english": "Sooner or later we'll have to face the problem.",
+    "tags": [
+      "plans"
+    ],
+    "difficulty": "B2",
+    "tense": "futuro"
+  },
+  {
+    "italian": "Se fossi in te, non ci penserei due volte.",
+    "pronunciation": "seh FOHS-see een teh nohn chee pen-seh-REY DOO-eh VOL-teh",
+    "english": "If I were you, I wouldn't think twice.",
+    "tags": [
+      "congiuntivo",
+      "hypothetical",
+      "advice"
+    ],
+    "difficulty": "B2",
+    "tense": "misto"
+  },
+  {
+    "italian": "Con il senno di poi, avremmo dovuto agire prima.",
+    "pronunciation": "kohn eel SEN-noh dee poy ah-VREM-moh doh-VOO-toh ah-JEE-reh PREE-mah",
+    "english": "In hindsight, we should have acted sooner.",
+    "tags": [
+      "regret",
+      "opinions"
+    ],
+    "difficulty": "B2",
+    "tense": "condizionale"
   }
 ]

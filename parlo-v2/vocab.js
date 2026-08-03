@@ -469,7 +469,7 @@ async function initVocab() {
     loadSRS();
 
     try {
-        const res = await fetch('phrases.json?v=2');
+        const res = await fetch('phrases.json?v=3');
         phrases = await res.json();
     } catch {
         frontText.textContent = 'Error loading phrases.';
