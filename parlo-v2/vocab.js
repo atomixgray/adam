@@ -251,11 +251,7 @@ function updateStats() {
 
 function showCard(phraseIndex) {
     const phrase = phrases[phraseIndex];
-    const showItalianFirst = studyMode === 'italian-to-english'
-        ? true
-        : (studyMode === 'english-to-italian' || studyMode === 'type-in')
-            ? false
-            : Math.random() < 0.5;
+    const showItalianFirst = studyMode === 'italian-to-english';
 
     if (showItalianFirst) {
         frontLabel.textContent  = 'Italiano';
@@ -543,6 +539,7 @@ async function initVocab() {
     vocabInited = true;
 
     try { studyMode = localStorage.getItem(MODE_KEY) || 'italian-to-english'; } catch {}
+    if (studyMode === 'random') studyMode = 'italian-to-english'; // mode removed — fall back for returning users
     modeButtons.forEach(b => b.classList.toggle('active', b.dataset.mode === studyMode));
 
     loadSRS();
