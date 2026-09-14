@@ -27,14 +27,14 @@ Static personal portfolio site for Adam Larkin (adamlarkin.com), hosted on GitHu
 ### secops-daily Data Flow
 
 1. `script.js` fetches from `rss-proxy.adamlarkin.workers.dev`
-2. `worker.js` (Cloudflare Worker) fetches approved RSS feeds, applies SSRF/geo/referer protections, and optionally calls Gemini API for trend analysis
+2. `worker.js` (Cloudflare Worker) fetches approved RSS feeds and applies SSRF/geo/referer protections (the AI trend-analysis feature was built and then removed in commit `21b8996` — no Gemini or other LLM call remains in this worker)
 3. Parsed XML → article objects → filtered/searched client-side
 
 ### parlo-v2 Structure
 
-- `flashcards.js` — SM-2 spaced repetition algorithm; state persisted in `localStorage` as `parlo_v2_srs`
-- `practice.js` — Groq API (Llama 3) + Gemini integration for AI sentence feedback; CEFR levels A0–B2; user API key stored in `localStorage` as `parlo_v2_groq_key`
-- `phrases.json` — 1600+ Italian phrases with metadata (Italian, English, pronunciation, difficulty)
+Current SPA (loaded by `index.html`): `app.js` (shell/auth/shared `window.parlo` API), `chat.js` (scenario + free chat + Repeat & Translate drill), `vocab.js` (SM-2 SRS flashcards, state in `localStorage` as `parlo_v2_srs`), `translate.js` (EN↔IT + auto-conjugation), `immerse.js` (Krashen-style comprehensible-input narration), `worker.js` (Cloudflare Worker proxy to the Claude API, not Groq/Gemini). `phrases.json` has **377** Italian phrases with metadata (Italian, English, pronunciation, difficulty, tense) — not 1600+.
+
+**Legacy v1 files still present and publicly reachable in this directory but not linked from `index.html`:** `flashcards.html/js`, `practice.html/js` (the old Groq/Gemini-based AI feedback flow, user API key in `localStorage` as `parlo_v2_groq_key`), `conversation.html/js`, `alphabet.js`, `phrases.json.bak`. These are dead weight from before the v2 rewrite — safe to delete, not part of the current app.
 
 ## Security
 
@@ -78,7 +78,7 @@ JS and CSS files use `?v=X` version strings in `<script>` and `<link>` tags. Whe
 
 ## External Dependencies
 
-- **Groq API** — client-side AI calls from `parlo-v2/practice.js`
-- **Google Gemini API** — server-side trend analysis in `worker.js`
-- **Web Speech API** — Italian pronunciation (built-in browser API)
+- **Claude API** — via `parlo-v2/worker.js` proxy (chat, translate, conjugate, repeat, narrate); Groq is legacy-only, used by the unlinked v1 `parlo-v2/practice.js`
+- **ElevenLabs API** — client-side Italian TTS in `parlo-v2/app.js`, falls back to Web Speech API
+- **Web Speech API** — Italian pronunciation fallback + speech recognition (dictation) in `parlo-v2/chat.js`
 - No npm packages, no bundler, no transpilation
