@@ -377,7 +377,7 @@ async function launchApp() {
 // ── Tabs ──────────────────────────────────────────────────────────────────
 
 const tabInited = {};
-const tabInitFns = { chat: 'initChat', vocab: 'initVocab', translate: 'initTranslate', immerse: 'initImmerse' };
+const tabInitFns = { chat: 'initChat', vocab: 'initVocab', translate: 'initTranslate' };
 
 function initTabs() {
     document.querySelectorAll('.tab-btn').forEach(btn => {
