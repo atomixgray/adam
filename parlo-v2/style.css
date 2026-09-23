@@ -1175,7 +1175,7 @@ footer {
 
 .modal-link a:hover { color: #c8d5ff; }
 
-.modal-content input {
+.modal-content input, .modal-content textarea {
     width: 100%;
     padding: 1rem 1.2rem;
     background: rgba(255, 255, 255, 0.03);
@@ -1183,12 +1183,14 @@ footer {
     border-radius: 10px;
     color: #e0e0e0;
     font-size: 0.95rem;
+    font-family: inherit;
     outline: none;
     margin-bottom: 1.5rem;
     transition: all 0.2s ease;
+    resize: vertical;
 }
 
-.modal-content input:focus {
+.modal-content input:focus, .modal-content textarea:focus {
     border-color: rgba(102, 126, 234, 0.3);
     background: rgba(255, 255, 255, 0.05);
 }
@@ -2777,6 +2779,8 @@ textarea:focus-visible {
 .chat-chip--free .chip-title { font-size: 0.95rem; }
 .chat-chip--repeat { border-left: 2px solid #f093fb; background: rgba(240,147,251,0.07); grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.6rem; }
 .chat-chip--repeat .chip-title { font-size: 0.95rem; }
+.chat-chip--custom { border: 1px dashed rgba(200,150,58,0.4); background: rgba(200,150,58,0.05); grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 0.6rem; }
+.chat-chip--custom .chip-title { font-size: 0.95rem; }
 .chat-chip--a1 { border-left: 2px solid #34d399; }
 .chat-chip--a2 { border-left: 2px solid #60a5fa; }
 .chat-chip--b1 { border-left: 2px solid #a78bfa; }

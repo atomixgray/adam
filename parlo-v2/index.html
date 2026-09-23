@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev https://api.elevenlabs.io; img-src 'self' data:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=28">
+    <link rel="stylesheet" href="style.css?v=29">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -47,6 +47,20 @@
                 <div class="modal-actions">
                     <button id="settingsCancelBtn" class="btn-modal">Cancel</button>
                     <button id="settingsSaveBtn" class="btn-modal btn-modal--primary">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom scenario modal -->
+        <div id="customScenarioModal" class="modal hidden">
+            <div id="customScenarioOverlay" class="modal-overlay"></div>
+            <div class="modal-content">
+                <h3>Custom Scenario</h3>
+                <p class="modal-desc">Describe a real situation you want to practice — Marco will build a role-play around it.</p>
+                <textarea id="customScenarioInput" rows="3" placeholder="e.g. A job interview for a marketing role…" autocorrect="off" spellcheck="false"></textarea>
+                <div class="modal-actions">
+                    <button id="customScenarioCancelBtn" class="btn-modal">Cancel</button>
+                    <button id="customScenarioStartBtn" class="btn-modal btn-modal--primary">Start</button>
                 </div>
             </div>
         </div>
@@ -290,7 +304,7 @@
 
     <script src="particles.js"></script>
     <script src="app.js?v=29"></script>
-    <script src="chat.js?v=20"></script>
+    <script src="chat.js?v=21"></script>
     <script src="vocab.js?v=9"></script>
     <script src="translate.js?v=11"></script>
 </body>

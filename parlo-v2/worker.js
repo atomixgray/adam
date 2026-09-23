@@ -208,6 +208,20 @@ Respond with valid JSON only — no markdown, no extra text:
 }
 
 Give 2-3 suggestions, each one short (a single natural sentence). Base them on the actual conversation so far — if there's an active scenario, fit the suggestions to that situation and the student's role in it. Don't explain grammar or teach — just give usable, natural example responses a real person could say next.`,
+
+  scenario: `You are helping design a role-play scenario for an Italian language learner, based on a real situation they describe.
+
+Respond with valid JSON only — no markdown, no extra text:
+{
+  "title": "short title for this scenario, in Italian, a few words",
+  "level": "A1, A2, B1, or B2 — pick honestly based on how complex the described situation naturally is",
+  "opening": "the first line, in Italian, spoken by the character to open the roleplay naturally — launch straight into the situation, don't explain what's about to happen",
+  "ai_role": "a short description of who you're playing in this scenario, e.g. \\"hiring manager conducting a job interview\\"",
+  "user_role": "a short description of the learner's role in the scenario, e.g. \\"job candidate\\"",
+  "context": "1-2 sentences of scene-setting context, max 400 characters, to keep the AI in character for the rest of the conversation"
+}
+
+Don't inflate a simple everyday situation to B2 just because the description sounds formal, and don't flatten a genuinely complex one down to A1. If the description is too vague or not a real conversational situation, do your best to still produce something reasonable and concrete rather than erroring.`,
 };
 
 // ── Main handler ──────────────────────────────────────────────────────────────
@@ -328,7 +342,7 @@ export default {
 
     // Action whitelist
     if (!action || !SYSTEM_PROMPTS[action]) {
-      return jsonError('action must be "chat", "translate", "conjugate", "repeat", "hint", "syncPull", or "syncPush"');
+      return jsonError('action must be "chat", "translate", "conjugate", "repeat", "hint", "scenario", "syncPull", or "syncPush"');
     }
 
     // ── Repeat & Translate — no messages array needed ─────────────────────

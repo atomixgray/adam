@@ -59,6 +59,11 @@ function initChat() {
     });
     document.getElementById('chatHintBtn').addEventListener('click', chatOnHint);
 
+    // Custom scenario modal
+    document.getElementById('customScenarioCancelBtn').addEventListener('click', closeCustomScenarioModal);
+    document.getElementById('customScenarioOverlay').addEventListener('click', closeCustomScenarioModal);
+    document.getElementById('customScenarioStartBtn').addEventListener('click', customScenarioStart);
+
     // RT controls
     document.getElementById('rtSendBtn').addEventListener('click', rtOnSend);
     document.getElementById('rtMicBtn').addEventListener('click', rtOnMic);
@@ -111,6 +116,13 @@ function renderChips() {
     rtChip.addEventListener('click', () => chatStart(REPEAT_TRANSLATE));
     container.appendChild(rtChip);
 
+    // Custom scenario chip
+    const customChip = document.createElement('button');
+    customChip.className = 'chat-chip chat-chip--custom';
+    customChip.innerHTML = `<span class="chip-emoji">✏️</span><span class="chip-title">Custom Scenario</span><span class="chip-level">describe it</span>`;
+    customChip.addEventListener('click', openCustomScenarioModal);
+    container.appendChild(customChip);
+
     chatScenarios.forEach(s => {
         const chip = document.createElement('button');
         chip.className = `chat-chip chat-chip--${s.level.toLowerCase()}`;
@@ -119,6 +131,56 @@ function renderChips() {
         chip.addEventListener('click', () => chatStart(s));
         container.appendChild(chip);
     });
+}
+
+// ── Custom scenario ──────────────────────────────────────────────────────
+
+function openCustomScenarioModal() {
+    document.getElementById('customScenarioInput').value = '';
+    document.getElementById('customScenarioModal').classList.remove('hidden');
+    setTimeout(() => document.getElementById('customScenarioInput').focus(), 50);
+}
+
+function closeCustomScenarioModal() {
+    document.getElementById('customScenarioModal').classList.add('hidden');
+}
+
+async function customScenarioStart() {
+    const desc = document.getElementById('customScenarioInput').value.trim();
+    if (!desc) return;
+
+    const startBtn = document.getElementById('customScenarioStartBtn');
+    startBtn.disabled = true;
+    startBtn.textContent = 'Building…';
+
+    try {
+        const data = await parlo.callClaude('scenario', [{ role: 'user', content: desc }]);
+        const parsed = parlo.parseJSON(data.content?.[0]?.text || '{}');
+
+        if (!parsed?.opening || !parsed?.context) {
+            alert('Could not build that scenario — try rephrasing.');
+            return;
+        }
+
+        const scenario = {
+            id: 'custom-' + Date.now(),
+            title: parsed.title || 'Custom Scenario',
+            level: parsed.level || null,
+            opening: parsed.opening,
+            ai_role: parsed.ai_role || '',
+            user_role: parsed.user_role || 'student',
+            context: parsed.context,
+        };
+
+        closeCustomScenarioModal();
+        chatStart(scenario);
+
+    } catch (e) {
+        alert('Could not connect — check your connection and try again.');
+    }
+
+    startBtn.disabled = false;
+    startBtn.textContent = 'Start';
 }
 
 // ── Conversation history ──────────────────────────────────────────────────
