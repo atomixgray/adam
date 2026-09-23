@@ -2889,6 +2889,30 @@ textarea:focus-visible {
 }
 .mistake-delete:hover { color: #ff8080; background: rgba(255,80,80,0.08); }
 
+.chat-hint-btn { align-self: center; margin: 0.5rem 0 0.25rem; }
+
+.chat-msg--coach { align-self: stretch; }
+.coach-bubble {
+    background: rgba(200,150,58,0.06);
+    border: 1px dashed rgba(200,150,58,0.35);
+    border-radius: 14px;
+    padding: 0.7rem 1rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+}
+.coach-label {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: #c8963a;
+}
+.coach-suggestion {
+    display: block; width: 100%; text-align: left;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px; padding: 0.5rem 0.7rem; cursor: pointer;
+    font-family: inherit; transition: background 0.15s, border-color 0.15s;
+}
+.coach-suggestion:hover { background: rgba(255,255,255,0.08); border-color: rgba(200,150,58,0.4); }
+.coach-suggestion-italian { font-size: 0.9rem; color: #e0e0e0; }
+.coach-suggestion-english { font-size: 0.76rem; color: #8a8aa8; margin-top: 0.15rem; }
+
 .chat-reveal-btn {
     background: none;
     border: none;

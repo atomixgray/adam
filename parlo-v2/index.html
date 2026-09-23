@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev https://api.elevenlabs.io; img-src 'self' data:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=27">
+    <link rel="stylesheet" href="style.css?v=28">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -106,6 +106,7 @@
                         </button>
                         <div id="chatMicStatus" class="mic-status-hero">Tap to speak</div>
                     </div>
+                    <button id="chatHintBtn" class="btn-ghost btn-sm chat-hint-btn">💡 Not sure what to say?</button>
                     <div class="chat-text-row">
                         <textarea id="chatInput" class="chat-textarea" placeholder="or type in Italian…" rows="1" autocorrect="off" spellcheck="false" data-gramm="false" data-gramm_editor="false"></textarea>
                         <button id="chatSendBtn" class="btn-send">
@@ -289,7 +290,7 @@
 
     <script src="particles.js"></script>
     <script src="app.js?v=29"></script>
-    <script src="chat.js?v=19"></script>
+    <script src="chat.js?v=20"></script>
     <script src="vocab.js?v=9"></script>
     <script src="translate.js?v=11"></script>
 </body>

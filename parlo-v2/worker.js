@@ -195,7 +195,19 @@ Respond with a JSON object in this exact format:
   ]
 }
 
-No extra text outside the JSON. If the input is English, translate to Italian. If Italian, translate to English. Always include 2 natural example sentences showing the word or phrase in context.`
+No extra text outside the JSON. If the input is English, translate to Italian. If Italian, translate to English. Always include 2 natural example sentences showing the word or phrase in context.`,
+
+  hint: `You are a helpful Italian language coach. The student is mid-conversation and isn't sure how to respond to the last message. Look at the conversation so far and suggest 2-3 natural ways they could respond in Italian — ranging from simple/safe to more natural — so they can pick one, adapt it, or just get unstuck.
+
+Respond with valid JSON only — no markdown, no extra text:
+{
+  "suggestions": [
+    { "italian": "a simple, safe way to respond", "english": "English translation" },
+    { "italian": "a slightly more natural or detailed way to respond", "english": "English translation" }
+  ]
+}
+
+Give 2-3 suggestions, each one short (a single natural sentence). Base them on the actual conversation so far — if there's an active scenario, fit the suggestions to that situation and the student's role in it. Don't explain grammar or teach — just give usable, natural example responses a real person could say next.`,
 };
 
 // ── Main handler ──────────────────────────────────────────────────────────────
@@ -316,7 +328,7 @@ export default {
 
     // Action whitelist
     if (!action || !SYSTEM_PROMPTS[action]) {
-      return jsonError('action must be "chat", "translate", "conjugate", "repeat", "syncPull", or "syncPush"');
+      return jsonError('action must be "chat", "translate", "conjugate", "repeat", "hint", "syncPull", or "syncPush"');
     }
 
     // ── Repeat & Translate — no messages array needed ─────────────────────
@@ -382,7 +394,7 @@ export default {
 
     // Optional scenario context — appended to chat system prompt server-side
     let systemPrompt = SYSTEM_PROMPTS[action];
-    if (action === 'chat' && body.scenario) {
+    if ((action === 'chat' || action === 'hint') && body.scenario) {
       const s = body.scenario;
       if (typeof s.context === 'string' && typeof s.ai_role === 'string') {
         const ctx = s.context.slice(0, MAX_SCENARIO_CHARS);

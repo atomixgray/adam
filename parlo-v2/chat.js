@@ -57,6 +57,7 @@ function initChat() {
     document.getElementById('chatInput').addEventListener('keydown', e => {
         if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatOnSend(); }
     });
+    document.getElementById('chatHintBtn').addEventListener('click', chatOnHint);
 
     // RT controls
     document.getElementById('rtSendBtn').addEventListener('click', rtOnSend);
@@ -394,6 +395,83 @@ async function chatSubmit(text) {
     }
 
     chatSetState('idle');
+}
+
+// ── Coaching hints ────────────────────────────────────────────────────────
+
+async function chatOnHint() {
+    if (chatState !== 'idle' || !chatHistory.length) return;
+
+    const btn = document.getElementById('chatHintBtn');
+    btn.disabled = true;
+    btn.textContent = 'Thinking…';
+
+    const thinking = chatAppendThinking();
+
+    try {
+        const options = chatCurrentScenario.context ? {
+            scenario: {
+                context:   chatCurrentScenario.context,
+                ai_role:   chatCurrentScenario.ai_role,
+                user_role: chatCurrentScenario.user_role,
+            },
+        } : {};
+        const data = await parlo.callClaude('hint', chatHistory, options);
+        thinking.remove();
+
+        const parsed = parlo.parseJSON(data.content?.[0]?.text || '{}');
+        const suggestions = Array.isArray(parsed?.suggestions) ? parsed.suggestions.filter(s => s?.italian) : [];
+
+        if (suggestions.length) chatAppendCoach(suggestions);
+        else chatAppendError('Could not come up with suggestions — try again.');
+
+    } catch (e) {
+        thinking.remove();
+        chatAppendError('Could not connect — check your connection and try again.');
+    }
+
+    btn.disabled = false;
+    btn.textContent = '💡 Not sure what to say?';
+}
+
+function chatAppendCoach(suggestions) {
+    const el = document.createElement('div');
+    el.className = 'chat-msg chat-msg--coach';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble coach-bubble';
+
+    const label = document.createElement('div');
+    label.className = 'coach-label';
+    label.textContent = '💡 Coach';
+    bubble.appendChild(label);
+
+    suggestions.forEach(s => {
+        const row = document.createElement('button');
+        row.className = 'coach-suggestion';
+
+        const itEl = document.createElement('div');
+        itEl.className = 'coach-suggestion-italian';
+        itEl.textContent = s.italian;
+
+        const enEl = document.createElement('div');
+        enEl.className = 'coach-suggestion-english';
+        enEl.textContent = s.english || '';
+
+        row.appendChild(itEl);
+        row.appendChild(enEl);
+        row.addEventListener('click', () => {
+            const input = document.getElementById('chatInput');
+            input.value = s.italian;
+            input.focus();
+        });
+
+        bubble.appendChild(row);
+    });
+
+    el.appendChild(bubble);
+    document.getElementById('chatWindow').appendChild(el);
+    chatScrollBottom();
 }
 
 // ── Repeat & Translate ────────────────────────────────────────────────────
@@ -769,6 +847,7 @@ function chatSetState(newState) {
     const mic   = document.getElementById('chatMicBtn');
     const send  = document.getElementById('chatSendBtn');
     const input = document.getElementById('chatInput');
+    const hint  = document.getElementById('chatHintBtn');
 
     // RT button states
     const rtSend  = document.getElementById('rtSendBtn');
@@ -788,6 +867,7 @@ function chatSetState(newState) {
         mic.disabled   = true;
         send.disabled  = true;
         input.disabled = true;
+        hint.disabled  = true;
         mic.classList.remove('mic-btn-hero--active', 'mic-btn-hero--processing');
         continueBtn.classList.remove('hidden');
         chatSetMicStatus('Reviewing past conversation');
@@ -801,6 +881,7 @@ function chatSetState(newState) {
         mic.disabled   = !chatRecognitionSupported;
         send.disabled  = false;
         input.disabled = false;
+        hint.disabled  = false;
         chatSetMicStatus(chatRecognitionSupported ? 'Tap to speak' : 'Type below');
     } else if (newState === 'listening') {
         mic.innerHTML = CHAT_STOP_SVG;
@@ -809,6 +890,7 @@ function chatSetState(newState) {
         mic.disabled   = false;
         send.disabled  = true;
         input.disabled = false;
+        hint.disabled  = true;
         chatSetMicStatus('Listening…');
     } else {
         mic.innerHTML = CHAT_MIC_SVG;
@@ -817,6 +899,7 @@ function chatSetState(newState) {
         mic.disabled   = true;
         send.disabled  = true;
         input.disabled = true;
+        hint.disabled  = true;
         chatSetMicStatus('…');
     }
 }
