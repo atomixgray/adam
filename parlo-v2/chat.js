@@ -2,6 +2,8 @@
 
 const CHAT_HISTORY_KEY = 'parlo_v2_chat_history';
 const MAX_SAVED_CHATS  = 10;
+const MISTAKES_KEY       = 'parlo_v2_mistakes';
+const MAX_SAVED_MISTAKES = 50;
 
 let chatScenarios = [];
 let chatCurrentScenario = null;
@@ -33,13 +35,17 @@ function initChat() {
 
     fetch('scenarios.json')
         .then(r => r.json())
-        .then(data => { chatScenarios = data; renderChips(); renderHistory(); })
+        .then(data => { chatScenarios = data; renderChips(); renderHistory(); renderMistakes(); })
         .catch(e => console.error('Failed to load scenarios', e));
 
     document.getElementById('chatEndBtn').addEventListener('click', chatEnd);
     document.getElementById('chatClearHistoryBtn').addEventListener('click', () => {
         localStorage.removeItem(CHAT_HISTORY_KEY);
         renderHistory();
+    });
+    document.getElementById('chatClearMistakesBtn').addEventListener('click', () => {
+        localStorage.removeItem(MISTAKES_KEY);
+        renderMistakes();
     });
     document.getElementById('chatRestartBtn').addEventListener('click', chatRestart);
     document.getElementById('chatContinueBtn').addEventListener('click', () => {
@@ -185,6 +191,87 @@ function chatViewHistory(saved) {
     chatSetState('reviewing');
 }
 
+// ── Mistakes ──────────────────────────────────────────────────────────────
+
+function loadMistakes() {
+    try { return JSON.parse(localStorage.getItem(MISTAKES_KEY) || '[]'); } catch { return []; }
+}
+
+function saveMistake(italian, correction, scenarioTitle) {
+    if (!italian || !correction) return;
+    const saved = loadMistakes();
+    saved.unshift({
+        id: Date.now(),
+        italian,
+        correction,
+        scenario: scenarioTitle || 'Chat',
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+    });
+    localStorage.setItem(MISTAKES_KEY, JSON.stringify(saved.slice(0, MAX_SAVED_MISTAKES)));
+    renderMistakes();
+}
+
+function renderMistakes() {
+    const saved = loadMistakes();
+    const section = document.getElementById('chatMistakesSection');
+    const list    = document.getElementById('chatMistakesList');
+    if (!saved.length) { section.classList.add('hidden'); return; }
+
+    section.classList.remove('hidden');
+    list.innerHTML = '';
+    saved.forEach(m => {
+        const item = document.createElement('div');
+        item.className = 'mistake-item';
+
+        const main = document.createElement('div');
+        main.className = 'mistake-main';
+        const itEl = document.createElement('div');
+        itEl.className = 'mistake-italian';
+        itEl.textContent = m.italian;
+        const corrEl = document.createElement('div');
+        corrEl.className = 'mistake-correction';
+        corrEl.textContent = '💡 ' + m.correction;
+        main.appendChild(itEl);
+        main.appendChild(corrEl);
+
+        const addBtn = document.createElement('button');
+        addBtn.className = 'mistake-add-btn';
+        addBtn.textContent = '+ Cards';
+        addBtn.addEventListener('click', () => addMistakeToCards(m, addBtn));
+
+        const del = document.createElement('button');
+        del.className = 'mistake-delete';
+        del.textContent = '×';
+        del.title = 'Delete';
+        del.addEventListener('click', () => {
+            const mistakes = loadMistakes().filter(x => x.id !== m.id);
+            localStorage.setItem(MISTAKES_KEY, JSON.stringify(mistakes));
+            renderMistakes();
+        });
+
+        item.appendChild(main);
+        item.appendChild(addBtn);
+        item.appendChild(del);
+        list.appendChild(item);
+    });
+}
+
+function addMistakeToCards(mistake, btn) {
+    let cards = [];
+    try { cards = JSON.parse(localStorage.getItem('parlo_v2_custom') || '[]'); } catch {}
+
+    if (cards.some(c => c.italian === mistake.italian)) {
+        btn.textContent = 'Already in Cards';
+        btn.disabled = true;
+        return;
+    }
+
+    cards.push({ italian: mistake.italian, english: mistake.correction, pronunciation: '' });
+    localStorage.setItem('parlo_v2_custom', JSON.stringify(cards));
+    btn.textContent = '✓ Added';
+    btn.disabled = true;
+}
+
 // ── Conversation ──────────────────────────────────────────────────────────
 
 function chatStart(scenario) {
@@ -246,6 +333,7 @@ function chatEnd() {
     document.getElementById('chatConvView').classList.add('hidden');
     document.getElementById('chatScenarioView').classList.remove('hidden');
     renderHistory();
+    renderMistakes();
 }
 
 function chatRestart() {
@@ -296,6 +384,7 @@ async function chatSubmit(text) {
         }
 
         chatHistory.push({ role: 'assistant', content: italian });
+        if (correction) saveMistake(text, correction, chatCurrentScenario?.title);
         chatAppendAI(italian, english, correction);
         parlo.speakItalian(italian);
 
@@ -330,6 +419,8 @@ async function rtStartRound(original, userItalian, userEnglish) {
         } catch {
             phrase = 'Scusa, qualcosa è andato storto.';
         }
+
+        if (correction && userItalian) saveMistake(userItalian, correction, 'Repeat & Translate');
 
         // Show Marco's feedback, wait for it to finish before showing the phrase
         if (feedback) {
