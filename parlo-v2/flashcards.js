@@ -4,7 +4,7 @@
 
 const SRS_KEY      = 'parlo_v2_srs';
 const MODE_KEY     = 'parlo_v2_study_mode';
-const NEW_PER_DAY  = 20;
+const NEW_PER_DAY  = 5;
 
 let phrases      = [];
 let cardData     = {};   // { [phraseIndex]: { interval, ease, reps, lapses, nextReview, introducedDate } }

@@ -6,7 +6,7 @@
 const SRS_KEY     = 'parlo_v2_srs';
 const MODE_KEY    = 'parlo_v2_study_mode';
 const CUSTOM_KEY  = 'parlo_v2_custom';
-const NEW_PER_DAY = 20;
+const NEW_PER_DAY = 5;
 
 let phrases         = [];
 let phrasesBaseLen  = 0; // length of phrases.json; custom cards come after
