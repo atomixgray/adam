@@ -21,7 +21,9 @@ const MAX_MESSAGES = 20;
 const MAX_MESSAGE_CHARS = 1000;
 
 const MAX_FAIL_ATTEMPTS = 5;
-const LOCKOUT_MS = 2 * 60 * 1000;   // 2 min (testing) — raise to 60 * 60 * 1000 for prod
+// Escalating lockout: 1st lockout 2 min, 2nd 15 min, 3rd+ 1 hour
+const LOCKOUT_STEPS_MS = [2 * 60 * 1000, 15 * 60 * 1000, 60 * 60 * 1000];
+const STRIKE_TTL = 24 * 60 * 60;     // lockout strikes remembered for 24h
 const FAIL_WINDOW_TTL = 300;         // 5 min window before attempt counter resets
 
 function corsHeaders(origin) {
@@ -54,10 +56,12 @@ async function recordFailure(env, ip) {
   let ttl = FAIL_WINDOW_TTL;
 
   if (count >= MAX_FAIL_ATTEMPTS) {
-    data.lockedUntil = now + LOCKOUT_MS;
-    ttl = Math.ceil(LOCKOUT_MS / 1000) + 60;
-    console.warn(`[parlo-security] LOCKOUT — IP ${ip} after ${count} failed attempts`);
-    await sendLockoutAlert(env, ip, count);
+    const strikes = await addStrike(env, ip);
+    const lockoutMs = LOCKOUT_STEPS_MS[Math.min(strikes, LOCKOUT_STEPS_MS.length) - 1];
+    data.lockedUntil = now + lockoutMs;
+    ttl = Math.ceil(lockoutMs / 1000) + 60;
+    console.warn(`[parlo-security] LOCKOUT #${strikes} — IP ${ip} after ${count} failed attempts, ${Math.round(lockoutMs / 60000)} min`);
+    await sendLockoutAlert(env, ip, count, strikes, lockoutMs);
   } else {
     console.warn(`[parlo-security] Failed auth attempt ${count}/${MAX_FAIL_ATTEMPTS} from IP ${ip}`);
   }
@@ -67,7 +71,17 @@ async function recordFailure(env, ip) {
   } catch {}
 }
 
-async function sendLockoutAlert(env, ip, count) {
+// Bumps and returns this IP's lockout count for the last 24h
+async function addStrike(env, ip) {
+  let strikes = 1;
+  try {
+    strikes = (parseInt(await env.PARLO_SECURITY.get(`strikes_${ip}`), 10) || 0) + 1;
+    await env.PARLO_SECURITY.put(`strikes_${ip}`, String(strikes), { expirationTtl: STRIKE_TTL });
+  } catch {}
+  return strikes;
+}
+
+async function sendLockoutAlert(env, ip, count, strikes, lockoutMs) {
   if (!env.RESEND_API_KEY || !env.ALERT_EMAIL) return;
   try {
     await fetch('https://api.resend.com/emails', {
@@ -80,7 +94,7 @@ async function sendLockoutAlert(env, ip, count) {
         from: 'Parlo Security <onboarding@resend.dev>',
         to: [env.ALERT_EMAIL],
         subject: 'Parlo: IP locked out after repeated failed logins',
-        text: `An IP address was locked out of Parlo after ${count} failed passphrase attempts.\n\nIP: ${ip}\nTime: ${new Date().toISOString()}\nLockout duration: ${Math.round(LOCKOUT_MS / 60000)} minute(s)`,
+        text: `An IP address was locked out of Parlo after ${count} failed passphrase attempts.\n\nIP: ${ip}\nTime: ${new Date().toISOString()}\nLockout #${strikes} in the last 24h\nLockout duration: ${Math.round(lockoutMs / 60000)} minute(s)`,
       }),
     });
   } catch (e) {
@@ -90,7 +104,10 @@ async function sendLockoutAlert(env, ip, count) {
 
 async function clearFailures(env, ip) {
   if (!env.PARLO_SECURITY) return;
-  try { await env.PARLO_SECURITY.delete(`lock_${ip}`); } catch {}
+  try {
+    await env.PARLO_SECURITY.delete(`lock_${ip}`);
+    await env.PARLO_SECURITY.delete(`strikes_${ip}`);
+  } catch {}
 }
 
 // ── System prompts ────────────────────────────────────────────────────────────

@@ -98,6 +98,14 @@ const REPEAT_TRANSLATE = {
     context: null,
 };
 
+// Builds a <span> with plain text — safe for AI-generated or stored strings
+function textSpan(className, text) {
+    const span = document.createElement('span');
+    span.className = className;
+    span.textContent = text ?? '';
+    return span;
+}
+
 function renderChips() {
     const container = document.getElementById('chatChips');
     container.innerHTML = '';
@@ -127,7 +135,7 @@ function renderChips() {
         const chip = document.createElement('button');
         chip.className = `chat-chip chat-chip--${s.level.toLowerCase()}`;
         const emoji = SCENARIO_EMOJI[s.id] || '💬';
-        chip.innerHTML = `<span class="chip-emoji">${emoji}</span><span class="chip-title">${s.title}</span><span class="chip-level">${s.level}</span>`;
+        chip.append(textSpan('chip-emoji', emoji), textSpan('chip-title', s.title), textSpan('chip-level', s.level));
         chip.addEventListener('click', () => chatStart(s));
         container.appendChild(chip);
     });
@@ -217,7 +225,10 @@ function renderHistory() {
 
         const main = document.createElement('button');
         main.className = 'chat-history-main';
-        main.innerHTML = `<span class="history-title">${chat.title}</span><span class="history-meta">${chat.date} · ${userTurns} turn${userTurns !== 1 ? 's' : ''}</span>`;
+        main.append(
+            textSpan('history-title', chat.title),
+            textSpan('history-meta', `${chat.date} · ${userTurns} turn${userTurns !== 1 ? 's' : ''}`),
+        );
         main.addEventListener('click', () => chatViewHistory(chat));
 
         const del = document.createElement('button');
