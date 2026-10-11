@@ -8,6 +8,8 @@ const WORDS_SRS_KEY = 'parlo_v2_srs_words';
 const MODE_KEY      = 'parlo_v2_study_mode';
 const DECK_KEY      = 'parlo_v2_deck';
 const CUSTOM_KEY    = 'parlo_v2_custom';
+const ACTIVITY_KEY  = 'parlo_v2_activity'; // { 'YYYY-MM-DD': cards studied }
+const HEATMAP_WEEKS = 26;
 const NEW_PER_DAY   = 5;
 const KNOWN_INTERVAL = 60; // "I already know this" — check back in ~2 months
 
@@ -15,7 +17,7 @@ const KNOWN_INTERVAL = 60; // "I already know this" — check back in ~2 months
 // phrases are shuffled.
 const DECKS = {
     phrases: { file: 'phrases.json?v=3',   srsKey: SRS_KEY,       name: 'Phrases' },
-    words:   { file: 'top1000.json?v=3',   srsKey: WORDS_SRS_KEY, name: 'Top 1000' },
+    words:   { file: 'top1000.json?v=4',   srsKey: WORDS_SRS_KEY, name: 'Top 1000' },
 };
 
 let deck            = 'phrases';
@@ -52,6 +54,11 @@ const modeButtons     = document.querySelectorAll('#tab-vocab .mode-btn[data-mod
 const deckButtons     = document.querySelectorAll('#tab-vocab .mode-btn[data-deck]');
 const knowRow         = document.getElementById('knowRow');
 const knowBtn         = document.getElementById('knowBtn');
+const coveragePct     = document.getElementById('coveragePct');
+const coverageFill    = document.getElementById('coverageFill');
+const coverageSub     = document.getElementById('coverageSub');
+const heatmapEl       = document.getElementById('heatmap');
+const heatmapSummary  = document.getElementById('heatmapSummary');
 const srsReveal       = document.getElementById('srsReveal');
 const srsRating       = document.getElementById('srsRating');
 const showAnswerBtn   = document.getElementById('showAnswerBtn');
@@ -434,7 +441,9 @@ function markKnown() {
     // Drop any in-session repeats of this card, then backfill today's new slot
     sessionQueue = sessionQueue.filter((c, idx) => idx <= sessionPos || c !== i);
     if (newPool.length) sessionQueue.push(newPool.shift());
+    logActivity();
     nextCard();
+    renderProgress();
 }
 
 knowBtn.addEventListener('click', markKnown);
@@ -443,7 +452,9 @@ document.querySelectorAll('#tab-vocab [data-rating]').forEach(btn => {
     btn.addEventListener('click', () => {
         scheduleCard(sessionQueue[sessionPos], parseInt(btn.dataset.rating));
         sessionReviewed++;
+        logActivity();
         nextCard();
+        renderProgress();
     });
 });
 
@@ -547,6 +558,76 @@ function checkTypeIn() {
 typeInInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); checkTypeIn(); } });
 typeInCheckBtn.addEventListener('click', checkTypeIn);
 
+// ── Progress: coverage meter + activity heatmap ──────────────────────────
+
+function loadActivity() {
+    try { return JSON.parse(localStorage.getItem(ACTIVITY_KEY)) || {}; } catch { return {}; }
+}
+
+function logActivity() {
+    const activity = loadActivity();
+    const t = vocabToday();
+    activity[t] = (activity[t] || 0) + 1;
+    try { localStorage.setItem(ACTIVITY_KEY, JSON.stringify(activity)); } catch {}
+}
+
+// Each Top 1000 word carries `cov`: its share of spoken Italian in parts per
+// million (from subtitle frequency counts, all forms merged). A word counts as
+// known once it has left the learning steps.
+async function renderProgress() {
+    let words;
+    try { words = await fetchDeck('words'); } catch { return; }
+    let wordData = cardData;
+    if (deck !== 'words') {
+        try { wordData = JSON.parse(localStorage.getItem(WORDS_SRS_KEY)) || {}; } catch { wordData = {}; }
+    }
+
+    let known = 0, ppm = 0;
+    words.forEach((w, i) => {
+        if (wordData[i]?.nextReview) { known++; ppm += w.cov; }
+    });
+    const pct = ppm / 1e4;
+    coveragePct.textContent  = `${pct < 10 && pct > 0 ? pct.toFixed(1) : Math.round(pct)}%`;
+    coverageFill.style.width = `${Math.min(100, pct)}%`;
+    coverageSub.textContent  = `${known.toLocaleString()} of ${words.length.toLocaleString()} top words known`;
+
+    renderHeatmap();
+}
+
+function renderHeatmap() {
+    const activity = loadActivity();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    // Start on the Sunday HEATMAP_WEEKS-1 weeks back so columns are whole weeks
+    const start = new Date(today);
+    start.setDate(start.getDate() - start.getDay() - (HEATMAP_WEEKS - 1) * 7);
+
+    heatmapEl.textContent = '';
+    let daysActive = 0;
+    for (const d = new Date(start); d <= today; d.setDate(d.getDate() + 1)) {
+        const key = parlo.localDateStr(d);
+        const n = activity[key] || 0;
+        if (n) daysActive++;
+        const level = n === 0 ? 0 : n < 10 ? 1 : n < 25 ? 2 : n < 50 ? 3 : 4;
+        const cell = document.createElement('span');
+        cell.className = `hm-cell hm-${level}`;
+        const label = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        cell.title = `${label}: ${n} card${n !== 1 ? 's' : ''}`;
+        heatmapEl.appendChild(cell);
+    }
+
+    // Streak counts back from today, or from yesterday if today isn't done yet
+    let streak = 0;
+    const d = new Date(today);
+    if (!activity[parlo.localDateStr(d)]) d.setDate(d.getDate() - 1);
+    while (activity[parlo.localDateStr(d)]) { streak++; d.setDate(d.getDate() - 1); }
+
+    heatmapSummary.textContent = streak > 1
+        ? `🔥 ${streak}-day streak · ${daysActive} days in the last 6 months`
+        : `${daysActive} day${daysActive !== 1 ? 's' : ''} practiced in the last 6 months`;
+    heatmapEl.parentElement.scrollLeft = heatmapEl.parentElement.scrollWidth;
+}
+
 // ── Export / Import ───────────────────────────────────────────────────────
 
 exportBtn.addEventListener('click', () => {
@@ -557,6 +638,7 @@ exportBtn.addEventListener('click', () => {
         cardData: read(SRS_KEY, {}),
         wordData: read(WORDS_SRS_KEY, {}),
         customCards: read(CUSTOM_KEY, []),
+        activity: read(ACTIVITY_KEY, {}),
     };
     const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -585,6 +667,9 @@ importFile.addEventListener('change', e => {
             if (Array.isArray(raw.customCards)) {
                 localStorage.setItem(CUSTOM_KEY, JSON.stringify(raw.customCards));
             }
+            if (raw.activity && typeof raw.activity === 'object') {
+                localStorage.setItem(ACTIVITY_KEY, JSON.stringify(raw.activity));
+            }
             const count = await loadDeck();
             if (count === 0) sessionSummary.textContent = "Progress restored! All caught up for today.";
         } catch { alert('Could not import: invalid or corrupted file.'); }
@@ -612,7 +697,7 @@ async function fetchDeck(name) {
         const res = await fetch(DECKS[name].file);
         const data = await res.json();
         deckCache[name] = name === 'words'
-            ? data.map(w => ({ italian: w.word, english: w.english, example: w.example, example_en: w.example_en, note: w.note, rank: w.rank, isWord: true }))
+            ? data.map(w => ({ italian: w.word, english: w.english, example: w.example, example_en: w.example_en, note: w.note, rank: w.rank, cov: w.cov || 0, isWord: true }))
             : data;
     }
     return deckCache[name];
@@ -649,6 +734,7 @@ async function loadDeck() {
     } else {
         showCard(sessionQueue[0]);
     }
+    renderProgress();
     return count;
 }
 

@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev https://api.elevenlabs.io; img-src 'self' data:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=30">
+    <link rel="stylesheet" href="style.css?v=31">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -273,6 +273,24 @@
                 <button id="continueBtn" class="btn-action btn-action--primary session-complete__action">Study More</button>
             </div>
 
+            <div class="progress-panel">
+                <div class="progress-coverage">
+                    <div class="progress-coverage__head">
+                        <span class="progress-coverage__pct" id="coveragePct">0%</span>
+                        <span class="progress-coverage__label">of everyday spoken Italian</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-bar__fill" id="coverageFill"></div></div>
+                    <div class="progress-coverage__sub" id="coverageSub"></div>
+                </div>
+                <div class="heatmap-scroll">
+                    <div class="heatmap" id="heatmap"></div>
+                </div>
+                <div class="heatmap-foot">
+                    <span id="heatmapSummary"></span>
+                    <span class="heatmap-legend">Less <i class="hm-cell hm-0"></i><i class="hm-cell hm-1"></i><i class="hm-cell hm-2"></i><i class="hm-cell hm-3"></i><i class="hm-cell hm-4"></i> More</span>
+                </div>
+            </div>
+
             <div class="vocab-footer">
                 <button id="resetBtn" class="btn-ghost btn-sm">Reset progress</button>
                 <button id="exportBtn" class="btn-ghost btn-sm">Export</button>
@@ -312,9 +330,9 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="app.js?v=30"></script>
+    <script src="app.js?v=31"></script>
     <script src="chat.js?v=22"></script>
-    <script src="vocab.js?v=13"></script>
+    <script src="vocab.js?v=14"></script>
     <script src="translate.js?v=11"></script>
 </body>
 </html>

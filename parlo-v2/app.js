@@ -7,7 +7,8 @@ const WORDS_KEY   = 'parlo_v2_words';
 const EL_KEY_STORE   = 'parlo_v2_el_key';
 const EL_VOICE_ID    = 'pNInz6obpgDQGcFmaJgB'; // Adam — free tier compatible
 const SYNC_META_KEY  = 'parlo_v2_synced_at';
-const SYNC_DATA_KEYS = ['parlo_v2_srs', 'parlo_v2_srs_words', 'parlo_v2_custom', 'parlo_v2_streak', 'parlo_v2_words'];
+const ACTIVITY_KEY   = 'parlo_v2_activity';
+const SYNC_DATA_KEYS = ['parlo_v2_srs', 'parlo_v2_srs_words', 'parlo_v2_custom', 'parlo_v2_streak', 'parlo_v2_words', ACTIVITY_KEY];
 
 let activeStop = null; // set by speakItalian while audio/speech is playing; lets stopSpeaking() interrupt it
 
@@ -326,6 +327,13 @@ async function syncPull() {
                 const remoteVal = parseInt(res.data[key], 10) || 0;
                 const localVal  = parseInt(localStorage.getItem(key) || '0', 10);
                 localStorage.setItem(key, String(Math.max(remoteVal, localVal)));
+            } else if (key === ACTIVITY_KEY) {
+                // Per-day counts — keep the higher of each day so neither device loses history
+                let local = {};
+                try { local = JSON.parse(localStorage.getItem(key)) || {}; } catch {}
+                const merged = { ...local };
+                for (const [day, n] of Object.entries(res.data[key])) merged[day] = Math.max(n, merged[day] || 0);
+                localStorage.setItem(key, JSON.stringify(merged));
             } else {
                 const val = res.data[key];
                 localStorage.setItem(key, typeof val === 'string' ? val : JSON.stringify(val));
