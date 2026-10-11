@@ -3,11 +3,24 @@
 // ── SM-2 Spaced Repetition ────────────────────────────────────────────────
 // Ported from flashcards.js — same algorithm, same localStorage keys
 
-const SRS_KEY     = 'parlo_v2_srs';
-const MODE_KEY    = 'parlo_v2_study_mode';
-const CUSTOM_KEY  = 'parlo_v2_custom';
-const NEW_PER_DAY = 5;
+const SRS_KEY       = 'parlo_v2_srs';
+const WORDS_SRS_KEY = 'parlo_v2_srs_words';
+const MODE_KEY      = 'parlo_v2_study_mode';
+const DECK_KEY      = 'parlo_v2_deck';
+const CUSTOM_KEY    = 'parlo_v2_custom';
+const NEW_PER_DAY   = 5;
+const KNOWN_INTERVAL = 60; // "I already know this" — check back in ~2 months
 
+// Each deck has its own SRS store. Words are introduced in frequency order;
+// phrases are shuffled.
+const DECKS = {
+    phrases: { file: 'phrases.json?v=3',   srsKey: SRS_KEY,       name: 'Phrases' },
+    words:   { file: 'top1000.json?v=1',   srsKey: WORDS_SRS_KEY, name: 'Top 1000' },
+};
+
+let deck            = 'phrases';
+let deckCache       = {};
+let newPool         = []; // new cards not yet pulled into today's session
 let phrases         = [];
 let phrasesBaseLen  = 0; // length of phrases.json; custom cards come after
 let cardData        = {};
@@ -15,6 +28,7 @@ let sessionQueue = [];
 let sessionPos   = 0;
 let studyMode    = 'italian-to-english';
 let italianTextForSpeech = '';
+let speechText   = '';
 let isFlipped    = false;
 let sessionReviewed = 0;
 let vocabInited  = false;
@@ -34,7 +48,10 @@ const speakerFront    = document.getElementById('speakerFront');
 const speakerBack     = document.getElementById('speakerBack');
 const forvoBtnFront   = document.getElementById('forvoBtnFront');
 const forvoBtnBack    = document.getElementById('forvoBtnBack');
-const modeButtons     = document.querySelectorAll('#tab-vocab .mode-btn');
+const modeButtons     = document.querySelectorAll('#tab-vocab .mode-btn[data-mode]');
+const deckButtons     = document.querySelectorAll('#tab-vocab .mode-btn[data-deck]');
+const knowRow         = document.getElementById('knowRow');
+const knowBtn         = document.getElementById('knowBtn');
 const srsReveal       = document.getElementById('srsReveal');
 const srsRating       = document.getElementById('srsRating');
 const showAnswerBtn   = document.getElementById('showAnswerBtn');
@@ -70,11 +87,12 @@ const TENSE_LABELS = {
 // ── SRS Persistence ───────────────────────────────────────────────────────
 
 function loadSRS() {
-    try { const s = JSON.parse(localStorage.getItem(SRS_KEY)); if (s) cardData = s; } catch {}
+    cardData = {};
+    try { const s = JSON.parse(localStorage.getItem(DECKS[deck].srsKey)); if (s) cardData = s; } catch {}
 }
 
 function saveSRS() {
-    try { localStorage.setItem(SRS_KEY, JSON.stringify(cardData)); } catch {}
+    try { localStorage.setItem(DECKS[deck].srsKey, JSON.stringify(cardData)); } catch {}
 }
 
 function getCard(i) {
@@ -212,13 +230,17 @@ function buildQueue(includeExtra = false) {
         else if (!d.nextReview)                 newCards.push(i);
     });
 
-    // Shuffle new cards so introduction order isn't always phrases.json order
-    for (let i = newCards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [newCards[i], newCards[j]] = [newCards[j], newCards[i]];
+    // Shuffle new phrases so introduction order isn't always phrases.json order.
+    // Words stay in frequency order — most common first is the whole point.
+    if (deck === 'phrases') {
+        for (let i = newCards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [newCards[i], newCards[j]] = [newCards[j], newCards[i]];
+        }
     }
     const newSlots = includeExtra ? newCards.length : NEW_PER_DAY;
     sessionQueue = [...due, ...newCards.slice(0, newSlots)];
+    newPool = newCards.slice(newSlots);
 
     for (let i = sessionQueue.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -253,35 +275,49 @@ function showCard(phraseIndex) {
     const phrase = phrases[phraseIndex];
     const showItalianFirst = studyMode === 'italian-to-english';
 
+    // Word cards show their example sentence where phrases show pronunciation
+    const isWord = !!phrase.isWord;
+    const italianSub = isWord ? phrase.example : (phrase.pronunciation || '');
+    const englishSub = isWord ? phrase.example_en : '';
+
     if (showItalianFirst) {
         frontLabel.textContent  = 'Italiano';
         frontText.textContent   = phrase.italian;
-        frontPronun.textContent = phrase.pronunciation || '';
+        frontPronun.textContent = italianSub;
         frontHint.textContent   = 'Click to reveal English';
         backLabel.textContent   = 'English';
         backText.textContent    = phrase.english;
-        backPronun.textContent  = '';
+        backPronun.textContent  = englishSub;
         speakerFront.classList.remove('hidden');
         speakerBack.classList.add('hidden');
     } else {
         frontLabel.textContent  = 'English';
         frontText.textContent   = phrase.english;
-        frontPronun.textContent = '';
+        frontPronun.textContent = englishSub;
         frontHint.textContent   = 'Click to reveal Italian';
         backLabel.textContent   = 'Italiano';
         backText.textContent    = phrase.italian;
-        backPronun.textContent  = phrase.pronunciation || '';
+        backPronun.textContent  = italianSub;
         speakerFront.classList.add('hidden');
         speakerBack.classList.remove('hidden');
     }
 
     const isCustom = phraseIndex >= phrasesBaseLen;
     const level = (phrase.difficulty || '').toLowerCase();
-    cefrBadge.textContent = isCustom ? 'Custom' : (phrase.difficulty || '');
-    cefrBadge.className   = isCustom ? 'cefr-badge cefr-custom' : 'cefr-badge cefr-' + level;
-    tenseBadge.textContent = TENSE_LABELS[phrase.tense] || '';
+    if (isWord) {
+        cefrBadge.textContent = '#' + phrase.rank;
+        cefrBadge.className   = 'cefr-badge cefr-word';
+        tenseBadge.textContent = phrase.note || '';
+    } else {
+        cefrBadge.textContent = isCustom ? 'Custom' : (phrase.difficulty || '');
+        cefrBadge.className   = isCustom ? 'cefr-badge cefr-custom' : 'cefr-badge cefr-' + level;
+        tenseBadge.textContent = TENSE_LABELS[phrase.tense] || '';
+    }
 
     italianTextForSpeech = phrase.italian;
+    speechText = isWord ? `${phrase.italian.replace(' / ', ', ')}. ${phrase.example}` : phrase.italian;
+    typeInInput.placeholder = isWord ? 'Type the Italian word…' : 'Type the Italian phrase…';
+    knowRow.classList.toggle('hidden', !(isWord && getCard(phraseIndex).nextReview === null));
     const lookupUrl = `https://translate.google.com/?sl=it&tl=en&text=${encodeURIComponent(phrase.italian)}&op=translate`;
     forvoBtnFront.href = lookupUrl;
     forvoBtnBack.href  = lookupUrl;
@@ -313,6 +349,7 @@ function revealAnswer() {
     flashcard.classList.add('flipped');
     srsReveal.style.display    = 'none';
     typeInArea.style.display   = 'none';
+    knowRow.classList.add('hidden');
     srsRating.style.display    = 'flex';
 }
 
@@ -322,6 +359,7 @@ function showSessionComplete(celebrate = false) {
     typeInArea.style.display   = 'none';
     typeInResult.style.display = 'none';
     srsRating.style.display    = 'none';
+    knowRow.classList.add('hidden');
     sessionComplete.style.display = 'flex';
     sessionSummary.textContent = `You reviewed ${sessionReviewed} card${sessionReviewed !== 1 ? 's' : ''} today.`;
 
@@ -382,8 +420,24 @@ flashcard.addEventListener('click', e => {
 });
 
 showAnswerBtn.addEventListener('click', revealAnswer);
-speakerFront.addEventListener('click', () => vocabSpeak(italianTextForSpeech));
-speakerBack.addEventListener('click',  () => vocabSpeak(italianTextForSpeech));
+speakerFront.addEventListener('click', () => vocabSpeak(speechText));
+speakerBack.addEventListener('click',  () => vocabSpeak(speechText));
+
+// "I already know this" — skip a new word for ~2 months, and pull in the next
+// new word so it doesn't eat one of today's new-card slots.
+function markKnown() {
+    const i = sessionQueue[sessionPos];
+    const nextReview = parlo.localDateStr(addDays(KNOWN_INTERVAL));
+    cardData[i] = { interval: KNOWN_INTERVAL, ease: 2.8, reps: 3, lapses: 0, nextReview, learningStep: 0 };
+    saveSRS();
+    parlo.incrementWords();
+    // Drop any in-session repeats of this card, then backfill today's new slot
+    sessionQueue = sessionQueue.filter((c, idx) => idx <= sessionPos || c !== i);
+    if (newPool.length) sessionQueue.push(newPool.shift());
+    nextCard();
+}
+
+knowBtn.addEventListener('click', markKnown);
 
 document.querySelectorAll('#tab-vocab [data-rating]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -403,7 +457,7 @@ modeButtons.forEach(btn => {
 });
 
 resetBtn.addEventListener('click', () => {
-    if (!confirm('Reset all SRS progress? This cannot be undone.')) return;
+    if (!confirm(`Reset all progress for the ${DECKS[deck].name} deck? This cannot be undone.`)) return;
     cardData = {};
     saveSRS();
     sessionReviewed = 0;
@@ -421,6 +475,7 @@ document.addEventListener('keydown', e => {
     if (!document.getElementById('tab-vocab').classList.contains('active')) return;
     if (document.activeElement === typeInInput) return;
     if ((e.key === ' ' || e.key === 'Enter') && !isFlipped) { e.preventDefault(); revealAnswer(); }
+    if (e.key === 'k' && !isFlipped && !knowRow.classList.contains('hidden')) markKnown();
     if (isFlipped) {
         if (e.key === '1') document.querySelector('#tab-vocab [data-rating="0"]').click();
         if (e.key === '2') document.querySelector('#tab-vocab [data-rating="1"]').click();
@@ -453,8 +508,10 @@ function normalizeLoose(s) {
 function checkTypeIn() {
     const typed   = typeInInput.value;
     const correct = italianTextForSpeech;
-    const isExact = normalizeAnswer(typed) === normalizeAnswer(correct);
-    const isClose = !isExact && normalizeLoose(typed) === normalizeLoose(correct);
+    // Some words list alternatives ("il / la") — any one counts
+    const answers = correct.split(' / ');
+    const isExact = answers.some(a => normalizeAnswer(typed) === normalizeAnswer(a));
+    const isClose = !isExact && answers.some(a => normalizeLoose(typed) === normalizeLoose(a));
 
     typeInResult.className = 'typein-result';
     typeInResult.innerHTML = '';
@@ -493,9 +550,15 @@ typeInCheckBtn.addEventListener('click', checkTypeIn);
 // ── Export / Import ───────────────────────────────────────────────────────
 
 exportBtn.addEventListener('click', () => {
-    let customCards = [];
-    try { customCards = JSON.parse(localStorage.getItem(CUSTOM_KEY) || '[]'); } catch {}
-    const blob = new Blob([JSON.stringify({ version: 2, exported: vocabToday(), cardData, customCards }, null, 2)], { type: 'application/json' });
+    const read = (key, fallback) => { try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch { return fallback; } };
+    const backup = {
+        version: 3,
+        exported: vocabToday(),
+        cardData: read(SRS_KEY, {}),
+        wordData: read(WORDS_SRS_KEY, {}),
+        customCards: read(CUSTOM_KEY, []),
+    };
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url; a.download = `parlo-srs-${vocabToday()}.json`;
@@ -508,24 +571,22 @@ importFile.addEventListener('change', e => {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = ev => {
+    reader.onload = async ev => {
         try {
             const raw = JSON.parse(ev.target.result);
             const imported = raw.cardData ?? raw;
             if (typeof imported !== 'object' || Array.isArray(imported)) throw new Error();
             const dateStr = raw.exported ? ` from ${raw.exported}` : '';
             if (!confirm(`Import backup${dateStr}? This replaces your current progress.`)) return;
-            cardData = imported;
-            saveSRS();
+            localStorage.setItem(SRS_KEY, JSON.stringify(imported));
+            if (raw.wordData && typeof raw.wordData === 'object') {
+                localStorage.setItem(WORDS_SRS_KEY, JSON.stringify(raw.wordData));
+            }
             if (Array.isArray(raw.customCards)) {
                 localStorage.setItem(CUSTOM_KEY, JSON.stringify(raw.customCards));
-                phrases = phrases.slice(0, phrasesBaseLen).concat(raw.customCards);
             }
-            sessionReviewed = 0;
-            const count = buildQueue();
-            updateStats();
-            if (count > 0) showCard(sessionQueue[0]);
-            else { showSessionComplete(); sessionSummary.textContent = "Progress restored! All caught up for today."; sessionNext.textContent = ''; }
+            const count = await loadDeck();
+            if (count === 0) sessionSummary.textContent = "Progress restored! All caught up for today.";
         } catch { alert('Could not import: invalid or corrupted file.'); }
     };
     reader.readAsText(file);
@@ -542,22 +603,42 @@ async function initVocab() {
     if (studyMode === 'random') studyMode = 'italian-to-english'; // mode removed — fall back for returning users
     modeButtons.forEach(b => b.classList.toggle('active', b.dataset.mode === studyMode));
 
+    try { deck = localStorage.getItem(DECK_KEY) === 'words' ? 'words' : 'phrases'; } catch {}
+    await loadDeck();
+}
+
+async function fetchDeck(name) {
+    if (!deckCache[name]) {
+        const res = await fetch(DECKS[name].file);
+        const data = await res.json();
+        deckCache[name] = name === 'words'
+            ? data.map(w => ({ italian: w.word, english: w.english, example: w.example, example_en: w.example_en, note: w.note, rank: w.rank, isWord: true }))
+            : data;
+    }
+    return deckCache[name];
+}
+
+// Loads the active deck and its progress, then starts a session. Returns the queue length.
+async function loadDeck() {
+    deckButtons.forEach(b => b.classList.toggle('active', b.dataset.deck === deck));
     loadSRS();
 
     try {
-        const res = await fetch('phrases.json?v=3');
-        phrases = await res.json();
+        phrases = await fetchDeck(deck);
     } catch {
-        frontText.textContent = 'Error loading phrases.';
-        return;
+        frontText.textContent = 'Error loading cards.';
+        return 0;
     }
     phrasesBaseLen = phrases.length;
 
-    try {
-        const custom = JSON.parse(localStorage.getItem(CUSTOM_KEY) || '[]');
-        if (custom.length) phrases = phrases.concat(custom);
-    } catch {}
+    if (deck === 'phrases') {
+        try {
+            const custom = JSON.parse(localStorage.getItem(CUSTOM_KEY) || '[]');
+            if (custom.length) phrases = phrases.concat(custom);
+        } catch {}
+    }
 
+    sessionReviewed = 0;
     updateStats();
     const count = buildQueue();
 
@@ -568,4 +649,14 @@ async function initVocab() {
     } else {
         showCard(sessionQueue[0]);
     }
+    return count;
 }
+
+deckButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (btn.dataset.deck === deck) return;
+        deck = btn.dataset.deck;
+        try { localStorage.setItem(DECK_KEY, deck); } catch {}
+        loadDeck();
+    });
+});

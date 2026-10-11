@@ -7,7 +7,7 @@ const WORDS_KEY   = 'parlo_v2_words';
 const EL_KEY_STORE   = 'parlo_v2_el_key';
 const EL_VOICE_ID    = 'pNInz6obpgDQGcFmaJgB'; // Adam — free tier compatible
 const SYNC_META_KEY  = 'parlo_v2_synced_at';
-const SYNC_DATA_KEYS = ['parlo_v2_srs', 'parlo_v2_custom', 'parlo_v2_streak', 'parlo_v2_words'];
+const SYNC_DATA_KEYS = ['parlo_v2_srs', 'parlo_v2_srs_words', 'parlo_v2_custom', 'parlo_v2_streak', 'parlo_v2_words'];
 
 let activeStop = null; // set by speakItalian while audio/speech is playing; lets stopSpeaking() interrupt it
 

@@ -1,0 +1,1440 @@
+[
+ {
+  "rank": 1,
+  "word": "e",
+  "english": "and",
+  "example": "Io e mio fratello siamo molto diversi.",
+  "example_en": "My brother and I are very different."
+ },
+ {
+  "rank": 2,
+  "word": "non",
+  "english": "not",
+  "example": "Non lo so.",
+  "example_en": "I don't know."
+ },
+ {
+  "rank": 3,
+  "word": "che",
+  "english": "that; what; than",
+  "example": "Dice che arriva domani.",
+  "example_en": "He says (that) he's arriving tomorrow."
+ },
+ {
+  "rank": 4,
+  "word": "di",
+  "english": "of; from",
+  "example": "Il libro di Marco è sul tavolo.",
+  "example_en": "Marco's book is on the table.",
+  "note": "di + the = del, della, dei, delle, dello, degli"
+ },
+ {
+  "rank": 5,
+  "word": "il / la",
+  "english": "the",
+  "example": "Il caffè è pronto.",
+  "example_en": "The coffee is ready.",
+  "note": "Also lo, l', i, gli, le"
+ },
+ {
+  "rank": 6,
+  "word": "un / una",
+  "english": "a, an",
+  "example": "Vorrei un caffè e una brioche.",
+  "example_en": "I'd like a coffee and a croissant.",
+  "note": "Also uno, un'"
+ },
+ {
+  "rank": 7,
+  "word": "a",
+  "english": "to; at; in",
+  "example": "Vado a Roma a maggio.",
+  "example_en": "I'm going to Rome in May.",
+  "note": "a + the = al, alla, ai, alle, allo, agli"
+ },
+ {
+  "rank": 8,
+  "word": "per",
+  "english": "for; to; through",
+  "example": "Questo è per te.",
+  "example_en": "This is for you."
+ },
+ {
+  "rank": 9,
+  "word": "essere",
+  "english": "to be",
+  "example": "Sono stanco, ma è stata una bella giornata.",
+  "example_en": "I'm tired, but it was a nice day.",
+  "note": "sono, sei, è, siamo, siete, sono"
+ },
+ {
+  "rank": 10,
+  "word": "in",
+  "english": "in; to; by",
+  "example": "Sono in macchina, ti chiamo dopo.",
+  "example_en": "I'm in the car, I'll call you later.",
+  "note": "in + the = nel, nella, nei, nelle"
+ },
+ {
+  "rank": 11,
+  "word": "mi",
+  "english": "me; to me; myself",
+  "example": "Mi chiami stasera?",
+  "example_en": "Will you call me tonight?"
+ },
+ {
+  "rank": 12,
+  "word": "avere",
+  "english": "to have",
+  "example": "Hai tempo domani?",
+  "example_en": "Do you have time tomorrow?",
+  "note": "ho, hai, ha, abbiamo, avete, hanno"
+ },
+ {
+  "rank": 13,
+  "word": "si",
+  "english": "oneself; one / people",
+  "example": "Come si dice \"thank you\" in italiano?",
+  "example_en": "How do you say \"thank you\" in Italian?"
+ },
+ {
+  "rank": 14,
+  "word": "ma",
+  "english": "but",
+  "example": "È buono, ma è troppo caro.",
+  "example_en": "It's good, but it's too expensive."
+ },
+ {
+  "rank": 15,
+  "word": "cosa",
+  "english": "thing; what",
+  "example": "Cosa fai stasera?",
+  "example_en": "What are you doing tonight?"
+ },
+ {
+  "rank": 16,
+  "word": "con",
+  "english": "with",
+  "example": "Vieni con me?",
+  "example_en": "Are you coming with me?"
+ },
+ {
+  "rank": 17,
+  "word": "no",
+  "english": "no",
+  "example": "No, grazie, sono a posto.",
+  "example_en": "No thanks, I'm all set."
+ },
+ {
+  "rank": 18,
+  "word": "ti",
+  "english": "you; to you; yourself",
+  "example": "Ti piace?",
+  "example_en": "Do you like it?"
+ },
+ {
+  "rank": 19,
+  "word": "se",
+  "english": "if",
+  "example": "Se piove, restiamo a casa.",
+  "example_en": "If it rains, we'll stay home."
+ },
+ {
+  "rank": 20,
+  "word": "da",
+  "english": "from; at (someone's place); since",
+  "example": "Vengo da te dopo cena.",
+  "example_en": "I'll come to your place after dinner.",
+  "note": "da + the = dal, dalla, dai, dalle"
+ },
+ {
+  "rank": 21,
+  "word": "come",
+  "english": "how; like; as",
+  "example": "Fai come vuoi.",
+  "example_en": "Do as you like."
+ },
+ {
+  "rank": 22,
+  "word": "io",
+  "english": "I",
+  "example": "Io prendo un caffè, e tu?",
+  "example_en": "I'll have a coffee, and you?"
+ },
+ {
+  "rank": 23,
+  "word": "ci",
+  "english": "there; us; to us",
+  "example": "Ci sono due bar qui vicino.",
+  "example_en": "There are two cafés near here.",
+  "note": "c'è = there is, ci sono = there are"
+ },
+ {
+  "rank": 24,
+  "word": "questo",
+  "english": "this",
+  "example": "Questo è il mio posto preferito.",
+  "example_en": "This is my favorite place."
+ },
+ {
+  "rank": 25,
+  "word": "bene",
+  "english": "well; fine",
+  "example": "Sto bene, grazie.",
+  "example_en": "I'm fine, thanks."
+ },
+ {
+  "rank": 26,
+  "word": "qui",
+  "english": "here",
+  "example": "Aspettami qui.",
+  "example_en": "Wait for me here."
+ },
+ {
+  "rank": 27,
+  "word": "tu",
+  "english": "you",
+  "example": "E tu, cosa ne pensi?",
+  "example_en": "And you, what do you think?"
+ },
+ {
+  "rank": 28,
+  "word": "solo",
+  "english": "only; alone",
+  "example": "Ho solo cinque minuti.",
+  "example_en": "I only have five minutes."
+ },
+ {
+  "rank": 29,
+  "word": "mio",
+  "english": "my; mine",
+  "example": "Dove sono le mie chiavi?",
+  "example_en": "Where are my keys?",
+  "note": "mio, mia, miei, mie"
+ },
+ {
+  "rank": 30,
+  "word": "me",
+  "english": "me",
+  "example": "È un regalo per me?",
+  "example_en": "Is it a gift for me?"
+ },
+ {
+  "rank": 31,
+  "word": "tutto",
+  "english": "all; everything",
+  "example": "Va tutto bene?",
+  "example_en": "Is everything OK?"
+ },
+ {
+  "rank": 32,
+  "word": "te",
+  "english": "you (after prepositions)",
+  "example": "Ho pensato a te.",
+  "example_en": "I thought of you."
+ },
+ {
+  "rank": 33,
+  "word": "fare",
+  "english": "to do; to make",
+  "example": "Cosa fai nel weekend?",
+  "example_en": "What are you doing this weekend?",
+  "note": "faccio, fai, fa, facciamo, fate, fanno"
+ },
+ {
+  "rank": 34,
+  "word": "sapere",
+  "english": "to know (a fact); to know how",
+  "example": "Sai dov'è la stazione?",
+  "example_en": "Do you know where the station is?",
+  "note": "so, sai, sa, sappiamo, sapete, sanno"
+ },
+ {
+  "rank": 35,
+  "word": "quando",
+  "english": "when",
+  "example": "Quando arrivi?",
+  "example_en": "When are you arriving?"
+ },
+ {
+  "rank": 36,
+  "word": "sì",
+  "english": "yes",
+  "example": "Sì, certo!",
+  "example_en": "Yes, of course!"
+ },
+ {
+  "rank": 37,
+  "word": "ora",
+  "english": "now; hour",
+  "example": "Ora non posso, ti chiamo dopo.",
+  "example_en": "I can't right now, I'll call you later."
+ },
+ {
+  "rank": 38,
+  "word": "lei",
+  "english": "she; her; you (formal)",
+  "example": "Lei è la mia collega.",
+  "example_en": "She's my colleague."
+ },
+ {
+  "rank": 39,
+  "word": "gli",
+  "english": "to him; to them",
+  "example": "Gli ho scritto un messaggio.",
+  "example_en": "I sent him a message."
+ },
+ {
+  "rank": 40,
+  "word": "ne",
+  "english": "of it; of them; some",
+  "example": "Quanti caffè hai bevuto? Ne ho bevuti tre.",
+  "example_en": "How many coffees did you have? I had three (of them)."
+ },
+ {
+  "rank": 41,
+  "word": "dire",
+  "english": "to say; to tell",
+  "example": "Cosa hai detto?",
+  "example_en": "What did you say?",
+  "note": "dico, dici, dice, diciamo, dite, dicono"
+ },
+ {
+  "rank": 42,
+  "word": "andare",
+  "english": "to go",
+  "example": "Andiamo a mangiare?",
+  "example_en": "Shall we go eat?",
+  "note": "vado, vai, va, andiamo, andate, vanno"
+ },
+ {
+  "rank": 43,
+  "word": "perché",
+  "english": "why; because",
+  "example": "Perché non vieni? Perché sono stanco.",
+  "example_en": "Why aren't you coming? Because I'm tired."
+ },
+ {
+  "rank": 44,
+  "word": "quello",
+  "english": "that; that one",
+  "example": "Quello è mio fratello.",
+  "example_en": "That's my brother."
+ },
+ {
+  "rank": 45,
+  "word": "mai",
+  "english": "never; ever",
+  "example": "Non sono mai stato a Napoli.",
+  "example_en": "I've never been to Naples."
+ },
+ {
+  "rank": 46,
+  "word": "o",
+  "english": "or",
+  "example": "Caffè o tè?",
+  "example_en": "Coffee or tea?"
+ },
+ {
+  "rank": 47,
+  "word": "anche",
+  "english": "also; too; even",
+  "example": "Vengo anche io!",
+  "example_en": "I'm coming too!"
+ },
+ {
+  "rank": 48,
+  "word": "grazie",
+  "english": "thank you",
+  "example": "Grazie, sei gentilissimo.",
+  "example_en": "Thanks, you're so kind."
+ },
+ {
+  "rank": 49,
+  "word": "chi",
+  "english": "who",
+  "example": "Chi è?",
+  "example_en": "Who is it?"
+ },
+ {
+  "rank": 50,
+  "word": "stare",
+  "english": "to stay; to be (how you are)",
+  "example": "Stasera sto a casa.",
+  "example_en": "I'm staying home tonight.",
+  "note": "sto, stai, sta, stiamo, state, stanno"
+ },
+ {
+  "rank": 51,
+  "word": "molto",
+  "english": "very; a lot",
+  "example": "È molto gentile.",
+  "example_en": "He's very kind."
+ },
+ {
+  "rank": 52,
+  "word": "più",
+  "english": "more; most; no longer",
+  "example": "Non ne posso più!",
+  "example_en": "I can't take it anymore!"
+ },
+ {
+  "rank": 53,
+  "word": "volere",
+  "english": "to want",
+  "example": "Vuoi qualcosa da bere?",
+  "example_en": "Do you want something to drink?",
+  "note": "voglio, vuoi, vuole, vogliamo, volete, vogliono"
+ },
+ {
+  "rank": 54,
+  "word": "tuo",
+  "english": "your; yours",
+  "example": "È tua questa giacca?",
+  "example_en": "Is this jacket yours?",
+  "note": "tuo, tua, tuoi, tue"
+ },
+ {
+  "rank": 55,
+  "word": "lui",
+  "english": "he; him",
+  "example": "Lui chi è?",
+  "example_en": "Who's he?"
+ },
+ {
+  "rank": 56,
+  "word": "allora",
+  "english": "so; then; well",
+  "example": "Allora, cosa facciamo?",
+  "example_en": "So, what are we doing?"
+ },
+ {
+  "rank": 57,
+  "word": "potere",
+  "english": "can; to be able to",
+  "example": "Posso entrare?",
+  "example_en": "Can I come in?",
+  "note": "posso, puoi, può, possiamo, potete, possono"
+ },
+ {
+  "rank": 58,
+  "word": "prima",
+  "english": "before; first; earlier",
+  "example": "Prima mangiamo, poi usciamo.",
+  "example_en": "First we eat, then we go out."
+ },
+ {
+  "rank": 59,
+  "word": "suo",
+  "english": "his; her; your (formal)",
+  "example": "Questa è la sua macchina.",
+  "example_en": "This is his / her car.",
+  "note": "suo, sua, suoi, sue"
+ },
+ {
+  "rank": 60,
+  "word": "niente",
+  "english": "nothing",
+  "example": "Non ho mangiato niente oggi.",
+  "example_en": "I haven't eaten anything today."
+ },
+ {
+  "rank": 61,
+  "word": "qualcosa",
+  "english": "something",
+  "example": "Ho qualcosa per te.",
+  "example_en": "I have something for you."
+ },
+ {
+  "rank": 62,
+  "word": "così",
+  "english": "so; like this",
+  "example": "Fallo così.",
+  "example_en": "Do it like this."
+ },
+ {
+  "rank": 63,
+  "word": "davvero",
+  "english": "really",
+  "example": "Davvero? Non ci credo!",
+  "example_en": "Really? I don't believe it!"
+ },
+ {
+  "rank": 64,
+  "word": "ancora",
+  "english": "still; yet; again",
+  "example": "Sei ancora al lavoro?",
+  "example_en": "Are you still at work?"
+ },
+ {
+  "rank": 65,
+  "word": "casa",
+  "english": "house; home",
+  "example": "Torno a casa alle sei.",
+  "example_en": "I get home at six."
+ },
+ {
+  "rank": 66,
+  "word": "dove",
+  "english": "where",
+  "example": "Dove abiti?",
+  "example_en": "Where do you live?"
+ },
+ {
+  "rank": 67,
+  "word": "su",
+  "english": "on; up; about",
+  "example": "Le chiavi sono sul tavolo.",
+  "example_en": "The keys are on the table.",
+  "note": "su + the = sul, sulla, sui, sulle"
+ },
+ {
+  "rank": 68,
+  "word": "vero",
+  "english": "true; right?",
+  "example": "Bello, vero?",
+  "example_en": "Nice, isn't it?"
+ },
+ {
+  "rank": 69,
+  "word": "noi",
+  "english": "we; us",
+  "example": "Noi andiamo al mare, vieni?",
+  "example_en": "We're going to the beach, are you coming?"
+ },
+ {
+  "rank": 70,
+  "word": "due",
+  "english": "two",
+  "example": "Un tavolo per due, per favore.",
+  "example_en": "A table for two, please."
+ },
+ {
+  "rank": 71,
+  "word": "quindi",
+  "english": "so; therefore",
+  "example": "Piove, quindi prendo la macchina.",
+  "example_en": "It's raining, so I'm taking the car."
+ },
+ {
+  "rank": 72,
+  "word": "sempre",
+  "english": "always",
+  "example": "Ordino sempre la stessa cosa.",
+  "example_en": "I always order the same thing."
+ },
+ {
+  "rank": 73,
+  "word": "altro",
+  "english": "other; else",
+  "example": "Desidera altro?",
+  "example_en": "Anything else?"
+ },
+ {
+  "rank": 74,
+  "word": "un po'",
+  "english": "a bit; a little",
+  "example": "Parlo un po' di italiano.",
+  "example_en": "I speak a little Italian."
+ },
+ {
+  "rank": 75,
+  "word": "loro",
+  "english": "they; them; their",
+  "example": "Loro arrivano domani.",
+  "example_en": "They're arriving tomorrow."
+ },
+ {
+  "rank": 76,
+  "word": "dovere",
+  "english": "to have to; must",
+  "example": "Devo andare, ciao!",
+  "example_en": "I have to go, bye!",
+  "note": "devo, devi, deve, dobbiamo, dovete, devono"
+ },
+ {
+  "rank": 77,
+  "word": "forse",
+  "english": "maybe",
+  "example": "Forse vengo stasera.",
+  "example_en": "Maybe I'll come tonight."
+ },
+ {
+  "rank": 78,
+  "word": "li",
+  "english": "them",
+  "example": "Dove sono i biglietti? Li ho io.",
+  "example_en": "Where are the tickets? I have them."
+ },
+ {
+  "rank": 79,
+  "word": "proprio",
+  "english": "really; exactly; just",
+  "example": "È proprio quello che volevo.",
+  "example_en": "It's exactly what I wanted."
+ },
+ {
+  "rank": 80,
+  "word": "certo",
+  "english": "of course; certain",
+  "example": "Certo che vengo!",
+  "example_en": "Of course I'm coming!"
+ },
+ {
+  "rank": 81,
+  "word": "tempo",
+  "english": "time; weather",
+  "example": "Non ho tempo oggi.",
+  "example_en": "I don't have time today."
+ },
+ {
+  "rank": 82,
+  "word": "vi",
+  "english": "you (plural); to you all",
+  "example": "Vi chiamo domani.",
+  "example_en": "I'll call you (all) tomorrow."
+ },
+ {
+  "rank": 83,
+  "word": "credere",
+  "english": "to believe; to think",
+  "example": "Credo di sì.",
+  "example_en": "I think so."
+ },
+ {
+  "rank": 84,
+  "word": "vita",
+  "english": "life",
+  "example": "Così è la vita.",
+  "example_en": "That's life."
+ },
+ {
+  "rank": 85,
+  "word": "quanto",
+  "english": "how much; how long",
+  "example": "Quanto costa?",
+  "example_en": "How much does it cost?"
+ },
+ {
+  "rank": 86,
+  "word": "fuori",
+  "english": "out; outside",
+  "example": "Mangiamo fuori stasera?",
+  "example_en": "Shall we eat out tonight?"
+ },
+ {
+  "rank": 87,
+  "word": "anno",
+  "english": "year",
+  "example": "Quanti anni hai?",
+  "example_en": "How old are you?"
+ },
+ {
+  "rank": 88,
+  "word": "cui",
+  "english": "which; whom",
+  "example": "Il motivo per cui sono qui è semplice.",
+  "example_en": "The reason why I'm here is simple."
+ },
+ {
+  "rank": 89,
+  "word": "parte",
+  "english": "part; side",
+  "example": "Da che parte è la stazione?",
+  "example_en": "Which way is the station?"
+ },
+ {
+  "rank": 90,
+  "word": "vedere",
+  "english": "to see",
+  "example": "Non vedo niente senza occhiali.",
+  "example_en": "I can't see anything without glasses."
+ },
+ {
+  "rank": 91,
+  "word": "qualcuno",
+  "english": "someone; anyone",
+  "example": "C'è qualcuno?",
+  "example_en": "Is anybody there?"
+ },
+ {
+  "rank": 92,
+  "word": "lavoro",
+  "english": "work; job",
+  "example": "Come va il lavoro?",
+  "example_en": "How's work going?"
+ },
+ {
+  "rank": 93,
+  "word": "voi",
+  "english": "you (plural)",
+  "example": "Voi cosa prendete?",
+  "example_en": "What are you guys having?"
+ },
+ {
+  "rank": 94,
+  "word": "ciao",
+  "english": "hi; bye",
+  "example": "Ciao, come va?",
+  "example_en": "Hi, how's it going?"
+ },
+ {
+  "rank": 95,
+  "word": "volta",
+  "english": "time (occasion)",
+  "example": "La prossima volta pago io.",
+  "example_en": "Next time I'll pay."
+ },
+ {
+  "rank": 96,
+  "word": "dopo",
+  "english": "after; later",
+  "example": "Ci sentiamo dopo.",
+  "example_en": "Talk to you later."
+ },
+ {
+  "rank": 97,
+  "word": "adesso",
+  "english": "now",
+  "example": "Adesso arrivo!",
+  "example_en": "I'll be right there!"
+ },
+ {
+  "rank": 98,
+  "word": "uomo",
+  "english": "man",
+  "example": "Chi è quell'uomo?",
+  "example_en": "Who is that man?",
+  "note": "plural: uomini"
+ },
+ {
+  "rank": 99,
+  "word": "padre",
+  "english": "father",
+  "example": "Mio padre cucina benissimo.",
+  "example_en": "My father cooks really well."
+ },
+ {
+  "rank": 100,
+  "word": "bisogno",
+  "english": "need",
+  "example": "Hai bisogno di aiuto?",
+  "example_en": "Do you need help?",
+  "note": "avere bisogno di = to need"
+ },
+ {
+  "rank": 101,
+  "word": "già",
+  "english": "already",
+  "example": "Hai già mangiato?",
+  "example_en": "Have you already eaten?"
+ },
+ {
+  "rank": 102,
+  "word": "amico",
+  "english": "friend",
+  "example": "È un mio vecchio amico.",
+  "example_en": "He's an old friend of mine.",
+  "note": "amico, amica, amici, amiche"
+ },
+ {
+  "rank": 103,
+  "word": "posto",
+  "english": "place; seat; spot",
+  "example": "È libero questo posto?",
+  "example_en": "Is this seat free?"
+ },
+ {
+  "rank": 104,
+  "word": "nessuno",
+  "english": "nobody; no one",
+  "example": "Non c'è nessuno a casa.",
+  "example_en": "There's nobody home."
+ },
+ {
+  "rank": 105,
+  "word": "via",
+  "english": "street; away",
+  "example": "Devo andare via presto.",
+  "example_en": "I have to leave early."
+ },
+ {
+  "rank": 106,
+  "word": "signore",
+  "english": "sir; gentleman; Mr.",
+  "example": "Buongiorno, signore!",
+  "example_en": "Good morning, sir!",
+  "note": "Before a name: signor Rossi"
+ },
+ {
+  "rank": 107,
+  "word": "meglio",
+  "english": "better",
+  "example": "È meglio partire presto.",
+  "example_en": "It's better to leave early."
+ },
+ {
+  "rank": 108,
+  "word": "dai",
+  "english": "come on!",
+  "example": "Dai, andiamo!",
+  "example_en": "Come on, let's go!"
+ },
+ {
+  "rank": 109,
+  "word": "sembrare",
+  "english": "to seem; to look",
+  "example": "Sembri stanco.",
+  "example_en": "You look tired."
+ },
+ {
+  "rank": 110,
+  "word": "giorno",
+  "english": "day",
+  "example": "Che giorno è oggi?",
+  "example_en": "What day is it today?"
+ },
+ {
+  "rank": 111,
+  "word": "ogni",
+  "english": "every; each",
+  "example": "Vado in palestra ogni mattina.",
+  "example_en": "I go to the gym every morning."
+ },
+ {
+  "rank": 112,
+  "word": "modo",
+  "english": "way; manner",
+  "example": "Non c'è altro modo.",
+  "example_en": "There's no other way."
+ },
+ {
+  "rank": 113,
+  "word": "senza",
+  "english": "without",
+  "example": "Un caffè senza zucchero, per favore.",
+  "example_en": "A coffee without sugar, please."
+ },
+ {
+  "rank": 114,
+  "word": "dispiacere",
+  "english": "to be sorry; to mind",
+  "example": "Mi dispiace, non posso.",
+  "example_en": "I'm sorry, I can't."
+ },
+ {
+  "rank": 115,
+  "word": "pensare",
+  "english": "to think",
+  "example": "Cosa ne pensi?",
+  "example_en": "What do you think (about it)?"
+ },
+ {
+  "rank": 116,
+  "word": "ecco",
+  "english": "here it is; there you go",
+  "example": "Ecco il tuo caffè.",
+  "example_en": "Here's your coffee."
+ },
+ {
+  "rank": 117,
+  "word": "parlare",
+  "english": "to speak; to talk",
+  "example": "Parli inglese?",
+  "example_en": "Do you speak English?"
+ },
+ {
+  "rank": 118,
+  "word": "tra",
+  "english": "between; in (time)",
+  "example": "Arrivo tra dieci minuti.",
+  "example_en": "I'll be there in ten minutes.",
+  "note": "Same as fra"
+ },
+ {
+  "rank": 119,
+  "word": "mamma",
+  "english": "mom",
+  "example": "Chiamo la mamma stasera.",
+  "example_en": "I'm calling Mom tonight."
+ },
+ {
+  "rank": 120,
+  "word": "troppo",
+  "english": "too; too much",
+  "example": "Ho mangiato troppo.",
+  "example_en": "I ate too much."
+ },
+ {
+  "rank": 121,
+  "word": "nuovo",
+  "english": "new",
+  "example": "Ho un telefono nuovo.",
+  "example_en": "I have a new phone."
+ },
+ {
+  "rank": 122,
+  "word": "male",
+  "english": "badly; bad; pain",
+  "example": "Mi fa male la testa.",
+  "example_en": "My head hurts."
+ },
+ {
+  "rank": 123,
+  "word": "madre",
+  "english": "mother",
+  "example": "Sua madre è di Napoli.",
+  "example_en": "His mother is from Naples."
+ },
+ {
+  "rank": 124,
+  "word": "tanto",
+  "english": "so much; a lot",
+  "example": "Ho tanto lavoro questa settimana.",
+  "example_en": "I have so much work this week."
+ },
+ {
+  "rank": 125,
+  "word": "favore",
+  "english": "favor",
+  "example": "Mi fai un favore?",
+  "example_en": "Can you do me a favor?",
+  "note": "per favore = please"
+ },
+ {
+  "rank": 126,
+  "word": "succedere",
+  "english": "to happen",
+  "example": "Cosa succede?",
+  "example_en": "What's going on?"
+ },
+ {
+  "rank": 127,
+  "word": "giusto",
+  "english": "right; fair",
+  "example": "Non è giusto!",
+  "example_en": "It's not fair!"
+ },
+ {
+  "rank": 128,
+  "word": "aspettare",
+  "english": "to wait",
+  "example": "Aspetta un attimo!",
+  "example_en": "Wait a second!"
+ },
+ {
+  "rank": 129,
+  "word": "momento",
+  "english": "moment",
+  "example": "Un momento, per favore.",
+  "example_en": "One moment, please."
+ },
+ {
+  "rank": 130,
+  "word": "ragazzo",
+  "english": "boy; guy; boyfriend",
+  "example": "Ragazzi, andiamo!",
+  "example_en": "Guys, let's go!",
+  "note": "ragazza = girl; girlfriend"
+ },
+ {
+  "rank": 131,
+  "word": "persona",
+  "english": "person",
+  "example": "È una persona molto simpatica.",
+  "example_en": "She's a really nice person."
+ },
+ {
+  "rank": 132,
+  "word": "nostro",
+  "english": "our; ours",
+  "example": "Questa è casa nostra.",
+  "example_en": "This is our house."
+ },
+ {
+  "rank": 133,
+  "word": "tipo",
+  "english": "type; kind; like (slang)",
+  "example": "Che tipo di musica ti piace?",
+  "example_en": "What kind of music do you like?"
+ },
+ {
+  "rank": 134,
+  "word": "prego",
+  "english": "you're welcome; go ahead",
+  "example": "Grazie! — Prego!",
+  "example_en": "Thanks! — You're welcome!"
+ },
+ {
+  "rank": 135,
+  "word": "grande",
+  "english": "big; great",
+  "example": "È una casa molto grande.",
+  "example_en": "It's a very big house."
+ },
+ {
+  "rank": 136,
+  "word": "sentire",
+  "english": "to hear; to feel",
+  "example": "Mi senti?",
+  "example_en": "Can you hear me?"
+ },
+ {
+  "rank": 137,
+  "word": "appena",
+  "english": "just; as soon as",
+  "example": "Ti chiamo appena arrivo.",
+  "example_en": "I'll call you as soon as I arrive."
+ },
+ {
+  "rank": 138,
+  "word": "soldi",
+  "english": "money",
+  "example": "Non ho abbastanza soldi.",
+  "example_en": "I don't have enough money."
+ },
+ {
+  "rank": 139,
+  "word": "tre",
+  "english": "three",
+  "example": "Abbiamo aspettato tre ore!",
+  "example_en": "We waited three hours!"
+ },
+ {
+  "rank": 140,
+  "word": "oggi",
+  "english": "today",
+  "example": "Che fai oggi?",
+  "example_en": "What are you up to today?"
+ },
+ {
+  "rank": 141,
+  "word": "piacere",
+  "english": "to like; pleasure",
+  "example": "Piacere, sono Adam.",
+  "example_en": "Nice to meet you, I'm Adam.",
+  "note": "mi piace = I like it"
+ },
+ {
+  "rank": 142,
+  "word": "idea",
+  "english": "idea",
+  "example": "Che bella idea!",
+  "example_en": "What a great idea!"
+ },
+ {
+  "rank": 143,
+  "word": "figlio",
+  "english": "son; child",
+  "example": "Quanti anni ha tuo figlio?",
+  "example_en": "How old is your son?",
+  "note": "figlia = daughter"
+ },
+ {
+  "rank": 144,
+  "word": "accordo",
+  "english": "agreement",
+  "example": "Sei d'accordo? — D'accordo!",
+  "example_en": "Do you agree? — OK!",
+  "note": "d'accordo = OK / agreed"
+ },
+ {
+  "rank": 145,
+  "word": "gente",
+  "english": "people",
+  "example": "C'è tanta gente oggi.",
+  "example_en": "There are so many people today."
+ },
+ {
+  "rank": 146,
+  "word": "sicuro",
+  "english": "sure; safe",
+  "example": "Sei sicuro?",
+  "example_en": "Are you sure?"
+ },
+ {
+  "rank": 147,
+  "word": "venire",
+  "english": "to come",
+  "example": "Vieni alla festa sabato?",
+  "example_en": "Are you coming to the party on Saturday?",
+  "note": "vengo, vieni, viene, veniamo, venite, vengono"
+ },
+ {
+  "rank": 148,
+  "word": "guardare",
+  "english": "to look; to watch",
+  "example": "Guarda che bello!",
+  "example_en": "Look how beautiful!"
+ },
+ {
+  "rank": 149,
+  "word": "dentro",
+  "english": "inside",
+  "example": "Fa freddo, andiamo dentro.",
+  "example_en": "It's cold, let's go inside."
+ },
+ {
+  "rank": 150,
+  "word": "trovare",
+  "english": "to find",
+  "example": "Non trovo il telefono.",
+  "example_en": "I can't find my phone."
+ },
+ {
+  "rank": 151,
+  "word": "caso",
+  "english": "case; chance",
+  "example": "Per caso hai una penna?",
+  "example_en": "Do you happen to have a pen?"
+ },
+ {
+  "rank": 152,
+  "word": "forza",
+  "english": "strength; come on!",
+  "example": "Forza, ce la fai!",
+  "example_en": "Come on, you can do it!"
+ },
+ {
+  "rank": 153,
+  "word": "signora",
+  "english": "ma'am; lady; Mrs.",
+  "example": "Buonasera, signora.",
+  "example_en": "Good evening, ma'am."
+ },
+ {
+  "rank": 154,
+  "word": "nome",
+  "english": "name",
+  "example": "Qual è il tuo nome?",
+  "example_en": "What's your name?"
+ },
+ {
+  "rank": 155,
+  "word": "problema",
+  "english": "problem",
+  "example": "Nessun problema!",
+  "example_en": "No problem!",
+  "note": "Masculine: il problema"
+ },
+ {
+  "rank": 156,
+  "word": "mondo",
+  "english": "world",
+  "example": "Il mondo è piccolo!",
+  "example_en": "It's a small world!"
+ },
+ {
+  "rank": 157,
+  "word": "prendere",
+  "english": "to take; to have (food/drink)",
+  "example": "Cosa prendi?",
+  "example_en": "What are you having?"
+ },
+ {
+  "rank": 158,
+  "word": "nulla",
+  "english": "nothing",
+  "example": "Non è successo nulla.",
+  "example_en": "Nothing happened."
+ },
+ {
+  "rank": 159,
+  "word": "donna",
+  "english": "woman",
+  "example": "È una donna molto intelligente.",
+  "example_en": "She's a very smart woman."
+ },
+ {
+  "rank": 160,
+  "word": "basta",
+  "english": "enough; that's it",
+  "example": "Basta, ho deciso!",
+  "example_en": "That's it, I've decided!"
+ },
+ {
+  "rank": 161,
+  "word": "insieme",
+  "english": "together",
+  "example": "Ceniamo insieme stasera?",
+  "example_en": "Shall we have dinner together tonight?"
+ },
+ {
+  "rank": 162,
+  "word": "subito",
+  "english": "right away",
+  "example": "Arrivo subito!",
+  "example_en": "I'll be right there!"
+ },
+ {
+  "rank": 163,
+  "word": "famiglia",
+  "english": "family",
+  "example": "Come sta la tua famiglia?",
+  "example_en": "How's your family?"
+ },
+ {
+  "rank": 164,
+  "word": "stesso",
+  "english": "same; -self",
+  "example": "Abbiamo la stessa età.",
+  "example_en": "We're the same age."
+ },
+ {
+  "rank": 165,
+  "word": "ragione",
+  "english": "reason",
+  "example": "Hai ragione.",
+  "example_en": "You're right.",
+  "note": "avere ragione = to be right"
+ },
+ {
+  "rank": 166,
+  "word": "capire",
+  "english": "to understand",
+  "example": "Non ho capito, puoi ripetere?",
+  "example_en": "I didn't understand, can you repeat?"
+ },
+ {
+  "rank": 167,
+  "word": "notte",
+  "english": "night",
+  "example": "Non ho dormito tutta la notte.",
+  "example_en": "I didn't sleep all night."
+ },
+ {
+  "rank": 168,
+  "word": "testa",
+  "english": "head",
+  "example": "Ha la testa tra le nuvole.",
+  "example_en": "He has his head in the clouds."
+ },
+ {
+  "rank": 169,
+  "word": "servire",
+  "english": "to need; to be useful",
+  "example": "Ti serve qualcosa?",
+  "example_en": "Do you need anything?"
+ },
+ {
+  "rank": 170,
+  "word": "tesoro",
+  "english": "treasure; sweetheart",
+  "example": "Ciao tesoro, com'è andata?",
+  "example_en": "Hi sweetheart, how did it go?"
+ },
+ {
+  "rank": 171,
+  "word": "sotto",
+  "english": "under; below",
+  "example": "Il gatto è sotto il letto.",
+  "example_en": "The cat is under the bed."
+ },
+ {
+  "rank": 172,
+  "word": "dare",
+  "english": "to give",
+  "example": "Mi dai il tuo numero?",
+  "example_en": "Can you give me your number?",
+  "note": "do, dai, dà, diamo, date, danno"
+ },
+ {
+  "rank": 173,
+  "word": "bello",
+  "english": "beautiful; nice",
+  "example": "Che bella giornata!",
+  "example_en": "What a beautiful day!"
+ },
+ {
+  "rank": 174,
+  "word": "scusa",
+  "english": "sorry; excuse me",
+  "example": "Scusa, sono in ritardo.",
+  "example_en": "Sorry, I'm late.",
+  "note": "Formal: scusi"
+ },
+ {
+  "rank": 175,
+  "word": "buono",
+  "english": "good",
+  "example": "Questa pizza è buonissima!",
+  "example_en": "This pizza is so good!"
+ },
+ {
+  "rank": 176,
+  "word": "porta",
+  "english": "door",
+  "example": "Chiudi la porta, per favore.",
+  "example_en": "Close the door, please."
+ },
+ {
+  "rank": 177,
+  "word": "moglie",
+  "english": "wife",
+  "example": "Sua moglie è italiana.",
+  "example_en": "His wife is Italian."
+ },
+ {
+  "rank": 178,
+  "word": "storia",
+  "english": "story; history",
+  "example": "È una lunga storia.",
+  "example_en": "It's a long story."
+ },
+ {
+  "rank": 179,
+  "word": "cercare",
+  "english": "to look for; to try",
+  "example": "Cosa cerchi?",
+  "example_en": "What are you looking for?"
+ },
+ {
+  "rank": 180,
+  "word": "pronto",
+  "english": "ready; hello (phone)",
+  "example": "Pronto? Chi parla?",
+  "example_en": "Hello? Who's speaking?"
+ },
+ {
+  "rank": 181,
+  "word": "meno",
+  "english": "less; minus",
+  "example": "Sono le otto meno un quarto.",
+  "example_en": "It's a quarter to eight."
+ },
+ {
+  "rank": 182,
+  "word": "avanti",
+  "english": "forward; come in",
+  "example": "Avanti, entra pure!",
+  "example_en": "Come on in!"
+ },
+ {
+  "rank": 183,
+  "word": "secondo",
+  "english": "second; according to",
+  "example": "Secondo me, ha ragione lui.",
+  "example_en": "In my opinion, he's right."
+ },
+ {
+  "rank": 184,
+  "word": "lì",
+  "english": "there",
+  "example": "Mettilo lì.",
+  "example_en": "Put it there."
+ },
+ {
+  "rank": 185,
+  "word": "mentre",
+  "english": "while",
+  "example": "Ascolto musica mentre cucino.",
+  "example_en": "I listen to music while I cook."
+ },
+ {
+  "rank": 186,
+  "word": "letto",
+  "english": "bed",
+  "example": "Vado a letto presto stasera.",
+  "example_en": "I'm going to bed early tonight."
+ },
+ {
+  "rank": 187,
+  "word": "fino",
+  "english": "until; as far as",
+  "example": "Lavoro fino alle sei.",
+  "example_en": "I work until six."
+ },
+ {
+  "rank": 188,
+  "word": "fine",
+  "english": "end",
+  "example": "Alla fine è andato tutto bene.",
+  "example_en": "In the end everything went fine."
+ },
+ {
+  "rank": 189,
+  "word": "aiuto",
+  "english": "help",
+  "example": "Grazie per l'aiuto!",
+  "example_en": "Thanks for the help!"
+ },
+ {
+  "rank": 190,
+  "word": "paura",
+  "english": "fear",
+  "example": "Ho paura dei cani.",
+  "example_en": "I'm afraid of dogs.",
+  "note": "avere paura di = to be afraid of"
+ },
+ {
+  "rank": 191,
+  "word": "fratello",
+  "english": "brother",
+  "example": "Mio fratello vive a Chicago.",
+  "example_en": "My brother lives in Chicago."
+ },
+ {
+  "rank": 192,
+  "word": "domani",
+  "english": "tomorrow",
+  "example": "A domani!",
+  "example_en": "See you tomorrow!"
+ },
+ {
+  "rank": 193,
+  "word": "abbastanza",
+  "english": "enough; fairly",
+  "example": "Sto abbastanza bene.",
+  "example_en": "I'm doing pretty well."
+ },
+ {
+  "rank": 194,
+  "word": "capo",
+  "english": "boss; head",
+  "example": "Il mio capo è in vacanza.",
+  "example_en": "My boss is on vacation."
+ },
+ {
+  "rank": 195,
+  "word": "amore",
+  "english": "love",
+  "example": "Amore, a che ora torni?",
+  "example_en": "Honey, what time are you coming back?"
+ },
+ {
+  "rank": 196,
+  "word": "piano",
+  "english": "slowly; floor; plan",
+  "example": "Parla più piano, per favore.",
+  "example_en": "Speak more slowly, please."
+ },
+ {
+  "rank": 197,
+  "word": "macchina",
+  "english": "car",
+  "example": "Andiamo in macchina o a piedi?",
+  "example_en": "Are we going by car or on foot?"
+ },
+ {
+  "rank": 198,
+  "word": "comunque",
+  "english": "anyway; however",
+  "example": "Comunque, com'è andata?",
+  "example_en": "Anyway, how did it go?"
+ },
+ {
+  "rank": 199,
+  "word": "nemmeno",
+  "english": "not even; neither",
+  "example": "Non ci ho nemmeno pensato.",
+  "example_en": "I didn't even think about it."
+ },
+ {
+  "rank": 200,
+  "word": "mano",
+  "english": "hand",
+  "example": "Lavati le mani!",
+  "example_en": "Wash your hands!",
+  "note": "Feminine: la mano, le mani"
+ }
+]

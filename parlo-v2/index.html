@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://parlo-proxy.adamlarkin.workers.dev https://api.elevenlabs.io; img-src 'self' data:; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';">
     <title>Parlo — Learn Italian</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css?v=29">
+    <link rel="stylesheet" href="style.css?v=30">
 </head>
 <body>
     <canvas id="particles"></canvas>
@@ -171,6 +171,11 @@
 <!-- ══ VOCAB TAB ══ -->
         <div id="tab-vocab" class="tab-panel active">
 
+            <div class="mode-selector deck-selector">
+                <button class="mode-btn active" data-deck="phrases">Phrases</button>
+                <button class="mode-btn" data-deck="words">Top 1000</button>
+            </div>
+
             <div class="srs-stats">
                 <div class="srs-stat">
                     <span class="srs-stat__num" id="statDue">—</span>
@@ -235,6 +240,10 @@
 
             <div id="srsReveal" class="srs-reveal" style="display:flex">
                 <button id="showAnswerBtn" class="btn-show-answer">Show Answer</button>
+            </div>
+
+            <div id="knowRow" class="know-row hidden">
+                <button id="knowBtn" class="btn-ghost btn-sm" title="Shortcut: K">I already know this</button>
             </div>
 
             <div id="srsRating" class="srs-rating" style="display:none">
@@ -303,9 +312,9 @@
     </div>
 
     <script src="particles.js"></script>
-    <script src="app.js?v=29"></script>
+    <script src="app.js?v=30"></script>
     <script src="chat.js?v=22"></script>
-    <script src="vocab.js?v=10"></script>
+    <script src="vocab.js?v=11"></script>
     <script src="translate.js?v=11"></script>
 </body>
 </html>
