@@ -15,7 +15,7 @@ const KNOWN_INTERVAL = 60; // "I already know this" — check back in ~2 months
 // phrases are shuffled.
 const DECKS = {
     phrases: { file: 'phrases.json?v=3',   srsKey: SRS_KEY,       name: 'Phrases' },
-    words:   { file: 'top1000.json?v=2',   srsKey: WORDS_SRS_KEY, name: 'Top 1000' },
+    words:   { file: 'top1000.json?v=3',   srsKey: WORDS_SRS_KEY, name: 'Top 1000' },
 };
 
 let deck            = 'phrases';

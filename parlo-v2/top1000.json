@@ -2903,5 +2903,4310 @@
   "english": "simple; easy",
   "example": "È più semplice di quanto pensi.",
   "example_en": "It's simpler than you think."
+ },
+ {
+  "rank": 401,
+  "word": "incidente",
+  "english": "accident",
+  "example": "C'è stato un incidente in autostrada.",
+  "example_en": "There was an accident on the highway."
+ },
+ {
+  "rank": 402,
+  "word": "intenzione",
+  "english": "intention",
+  "example": "Non avevo intenzione di offenderti.",
+  "example_en": "I didn't mean to offend you.",
+  "note": "avere intenzione di = to intend to"
+ },
+ {
+  "rank": 403,
+  "word": "speciale",
+  "english": "special",
+  "example": "Stasera è una serata speciale.",
+  "example_en": "Tonight is a special evening."
+ },
+ {
+  "rank": 404,
+  "word": "oltre",
+  "english": "beyond; besides; over",
+  "example": "Oltre a te, chi viene?",
+  "example_en": "Besides you, who's coming?",
+  "note": "oltre a = besides"
+ },
+ {
+  "rank": 405,
+  "word": "riguardo",
+  "english": "regard; about",
+  "example": "Riguardo a domani, ti faccio sapere.",
+  "example_en": "About tomorrow, I'll let you know.",
+  "note": "riguardo a = regarding"
+ },
+ {
+  "rank": 406,
+  "word": "finché",
+  "english": "until; as long as",
+  "example": "Resto finché vuoi.",
+  "example_en": "I'll stay as long as you want."
+ },
+ {
+  "rank": 407,
+  "word": "aspetto",
+  "english": "look; appearance",
+  "example": "Hai un ottimo aspetto oggi!",
+  "example_en": "You look great today!"
+ },
+ {
+  "rank": 408,
+  "word": "viaggio",
+  "english": "trip; journey",
+  "example": "Buon viaggio!",
+  "example_en": "Have a good trip!"
+ },
+ {
+  "rank": 409,
+  "word": "chiaro",
+  "english": "clear; light (color)",
+  "example": "È chiaro?",
+  "example_en": "Is that clear?",
+  "note": "Chiaro! = Got it!"
+ },
+ {
+  "rank": 410,
+  "word": "chiamata",
+  "english": "call (phone)",
+  "example": "Ho una chiamata persa da mia madre.",
+  "example_en": "I have a missed call from my mother."
+ },
+ {
+  "rank": 411,
+  "word": "bocca",
+  "english": "mouth",
+  "example": "In bocca al lupo! — Crepi!",
+  "example_en": "Good luck! — Thanks! (lit. into the wolf's mouth)"
+ },
+ {
+  "rank": 412,
+  "word": "permesso",
+  "english": "permission; excuse me",
+  "example": "Permesso, posso passare?",
+  "example_en": "Excuse me, can I get by?",
+  "note": "Said when entering someone's home or squeezing past"
+ },
+ {
+  "rank": 413,
+  "word": "giocare",
+  "english": "to play (games, sports)",
+  "example": "Giochiamo a carte stasera?",
+  "example_en": "Shall we play cards tonight?",
+  "note": "suonare = play an instrument"
+ },
+ {
+  "rank": 414,
+  "word": "ordine",
+  "english": "order",
+  "example": "Metti in ordine la tua stanza!",
+  "example_en": "Tidy up your room!"
+ },
+ {
+  "rank": 415,
+  "word": "circa",
+  "english": "about; approximately",
+  "example": "Ci vogliono circa venti minuti.",
+  "example_en": "It takes about twenty minutes."
+ },
+ {
+  "rank": 416,
+  "word": "ovviamente",
+  "english": "obviously",
+  "example": "Ovviamente vengo anch'io!",
+  "example_en": "Obviously I'm coming too!"
+ },
+ {
+  "rank": 417,
+  "word": "Natale",
+  "english": "Christmas",
+  "example": "Buon Natale a tutti!",
+  "example_en": "Merry Christmas, everyone!"
+ },
+ {
+  "rank": 418,
+  "word": "mattina",
+  "english": "morning",
+  "example": "Bevo sempre un caffè la mattina.",
+  "example_en": "I always have a coffee in the morning."
+ },
+ {
+  "rank": 419,
+  "word": "sistema",
+  "english": "system",
+  "example": "Il sistema non funziona oggi.",
+  "example_en": "The system isn't working today.",
+  "note": "Masculine: il sistema"
+ },
+ {
+  "rank": 420,
+  "word": "fondo",
+  "english": "bottom; end; back",
+  "example": "Il bagno è in fondo a destra.",
+  "example_en": "The bathroom is at the end on the right.",
+  "note": "in fondo = deep down / after all"
+ },
+ {
+  "rank": 421,
+  "word": "milione",
+  "english": "million",
+  "example": "Ci sono più di due milioni di persone a Roma.",
+  "example_en": "There are more than two million people in Rome."
+ },
+ {
+  "rank": 422,
+  "word": "soltanto",
+  "english": "only",
+  "example": "Ho soltanto una domanda.",
+  "example_en": "I only have one question.",
+  "note": "Same as solo"
+ },
+ {
+  "rank": 423,
+  "word": "fermo",
+  "english": "still; stopped",
+  "example": "Stai fermo un attimo!",
+  "example_en": "Hold still for a second!"
+ },
+ {
+  "rank": 424,
+  "word": "appuntamento",
+  "english": "appointment; date",
+  "example": "Ho un appuntamento dal dentista.",
+  "example_en": "I have a dentist appointment."
+ },
+ {
+  "rank": 425,
+  "word": "iniziare",
+  "english": "to start; to begin",
+  "example": "A che ora inizia il film?",
+  "example_en": "What time does the movie start?"
+ },
+ {
+  "rank": 426,
+  "word": "informazione",
+  "english": "information",
+  "example": "Posso chiedere un'informazione?",
+  "example_en": "Can I ask for some information?"
+ },
+ {
+  "rank": 427,
+  "word": "libero",
+  "english": "free (not busy)",
+  "example": "Sei libero domani sera?",
+  "example_en": "Are you free tomorrow evening?"
+ },
+ {
+  "rank": 428,
+  "word": "pezzo",
+  "english": "piece",
+  "example": "Vuoi un pezzo di torta?",
+  "example_en": "Do you want a piece of cake?"
+ },
+ {
+  "rank": 429,
+  "word": "segreto",
+  "english": "secret",
+  "example": "Sai tenere un segreto?",
+  "example_en": "Can you keep a secret?"
+ },
+ {
+  "rank": 430,
+  "word": "colpo",
+  "english": "blow; hit; shot",
+  "example": "Mi hai fatto venire un colpo!",
+  "example_en": "You gave me a heart attack! (scared me)",
+  "note": "colpo di fulmine = love at first sight"
+ },
+ {
+  "rank": 431,
+  "word": "oppure",
+  "english": "or; or else",
+  "example": "Andiamo al mare oppure in montagna?",
+  "example_en": "Shall we go to the beach or to the mountains?"
+ },
+ {
+  "rank": 432,
+  "word": "completamente",
+  "english": "completely",
+  "example": "Me ne sono completamente dimenticato.",
+  "example_en": "I completely forgot about it."
+ },
+ {
+  "rank": 433,
+  "word": "lista",
+  "english": "list",
+  "example": "Faccio la lista della spesa.",
+  "example_en": "I'll make the shopping list."
+ },
+ {
+  "rank": 434,
+  "word": "veloce",
+  "english": "fast; quick",
+  "example": "Faccio una doccia veloce.",
+  "example_en": "I'll take a quick shower."
+ },
+ {
+  "rank": 435,
+  "word": "ormai",
+  "english": "by now; at this point",
+  "example": "Ormai è troppo tardi.",
+  "example_en": "It's too late by now."
+ },
+ {
+  "rank": 436,
+  "word": "interessare",
+  "english": "to interest",
+  "example": "Non mi interessa.",
+  "example_en": "I'm not interested."
+ },
+ {
+  "rank": 437,
+  "word": "pazzo",
+  "english": "crazy",
+  "example": "Sei pazzo?",
+  "example_en": "Are you crazy?"
+ },
+ {
+  "rank": 438,
+  "word": "giurare",
+  "english": "to swear",
+  "example": "Te lo giuro!",
+  "example_en": "I swear!"
+ },
+ {
+  "rank": 439,
+  "word": "consiglio",
+  "english": "advice",
+  "example": "Mi dai un consiglio?",
+  "example_en": "Can you give me some advice?"
+ },
+ {
+  "rank": 440,
+  "word": "semplicemente",
+  "english": "simply",
+  "example": "Volevo semplicemente dire grazie.",
+  "example_en": "I simply wanted to say thank you."
+ },
+ {
+  "rank": 441,
+  "word": "zio",
+  "english": "uncle",
+  "example": "Mio zio fa il cuoco.",
+  "example_en": "My uncle is a cook.",
+  "note": "zia = aunt"
+ },
+ {
+  "rank": 442,
+  "word": "centro",
+  "english": "center; downtown",
+  "example": "Andiamo in centro a fare un giro?",
+  "example_en": "Shall we walk around downtown?"
+ },
+ {
+  "rank": 443,
+  "word": "specie",
+  "english": "kind; species",
+  "example": "È una specie di torta salata.",
+  "example_en": "It's a kind of savory pie.",
+  "note": "specialmente = especially"
+ },
+ {
+  "rank": 444,
+  "word": "mille",
+  "english": "thousand",
+  "example": "Grazie mille!",
+  "example_en": "Thanks a lot!",
+  "note": "Plural: duemila, tremila…"
+ },
+ {
+  "rank": 445,
+  "word": "sogno",
+  "english": "dream",
+  "example": "Vivere in Italia è il mio sogno.",
+  "example_en": "Living in Italy is my dream."
+ },
+ {
+  "rank": 446,
+  "word": "carino",
+  "english": "cute; nice",
+  "example": "Che carino il tuo cane!",
+  "example_en": "Your dog is so cute!"
+ },
+ {
+  "rank": 447,
+  "word": "brutto",
+  "english": "ugly; bad",
+  "example": "Che brutto tempo oggi.",
+  "example_en": "What awful weather today."
+ },
+ {
+  "rank": 448,
+  "word": "incredibile",
+  "english": "incredible; unbelievable",
+  "example": "È incredibile!",
+  "example_en": "That's unbelievable!"
+ },
+ {
+  "rank": 449,
+  "word": "sole",
+  "english": "sun",
+  "example": "Oggi c'è un bel sole.",
+  "example_en": "It's nice and sunny today."
+ },
+ {
+  "rank": 450,
+  "word": "legge",
+  "english": "law",
+  "example": "È contro la legge.",
+  "example_en": "It's against the law."
+ },
+ {
+  "rank": 451,
+  "word": "spesso",
+  "english": "often",
+  "example": "Vieni spesso qui?",
+  "example_en": "Do you come here often?"
+ },
+ {
+  "rank": 452,
+  "word": "gentile",
+  "english": "kind; polite",
+  "example": "Grazie, molto gentile.",
+  "example_en": "Thank you, that's very kind."
+ },
+ {
+  "rank": 453,
+  "word": "rispetto",
+  "english": "respect; compared to",
+  "example": "Rispetto all'anno scorso, va meglio.",
+  "example_en": "Compared to last year, it's going better.",
+  "note": "rispetto a = compared to"
+ },
+ {
+  "rank": 454,
+  "word": "zitto",
+  "english": "quiet; silent",
+  "example": "Stai zitto un attimo!",
+  "example_en": "Be quiet for a second!"
+ },
+ {
+  "rank": 455,
+  "word": "incontro",
+  "english": "meeting; encounter",
+  "example": "Ho un incontro di lavoro alle tre.",
+  "example_en": "I have a work meeting at three."
+ },
+ {
+  "rank": 456,
+  "word": "rapporto",
+  "english": "relationship; report",
+  "example": "Ho un ottimo rapporto con i miei colleghi.",
+  "example_en": "I have a great relationship with my colleagues."
+ },
+ {
+  "rank": 457,
+  "word": "errore",
+  "english": "mistake; error",
+  "example": "Scusa, è stato un errore.",
+  "example_en": "Sorry, it was a mistake."
+ },
+ {
+  "rank": 458,
+  "word": "pagare",
+  "english": "to pay",
+  "example": "Posso pagare con la carta?",
+  "example_en": "Can I pay by card?"
+ },
+ {
+  "rank": 459,
+  "word": "sorpresa",
+  "english": "surprise",
+  "example": "Che bella sorpresa!",
+  "example_en": "What a nice surprise!"
+ },
+ {
+  "rank": 460,
+  "word": "occhiata",
+  "english": "glance; look",
+  "example": "Dai un'occhiata a questo.",
+  "example_en": "Take a look at this.",
+  "note": "dare un'occhiata = to take a look"
+ },
+ {
+  "rank": 461,
+  "word": "risposta",
+  "english": "answer; reply",
+  "example": "Aspetto ancora una risposta.",
+  "example_en": "I'm still waiting for a reply."
+ },
+ {
+  "rank": 462,
+  "word": "servizio",
+  "english": "service",
+  "example": "Il servizio qui è ottimo.",
+  "example_en": "The service here is excellent."
+ },
+ {
+  "rank": 463,
+  "word": "medico",
+  "english": "doctor",
+  "example": "Devo chiamare il medico.",
+  "example_en": "I need to call the doctor."
+ },
+ {
+  "rank": 464,
+  "word": "schifo",
+  "english": "disgust; gross",
+  "example": "Che schifo!",
+  "example_en": "Gross!",
+  "note": "fare schifo = to suck / be disgusting"
+ },
+ {
+  "rank": 465,
+  "word": "dolore",
+  "english": "pain",
+  "example": "Ho un dolore alla schiena.",
+  "example_en": "I have a pain in my back."
+ },
+ {
+  "rank": 466,
+  "word": "peggio",
+  "english": "worse",
+  "example": "Poteva andare peggio.",
+  "example_en": "It could have been worse."
+ },
+ {
+  "rank": 467,
+  "word": "addio",
+  "english": "goodbye (forever)",
+  "example": "Non è un addio, è un arrivederci.",
+  "example_en": "It's not goodbye, it's see you later."
+ },
+ {
+  "rank": 468,
+  "word": "addosso",
+  "english": "on (oneself)",
+  "example": "Non ho soldi addosso.",
+  "example_en": "I don't have any money on me."
+ },
+ {
+  "rank": 469,
+  "word": "pieno",
+  "english": "full",
+  "example": "Il ristorante è pieno stasera.",
+  "example_en": "The restaurant is full tonight.",
+  "note": "il pieno = a full tank"
+ },
+ {
+  "rank": 470,
+  "word": "diverso",
+  "english": "different",
+  "example": "Siamo molto diversi.",
+  "example_en": "We're very different."
+ },
+ {
+  "rank": 471,
+  "word": "realtà",
+  "english": "reality",
+  "example": "In realtà non lo so.",
+  "example_en": "Actually, I don't know.",
+  "note": "in realtà = actually"
+ },
+ {
+  "rank": 472,
+  "word": "normale",
+  "english": "normal",
+  "example": "È normale sentirsi così.",
+  "example_en": "It's normal to feel that way."
+ },
+ {
+  "rank": 473,
+  "word": "fame",
+  "english": "hunger",
+  "example": "Hai fame?",
+  "example_en": "Are you hungry?",
+  "note": "avere fame = to be hungry"
+ },
+ {
+  "rank": 474,
+  "word": "programma",
+  "english": "program; plan",
+  "example": "Che programmi hai per il weekend?",
+  "example_en": "What plans do you have for the weekend?",
+  "note": "Masculine: il programma"
+ },
+ {
+  "rank": 475,
+  "word": "nonna",
+  "english": "grandma",
+  "example": "Mia nonna faceva la pasta in casa.",
+  "example_en": "My grandma used to make pasta at home.",
+  "note": "nonno = grandpa"
+ },
+ {
+  "rank": 476,
+  "word": "notizia",
+  "english": "news (piece of)",
+  "example": "Ho una bella notizia!",
+  "example_en": "I have some good news!",
+  "note": "le notizie = the news"
+ },
+ {
+  "rank": 477,
+  "word": "rimanere",
+  "english": "to stay; to remain",
+  "example": "Rimango a casa stasera.",
+  "example_en": "I'm staying home tonight.",
+  "note": "rimango, rimani, rimane, rimaniamo, rimanete, rimangono"
+ },
+ {
+  "rank": 478,
+  "word": "compagnia",
+  "english": "company",
+  "example": "Grazie per la compagnia.",
+  "example_en": "Thanks for the company."
+ },
+ {
+  "rank": 479,
+  "word": "proposito",
+  "english": "purpose",
+  "example": "A proposito, hai sentito Marco?",
+  "example_en": "By the way, have you heard from Marco?",
+  "note": "a proposito = by the way"
+ },
+ {
+  "rank": 480,
+  "word": "chiudere",
+  "english": "to close",
+  "example": "A che ora chiude il negozio?",
+  "example_en": "What time does the shop close?"
+ },
+ {
+  "rank": 481,
+  "word": "terribile",
+  "english": "terrible",
+  "example": "Il traffico è terribile oggi.",
+  "example_en": "The traffic is terrible today."
+ },
+ {
+  "rank": 482,
+  "word": "ritardo",
+  "english": "delay",
+  "example": "Scusa il ritardo!",
+  "example_en": "Sorry I'm late!",
+  "note": "in ritardo = late"
+ },
+ {
+  "rank": 483,
+  "word": "attento",
+  "english": "careful",
+  "example": "Stai attento!",
+  "example_en": "Be careful!"
+ },
+ {
+  "rank": 484,
+  "word": "bar",
+  "english": "café; bar",
+  "example": "Prendiamo un caffè al bar?",
+  "example_en": "Shall we get a coffee at the café?",
+  "note": "An Italian bar is mainly a coffee place"
+ },
+ {
+  "rank": 485,
+  "word": "dimenticare",
+  "english": "to forget",
+  "example": "Non dimenticare le chiavi!",
+  "example_en": "Don't forget the keys!"
+ },
+ {
+  "rank": 486,
+  "word": "bisogna",
+  "english": "it's necessary; you have to",
+  "example": "Bisogna prenotare?",
+  "example_en": "Do you need to book?"
+ },
+ {
+  "rank": 487,
+  "word": "impossibile",
+  "english": "impossible",
+  "example": "Niente è impossibile.",
+  "example_en": "Nothing is impossible."
+ },
+ {
+  "rank": 488,
+  "word": "cioè",
+  "english": "that is; I mean",
+  "example": "Arrivo domani, cioè giovedì.",
+  "example_en": "I'm arriving tomorrow, I mean Thursday."
+ },
+ {
+  "rank": 489,
+  "word": "studio",
+  "english": "study; office",
+  "example": "Lo studio del mio avvocato è a Roma.",
+  "example_en": "My lawyer's office is in Rome."
+ },
+ {
+  "rank": 490,
+  "word": "uscita",
+  "english": "exit",
+  "example": "Dov'è l'uscita?",
+  "example_en": "Where's the exit?"
+ },
+ {
+  "rank": 491,
+  "word": "intorno",
+  "english": "around",
+  "example": "Facciamo un giro qui intorno.",
+  "example_en": "Let's take a walk around here."
+ },
+ {
+  "rank": 492,
+  "word": "video",
+  "english": "video",
+  "example": "Ti mando il video.",
+  "example_en": "I'll send you the video."
+ },
+ {
+  "rank": 493,
+  "word": "mancare",
+  "english": "to miss; to be missing",
+  "example": "Mi manchi!",
+  "example_en": "I miss you!",
+  "note": "Backwards from English: 'you are missing to me'"
+ },
+ {
+  "rank": 494,
+  "word": "grosso",
+  "english": "big; large",
+  "example": "È un problema grosso.",
+  "example_en": "It's a big problem."
+ },
+ {
+  "rank": 495,
+  "word": "dolce",
+  "english": "sweet; dessert",
+  "example": "Prendiamo un dolce?",
+  "example_en": "Shall we get a dessert?"
+ },
+ {
+  "rank": 496,
+  "word": "chiave",
+  "english": "key",
+  "example": "Hai preso le chiavi di casa?",
+  "example_en": "Did you take the house keys?"
+ },
+ {
+  "rank": 497,
+  "word": "coraggio",
+  "english": "courage; come on!",
+  "example": "Coraggio, ce la puoi fare!",
+  "example_en": "Come on, you can do it!"
+ },
+ {
+  "rank": 498,
+  "word": "interessante",
+  "english": "interesting",
+  "example": "Che posto interessante!",
+  "example_en": "What an interesting place!"
+ },
+ {
+  "rank": 499,
+  "word": "peccato",
+  "english": "sin; pity",
+  "example": "Che peccato!",
+  "example_en": "What a shame!"
+ },
+ {
+  "rank": 500,
+  "word": "questione",
+  "english": "matter; issue",
+  "example": "È una questione di tempo.",
+  "example_en": "It's a matter of time."
+ },
+ {
+  "rank": 501,
+  "word": "adorare",
+  "english": "to love; to adore",
+  "example": "Adoro la cucina italiana.",
+  "example_en": "I love Italian food."
+ },
+ {
+  "rank": 502,
+  "word": "aereo",
+  "english": "airplane",
+  "example": "Prendo l'aereo domani mattina.",
+  "example_en": "I'm flying out tomorrow morning."
+ },
+ {
+  "rank": 503,
+  "word": "sala",
+  "english": "room; hall",
+  "example": "Ti aspetto in sala d'attesa.",
+  "example_en": "I'll wait for you in the waiting room."
+ },
+ {
+  "rank": 504,
+  "word": "sette",
+  "english": "seven",
+  "example": "Ci vediamo alle sette.",
+  "example_en": "See you at seven."
+ },
+ {
+  "rank": 505,
+  "word": "compleanno",
+  "english": "birthday",
+  "example": "Buon compleanno!",
+  "example_en": "Happy birthday!"
+ },
+ {
+  "rank": 506,
+  "word": "relazione",
+  "english": "relationship; report",
+  "example": "Sono in una relazione da due anni.",
+  "example_en": "I've been in a relationship for two years."
+ },
+ {
+  "rank": 507,
+  "word": "cliente",
+  "english": "customer; client",
+  "example": "Il cliente ha sempre ragione.",
+  "example_en": "The customer is always right."
+ },
+ {
+  "rank": 508,
+  "word": "spalla",
+  "english": "shoulder",
+  "example": "Mi fa male la spalla.",
+  "example_en": "My shoulder hurts."
+ },
+ {
+  "rank": 509,
+  "word": "valere",
+  "english": "to be worth",
+  "example": "Ne vale la pena.",
+  "example_en": "It's worth it.",
+  "note": "valere la pena = to be worth it"
+ },
+ {
+  "rank": 510,
+  "word": "diritto",
+  "english": "right (legal)",
+  "example": "Hai il diritto di saperlo.",
+  "example_en": "You have the right to know.",
+  "note": "dritto = straight"
+ },
+ {
+  "rank": 511,
+  "word": "sicuramente",
+  "english": "surely; definitely",
+  "example": "Sicuramente arriverà in ritardo.",
+  "example_en": "He'll definitely arrive late."
+ },
+ {
+  "rank": 512,
+  "word": "appartamento",
+  "english": "apartment",
+  "example": "Abbiamo affittato un appartamento a Roma.",
+  "example_en": "We rented an apartment in Rome."
+ },
+ {
+  "rank": 513,
+  "word": "pranzo",
+  "english": "lunch",
+  "example": "Cosa mangiamo a pranzo?",
+  "example_en": "What are we having for lunch?"
+ },
+ {
+  "rank": 514,
+  "word": "serata",
+  "english": "evening (as an event)",
+  "example": "Buona serata!",
+  "example_en": "Have a nice evening!",
+  "note": "sera = evening (time); serata = the evening as lived"
+ },
+ {
+  "rank": 515,
+  "word": "nero",
+  "english": "black",
+  "example": "Prendo un caffè nero.",
+  "example_en": "I'll have a black coffee."
+ },
+ {
+  "rank": 516,
+  "word": "vestito",
+  "english": "dress; suit",
+  "example": "Che bel vestito!",
+  "example_en": "What a nice dress!",
+  "note": "vestiti = clothes"
+ },
+ {
+  "rank": 517,
+  "word": "carta",
+  "english": "paper; card",
+  "example": "Posso pagare con la carta di credito?",
+  "example_en": "Can I pay by credit card?"
+ },
+ {
+  "rank": 518,
+  "word": "ex",
+  "english": "ex",
+  "example": "È la mia ex.",
+  "example_en": "She's my ex."
+ },
+ {
+  "rank": 519,
+  "word": "otto",
+  "english": "eight",
+  "example": "Lavoro otto ore al giorno.",
+  "example_en": "I work eight hours a day."
+ },
+ {
+  "rank": 520,
+  "word": "zona",
+  "english": "area; zone",
+  "example": "Abiti in questa zona?",
+  "example_en": "Do you live in this area?"
+ },
+ {
+  "rank": 521,
+  "word": "intendere",
+  "english": "to mean; to intend",
+  "example": "Cosa intendi?",
+  "example_en": "What do you mean?"
+ },
+ {
+  "rank": 522,
+  "word": "negozio",
+  "english": "shop; store",
+  "example": "Il negozio apre alle nove.",
+  "example_en": "The shop opens at nine."
+ },
+ {
+  "rank": 523,
+  "word": "partita",
+  "english": "match; game",
+  "example": "Guardiamo la partita stasera?",
+  "example_en": "Shall we watch the game tonight?"
+ },
+ {
+  "rank": 524,
+  "word": "televisione",
+  "english": "TV",
+  "example": "Cosa c'è in televisione stasera?",
+  "example_en": "What's on TV tonight?",
+  "note": "Often just la tv"
+ },
+ {
+  "rank": 525,
+  "word": "spazio",
+  "english": "space; room",
+  "example": "Non c'è spazio in macchina.",
+  "example_en": "There's no room in the car."
+ },
+ {
+  "rank": 526,
+  "word": "linea",
+  "english": "line",
+  "example": "Sono in linea con un cliente.",
+  "example_en": "I'm on the line with a client."
+ },
+ {
+  "rank": 527,
+  "word": "scappare",
+  "english": "to run away; to have to dash",
+  "example": "Scusa, devo scappare!",
+  "example_en": "Sorry, I've got to run!"
+ },
+ {
+  "rank": 528,
+  "word": "vincere",
+  "english": "to win",
+  "example": "Chi ha vinto la partita?",
+  "example_en": "Who won the game?"
+ },
+ {
+  "rank": 529,
+  "word": "tranquillo",
+  "english": "calm; quiet; relaxed",
+  "example": "Tranquillo, non c'è problema.",
+  "example_en": "Relax, it's no problem."
+ },
+ {
+  "rank": 530,
+  "word": "silenzio",
+  "english": "silence",
+  "example": "Silenzio, per favore!",
+  "example_en": "Quiet, please!"
+ },
+ {
+  "rank": 531,
+  "word": "simile",
+  "english": "similar",
+  "example": "Ho una giacca simile.",
+  "example_en": "I have a similar jacket."
+ },
+ {
+  "rank": 532,
+  "word": "calma",
+  "english": "calm",
+  "example": "Calma, calma!",
+  "example_en": "Easy, easy! / Calm down!"
+ },
+ {
+  "rank": 533,
+  "word": "pena",
+  "english": "pity; punishment",
+  "example": "Vale la pena provare.",
+  "example_en": "It's worth trying.",
+  "note": "Mi fa pena = I feel sorry for him/her"
+ },
+ {
+  "rank": 534,
+  "word": "esistere",
+  "english": "to exist",
+  "example": "Non esiste!",
+  "example_en": "No way! (lit. it doesn't exist)"
+ },
+ {
+  "rank": 535,
+  "word": "altrimenti",
+  "english": "otherwise",
+  "example": "Sbrigati, altrimenti perdiamo il treno.",
+  "example_en": "Hurry up, otherwise we'll miss the train."
+ },
+ {
+  "rank": 536,
+  "word": "luogo",
+  "english": "place",
+  "example": "È un luogo bellissimo.",
+  "example_en": "It's a beautiful place.",
+  "note": "Same as posto, a bit more formal"
+ },
+ {
+  "rank": 537,
+  "word": "lettera",
+  "english": "letter",
+  "example": "Ho ricevuto una lettera dal tribunale.",
+  "example_en": "I received a letter from the court."
+ },
+ {
+  "rank": 538,
+  "word": "salvare",
+  "english": "to save",
+  "example": "Mi hai salvato la vita!",
+  "example_en": "You saved my life!"
+ },
+ {
+  "rank": 539,
+  "word": "canzone",
+  "english": "song",
+  "example": "Adoro questa canzone!",
+  "example_en": "I love this song!"
+ },
+ {
+  "rank": 540,
+  "word": "corso",
+  "english": "course; main street",
+  "example": "Sto facendo un corso di italiano.",
+  "example_en": "I'm taking an Italian course.",
+  "note": "nel corso di = during"
+ },
+ {
+  "rank": 541,
+  "word": "regalo",
+  "english": "gift; present",
+  "example": "È un regalo per te.",
+  "example_en": "It's a present for you."
+ },
+ {
+  "rank": 542,
+  "word": "scherzare",
+  "english": "to joke",
+  "example": "Stai scherzando?",
+  "example_en": "Are you kidding?"
+ },
+ {
+  "rank": 543,
+  "word": "stamattina",
+  "english": "this morning",
+  "example": "Stamattina ho fatto colazione al bar.",
+  "example_en": "This morning I had breakfast at the café."
+ },
+ {
+  "rank": 544,
+  "word": "salute",
+  "english": "health; cheers!",
+  "example": "Salute!",
+  "example_en": "Cheers! / Bless you!"
+ },
+ {
+  "rank": 545,
+  "word": "duro",
+  "english": "hard; tough",
+  "example": "È stata una settimana dura.",
+  "example_en": "It's been a tough week."
+ },
+ {
+  "rank": 546,
+  "word": "computer",
+  "english": "computer",
+  "example": "Il mio computer è lentissimo.",
+  "example_en": "My computer is super slow."
+ },
+ {
+  "rank": 547,
+  "word": "pericolo",
+  "english": "danger",
+  "example": "Non c'è pericolo.",
+  "example_en": "There's no danger."
+ },
+ {
+  "rank": 548,
+  "word": "entro",
+  "english": "within; by",
+  "example": "Ti rispondo entro domani.",
+  "example_en": "I'll answer you by tomorrow."
+ },
+ {
+  "rank": 549,
+  "word": "freddo",
+  "english": "cold",
+  "example": "Fa freddo stasera.",
+  "example_en": "It's cold tonight.",
+  "note": "avere freddo = to be cold (person)"
+ },
+ {
+  "rank": 550,
+  "word": "triste",
+  "english": "sad",
+  "example": "Perché sei triste?",
+  "example_en": "Why are you sad?"
+ },
+ {
+  "rank": 551,
+  "word": "promettere",
+  "english": "to promise",
+  "example": "Te lo prometto.",
+  "example_en": "I promise you."
+ },
+ {
+  "rank": 552,
+  "word": "dunque",
+  "english": "so; therefore",
+  "example": "Dunque, dove eravamo?",
+  "example_en": "So, where were we?"
+ },
+ {
+  "rank": 553,
+  "word": "infatti",
+  "english": "in fact; indeed",
+  "example": "Ha detto che pioveva, e infatti piove.",
+  "example_en": "He said it would rain, and indeed it's raining."
+ },
+ {
+  "rank": 554,
+  "word": "possibilità",
+  "english": "possibility; chance",
+  "example": "C'è la possibilità di cambiare data?",
+  "example_en": "Is there a chance to change the date?"
+ },
+ {
+  "rank": 555,
+  "word": "casino",
+  "english": "mess; chaos",
+  "example": "Che casino!",
+  "example_en": "What a mess!",
+  "note": "Not 'casino' — that's casinò"
+ },
+ {
+  "rank": 556,
+  "word": "buonanotte",
+  "english": "good night",
+  "example": "Buonanotte, a domani!",
+  "example_en": "Good night, see you tomorrow!"
+ },
+ {
+  "rank": 557,
+  "word": "certamente",
+  "english": "certainly",
+  "example": "Certamente, nessun problema.",
+  "example_en": "Certainly, no problem."
+ },
+ {
+  "rank": 558,
+  "word": "regola",
+  "english": "rule",
+  "example": "Sono le regole.",
+  "example_en": "Those are the rules."
+ },
+ {
+  "rank": 559,
+  "word": "ballare",
+  "english": "to dance",
+  "example": "Ti piace ballare?",
+  "example_en": "Do you like dancing?"
+ },
+ {
+  "rank": 560,
+  "word": "birra",
+  "english": "beer",
+  "example": "Due birre, per favore.",
+  "example_en": "Two beers, please."
+ },
+ {
+  "rank": 561,
+  "word": "ovunque",
+  "english": "everywhere; anywhere",
+  "example": "Ti seguirei ovunque.",
+  "example_en": "I'd follow you anywhere."
+ },
+ {
+  "rank": 562,
+  "word": "cucina",
+  "english": "kitchen; cuisine",
+  "example": "Siamo in cucina.",
+  "example_en": "We're in the kitchen."
+ },
+ {
+  "rank": 563,
+  "word": "decisione",
+  "english": "decision",
+  "example": "È una decisione difficile.",
+  "example_en": "It's a hard decision.",
+  "note": "prendere una decisione = to make a decision"
+ },
+ {
+  "rank": 564,
+  "word": "anima",
+  "english": "soul",
+  "example": "Non c'era anima viva.",
+  "example_en": "There wasn't a soul around."
+ },
+ {
+  "rank": 565,
+  "word": "forma",
+  "english": "shape; form",
+  "example": "Sono fuori forma.",
+  "example_en": "I'm out of shape.",
+  "note": "in forma = in shape"
+ },
+ {
+  "rank": 566,
+  "word": "esempio",
+  "english": "example",
+  "example": "Per esempio?",
+  "example_en": "For example?"
+ },
+ {
+  "rank": 567,
+  "word": "occasione",
+  "english": "occasion; opportunity; bargain",
+  "example": "È un'ottima occasione.",
+  "example_en": "It's a great opportunity."
+ },
+ {
+  "rank": 568,
+  "word": "stanotte",
+  "english": "tonight; last night",
+  "example": "Stanotte non ho dormito.",
+  "example_en": "I didn't sleep last night."
+ },
+ {
+  "rank": 569,
+  "word": "cellulare",
+  "english": "cell phone",
+  "example": "Hai visto il mio cellulare?",
+  "example_en": "Have you seen my cell phone?"
+ },
+ {
+  "rank": 570,
+  "word": "necessario",
+  "english": "necessary",
+  "example": "Non è necessario.",
+  "example_en": "It's not necessary."
+ },
+ {
+  "rank": 571,
+  "word": "borsa",
+  "english": "bag; purse",
+  "example": "Ho dimenticato la borsa al ristorante.",
+  "example_en": "I forgot my bag at the restaurant."
+ },
+ {
+  "rank": 572,
+  "word": "nonno",
+  "english": "grandpa",
+  "example": "Il mio bisnonno è nato in Italia.",
+  "example_en": "My great-grandfather was born in Italy.",
+  "note": "bisnonno = great-grandfather"
+ },
+ {
+  "rank": 573,
+  "word": "affatto",
+  "english": "at all",
+  "example": "Non sono affatto stanco.",
+  "example_en": "I'm not tired at all."
+ },
+ {
+  "rank": 574,
+  "word": "comprare",
+  "english": "to buy",
+  "example": "Devo comprare il pane.",
+  "example_en": "I need to buy bread."
+ },
+ {
+  "rank": 575,
+  "word": "aperto",
+  "english": "open",
+  "example": "Il museo è aperto la domenica?",
+  "example_en": "Is the museum open on Sundays?"
+ },
+ {
+  "rank": 576,
+  "word": "braccio",
+  "english": "arm",
+  "example": "Mi fa male il braccio.",
+  "example_en": "My arm hurts.",
+  "note": "Irregular plural: le braccia"
+ },
+ {
+  "rank": 577,
+  "word": "chiesa",
+  "english": "church",
+  "example": "Che bella chiesa!",
+  "example_en": "What a beautiful church!"
+ },
+ {
+  "rank": 578,
+  "word": "scrivere",
+  "english": "to write",
+  "example": "Ti scrivo stasera.",
+  "example_en": "I'll write to you tonight."
+ },
+ {
+  "rank": 579,
+  "word": "scommettere",
+  "english": "to bet",
+  "example": "Scommetto che arriva in ritardo.",
+  "example_en": "I bet he arrives late."
+ },
+ {
+  "rank": 580,
+  "word": "scarpa",
+  "english": "shoe",
+  "example": "Queste scarpe sono comodissime.",
+  "example_en": "These shoes are super comfortable."
+ },
+ {
+  "rank": 581,
+  "word": "livello",
+  "english": "level",
+  "example": "Qual è il tuo livello di italiano?",
+  "example_en": "What's your Italian level?"
+ },
+ {
+  "rank": 582,
+  "word": "spettacolo",
+  "english": "show",
+  "example": "Lo spettacolo inizia alle nove.",
+  "example_en": "The show starts at nine."
+ },
+ {
+  "rank": 583,
+  "word": "visita",
+  "english": "visit",
+  "example": "Grazie della visita!",
+  "example_en": "Thanks for visiting!"
+ },
+ {
+  "rank": 584,
+  "word": "mica",
+  "english": "not at all (emphatic)",
+  "example": "Non è mica facile!",
+  "example_en": "It's not exactly easy!",
+  "note": "Mica male! = Not bad!"
+ },
+ {
+  "rank": 585,
+  "word": "sinistra",
+  "english": "left",
+  "example": "Giri a sinistra al semaforo.",
+  "example_en": "Turn left at the traffic light."
+ },
+ {
+  "rank": 586,
+  "word": "perciò",
+  "english": "so; therefore",
+  "example": "Ero stanco, perciò sono rimasto a casa.",
+  "example_en": "I was tired, so I stayed home."
+ },
+ {
+  "rank": 587,
+  "word": "mare",
+  "english": "sea; beach",
+  "example": "Andiamo al mare questo weekend.",
+  "example_en": "Let's go to the beach this weekend."
+ },
+ {
+  "rank": 588,
+  "word": "intelligente",
+  "english": "smart; intelligent",
+  "example": "È un ragazzo molto intelligente.",
+  "example_en": "He's a very smart guy."
+ },
+ {
+  "rank": 589,
+  "word": "classe",
+  "english": "class",
+  "example": "Eravamo nella stessa classe.",
+  "example_en": "We were in the same class."
+ },
+ {
+  "rank": 590,
+  "word": "cambio",
+  "english": "change; exchange",
+  "example": "Qual è il cambio oggi?",
+  "example_en": "What's the exchange rate today?"
+ },
+ {
+  "rank": 591,
+  "word": "scorso",
+  "english": "last (previous)",
+  "example": "L'anno scorso sono stato in Sicilia.",
+  "example_en": "Last year I was in Sicily."
+ },
+ {
+  "rank": 592,
+  "word": "bianco",
+  "english": "white",
+  "example": "Un bicchiere di vino bianco, per favore.",
+  "example_en": "A glass of white wine, please."
+ },
+ {
+  "rank": 593,
+  "word": "tavolo",
+  "english": "table",
+  "example": "Abbiamo prenotato un tavolo per quattro.",
+  "example_en": "We booked a table for four."
+ },
+ {
+  "rank": 594,
+  "word": "stagione",
+  "english": "season",
+  "example": "L'autunno è la mia stagione preferita.",
+  "example_en": "Fall is my favorite season."
+ },
+ {
+  "rank": 595,
+  "word": "rotto",
+  "english": "broken",
+  "example": "Il riscaldamento è rotto.",
+  "example_en": "The heating is broken."
+ },
+ {
+  "rank": 596,
+  "word": "contento",
+  "english": "glad; happy",
+  "example": "Sono contento che sei venuto.",
+  "example_en": "I'm glad you came."
+ },
+ {
+  "rank": 597,
+  "word": "inglese",
+  "english": "English",
+  "example": "Parli inglese?",
+  "example_en": "Do you speak English?"
+ },
+ {
+  "rank": 598,
+  "word": "volo",
+  "english": "flight",
+  "example": "Il mio volo è in ritardo.",
+  "example_en": "My flight is delayed."
+ },
+ {
+  "rank": 599,
+  "word": "attraverso",
+  "english": "through; across",
+  "example": "Siamo passati attraverso il parco.",
+  "example_en": "We walked through the park."
+ },
+ {
+  "rank": 600,
+  "word": "differenza",
+  "english": "difference",
+  "example": "Qual è la differenza?",
+  "example_en": "What's the difference?"
+ },
+ {
+  "rank": 601,
+  "word": "aprire",
+  "english": "to open",
+  "example": "Puoi aprire la finestra?",
+  "example_en": "Can you open the window?"
+ },
+ {
+  "rank": 602,
+  "word": "lato",
+  "english": "side",
+  "example": "Dall'altro lato della strada.",
+  "example_en": "On the other side of the street."
+ },
+ {
+  "rank": 603,
+  "word": "hotel",
+  "english": "hotel",
+  "example": "L'hotel è vicino alla stazione.",
+  "example_en": "The hotel is near the station.",
+  "note": "Also albergo"
+ },
+ {
+  "rank": 604,
+  "word": "maggiore",
+  "english": "bigger; older; main",
+  "example": "Mio fratello maggiore vive in Florida.",
+  "example_en": "My older brother lives in Florida.",
+  "note": "minore = younger; smaller"
+ },
+ {
+  "rank": 605,
+  "word": "umano",
+  "english": "human",
+  "example": "È un errore umano.",
+  "example_en": "It's human error."
+ },
+ {
+  "rank": 606,
+  "word": "carne",
+  "english": "meat",
+  "example": "Non mangio carne.",
+  "example_en": "I don't eat meat."
+ },
+ {
+  "rank": 607,
+  "word": "caldo",
+  "english": "hot; warm; heat",
+  "example": "Che caldo oggi!",
+  "example_en": "It's so hot today!",
+  "note": "avere caldo = to be hot (person)"
+ },
+ {
+  "rank": 608,
+  "word": "pelle",
+  "english": "skin; leather",
+  "example": "Una giacca di pelle.",
+  "example_en": "A leather jacket."
+ },
+ {
+  "rank": 609,
+  "word": "interno",
+  "english": "inside; interior",
+  "example": "Mangiamo all'interno o fuori?",
+  "example_en": "Shall we eat inside or outside?"
+ },
+ {
+  "rank": 610,
+  "word": "temere",
+  "english": "to fear; to be afraid",
+  "example": "Temo di sì.",
+  "example_en": "I'm afraid so."
+ },
+ {
+  "rank": 611,
+  "word": "leggere",
+  "english": "to read",
+  "example": "Mi piace leggere prima di dormire.",
+  "example_en": "I like reading before bed."
+ },
+ {
+  "rank": 612,
+  "word": "pomeriggio",
+  "english": "afternoon",
+  "example": "Ci sentiamo nel pomeriggio.",
+  "example_en": "Let's talk in the afternoon."
+ },
+ {
+  "rank": 613,
+  "word": "documento",
+  "english": "document; ID",
+  "example": "Ha un documento, per favore?",
+  "example_en": "Do you have ID, please?"
+ },
+ {
+  "rank": 614,
+  "word": "giudice",
+  "english": "judge",
+  "example": "Il giudice ha deciso a nostro favore.",
+  "example_en": "The judge ruled in our favor."
+ },
+ {
+  "rank": 615,
+  "word": "destra",
+  "english": "right (direction)",
+  "example": "La farmacia è sulla destra.",
+  "example_en": "The pharmacy is on the right.",
+  "note": "a destra = to the right"
+ },
+ {
+  "rank": 616,
+  "word": "luna",
+  "english": "moon",
+  "example": "Stasera c'è la luna piena.",
+  "example_en": "There's a full moon tonight.",
+  "note": "luna di miele = honeymoon"
+ },
+ {
+  "rank": 617,
+  "word": "ringraziare",
+  "english": "to thank",
+  "example": "Ti ringrazio tanto.",
+  "example_en": "Thank you so much."
+ },
+ {
+  "rank": 618,
+  "word": "pericoloso",
+  "english": "dangerous",
+  "example": "È pericoloso guidare con la neve.",
+  "example_en": "It's dangerous to drive in the snow."
+ },
+ {
+  "rank": 619,
+  "word": "vino",
+  "english": "wine",
+  "example": "Questo vino è buonissimo.",
+  "example_en": "This wine is excellent.",
+  "note": "vino della casa = house wine"
+ },
+ {
+  "rank": 620,
+  "word": "presente",
+  "english": "present; here",
+  "example": "Tutti presenti?",
+  "example_en": "Is everyone here?"
+ },
+ {
+  "rank": 621,
+  "word": "arrivederci",
+  "english": "goodbye",
+  "example": "Arrivederci, a presto!",
+  "example_en": "Goodbye, see you soon!",
+  "note": "Formal: ArrivederLa"
+ },
+ {
+  "rank": 622,
+  "word": "caffè",
+  "english": "coffee; café",
+  "example": "Prendiamo un caffè?",
+  "example_en": "Shall we grab a coffee?",
+  "note": "A caffè in Italy = an espresso"
+ },
+ {
+  "rank": 623,
+  "word": "barca",
+  "english": "boat",
+  "example": "Facciamo un giro in barca.",
+  "example_en": "Let's take a boat ride."
+ },
+ {
+  "rank": 624,
+  "word": "lezione",
+  "english": "lesson; class",
+  "example": "Ho lezione di italiano il martedì.",
+  "example_en": "I have Italian class on Tuesdays."
+ },
+ {
+  "rank": 625,
+  "word": "intero",
+  "english": "whole; entire",
+  "example": "Ho mangiato una pizza intera!",
+  "example_en": "I ate a whole pizza!"
+ },
+ {
+  "rank": 626,
+  "word": "partire",
+  "english": "to leave; to depart",
+  "example": "A che ora parte il treno?",
+  "example_en": "What time does the train leave?"
+ },
+ {
+  "rank": 627,
+  "word": "nord",
+  "english": "north",
+  "example": "Milano è nel nord Italia.",
+  "example_en": "Milan is in northern Italy."
+ },
+ {
+  "rank": 628,
+  "word": "congratulazioni",
+  "english": "congratulations",
+  "example": "Congratulazioni per il nuovo lavoro!",
+  "example_en": "Congratulations on the new job!",
+  "note": "Also: Complimenti!"
+ },
+ {
+  "rank": 629,
+  "word": "data",
+  "english": "date (calendar)",
+  "example": "Qual è la data di oggi?",
+  "example_en": "What's today's date?",
+  "note": "appuntamento = date (meeting)"
+ },
+ {
+  "rank": 630,
+  "word": "sposare",
+  "english": "to marry",
+  "example": "Si sono sposati l'anno scorso.",
+  "example_en": "They got married last year.",
+  "note": "sposarsi = to get married"
+ },
+ {
+  "rank": 631,
+  "word": "treno",
+  "english": "train",
+  "example": "Prendo il treno delle otto.",
+  "example_en": "I'm taking the eight o'clock train."
+ },
+ {
+  "rank": 632,
+  "word": "radio",
+  "english": "radio",
+  "example": "Ascolto la radio in macchina.",
+  "example_en": "I listen to the radio in the car.",
+  "note": "Feminine: la radio"
+ },
+ {
+  "rank": 633,
+  "word": "comune",
+  "english": "common; town hall",
+  "example": "Devo andare in comune per un documento.",
+  "example_en": "I need to go to the town hall for a document."
+ },
+ {
+  "rank": 634,
+  "word": "cattivo",
+  "english": "bad; mean; nasty",
+  "example": "Non essere cattivo!",
+  "example_en": "Don't be mean!"
+ },
+ {
+  "rank": 635,
+  "word": "imparare",
+  "english": "to learn",
+  "example": "Sto imparando l'italiano.",
+  "example_en": "I'm learning Italian."
+ },
+ {
+  "rank": 636,
+  "word": "smettere",
+  "english": "to stop; to quit",
+  "example": "Smetti di lamentarti!",
+  "example_en": "Stop complaining!",
+  "note": "smettere di = to stop doing"
+ },
+ {
+  "rank": 637,
+  "word": "responsabile",
+  "english": "responsible; manager",
+  "example": "Posso parlare con il responsabile?",
+  "example_en": "Can I speak with the manager?"
+ },
+ {
+  "rank": 638,
+  "word": "farcela",
+  "english": "to make it; to manage",
+  "example": "Ce la faccio!",
+  "example_en": "I can do it! / I'll make it!",
+  "note": "ce la faccio, ce la fai, ce la fa…"
+ },
+ {
+  "rank": 639,
+  "word": "periodo",
+  "english": "period; time",
+  "example": "È un periodo difficile.",
+  "example_en": "It's a tough time."
+ },
+ {
+  "rank": 640,
+  "word": "energia",
+  "english": "energy",
+  "example": "Non ho energia oggi.",
+  "example_en": "I have no energy today."
+ },
+ {
+  "rank": 641,
+  "word": "segno",
+  "english": "sign",
+  "example": "È un buon segno.",
+  "example_en": "It's a good sign."
+ },
+ {
+  "rank": 642,
+  "word": "calmarsi",
+  "english": "to calm down",
+  "example": "Calmati, non è successo niente.",
+  "example_en": "Calm down, nothing happened."
+ },
+ {
+  "rank": 643,
+  "word": "accidenti",
+  "english": "darn!; wow!",
+  "example": "Accidenti, che freddo!",
+  "example_en": "Wow, it's cold!"
+ },
+ {
+  "rank": 644,
+  "word": "speranza",
+  "english": "hope",
+  "example": "Non perdere la speranza.",
+  "example_en": "Don't lose hope."
+ },
+ {
+  "rank": 645,
+  "word": "rischio",
+  "english": "risk",
+  "example": "Non voglio correre rischi.",
+  "example_en": "I don't want to take risks.",
+  "note": "correre un rischio = to take a risk"
+ },
+ {
+  "rank": 646,
+  "word": "rosso",
+  "english": "red",
+  "example": "Al semaforo rosso ci si ferma.",
+  "example_en": "You stop at a red light."
+ },
+ {
+  "rank": 647,
+  "word": "soprattutto",
+  "english": "above all; especially",
+  "example": "Mi piace tutto, soprattutto la pizza.",
+  "example_en": "I like everything, especially pizza."
+ },
+ {
+  "rank": 648,
+  "word": "toccare",
+  "english": "to touch; to be someone's turn",
+  "example": "Tocca a te!",
+  "example_en": "It's your turn!",
+  "note": "Non toccare! = Don't touch!"
+ },
+ {
+  "rank": 649,
+  "word": "zia",
+  "english": "aunt",
+  "example": "Mia zia cucina benissimo.",
+  "example_en": "My aunt cooks really well."
+ },
+ {
+  "rank": 650,
+  "word": "gamba",
+  "english": "leg",
+  "example": "Mi fa male la gamba.",
+  "example_en": "My leg hurts.",
+  "note": "In gamba! = Smart / capable!"
+ },
+ {
+  "rank": 651,
+  "word": "biglietto",
+  "english": "ticket",
+  "example": "Ho già comprato i biglietti.",
+  "example_en": "I already bought the tickets."
+ },
+ {
+  "rank": 652,
+  "word": "pressione",
+  "english": "pressure",
+  "example": "Sono sotto pressione al lavoro.",
+  "example_en": "I'm under pressure at work."
+ },
+ {
+  "rank": 653,
+  "word": "nascondere",
+  "english": "to hide",
+  "example": "Dove hai nascosto il regalo?",
+  "example_en": "Where did you hide the present?"
+ },
+ {
+  "rank": 654,
+  "word": "maestro",
+  "english": "teacher (elementary); master",
+  "example": "Il maestro di mio figlio è bravissimo.",
+  "example_en": "My son's teacher is excellent."
+ },
+ {
+  "rank": 655,
+  "word": "benvenuto",
+  "english": "welcome",
+  "example": "Benvenuto in Italia!",
+  "example_en": "Welcome to Italy!"
+ },
+ {
+  "rank": 656,
+  "word": "offerta",
+  "english": "offer; deal",
+  "example": "C'è un'offerta speciale oggi.",
+  "example_en": "There's a special deal today.",
+  "note": "in offerta = on sale"
+ },
+ {
+  "rank": 657,
+  "word": "scherzo",
+  "english": "joke; prank",
+  "example": "Era solo uno scherzo!",
+  "example_en": "It was only a joke!"
+ },
+ {
+  "rank": 658,
+  "word": "finta",
+  "english": "pretend; fake",
+  "example": "Fa finta di non sentire.",
+  "example_en": "He's pretending not to hear.",
+  "note": "fare finta di = to pretend"
+ },
+ {
+  "rank": 659,
+  "word": "banca",
+  "english": "bank",
+  "example": "Devo passare in banca.",
+  "example_en": "I need to stop by the bank."
+ },
+ {
+  "rank": 660,
+  "word": "indirizzo",
+  "english": "address",
+  "example": "Mi mandi l'indirizzo?",
+  "example_en": "Can you send me the address?"
+ },
+ {
+  "rank": 661,
+  "word": "tale",
+  "english": "such",
+  "example": "Non ho mai visto una cosa tale.",
+  "example_en": "I've never seen such a thing.",
+  "note": "tale e quale = exactly the same"
+ },
+ {
+  "rank": 662,
+  "word": "ottenere",
+  "english": "to get; to obtain",
+  "example": "Spero di ottenere la cittadinanza.",
+  "example_en": "I hope to get citizenship."
+ },
+ {
+  "rank": 663,
+  "word": "esperienza",
+  "english": "experience",
+  "example": "È stata un'esperienza bellissima.",
+  "example_en": "It was a wonderful experience."
+ },
+ {
+  "rank": 664,
+  "word": "piangere",
+  "english": "to cry",
+  "example": "Perché piangi?",
+  "example_en": "Why are you crying?"
+ },
+ {
+  "rank": 665,
+  "word": "sud",
+  "english": "south",
+  "example": "La mia famiglia viene dal sud Italia.",
+  "example_en": "My family comes from southern Italy."
+ },
+ {
+  "rank": 666,
+  "word": "inoltre",
+  "english": "also; moreover",
+  "example": "Inoltre, è anche economico.",
+  "example_en": "Plus, it's cheap too."
+ },
+ {
+  "rank": 667,
+  "word": "serie",
+  "english": "series; TV show",
+  "example": "Che serie stai guardando?",
+  "example_en": "What show are you watching?",
+  "note": "Doesn't change in plural"
+ },
+ {
+  "rank": 668,
+  "word": "guida",
+  "english": "guide; driving",
+  "example": "Abbiamo preso una guida a Roma.",
+  "example_en": "We got a guide in Rome.",
+  "note": "patente di guida = driver's license"
+ },
+ {
+  "rank": 669,
+  "word": "prezzo",
+  "english": "price",
+  "example": "Il prezzo è giusto.",
+  "example_en": "The price is fair."
+ },
+ {
+  "rank": 670,
+  "word": "arrabbiato",
+  "english": "angry",
+  "example": "Sei arrabbiato con me?",
+  "example_en": "Are you angry with me?"
+ },
+ {
+  "rank": 671,
+  "word": "orribile",
+  "english": "horrible",
+  "example": "Il caffè qui è orribile.",
+  "example_en": "The coffee here is horrible."
+ },
+ {
+  "rank": 672,
+  "word": "ritorno",
+  "english": "return",
+  "example": "Il viaggio di ritorno è stato lungo.",
+  "example_en": "The trip back was long.",
+  "note": "andata e ritorno = round trip"
+ },
+ {
+  "rank": 673,
+  "word": "animale",
+  "english": "animal",
+  "example": "Ti piacciono gli animali?",
+  "example_en": "Do you like animals?"
+ },
+ {
+  "rank": 674,
+  "word": "enorme",
+  "english": "huge",
+  "example": "La casa è enorme!",
+  "example_en": "The house is huge!"
+ },
+ {
+  "rank": 675,
+  "word": "progetto",
+  "english": "project; plan",
+  "example": "Sto lavorando a un nuovo progetto.",
+  "example_en": "I'm working on a new project."
+ },
+ {
+  "rank": 676,
+  "word": "naturalmente",
+  "english": "naturally; of course",
+  "example": "Naturalmente sei invitato.",
+  "example_en": "Of course you're invited."
+ },
+ {
+  "rank": 677,
+  "word": "metro",
+  "english": "meter; subway",
+  "example": "Prendiamo la metro.",
+  "example_en": "Let's take the subway.",
+  "note": "la metro = subway; il metro = meter"
+ },
+ {
+  "rank": 678,
+  "word": "mossa",
+  "english": "move",
+  "example": "Bella mossa!",
+  "example_en": "Nice move!"
+ },
+ {
+  "rank": 679,
+  "word": "finestra",
+  "english": "window",
+  "example": "Chiudi la finestra, fa freddo.",
+  "example_en": "Close the window, it's cold."
+ },
+ {
+  "rank": 680,
+  "word": "supporre",
+  "english": "to suppose",
+  "example": "Suppongo di sì.",
+  "example_en": "I suppose so."
+ },
+ {
+  "rank": 681,
+  "word": "destino",
+  "english": "destiny; fate",
+  "example": "È il destino.",
+  "example_en": "It's fate."
+ },
+ {
+  "rank": 682,
+  "word": "saltare",
+  "english": "to jump; to skip",
+  "example": "Ho saltato il pranzo oggi.",
+  "example_en": "I skipped lunch today."
+ },
+ {
+  "rank": 683,
+  "word": "correre",
+  "english": "to run",
+  "example": "Corro ogni mattina.",
+  "example_en": "I run every morning."
+ },
+ {
+  "rank": 684,
+  "word": "fregare",
+  "english": "to care (slang); to rip off",
+  "example": "Non me ne frega niente.",
+  "example_en": "I don't give a damn.",
+  "note": "Informal — a bit rude"
+ },
+ {
+  "rank": 685,
+  "word": "edificio",
+  "english": "building",
+  "example": "È l'edificio più alto della città.",
+  "example_en": "It's the tallest building in the city."
+ },
+ {
+  "rank": 686,
+  "word": "colazione",
+  "english": "breakfast",
+  "example": "Cosa mangi a colazione?",
+  "example_en": "What do you eat for breakfast?",
+  "note": "fare colazione = to have breakfast"
+ },
+ {
+  "rank": 687,
+  "word": "collo",
+  "english": "neck",
+  "example": "Ho il torcicollo.",
+  "example_en": "I have a stiff neck."
+ },
+ {
+  "rank": 688,
+  "word": "fiducia",
+  "english": "trust",
+  "example": "Ho fiducia in te.",
+  "example_en": "I trust you."
+ },
+ {
+  "rank": 689,
+  "word": "ristorante",
+  "english": "restaurant",
+  "example": "Conosco un ristorante fantastico.",
+  "example_en": "I know a fantastic restaurant."
+ },
+ {
+  "rank": 690,
+  "word": "scegliere",
+  "english": "to choose",
+  "example": "Scegli tu il film.",
+  "example_en": "You choose the movie.",
+  "note": "scelgo, scegli, sceglie, scegliamo, scegliete, scelgono"
+ },
+ {
+  "rank": 691,
+  "word": "arte",
+  "english": "art",
+  "example": "Firenze è piena d'arte.",
+  "example_en": "Florence is full of art."
+ },
+ {
+  "rank": 692,
+  "word": "metà",
+  "english": "half",
+  "example": "Facciamo a metà?",
+  "example_en": "Shall we split it?"
+ },
+ {
+  "rank": 693,
+  "word": "discorso",
+  "english": "speech; conversation",
+  "example": "Che discorsi fai?",
+  "example_en": "What are you talking about?"
+ },
+ {
+  "rank": 694,
+  "word": "nove",
+  "english": "nine",
+  "example": "Il negozio apre alle nove.",
+  "example_en": "The shop opens at nine."
+ },
+ {
+  "rank": 695,
+  "word": "fortunato",
+  "english": "lucky",
+  "example": "Sei proprio fortunato!",
+  "example_en": "You're really lucky!"
+ },
+ {
+  "rank": 696,
+  "word": "blu",
+  "english": "blue",
+  "example": "Ha una macchina blu.",
+  "example_en": "He has a blue car.",
+  "note": "Doesn't change: la macchina blu, le macchine blu"
+ },
+ {
+  "rank": 697,
+  "word": "cominciare",
+  "english": "to begin; to start",
+  "example": "Cominciamo?",
+  "example_en": "Shall we start?"
+ },
+ {
+  "rank": 698,
+  "word": "muro",
+  "english": "wall",
+  "example": "Ho appeso la foto al muro.",
+  "example_en": "I hung the photo on the wall."
+ },
+ {
+  "rank": 699,
+  "word": "tranne",
+  "english": "except",
+  "example": "Vengono tutti tranne Luca.",
+  "example_en": "Everyone's coming except Luca."
+ },
+ {
+  "rank": 700,
+  "word": "proteggere",
+  "english": "to protect",
+  "example": "Metti la crema per proteggerti dal sole.",
+  "example_en": "Put on sunscreen to protect yourself from the sun."
+ },
+ {
+  "rank": 701,
+  "word": "dubbio",
+  "english": "doubt",
+  "example": "Non ho dubbi.",
+  "example_en": "I have no doubt.",
+  "note": "senza dubbio = without a doubt"
+ },
+ {
+  "rank": 702,
+  "word": "stazione",
+  "english": "station",
+  "example": "Ci vediamo alla stazione.",
+  "example_en": "See you at the station."
+ },
+ {
+  "rank": 703,
+  "word": "emergenza",
+  "english": "emergency",
+  "example": "È un'emergenza!",
+  "example_en": "It's an emergency!"
+ },
+ {
+  "rank": 704,
+  "word": "giustizia",
+  "english": "justice",
+  "example": "La giustizia italiana è lenta.",
+  "example_en": "The Italian justice system is slow."
+ },
+ {
+  "rank": 705,
+  "word": "immediatamente",
+  "english": "immediately",
+  "example": "Vieni qui immediatamente!",
+  "example_en": "Come here immediately!"
+ },
+ {
+  "rank": 706,
+  "word": "odore",
+  "english": "smell",
+  "example": "Che buon odore!",
+  "example_en": "What a nice smell!"
+ },
+ {
+  "rank": 707,
+  "word": "contrario",
+  "english": "opposite; against",
+  "example": "Al contrario!",
+  "example_en": "On the contrary!",
+  "note": "essere contrario = to be against"
+ },
+ {
+  "rank": 708,
+  "word": "terzo",
+  "english": "third",
+  "example": "È la terza volta che chiamo.",
+  "example_en": "It's the third time I've called."
+ },
+ {
+  "rank": 709,
+  "word": "locale",
+  "english": "local; venue",
+  "example": "È un locale molto carino.",
+  "example_en": "It's a really nice place (bar/club)."
+ },
+ {
+  "rank": 710,
+  "word": "notare",
+  "english": "to notice",
+  "example": "Hai notato qualcosa di strano?",
+  "example_en": "Did you notice anything strange?"
+ },
+ {
+  "rank": 711,
+  "word": "evitare",
+  "english": "to avoid",
+  "example": "Cerco di evitare il traffico.",
+  "example_en": "I try to avoid traffic."
+ },
+ {
+  "rank": 712,
+  "word": "spirito",
+  "english": "spirit; wit",
+  "example": "Ha un grande spirito.",
+  "example_en": "He has a great sense of humor."
+ },
+ {
+  "rank": 713,
+  "word": "seduto",
+  "english": "seated; sitting",
+  "example": "Ero seduto in prima fila.",
+  "example_en": "I was sitting in the front row.",
+  "note": "sedersi = to sit down"
+ },
+ {
+  "rank": 714,
+  "word": "lingua",
+  "english": "language; tongue",
+  "example": "Quante lingue parli?",
+  "example_en": "How many languages do you speak?"
+ },
+ {
+  "rank": 715,
+  "word": "praticamente",
+  "english": "practically",
+  "example": "Ho praticamente finito.",
+  "example_en": "I'm practically done."
+ },
+ {
+  "rank": 716,
+  "word": "riunione",
+  "english": "meeting",
+  "example": "Sono in riunione fino alle tre.",
+  "example_en": "I'm in a meeting until three."
+ },
+ {
+  "rank": 717,
+  "word": "rumore",
+  "english": "noise",
+  "example": "Cos'è questo rumore?",
+  "example_en": "What's that noise?"
+ },
+ {
+  "rank": 718,
+  "word": "torta",
+  "english": "cake",
+  "example": "Ho fatto una torta al cioccolato.",
+  "example_en": "I made a chocolate cake."
+ },
+ {
+  "rank": 719,
+  "word": "accanto",
+  "english": "next to; beside",
+  "example": "Siediti accanto a me.",
+  "example_en": "Sit next to me.",
+  "note": "accanto a = next to"
+ },
+ {
+  "rank": 720,
+  "word": "turno",
+  "english": "turn; shift",
+  "example": "Lavoro il turno di notte.",
+  "example_en": "I work the night shift.",
+  "note": "È il mio turno = It's my turn"
+ },
+ {
+  "rank": 721,
+  "word": "persino",
+  "english": "even",
+  "example": "Persino mia madre lo sa.",
+  "example_en": "Even my mother knows it."
+ },
+ {
+  "rank": 722,
+  "word": "ovvio",
+  "english": "obvious",
+  "example": "È ovvio!",
+  "example_en": "It's obvious!"
+ },
+ {
+  "rank": 723,
+  "word": "coppia",
+  "english": "couple",
+  "example": "Sono una bella coppia.",
+  "example_en": "They're a lovely couple."
+ },
+ {
+  "rank": 724,
+  "word": "ridere",
+  "english": "to laugh",
+  "example": "Mi fai ridere!",
+  "example_en": "You make me laugh!"
+ },
+ {
+  "rank": 725,
+  "word": "pausa",
+  "english": "break; pause",
+  "example": "Facciamo una pausa?",
+  "example_en": "Shall we take a break?"
+ },
+ {
+  "rank": 726,
+  "word": "grave",
+  "english": "serious; severe",
+  "example": "Non è niente di grave.",
+  "example_en": "It's nothing serious."
+ },
+ {
+  "rank": 727,
+  "word": "memoria",
+  "english": "memory",
+  "example": "Ho una pessima memoria per i nomi.",
+  "example_en": "I have a terrible memory for names."
+ },
+ {
+  "rank": 728,
+  "word": "naso",
+  "english": "nose",
+  "example": "Ho il naso chiuso.",
+  "example_en": "I have a stuffy nose."
+ },
+ {
+  "rank": 729,
+  "word": "nemico",
+  "english": "enemy",
+  "example": "Non sono il tuo nemico.",
+  "example_en": "I'm not your enemy."
+ },
+ {
+  "rank": 730,
+  "word": "costare",
+  "english": "to cost",
+  "example": "Quanto costa un biglietto?",
+  "example_en": "How much is a ticket?"
+ },
+ {
+  "rank": 731,
+  "word": "laggiù",
+  "english": "down there; over there",
+  "example": "Lo vedi laggiù?",
+  "example_en": "Do you see it over there?"
+ },
+ {
+  "rank": 732,
+  "word": "scatola",
+  "english": "box",
+  "example": "Metti tutto in una scatola.",
+  "example_en": "Put everything in a box."
+ },
+ {
+  "rank": 733,
+  "word": "albero",
+  "english": "tree",
+  "example": "C'è un albero enorme nel giardino.",
+  "example_en": "There's a huge tree in the garden.",
+  "note": "albero di Natale = Christmas tree"
+ },
+ {
+  "rank": 734,
+  "word": "tribunale",
+  "english": "court (of law)",
+  "example": "La mia causa è al tribunale di Roma.",
+  "example_en": "My case is at the court in Rome."
+ },
+ {
+  "rank": 735,
+  "word": "anello",
+  "english": "ring",
+  "example": "Che bell'anello!",
+  "example_en": "What a beautiful ring!"
+ },
+ {
+  "rank": 736,
+  "word": "ferito",
+  "english": "injured; hurt",
+  "example": "Nessuno è rimasto ferito.",
+  "example_en": "No one was hurt."
+ },
+ {
+  "rank": 737,
+  "word": "preoccupato",
+  "english": "worried",
+  "example": "Sono un po' preoccupato.",
+  "example_en": "I'm a little worried."
+ },
+ {
+  "rank": 738,
+  "word": "sentimento",
+  "english": "feeling",
+  "example": "Non nascondere i tuoi sentimenti.",
+  "example_en": "Don't hide your feelings."
+ },
+ {
+  "rank": 739,
+  "word": "natura",
+  "english": "nature",
+  "example": "Amo stare a contatto con la natura.",
+  "example_en": "I love being close to nature."
+ },
+ {
+  "rank": 740,
+  "word": "colore",
+  "english": "color",
+  "example": "Qual è il tuo colore preferito?",
+  "example_en": "What's your favorite color?"
+ },
+ {
+  "rank": 741,
+  "word": "basso",
+  "english": "low; short",
+  "example": "Parla a voce bassa.",
+  "example_en": "Speak quietly."
+ },
+ {
+  "rank": 742,
+  "word": "uso",
+  "english": "use",
+  "example": "È per uso personale.",
+  "example_en": "It's for personal use."
+ },
+ {
+  "rank": 743,
+  "word": "anzi",
+  "english": "actually; on the contrary",
+  "example": "Non è caro, anzi, è economico.",
+  "example_en": "It's not expensive — actually, it's cheap."
+ },
+ {
+  "rank": 744,
+  "word": "preferito",
+  "english": "favorite",
+  "example": "Questo è il mio ristorante preferito.",
+  "example_en": "This is my favorite restaurant."
+ },
+ {
+  "rank": 745,
+  "word": "utile",
+  "english": "useful",
+  "example": "Questa app è molto utile.",
+  "example_en": "This app is really useful."
+ },
+ {
+  "rank": 746,
+  "word": "professore",
+  "english": "professor; teacher",
+  "example": "Il professore è molto severo.",
+  "example_en": "The teacher is very strict."
+ },
+ {
+  "rank": 747,
+  "word": "fidanzato",
+  "english": "boyfriend; fiancé",
+  "example": "Il mio fidanzato è di Napoli.",
+  "example_en": "My boyfriend is from Naples.",
+  "note": "fidanzata = girlfriend; fiancée"
+ },
+ {
+  "rank": 748,
+  "word": "sensazione",
+  "english": "feeling; sensation",
+  "example": "Ho la sensazione che pioverà.",
+  "example_en": "I have a feeling it'll rain."
+ },
+ {
+  "rank": 749,
+  "word": "legale",
+  "english": "legal",
+  "example": "Ho bisogno di una consulenza legale.",
+  "example_en": "I need some legal advice."
+ },
+ {
+  "rank": 750,
+  "word": "compito",
+  "english": "task; homework",
+  "example": "Hai fatto i compiti?",
+  "example_en": "Did you do your homework?"
+ },
+ {
+  "rank": 751,
+  "word": "pesce",
+  "english": "fish",
+  "example": "Il pesce è fresco oggi?",
+  "example_en": "Is the fish fresh today?"
+ },
+ {
+  "rank": 752,
+  "word": "obiettivo",
+  "english": "goal; objective",
+  "example": "Il mio obiettivo è parlare bene l'italiano.",
+  "example_en": "My goal is to speak Italian well."
+ },
+ {
+  "rank": 753,
+  "word": "incontrare",
+  "english": "to meet; to run into",
+  "example": "Ho incontrato Marco al bar.",
+  "example_en": "I ran into Marco at the café."
+ },
+ {
+  "rank": 754,
+  "word": "nascere",
+  "english": "to be born",
+  "example": "Dove sei nato?",
+  "example_en": "Where were you born?"
+ },
+ {
+  "rank": 755,
+  "word": "breve",
+  "english": "short; brief",
+  "example": "Sarò breve.",
+  "example_en": "I'll be brief."
+ },
+ {
+  "rank": 756,
+  "word": "risolvere",
+  "english": "to solve",
+  "example": "Abbiamo risolto il problema.",
+  "example_en": "We solved the problem."
+ },
+ {
+  "rank": 757,
+  "word": "isola",
+  "english": "island",
+  "example": "Vorrei visitare le isole Eolie.",
+  "example_en": "I'd like to visit the Aeolian Islands."
+ },
+ {
+  "rank": 758,
+  "word": "povero",
+  "english": "poor",
+  "example": "Poverino!",
+  "example_en": "Poor thing!"
+ },
+ {
+  "rank": 759,
+  "word": "stavolta",
+  "english": "this time",
+  "example": "Stavolta pago io.",
+  "example_en": "This time I'm paying."
+ },
+ {
+  "rank": 760,
+  "word": "affrontare",
+  "english": "to face; to deal with",
+  "example": "Dobbiamo affrontare il problema.",
+  "example_en": "We have to deal with the problem."
+ },
+ {
+  "rank": 761,
+  "word": "opera",
+  "english": "work; opera",
+  "example": "È un'opera d'arte.",
+  "example_en": "It's a work of art."
+ },
+ {
+  "rank": 762,
+  "word": "bacio",
+  "english": "kiss",
+  "example": "Un bacio e a presto!",
+  "example_en": "Kisses, see you soon!",
+  "note": "Baci! = Love (sign-off)"
+ },
+ {
+  "rank": 763,
+  "word": "bordo",
+  "english": "edge; board",
+  "example": "Benvenuti a bordo.",
+  "example_en": "Welcome aboard."
+ },
+ {
+  "rank": 764,
+  "word": "sbaglio",
+  "english": "mistake",
+  "example": "Scusa, è stato uno sbaglio.",
+  "example_en": "Sorry, it was a mistake.",
+  "note": "per sbaglio = by mistake"
+ },
+ {
+  "rank": 765,
+  "word": "verde",
+  "english": "green",
+  "example": "Il semaforo è verde, vai!",
+  "example_en": "The light's green, go!",
+  "note": "essere al verde = to be broke"
+ },
+ {
+  "rank": 766,
+  "word": "improvviso",
+  "english": "sudden",
+  "example": "All'improvviso ha cominciato a piovere.",
+  "example_en": "All of a sudden it started to rain.",
+  "note": "all'improvviso = suddenly"
+ },
+ {
+  "rank": 767,
+  "word": "fianco",
+  "english": "side; hip",
+  "example": "Siediti al mio fianco.",
+  "example_en": "Sit by my side."
+ },
+ {
+  "rank": 768,
+  "word": "alzarsi",
+  "english": "to get up",
+  "example": "A che ora ti alzi?",
+  "example_en": "What time do you get up?"
+ },
+ {
+  "rank": 769,
+  "word": "accettare",
+  "english": "to accept",
+  "example": "Accettate carte di credito?",
+  "example_en": "Do you accept credit cards?"
+ },
+ {
+  "rank": 770,
+  "word": "peso",
+  "english": "weight",
+  "example": "Ho messo su un po' di peso.",
+  "example_en": "I've put on a bit of weight."
+ },
+ {
+  "rank": 771,
+  "word": "stile",
+  "english": "style",
+  "example": "Ha uno stile tutto suo.",
+  "example_en": "He has a style all his own."
+ },
+ {
+  "rank": 772,
+  "word": "corsa",
+  "english": "run; race; rush",
+  "example": "Ho fatto una corsa per prendere il treno.",
+  "example_en": "I had to run to catch the train.",
+  "note": "di corsa = in a hurry"
+ },
+ {
+  "rank": 773,
+  "word": "entrata",
+  "english": "entrance",
+  "example": "L'entrata è dall'altra parte.",
+  "example_en": "The entrance is on the other side."
+ },
+ {
+  "rank": 774,
+  "word": "soluzione",
+  "english": "solution",
+  "example": "C'è sempre una soluzione.",
+  "example_en": "There's always a solution."
+ },
+ {
+  "rank": 775,
+  "word": "contratto",
+  "english": "contract",
+  "example": "Ho firmato il contratto.",
+  "example_en": "I signed the contract."
+ },
+ {
+  "rank": 776,
+  "word": "fermare",
+  "english": "to stop",
+  "example": "Ferma la macchina!",
+  "example_en": "Stop the car!",
+  "note": "fermarsi = to stop (oneself)"
+ },
+ {
+  "rank": 777,
+  "word": "meraviglioso",
+  "english": "wonderful",
+  "example": "È stato un weekend meraviglioso.",
+  "example_en": "It was a wonderful weekend."
+ },
+ {
+  "rank": 778,
+  "word": "guidare",
+  "english": "to drive",
+  "example": "Non mi piace guidare in città.",
+  "example_en": "I don't like driving in the city."
+ },
+ {
+  "rank": 779,
+  "word": "dente",
+  "english": "tooth",
+  "example": "Mi fa male un dente.",
+  "example_en": "I have a toothache."
+ },
+ {
+  "rank": 780,
+  "word": "mandare",
+  "english": "to send",
+  "example": "Mandami una foto!",
+  "example_en": "Send me a photo!"
+ },
+ {
+  "rank": 781,
+  "word": "fidarsi",
+  "english": "to trust",
+  "example": "Fidati di me.",
+  "example_en": "Trust me."
+ },
+ {
+  "rank": 782,
+  "word": "sveglia",
+  "english": "alarm clock; wake up!",
+  "example": "Ho messo la sveglia alle sette.",
+  "example_en": "I set the alarm for seven.",
+  "note": "Sveglia! = Wake up!"
+ },
+ {
+  "rank": 783,
+  "word": "ultimamente",
+  "english": "lately",
+  "example": "Ultimamente sono molto stanco.",
+  "example_en": "I've been really tired lately."
+ },
+ {
+  "rank": 784,
+  "word": "dipendere",
+  "english": "to depend",
+  "example": "Dipende.",
+  "example_en": "It depends."
+ },
+ {
+  "rank": 785,
+  "word": "innocente",
+  "english": "innocent",
+  "example": "Sono innocente!",
+  "example_en": "I'm innocent!"
+ },
+ {
+  "rank": 786,
+  "word": "scopo",
+  "english": "purpose; aim",
+  "example": "Qual è lo scopo del viaggio?",
+  "example_en": "What's the purpose of the trip?"
+ },
+ {
+  "rank": 787,
+  "word": "magia",
+  "english": "magic",
+  "example": "Sembra una magia!",
+  "example_en": "It's like magic!"
+ },
+ {
+  "rank": 788,
+  "word": "effetto",
+  "english": "effect",
+  "example": "Che effetto ti fa?",
+  "example_en": "How does it make you feel?"
+ },
+ {
+  "rank": 789,
+  "word": "vendere",
+  "english": "to sell",
+  "example": "Vendono la casa.",
+  "example_en": "They're selling the house."
+ },
+ {
+  "rank": 790,
+  "word": "pantaloni",
+  "english": "pants; trousers",
+  "example": "Questi pantaloni sono troppo lunghi.",
+  "example_en": "These pants are too long."
+ },
+ {
+  "rank": 791,
+  "word": "centrale",
+  "english": "central",
+  "example": "La stazione centrale è lì.",
+  "example_en": "The central station is there."
+ },
+ {
+  "rank": 792,
+  "word": "azione",
+  "english": "action",
+  "example": "È un film d'azione.",
+  "example_en": "It's an action movie."
+ },
+ {
+  "rank": 793,
+  "word": "fede",
+  "english": "faith; wedding ring",
+  "example": "Ha perso la fede!",
+  "example_en": "He lost his wedding ring!"
+ },
+ {
+  "rank": 794,
+  "word": "nipote",
+  "english": "grandchild; niece; nephew",
+  "example": "Ho tre nipoti.",
+  "example_en": "I have three nieces and nephews.",
+  "note": "Means both grandchild and niece/nephew"
+ },
+ {
+  "rank": 795,
+  "word": "ognuno",
+  "english": "each one; everyone",
+  "example": "Ognuno paga il suo.",
+  "example_en": "Everyone pays for their own."
+ },
+ {
+  "rank": 796,
+  "word": "debole",
+  "english": "weak",
+  "example": "Mi sento un po' debole.",
+  "example_en": "I feel a little weak."
+ },
+ {
+  "rank": 797,
+  "word": "risultato",
+  "english": "result",
+  "example": "Aspetto i risultati.",
+  "example_en": "I'm waiting for the results."
+ },
+ {
+  "rank": 798,
+  "word": "ridicolo",
+  "english": "ridiculous",
+  "example": "È ridicolo!",
+  "example_en": "That's ridiculous!"
+ },
+ {
+  "rank": 799,
+  "word": "americano",
+  "english": "American",
+  "example": "Sono americano, ma ho origini italiane.",
+  "example_en": "I'm American, but I have Italian roots."
+ },
+ {
+  "rank": 800,
+  "word": "francese",
+  "english": "French",
+  "example": "Parli francese?",
+  "example_en": "Do you speak French?"
+ },
+ {
+  "rank": 801,
+  "word": "creare",
+  "english": "to create",
+  "example": "Abbiamo creato un gruppo su WhatsApp.",
+  "example_en": "We created a WhatsApp group."
+ },
+ {
+  "rank": 802,
+  "word": "peggiore",
+  "english": "worse; worst",
+  "example": "È stato il giorno peggiore della mia vita.",
+  "example_en": "It was the worst day of my life."
+ },
+ {
+  "rank": 803,
+  "word": "angolo",
+  "english": "corner",
+  "example": "Il bar è proprio all'angolo.",
+  "example_en": "The café is right on the corner."
+ },
+ {
+  "rank": 804,
+  "word": "latte",
+  "english": "milk",
+  "example": "Un cappuccino con poco latte.",
+  "example_en": "A cappuccino with a little milk.",
+  "note": "Ordering 'un latte' gets you a glass of milk!"
+ },
+ {
+  "rank": 805,
+  "word": "buio",
+  "english": "dark; darkness",
+  "example": "Fa buio presto d'inverno.",
+  "example_en": "It gets dark early in winter."
+ },
+ {
+  "rank": 806,
+  "word": "gatto",
+  "english": "cat",
+  "example": "Il mio gatto dorme tutto il giorno.",
+  "example_en": "My cat sleeps all day."
+ },
+ {
+  "rank": 807,
+  "word": "suonare",
+  "english": "to play (music); to ring",
+  "example": "Suoni qualche strumento?",
+  "example_en": "Do you play any instrument?",
+  "note": "Il telefono suona = the phone is ringing"
+ },
+ {
+  "rank": 808,
+  "word": "estate",
+  "english": "summer",
+  "example": "Quest'estate andiamo in Puglia.",
+  "example_en": "This summer we're going to Puglia."
+ },
+ {
+  "rank": 809,
+  "word": "condizione",
+  "english": "condition",
+  "example": "La macchina è in ottime condizioni.",
+  "example_en": "The car is in excellent condition."
+ },
+ {
+  "rank": 810,
+  "word": "muoversi",
+  "english": "to move; to hurry up",
+  "example": "Muoviti, siamo in ritardo!",
+  "example_en": "Hurry up, we're late!"
+ },
+ {
+  "rank": 811,
+  "word": "fiume",
+  "english": "river",
+  "example": "Il Tevere è il fiume di Roma.",
+  "example_en": "The Tiber is Rome's river."
+ },
+ {
+  "rank": 812,
+  "word": "schiena",
+  "english": "back (body)",
+  "example": "Ho mal di schiena.",
+  "example_en": "I have a backache."
+ },
+ {
+  "rank": 813,
+  "word": "nonostante",
+  "english": "despite; even though",
+  "example": "Nonostante la pioggia, siamo usciti.",
+  "example_en": "Despite the rain, we went out."
+ },
+ {
+  "rank": 814,
+  "word": "campagna",
+  "english": "countryside; campaign",
+  "example": "Abitano in campagna.",
+  "example_en": "They live in the countryside."
+ },
+ {
+  "rank": 815,
+  "word": "seguire",
+  "english": "to follow",
+  "example": "Seguimi, ti faccio vedere.",
+  "example_en": "Follow me, I'll show you."
+ },
+ {
+  "rank": 816,
+  "word": "dettaglio",
+  "english": "detail",
+  "example": "Ti racconto i dettagli dopo.",
+  "example_en": "I'll tell you the details later."
+ },
+ {
+  "rank": 817,
+  "word": "chiaramente",
+  "english": "clearly",
+  "example": "Non parla chiaramente.",
+  "example_en": "He doesn't speak clearly."
+ },
+ {
+  "rank": 818,
+  "word": "capace",
+  "english": "capable; able",
+  "example": "Sei capace di farlo?",
+  "example_en": "Are you able to do it?"
+ },
+ {
+  "rank": 819,
+  "word": "importanza",
+  "english": "importance",
+  "example": "Non ha importanza.",
+  "example_en": "It's not important."
+ },
+ {
+  "rank": 820,
+  "word": "particolare",
+  "english": "particular; unusual",
+  "example": "Ha un gusto particolare.",
+  "example_en": "It has an unusual flavor.",
+  "note": "in particolare = in particular"
+ },
+ {
+  "rank": 821,
+  "word": "stanco",
+  "english": "tired",
+  "example": "Sono stanchissimo.",
+  "example_en": "I'm exhausted."
+ },
+ {
+  "rank": 822,
+  "word": "mantenere",
+  "english": "to keep; to maintain",
+  "example": "Mantengo sempre le promesse.",
+  "example_en": "I always keep my promises."
+ },
+ {
+  "rank": 823,
+  "word": "richiesta",
+  "english": "request",
+  "example": "Ho una richiesta da farti.",
+  "example_en": "I have a request for you."
+ },
+ {
+  "rank": 824,
+  "word": "parecchio",
+  "english": "quite a lot",
+  "example": "Ho aspettato parecchio.",
+  "example_en": "I waited quite a while."
+ },
+ {
+  "rank": 825,
+  "word": "principale",
+  "english": "main",
+  "example": "Qual è il problema principale?",
+  "example_en": "What's the main problem?"
+ },
+ {
+  "rank": 826,
+  "word": "insegnare",
+  "english": "to teach",
+  "example": "Mi insegni a cucinare la carbonara?",
+  "example_en": "Will you teach me to make carbonara?"
+ },
+ {
+  "rank": 827,
+  "word": "faccenda",
+  "english": "matter; chore",
+  "example": "Faccio le faccende di casa.",
+  "example_en": "I'm doing the housework."
+ },
+ {
+  "rank": 828,
+  "word": "vento",
+  "english": "wind",
+  "example": "C'è tanto vento oggi.",
+  "example_en": "It's really windy today."
+ },
+ {
+  "rank": 829,
+  "word": "matto",
+  "english": "crazy",
+  "example": "Mi fa diventare matto!",
+  "example_en": "He drives me crazy!"
+ },
+ {
+  "rank": 830,
+  "word": "convinto",
+  "english": "convinced",
+  "example": "Non sono convinto.",
+  "example_en": "I'm not convinced."
+ },
+ {
+  "rank": 831,
+  "word": "rovinare",
+  "english": "to ruin",
+  "example": "Hai rovinato la sorpresa!",
+  "example_en": "You ruined the surprise!"
+ },
+ {
+  "rank": 832,
+  "word": "buonasera",
+  "english": "good evening",
+  "example": "Buonasera, avete un tavolo per due?",
+  "example_en": "Good evening, do you have a table for two?"
+ },
+ {
+  "rank": 833,
+  "word": "decisamente",
+  "english": "definitely",
+  "example": "È decisamente meglio così.",
+  "example_en": "It's definitely better this way."
+ },
+ {
+  "rank": 834,
+  "word": "mercato",
+  "english": "market",
+  "example": "Il sabato vado al mercato.",
+  "example_en": "On Saturdays I go to the market."
+ },
+ {
+  "rank": 835,
+  "word": "valore",
+  "english": "value",
+  "example": "Ha un grande valore per me.",
+  "example_en": "It means a lot to me."
+ },
+ {
+  "rank": 836,
+  "word": "sbrigarsi",
+  "english": "to hurry",
+  "example": "Sbrigati!",
+  "example_en": "Hurry up!"
+ },
+ {
+  "rank": 837,
+  "word": "salire",
+  "english": "to go up; to get on",
+  "example": "Sali in macchina!",
+  "example_en": "Get in the car!"
+ },
+ {
+  "rank": 838,
+  "word": "spiegare",
+  "english": "to explain",
+  "example": "Mi spieghi come funziona?",
+  "example_en": "Can you explain how it works?"
+ },
+ {
+  "rank": 839,
+  "word": "bellezza",
+  "english": "beauty",
+  "example": "Che bellezza!",
+  "example_en": "How lovely!"
+ },
+ {
+  "rank": 840,
+  "word": "rilassarsi",
+  "english": "to relax",
+  "example": "Questo weekend voglio solo rilassarmi.",
+  "example_en": "This weekend I just want to relax."
+ },
+ {
+  "rank": 841,
+  "word": "buco",
+  "english": "hole",
+  "example": "C'è un buco nella mia calza.",
+  "example_en": "There's a hole in my sock."
+ },
+ {
+  "rank": 842,
+  "word": "conversazione",
+  "english": "conversation",
+  "example": "Abbiamo fatto una bella conversazione.",
+  "example_en": "We had a nice conversation."
+ },
+ {
+  "rank": 843,
+  "word": "attesa",
+  "english": "wait; waiting",
+  "example": "L'attesa è stata lunga.",
+  "example_en": "The wait was long.",
+  "note": "in attesa = waiting"
+ },
+ {
+  "rank": 844,
+  "word": "pensiero",
+  "english": "thought",
+  "example": "Che bel pensiero!",
+  "example_en": "What a lovely thought!"
+ },
+ {
+  "rank": 845,
+  "word": "conoscenza",
+  "english": "knowledge; acquaintance",
+  "example": "Piacere di fare la tua conoscenza.",
+  "example_en": "Nice to make your acquaintance."
+ },
+ {
+  "rank": 846,
+  "word": "ponte",
+  "english": "bridge; long weekend",
+  "example": "Facciamo il ponte a novembre.",
+  "example_en": "We're taking a long weekend in November.",
+  "note": "fare il ponte = take an extra day off to bridge a holiday"
+ },
+ {
+  "rank": 847,
+  "word": "malato",
+  "english": "sick; ill",
+  "example": "Oggi sono malato, resto a casa.",
+  "example_en": "I'm sick today, I'm staying home."
+ },
+ {
+  "rank": 848,
+  "word": "sedia",
+  "english": "chair",
+  "example": "Prendi una sedia e siediti.",
+  "example_en": "Grab a chair and sit down."
+ },
+ {
+  "rank": 849,
+  "word": "finale",
+  "english": "final; ending",
+  "example": "Il finale del film era bellissimo.",
+  "example_en": "The ending of the movie was great."
+ },
+ {
+  "rank": 850,
+  "word": "sistemare",
+  "english": "to fix; to sort out",
+  "example": "Sistemo tutto io.",
+  "example_en": "I'll sort everything out."
+ },
+ {
+  "rank": 851,
+  "word": "ghiaccio",
+  "english": "ice",
+  "example": "Con ghiaccio, per favore.",
+  "example_en": "With ice, please."
+ },
+ {
+  "rank": 852,
+  "word": "bottiglia",
+  "english": "bottle",
+  "example": "Una bottiglia d'acqua naturale.",
+  "example_en": "A bottle of still water."
+ },
+ {
+  "rank": 853,
+  "word": "eppure",
+  "english": "and yet",
+  "example": "È difficile, eppure ce la faccio.",
+  "example_en": "It's hard, and yet I can do it."
+ },
+ {
+  "rank": 854,
+  "word": "sguardo",
+  "english": "look; gaze",
+  "example": "Mi ha lanciato uno sguardo strano.",
+  "example_en": "He gave me a strange look."
+ },
+ {
+  "rank": 855,
+  "word": "cadere",
+  "english": "to fall",
+  "example": "Attento a non cadere!",
+  "example_en": "Careful not to fall!"
+ },
+ {
+  "rank": 856,
+  "word": "camminare",
+  "english": "to walk",
+  "example": "Mi piace camminare in centro.",
+  "example_en": "I like walking downtown."
+ },
+ {
+  "rank": 857,
+  "word": "pratica",
+  "english": "practice; paperwork",
+  "example": "La mia pratica di cittadinanza è in corso.",
+  "example_en": "My citizenship paperwork is in progress.",
+  "note": "in pratica = basically"
+ },
+ {
+  "rank": 858,
+  "word": "preferire",
+  "english": "to prefer",
+  "example": "Preferisci mare o montagna?",
+  "example_en": "Do you prefer the beach or the mountains?"
+ },
+ {
+  "rank": 859,
+  "word": "teoria",
+  "english": "theory",
+  "example": "In teoria sì, in pratica no.",
+  "example_en": "In theory yes, in practice no."
+ },
+ {
+  "rank": 860,
+  "word": "parco",
+  "english": "park",
+  "example": "Andiamo a correre al parco.",
+  "example_en": "Let's go running in the park."
+ },
+ {
+  "rank": 861,
+  "word": "palazzo",
+  "english": "building; palace",
+  "example": "Abito al terzo piano di quel palazzo.",
+  "example_en": "I live on the third floor of that building.",
+  "note": "Usually just an apartment building"
+ },
+ {
+  "rank": 862,
+  "word": "privato",
+  "english": "private",
+  "example": "È una festa privata.",
+  "example_en": "It's a private party."
+ },
+ {
+  "rank": 863,
+  "word": "purtroppo",
+  "english": "unfortunately",
+  "example": "Purtroppo non posso venire.",
+  "example_en": "Unfortunately I can't come."
+ },
+ {
+  "rank": 864,
+  "word": "cento",
+  "english": "hundred",
+  "example": "Cento per cento!",
+  "example_en": "A hundred percent!"
+ },
+ {
+  "rank": 865,
+  "word": "seriamente",
+  "english": "seriously",
+  "example": "Seriamente, cosa ne pensi?",
+  "example_en": "Seriously, what do you think?"
+ },
+ {
+  "rank": 866,
+  "word": "desiderio",
+  "english": "wish; desire",
+  "example": "Esprimi un desiderio!",
+  "example_en": "Make a wish!"
+ },
+ {
+  "rank": 867,
+  "word": "ubriaco",
+  "english": "drunk",
+  "example": "Era un po' ubriaco.",
+  "example_en": "He was a bit drunk."
+ },
+ {
+  "rank": 868,
+  "word": "angelo",
+  "english": "angel",
+  "example": "Sei un angelo!",
+  "example_en": "You're an angel!"
+ },
+ {
+  "rank": 869,
+  "word": "tradurre",
+  "english": "to translate",
+  "example": "Mi puoi tradurre questa frase?",
+  "example_en": "Can you translate this sentence for me?"
+ },
+ {
+  "rank": 870,
+  "word": "dito",
+  "english": "finger",
+  "example": "Mi sono tagliato il dito.",
+  "example_en": "I cut my finger.",
+  "note": "Irregular plural: le dita"
+ },
+ {
+  "rank": 871,
+  "word": "infermiera",
+  "english": "nurse",
+  "example": "L'infermiera è stata gentilissima.",
+  "example_en": "The nurse was super kind."
+ },
+ {
+  "rank": 872,
+  "word": "età",
+  "english": "age",
+  "example": "Abbiamo la stessa età.",
+  "example_en": "We're the same age."
+ },
+ {
+  "rank": 873,
+  "word": "cinema",
+  "english": "movie theater",
+  "example": "Andiamo al cinema stasera?",
+  "example_en": "Shall we go to the movies tonight?"
+ },
+ {
+  "rank": 874,
+  "word": "stella",
+  "english": "star",
+  "example": "Guarda quante stelle!",
+  "example_en": "Look at all the stars!"
+ },
+ {
+  "rank": 875,
+  "word": "politica",
+  "english": "politics; policy",
+  "example": "Non parliamo di politica a tavola.",
+  "example_en": "Let's not talk politics at the table."
+ },
+ {
+  "rank": 876,
+  "word": "internet",
+  "english": "internet",
+  "example": "Non c'è internet qui.",
+  "example_en": "There's no internet here."
+ },
+ {
+  "rank": 877,
+  "word": "occupato",
+  "english": "busy; taken",
+  "example": "Scusa, è occupato questo posto?",
+  "example_en": "Sorry, is this seat taken?"
+ },
+ {
+  "rank": 878,
+  "word": "compagno",
+  "english": "partner; mate",
+  "example": "Il mio compagno di stanza è simpatico.",
+  "example_en": "My roommate is nice.",
+  "note": "compagno di classe = classmate"
+ },
+ {
+  "rank": 879,
+  "word": "merito",
+  "english": "merit; credit",
+  "example": "È tutto merito tuo.",
+  "example_en": "It's all thanks to you."
+ },
+ {
+  "rank": 880,
+  "word": "società",
+  "english": "society; company",
+  "example": "Lavoro per una società americana.",
+  "example_en": "I work for an American company."
+ },
+ {
+  "rank": 881,
+  "word": "scendere",
+  "english": "to go down; to get off",
+  "example": "Scendo alla prossima.",
+  "example_en": "I'm getting off at the next one."
+ },
+ {
+  "rank": 882,
+  "word": "bicchiere",
+  "english": "glass",
+  "example": "Un bicchiere di vino rosso.",
+  "example_en": "A glass of red wine."
+ },
+ {
+  "rank": 883,
+  "word": "autobus",
+  "english": "bus",
+  "example": "L'autobus è in ritardo.",
+  "example_en": "The bus is late."
+ },
+ {
+  "rank": 884,
+  "word": "vuoto",
+  "english": "empty",
+  "example": "Il frigo è vuoto.",
+  "example_en": "The fridge is empty."
+ },
+ {
+  "rank": 885,
+  "word": "azienda",
+  "english": "company; business",
+  "example": "Lavora in una grande azienda.",
+  "example_en": "She works at a big company."
+ },
+ {
+  "rank": 886,
+  "word": "sabato",
+  "english": "Saturday",
+  "example": "Sabato sera usciamo?",
+  "example_en": "Shall we go out Saturday night?"
+ },
+ {
+  "rank": 887,
+  "word": "pollo",
+  "english": "chicken",
+  "example": "Prendo il pollo arrosto.",
+  "example_en": "I'll have the roast chicken."
+ },
+ {
+  "rank": 888,
+  "word": "spiaggia",
+  "english": "beach",
+  "example": "Passiamo la giornata in spiaggia.",
+  "example_en": "Let's spend the day at the beach."
+ },
+ {
+  "rank": 889,
+  "word": "telefonata",
+  "english": "phone call",
+  "example": "Ho ricevuto una telefonata dall'Italia.",
+  "example_en": "I got a phone call from Italy."
+ },
+ {
+  "rank": 890,
+  "word": "liceo",
+  "english": "high school",
+  "example": "Ci conosciamo dal liceo.",
+  "example_en": "We've known each other since high school."
+ },
+ {
+  "rank": 891,
+  "word": "rosa",
+  "english": "rose; pink",
+  "example": "Una rosa per te.",
+  "example_en": "A rose for you."
+ },
+ {
+  "rank": 892,
+  "word": "innamorato",
+  "english": "in love",
+  "example": "È innamorato di lei.",
+  "example_en": "He's in love with her."
+ },
+ {
+  "rank": 893,
+  "word": "doccia",
+  "english": "shower",
+  "example": "Mi faccio una doccia e arrivo.",
+  "example_en": "I'll take a shower and be right there."
+ },
+ {
+  "rank": 894,
+  "word": "orologio",
+  "english": "watch; clock",
+  "example": "Che ore sono? Non ho l'orologio.",
+  "example_en": "What time is it? I don't have my watch."
+ },
+ {
+  "rank": 895,
+  "word": "viso",
+  "english": "face",
+  "example": "Ha un viso simpatico.",
+  "example_en": "He has a friendly face.",
+  "note": "Also: faccia"
+ },
+ {
+  "rank": 896,
+  "word": "distanza",
+  "english": "distance",
+  "example": "Che distanza c'è tra Roma e Napoli?",
+  "example_en": "How far is it from Rome to Naples?"
+ },
+ {
+  "rank": 897,
+  "word": "magnifico",
+  "english": "magnificent",
+  "example": "Che panorama magnifico!",
+  "example_en": "What a magnificent view!"
+ },
+ {
+  "rank": 898,
+  "word": "esame",
+  "english": "exam; test",
+  "example": "Domani ho un esame.",
+  "example_en": "I have an exam tomorrow."
+ },
+ {
+  "rank": 899,
+  "word": "quartiere",
+  "english": "neighborhood",
+  "example": "È un quartiere tranquillo.",
+  "example_en": "It's a quiet neighborhood."
+ },
+ {
+  "rank": 900,
+  "word": "cappello",
+  "english": "hat",
+  "example": "Metti il cappello, fa freddo.",
+  "example_en": "Put on a hat, it's cold."
+ },
+ {
+  "rank": 901,
+  "word": "pagina",
+  "english": "page",
+  "example": "Apri il libro a pagina dieci.",
+  "example_en": "Open the book to page ten."
+ },
+ {
+  "rank": 902,
+  "word": "mostra",
+  "english": "exhibition",
+  "example": "Andiamo a vedere la mostra?",
+  "example_en": "Shall we go see the exhibition?"
+ },
+ {
+  "rank": 903,
+  "word": "giardino",
+  "english": "garden; yard",
+  "example": "Ceniamo in giardino.",
+  "example_en": "Let's have dinner in the garden."
+ },
+ {
+  "rank": 904,
+  "word": "velocemente",
+  "english": "quickly",
+  "example": "Ho mangiato velocemente.",
+  "example_en": "I ate quickly."
+ },
+ {
+  "rank": 905,
+  "word": "rabbia",
+  "english": "anger",
+  "example": "Che rabbia!",
+  "example_en": "How annoying!"
+ },
+ {
+  "rank": 906,
+  "word": "collega",
+  "english": "colleague",
+  "example": "È una mia collega.",
+  "example_en": "She's a colleague of mine."
+ },
+ {
+  "rank": 907,
+  "word": "vittoria",
+  "english": "victory",
+  "example": "Che vittoria!",
+  "example_en": "What a win!"
+ },
+ {
+  "rank": 908,
+  "word": "assurdo",
+  "english": "absurd",
+  "example": "È assurdo!",
+  "example_en": "That's absurd!"
+ },
+ {
+  "rank": 909,
+  "word": "giornale",
+  "english": "newspaper",
+  "example": "Leggo il giornale la mattina.",
+  "example_en": "I read the paper in the morning."
+ },
+ {
+  "rank": 910,
+  "word": "insegnante",
+  "english": "teacher",
+  "example": "La mia insegnante di italiano è di Bologna.",
+  "example_en": "My Italian teacher is from Bologna."
+ },
+ {
+  "rank": 911,
+  "word": "talento",
+  "english": "talent",
+  "example": "Hai talento!",
+  "example_en": "You've got talent!"
+ },
+ {
+  "rank": 912,
+  "word": "spaventato",
+  "english": "scared",
+  "example": "Ero spaventatissimo.",
+  "example_en": "I was terrified."
+ },
+ {
+  "rank": 913,
+  "word": "naturale",
+  "english": "natural",
+  "example": "Acqua naturale o frizzante?",
+  "example_en": "Still or sparkling water?"
+ },
+ {
+  "rank": 914,
+  "word": "figo",
+  "english": "cool (slang); hot",
+  "example": "Che figo!",
+  "example_en": "How cool!"
+ },
+ {
+  "rank": 915,
+  "word": "girare",
+  "english": "to turn; to go around",
+  "example": "Giri a destra al semaforo.",
+  "example_en": "Turn right at the traffic light."
+ },
+ {
+  "rank": 916,
+  "word": "doppio",
+  "english": "double",
+  "example": "Un caffè doppio, per favore.",
+  "example_en": "A double espresso, please."
+ },
+ {
+  "rank": 917,
+  "word": "tantissimo",
+  "english": "so much; a ton",
+  "example": "Mi sei mancato tantissimo!",
+  "example_en": "I missed you so much!"
+ },
+ {
+  "rank": 918,
+  "word": "gratis",
+  "english": "free (no cost)",
+  "example": "L'ingresso è gratis.",
+  "example_en": "Admission is free."
+ },
+ {
+  "rank": 919,
+  "word": "cantare",
+  "english": "to sing",
+  "example": "Canti sotto la doccia?",
+  "example_en": "Do you sing in the shower?"
+ },
+ {
+  "rank": 920,
+  "word": "invitare",
+  "english": "to invite",
+  "example": "Mi hanno invitato a cena.",
+  "example_en": "They invited me to dinner."
+ },
+ {
+  "rank": 921,
+  "word": "zero",
+  "english": "zero",
+  "example": "Ho zero voglia di lavorare oggi.",
+  "example_en": "I have zero desire to work today."
+ },
+ {
+  "rank": 922,
+  "word": "ospite",
+  "english": "guest; host",
+  "example": "Sei mio ospite!",
+  "example_en": "You're my guest!"
+ },
+ {
+  "rank": 923,
+  "word": "domenica",
+  "english": "Sunday",
+  "example": "La domenica pranziamo dalla nonna.",
+  "example_en": "On Sundays we have lunch at grandma's."
+ },
+ {
+  "rank": 924,
+  "word": "venti",
+  "english": "twenty",
+  "example": "Ci vogliono venti minuti a piedi.",
+  "example_en": "It's a twenty-minute walk."
+ },
+ {
+  "rank": 925,
+  "word": "dritto",
+  "english": "straight",
+  "example": "Vada sempre dritto.",
+  "example_en": "Keep going straight."
+ },
+ {
+  "rank": 926,
+  "word": "apprezzare",
+  "english": "to appreciate",
+  "example": "Apprezzo molto il tuo aiuto.",
+  "example_en": "I really appreciate your help."
+ },
+ {
+  "rank": 927,
+  "word": "discutere",
+  "english": "to discuss; to argue",
+  "example": "Ne discutiamo domani.",
+  "example_en": "We'll discuss it tomorrow."
+ },
+ {
+  "rank": 928,
+  "word": "mentire",
+  "english": "to lie",
+  "example": "Non mentirmi!",
+  "example_en": "Don't lie to me!"
+ },
+ {
+  "rank": 929,
+  "word": "chilometro",
+  "english": "kilometer",
+  "example": "Sono dieci chilometri da qui.",
+  "example_en": "It's ten kilometers from here."
+ },
+ {
+  "rank": 930,
+  "word": "vacanza",
+  "english": "vacation",
+  "example": "Vado in vacanza ad agosto.",
+  "example_en": "I'm going on vacation in August."
+ },
+ {
+  "rank": 931,
+  "word": "medicina",
+  "english": "medicine",
+  "example": "Hai preso la medicina?",
+  "example_en": "Did you take your medicine?"
+ },
+ {
+  "rank": 932,
+  "word": "crescere",
+  "english": "to grow; to grow up",
+  "example": "Sono cresciuto in America.",
+  "example_en": "I grew up in America."
+ },
+ {
+  "rank": 933,
+  "word": "cugino",
+  "english": "cousin",
+  "example": "Mio cugino vive a Palermo.",
+  "example_en": "My cousin lives in Palermo."
+ },
+ {
+  "rank": 934,
+  "word": "giacca",
+  "english": "jacket",
+  "example": "Prendi la giacca, fa fresco.",
+  "example_en": "Take your jacket, it's chilly."
+ },
+ {
+  "rank": 935,
+  "word": "opinione",
+  "english": "opinion",
+  "example": "Qual è la tua opinione?",
+  "example_en": "What's your opinion?"
+ },
+ {
+  "rank": 936,
+  "word": "interesse",
+  "english": "interest",
+  "example": "Non ho nessun interesse.",
+  "example_en": "I have no interest."
+ },
+ {
+  "rank": 937,
+  "word": "fastidio",
+  "english": "annoyance; bother",
+  "example": "Ti dà fastidio la musica?",
+  "example_en": "Does the music bother you?",
+  "note": "dare fastidio = to bother"
+ },
+ {
+  "rank": 938,
+  "word": "studente",
+  "english": "student",
+  "example": "Sono uno studente di italiano.",
+  "example_en": "I'm a student of Italian."
+ },
+ {
+  "rank": 939,
+  "word": "battuta",
+  "english": "joke; line",
+  "example": "Che battuta!",
+  "example_en": "What a joke! / Good one!"
+ },
+ {
+  "rank": 940,
+  "word": "dappertutto",
+  "english": "everywhere",
+  "example": "Ti ho cercato dappertutto!",
+  "example_en": "I looked for you everywhere!"
+ },
+ {
+  "rank": 941,
+  "word": "tè",
+  "english": "tea",
+  "example": "Preferisco il tè al caffè.",
+  "example_en": "I prefer tea to coffee."
+ },
+ {
+  "rank": 942,
+  "word": "amicizia",
+  "english": "friendship",
+  "example": "La nostra amicizia è importante.",
+  "example_en": "Our friendship is important."
+ },
+ {
+  "rank": 943,
+  "word": "pulito",
+  "english": "clean",
+  "example": "La casa è pulitissima.",
+  "example_en": "The house is spotless."
+ },
+ {
+  "rank": 944,
+  "word": "pane",
+  "english": "bread",
+  "example": "Mi passi il pane?",
+  "example_en": "Can you pass me the bread?"
+ },
+ {
+  "rank": 945,
+  "word": "pesante",
+  "english": "heavy",
+  "example": "Questa valigia è pesantissima.",
+  "example_en": "This suitcase is really heavy."
+ },
+ {
+  "rank": 946,
+  "word": "aeroporto",
+  "english": "airport",
+  "example": "Ti vengo a prendere all'aeroporto.",
+  "example_en": "I'll pick you up at the airport."
+ },
+ {
+  "rank": 947,
+  "word": "disastro",
+  "english": "disaster",
+  "example": "Che disastro!",
+  "example_en": "What a disaster!"
+ },
+ {
+  "rank": 948,
+  "word": "uovo",
+  "english": "egg",
+  "example": "Due uova, per favore.",
+  "example_en": "Two eggs, please.",
+  "note": "Irregular plural: le uova"
+ },
+ {
+  "rank": 949,
+  "word": "preparare",
+  "english": "to prepare; to make",
+  "example": "Preparo la cena.",
+  "example_en": "I'll make dinner."
+ },
+ {
+  "rank": 950,
+  "word": "costruire",
+  "english": "to build",
+  "example": "Stanno costruendo un nuovo ponte.",
+  "example_en": "They're building a new bridge."
+ },
+ {
+  "rank": 951,
+  "word": "ricco",
+  "english": "rich",
+  "example": "Non sono ricco, ma sono felice.",
+  "example_en": "I'm not rich, but I'm happy."
+ },
+ {
+  "rank": 952,
+  "word": "gola",
+  "english": "throat",
+  "example": "Ho mal di gola.",
+  "example_en": "I have a sore throat."
+ },
+ {
+  "rank": 953,
+  "word": "fumo",
+  "english": "smoke",
+  "example": "Vietato il fumo.",
+  "example_en": "No smoking."
+ },
+ {
+  "rank": 954,
+  "word": "raggiungere",
+  "english": "to reach; to join",
+  "example": "Vi raggiungo dopo!",
+  "example_en": "I'll join you later!"
+ },
+ {
+  "rank": 955,
+  "word": "nervoso",
+  "english": "nervous; irritable",
+  "example": "Sono un po' nervoso.",
+  "example_en": "I'm a little nervous."
+ },
+ {
+  "rank": 956,
+  "word": "minimo",
+  "english": "minimum",
+  "example": "Ci vogliono almeno due ore, come minimo.",
+  "example_en": "It takes two hours at the very least."
+ },
+ {
+  "rank": 957,
+  "word": "albergo",
+  "english": "hotel",
+  "example": "Abbiamo prenotato un albergo in centro.",
+  "example_en": "We booked a hotel downtown."
+ },
+ {
+  "rank": 958,
+  "word": "falso",
+  "english": "false; fake",
+  "example": "È una notizia falsa.",
+  "example_en": "It's fake news."
+ },
+ {
+  "rank": 959,
+  "word": "gioia",
+  "english": "joy",
+  "example": "Che gioia vederti!",
+  "example_en": "What a joy to see you!"
+ },
+ {
+  "rank": 960,
+  "word": "weekend",
+  "english": "weekend",
+  "example": "Buon weekend!",
+  "example_en": "Have a nice weekend!",
+  "note": "Also: fine settimana"
+ },
+ {
+  "rank": 961,
+  "word": "ambulanza",
+  "english": "ambulance",
+  "example": "Chiamate un'ambulanza!",
+  "example_en": "Call an ambulance!"
+ },
+ {
+  "rank": 962,
+  "word": "pizza",
+  "english": "pizza",
+  "example": "Stasera pizza?",
+  "example_en": "Pizza tonight?"
+ },
+ {
+  "rank": 963,
+  "word": "stomaco",
+  "english": "stomach",
+  "example": "Ho mal di stomaco.",
+  "example_en": "I have a stomachache."
+ },
+ {
+  "rank": 964,
+  "word": "licenziare",
+  "english": "to fire (from a job)",
+  "example": "L'hanno licenziato.",
+  "example_en": "They fired him.",
+  "note": "licenziarsi = to quit"
+ },
+ {
+  "rank": 965,
+  "word": "promessa",
+  "english": "promise",
+  "example": "Una promessa è una promessa.",
+  "example_en": "A promise is a promise."
+ },
+ {
+  "rank": 966,
+  "word": "facilmente",
+  "english": "easily",
+  "example": "Ci arrivi facilmente a piedi.",
+  "example_en": "You can easily get there on foot."
+ },
+ {
+  "rank": 967,
+  "word": "scala",
+  "english": "stairs; ladder",
+  "example": "Prendiamo le scale.",
+  "example_en": "Let's take the stairs."
+ },
+ {
+  "rank": 968,
+  "word": "cinese",
+  "english": "Chinese",
+  "example": "Andiamo al ristorante cinese?",
+  "example_en": "Shall we go to the Chinese restaurant?"
+ },
+ {
+  "rank": 969,
+  "word": "imbarazzante",
+  "english": "embarrassing",
+  "example": "Che situazione imbarazzante!",
+  "example_en": "What an embarrassing situation!"
+ },
+ {
+  "rank": 970,
+  "word": "studiare",
+  "english": "to study",
+  "example": "Studio italiano ogni giorno.",
+  "example_en": "I study Italian every day."
+ },
+ {
+  "rank": 971,
+  "word": "divano",
+  "english": "couch; sofa",
+  "example": "Stasera divano e film.",
+  "example_en": "Tonight it's couch and a movie."
+ },
+ {
+  "rank": 972,
+  "word": "famoso",
+  "english": "famous",
+  "example": "È un ristorante famoso.",
+  "example_en": "It's a famous restaurant."
+ },
+ {
+  "rank": 973,
+  "word": "traffico",
+  "english": "traffic",
+  "example": "C'è un traffico pazzesco.",
+  "example_en": "The traffic is insane."
+ },
+ {
+  "rank": 974,
+  "word": "contare",
+  "english": "to count",
+  "example": "Conta fino a dieci.",
+  "example_en": "Count to ten.",
+  "note": "contare su = to count on"
+ },
+ {
+  "rank": 975,
+  "word": "chissà",
+  "english": "who knows",
+  "example": "Chissà dove l'ho messo.",
+  "example_en": "Who knows where I put it."
+ },
+ {
+  "rank": 976,
+  "word": "sorriso",
+  "english": "smile",
+  "example": "Hai un bel sorriso.",
+  "example_en": "You have a nice smile."
+ },
+ {
+  "rank": 977,
+  "word": "piatto",
+  "english": "plate; dish",
+  "example": "Qual è il piatto del giorno?",
+  "example_en": "What's the dish of the day?"
+ },
+ {
+  "rank": 978,
+  "word": "proposta",
+  "english": "proposal; suggestion",
+  "example": "Ho una proposta.",
+  "example_en": "I have a suggestion."
+ },
+ {
+  "rank": 979,
+  "word": "tuttavia",
+  "english": "however; nevertheless",
+  "example": "È caro; tuttavia, ne vale la pena.",
+  "example_en": "It's expensive; however, it's worth it."
+ },
+ {
+  "rank": 980,
+  "word": "bugia",
+  "english": "lie",
+  "example": "Non dire bugie!",
+  "example_en": "Don't tell lies!"
+ },
+ {
+  "rank": 981,
+  "word": "calcio",
+  "english": "soccer; kick",
+  "example": "Guardi il calcio?",
+  "example_en": "Do you watch soccer?"
+ },
+ {
+  "rank": 982,
+  "word": "lago",
+  "english": "lake",
+  "example": "Siamo stati al lago di Como.",
+  "example_en": "We went to Lake Como."
+ },
+ {
+  "rank": 983,
+  "word": "teatro",
+  "english": "theater",
+  "example": "Stasera andiamo a teatro.",
+  "example_en": "Tonight we're going to the theater."
+ },
+ {
+  "rank": 984,
+  "word": "pioggia",
+  "english": "rain",
+  "example": "Che pioggia!",
+  "example_en": "What rain! / It's pouring!"
+ },
+ {
+  "rank": 985,
+  "word": "occhiali",
+  "english": "glasses",
+  "example": "Dove sono i miei occhiali?",
+  "example_en": "Where are my glasses?",
+  "note": "occhiali da sole = sunglasses"
+ },
+ {
+  "rank": 986,
+  "word": "parcheggio",
+  "english": "parking; parking lot",
+  "example": "Non trovo parcheggio.",
+  "example_en": "I can't find parking."
+ },
+ {
+  "rank": 987,
+  "word": "montagna",
+  "english": "mountain",
+  "example": "D'inverno andiamo in montagna.",
+  "example_en": "In winter we go to the mountains."
+ },
+ {
+  "rank": 988,
+  "word": "formaggio",
+  "english": "cheese",
+  "example": "Mi piace il formaggio stagionato.",
+  "example_en": "I like aged cheese."
+ },
+ {
+  "rank": 989,
+  "word": "pensione",
+  "english": "retirement; pension; guesthouse",
+  "example": "Mio padre è in pensione.",
+  "example_en": "My father is retired."
+ },
+ {
+  "rank": 990,
+  "word": "affitto",
+  "english": "rent",
+  "example": "L'affitto è troppo alto.",
+  "example_en": "The rent is too high.",
+  "note": "in affitto = for rent"
+ },
+ {
+  "rank": 991,
+  "word": "neve",
+  "english": "snow",
+  "example": "Domani è prevista neve.",
+  "example_en": "Snow is forecast for tomorrow."
+ },
+ {
+  "rank": 992,
+  "word": "gelato",
+  "english": "ice cream",
+  "example": "Prendiamo un gelato?",
+  "example_en": "Shall we get some gelato?"
+ },
+ {
+  "rank": 993,
+  "word": "vergogna",
+  "english": "shame; embarrassment",
+  "example": "Che vergogna!",
+  "example_en": "How embarrassing!",
+  "note": "Mi vergogno = I'm embarrassed"
+ },
+ {
+  "rank": 994,
+  "word": "pazienza",
+  "english": "patience",
+  "example": "Pazienza!",
+  "example_en": "Oh well! / Never mind!",
+  "note": "Also literally: patience"
+ },
+ {
+  "rank": 995,
+  "word": "sonno",
+  "english": "sleep; sleepiness",
+  "example": "Ho sonno.",
+  "example_en": "I'm sleepy.",
+  "note": "avere sonno = to be sleepy"
+ },
+ {
+  "rank": 996,
+  "word": "festeggiare",
+  "english": "to celebrate",
+  "example": "Dobbiamo festeggiare!",
+  "example_en": "We have to celebrate!"
+ },
+ {
+  "rank": 997,
+  "word": "complimenti",
+  "english": "compliments; well done!",
+  "example": "Complimenti, è buonissimo!",
+  "example_en": "My compliments, it's delicious!"
+ },
+ {
+  "rank": 998,
+  "word": "auguri",
+  "english": "best wishes",
+  "example": "Tanti auguri!",
+  "example_en": "Best wishes! / Happy birthday!"
+ },
+ {
+  "rank": 999,
+  "word": "uguale",
+  "english": "same; equal",
+  "example": "Per me è uguale.",
+  "example_en": "It's all the same to me."
+ },
+ {
+  "rank": 1000,
+  "word": "università",
+  "english": "university; college",
+  "example": "Dove hai fatto l'università?",
+  "example_en": "Where did you go to college?"
  }
 ]
