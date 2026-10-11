@@ -536,7 +536,8 @@
   "english": "house; home",
   "example": "Torno a casa alle sei.",
   "example_en": "I get home at six.",
-  "cov": 1543
+  "cov": 1543,
+  "article": "la"
  },
  {
   "rank": 66,
@@ -666,7 +667,8 @@
   "english": "time; weather",
   "example": "Non ho tempo oggi.",
   "example_en": "I don't have time today.",
-  "cov": 1170
+  "cov": 1170,
+  "article": "il"
  },
  {
   "rank": 82,
@@ -690,7 +692,8 @@
   "english": "life",
   "example": "Così è la vita.",
   "example_en": "That's life.",
-  "cov": 1097
+  "cov": 1097,
+  "article": "la"
  },
  {
   "rank": 85,
@@ -714,7 +717,8 @@
   "english": "year",
   "example": "Quanti anni hai?",
   "example_en": "How old are you?",
-  "cov": 1400
+  "cov": 1400,
+  "article": "l'"
  },
  {
   "rank": 88,
@@ -730,7 +734,8 @@
   "english": "part; side",
   "example": "Da che parte è la stazione?",
   "example_en": "Which way is the station?",
-  "cov": 1101
+  "cov": 1101,
+  "article": "la"
  },
  {
   "rank": 90,
@@ -754,7 +759,8 @@
   "english": "work; job",
   "example": "Come va il lavoro?",
   "example_en": "How's work going?",
-  "cov": 1117
+  "cov": 1117,
+  "article": "il"
  },
  {
   "rank": 93,
@@ -778,7 +784,8 @@
   "english": "time (occasion)",
   "example": "La prossima volta pago io.",
   "example_en": "Next time I'll pay.",
-  "cov": 1413
+  "cov": 1413,
+  "article": "la"
  },
  {
   "rank": 96,
@@ -803,7 +810,8 @@
   "example": "Chi è quell'uomo?",
   "example_en": "Who is that man?",
   "note": "plural: uomini",
-  "cov": 1246
+  "cov": 1246,
+  "article": "l'"
  },
  {
   "rank": 99,
@@ -811,7 +819,8 @@
   "english": "father",
   "example": "Mio padre cucina benissimo.",
   "example_en": "My father cooks really well.",
-  "cov": 890
+  "cov": 890,
+  "article": "il"
  },
  {
   "rank": 100,
@@ -820,7 +829,8 @@
   "example": "Hai bisogno di aiuto?",
   "example_en": "Do you need help?",
   "note": "avere bisogno di = to need",
-  "cov": 868
+  "cov": 868,
+  "article": "il"
  },
  {
   "rank": 101,
@@ -837,7 +847,8 @@
   "example": "È un mio vecchio amico.",
   "example_en": "He's an old friend of mine.",
   "note": "amico, amica, amici, amiche",
-  "cov": 1399
+  "cov": 1399,
+  "article": "l'"
  },
  {
   "rank": 103,
@@ -845,7 +856,8 @@
   "english": "place; seat; spot",
   "example": "È libero questo posto?",
   "example_en": "Is this seat free?",
-  "cov": 935
+  "cov": 935,
+  "article": "il"
  },
  {
   "rank": 104,
@@ -870,7 +882,8 @@
   "example": "Buongiorno, signore!",
   "example_en": "Good morning, sir!",
   "note": "Before a name: signor Rossi",
-  "cov": 1669
+  "cov": 1669,
+  "article": "il"
  },
  {
   "rank": 107,
@@ -902,7 +915,8 @@
   "english": "day",
   "example": "Che giorno è oggi?",
   "example_en": "What day is it today?",
-  "cov": 1091
+  "cov": 1091,
+  "article": "il"
  },
  {
   "rank": 111,
@@ -918,7 +932,8 @@
   "english": "way; manner",
   "example": "Non c'è altro modo.",
   "example_en": "There's no other way.",
-  "cov": 817
+  "cov": 817,
+  "article": "il"
  },
  {
   "rank": 113,
@@ -975,7 +990,8 @@
   "english": "mom",
   "example": "Chiamo la mamma stasera.",
   "example_en": "I'm calling Mom tonight.",
-  "cov": 689
+  "cov": 689,
+  "article": "la"
  },
  {
   "rank": 120,
@@ -1007,7 +1023,8 @@
   "english": "mother",
   "example": "Sua madre è di Napoli.",
   "example_en": "His mother is from Naples.",
-  "cov": 670
+  "cov": 670,
+  "article": "la"
  },
  {
   "rank": 124,
@@ -1024,7 +1041,8 @@
   "example": "Mi fai un favore?",
   "example_en": "Can you do me a favor?",
   "note": "per favore = please",
-  "cov": 659
+  "cov": 659,
+  "article": "il"
  },
  {
   "rank": 126,
@@ -1056,7 +1074,8 @@
   "english": "moment",
   "example": "Un momento, per favore.",
   "example_en": "One moment, please.",
-  "cov": 654
+  "cov": 654,
+  "article": "il"
  },
  {
   "rank": 130,
@@ -1065,7 +1084,8 @@
   "example": "Ragazzi, andiamo!",
   "example_en": "Guys, let's go!",
   "note": "ragazza = girl; girlfriend",
-  "cov": 1758
+  "cov": 1758,
+  "article": "il"
  },
  {
   "rank": 131,
@@ -1073,7 +1093,8 @@
   "english": "person",
   "example": "È una persona molto simpatica.",
   "example_en": "She's a really nice person.",
-  "cov": 976
+  "cov": 976,
+  "article": "la"
  },
  {
   "rank": 132,
@@ -1089,7 +1110,8 @@
   "english": "type; kind; like (slang)",
   "example": "Che tipo di musica ti piace?",
   "example_en": "What kind of music do you like?",
-  "cov": 633
+  "cov": 633,
+  "article": "il"
  },
  {
   "rank": 134,
@@ -1129,7 +1151,8 @@
   "english": "money",
   "example": "Non ho abbastanza soldi.",
   "example_en": "I don't have enough money.",
-  "cov": 560
+  "cov": 560,
+  "article": "i"
  },
  {
   "rank": 139,
@@ -1162,7 +1185,8 @@
   "english": "idea",
   "example": "Che bella idea!",
   "example_en": "What a great idea!",
-  "cov": 593
+  "cov": 593,
+  "article": "l'"
  },
  {
   "rank": 143,
@@ -1171,7 +1195,8 @@
   "example": "Quanti anni ha tuo figlio?",
   "example_en": "How old is your son?",
   "note": "figlia = daughter",
-  "cov": 1049
+  "cov": 1049,
+  "article": "il"
  },
  {
   "rank": 144,
@@ -1180,7 +1205,8 @@
   "example": "Sei d'accordo? — D'accordo!",
   "example_en": "Do you agree? — OK!",
   "note": "d'accordo = OK / agreed",
-  "cov": 547
+  "cov": 547,
+  "article": "l'"
  },
  {
   "rank": 145,
@@ -1188,7 +1214,8 @@
   "english": "people",
   "example": "C'è tanta gente oggi.",
   "example_en": "There are so many people today.",
-  "cov": 535
+  "cov": 535,
+  "article": "la"
  },
  {
   "rank": 146,
@@ -1237,7 +1264,8 @@
   "english": "case; chance",
   "example": "Per caso hai una penna?",
   "example_en": "Do you happen to have a pen?",
-  "cov": 510
+  "cov": 510,
+  "article": "il"
  },
  {
   "rank": 152,
@@ -1245,7 +1273,8 @@
   "english": "strength; come on!",
   "example": "Forza, ce la fai!",
   "example_en": "Come on, you can do it!",
-  "cov": 556
+  "cov": 556,
+  "article": "la"
  },
  {
   "rank": 153,
@@ -1253,7 +1282,8 @@
   "english": "ma'am; lady; Mrs.",
   "example": "Buonasera, signora.",
   "example_en": "Good evening, ma'am.",
-  "cov": 498
+  "cov": 498,
+  "article": "la"
  },
  {
   "rank": 154,
@@ -1261,7 +1291,8 @@
   "english": "name",
   "example": "Qual è il tuo nome?",
   "example_en": "What's your name?",
-  "cov": 557
+  "cov": 557,
+  "article": "il"
  },
  {
   "rank": 155,
@@ -1270,7 +1301,8 @@
   "example": "Nessun problema!",
   "example_en": "No problem!",
   "note": "Masculine: il problema",
-  "cov": 733
+  "cov": 733,
+  "article": "il"
  },
  {
   "rank": 156,
@@ -1278,7 +1310,8 @@
   "english": "world",
   "example": "Il mondo è piccolo!",
   "example_en": "It's a small world!",
-  "cov": 499
+  "cov": 499,
+  "article": "il"
  },
  {
   "rank": 157,
@@ -1302,7 +1335,8 @@
   "english": "woman",
   "example": "È una donna molto intelligente.",
   "example_en": "She's a very smart woman.",
-  "cov": 709
+  "cov": 709,
+  "article": "la"
  },
  {
   "rank": 160,
@@ -1334,7 +1368,8 @@
   "english": "family",
   "example": "Come sta la tua famiglia?",
   "example_en": "How's your family?",
-  "cov": 507
+  "cov": 507,
+  "article": "la"
  },
  {
   "rank": 164,
@@ -1351,7 +1386,8 @@
   "example": "Hai ragione.",
   "example_en": "You're right.",
   "note": "avere ragione = to be right",
-  "cov": 484
+  "cov": 484,
+  "article": "la"
  },
  {
   "rank": 166,
@@ -1367,7 +1403,8 @@
   "english": "night",
   "example": "Non ho dormito tutta la notte.",
   "example_en": "I didn't sleep all night.",
-  "cov": 467
+  "cov": 467,
+  "article": "la"
  },
  {
   "rank": 168,
@@ -1375,7 +1412,8 @@
   "english": "head",
   "example": "Ha la testa tra le nuvole.",
   "example_en": "He has his head in the clouds.",
-  "cov": 478
+  "cov": 478,
+  "article": "la"
  },
  {
   "rank": 169,
@@ -1391,7 +1429,8 @@
   "english": "treasure; sweetheart",
   "example": "Ciao tesoro, com'è andata?",
   "example_en": "Hi sweetheart, how did it go?",
-  "cov": 444
+  "cov": 444,
+  "article": "il"
  },
  {
   "rank": 171,
@@ -1441,7 +1480,8 @@
   "english": "door",
   "example": "Chiudi la porta, per favore.",
   "example_en": "Close the door, please.",
-  "cov": 641
+  "cov": 641,
+  "article": "la"
  },
  {
   "rank": 177,
@@ -1449,7 +1489,8 @@
   "english": "wife",
   "example": "Sua moglie è italiana.",
   "example_en": "His wife is Italian.",
-  "cov": 421
+  "cov": 421,
+  "article": "la"
  },
  {
   "rank": 178,
@@ -1457,7 +1498,8 @@
   "english": "story; history",
   "example": "È una lunga storia.",
   "example_en": "It's a long story.",
-  "cov": 457
+  "cov": 457,
+  "article": "la"
  },
  {
   "rank": 179,
@@ -1521,7 +1563,8 @@
   "english": "bed",
   "example": "Vado a letto presto stasera.",
   "example_en": "I'm going to bed early tonight.",
-  "cov": 377
+  "cov": 377,
+  "article": "il"
  },
  {
   "rank": 187,
@@ -1537,7 +1580,8 @@
   "english": "end",
   "example": "Alla fine è andato tutto bene.",
   "example_en": "In the end everything went fine.",
-  "cov": 357
+  "cov": 357,
+  "article": "la"
  },
  {
   "rank": 189,
@@ -1545,7 +1589,8 @@
   "english": "help",
   "example": "Grazie per l'aiuto!",
   "example_en": "Thanks for the help!",
-  "cov": 475
+  "cov": 475,
+  "article": "l'"
  },
  {
   "rank": 190,
@@ -1554,7 +1599,8 @@
   "example": "Ho paura dei cani.",
   "example_en": "I'm afraid of dogs.",
   "note": "avere paura di = to be afraid of",
-  "cov": 364
+  "cov": 364,
+  "article": "la"
  },
  {
   "rank": 191,
@@ -1562,7 +1608,8 @@
   "english": "brother",
   "example": "Mio fratello vive a Chicago.",
   "example_en": "My brother lives in Chicago.",
-  "cov": 417
+  "cov": 417,
+  "article": "il"
  },
  {
   "rank": 192,
@@ -1586,7 +1633,8 @@
   "english": "boss; head",
   "example": "Il mio capo è in vacanza.",
   "example_en": "My boss is on vacation.",
-  "cov": 348
+  "cov": 348,
+  "article": "il"
  },
  {
   "rank": 195,
@@ -1594,7 +1642,8 @@
   "english": "love",
   "example": "Amore, a che ora torni?",
   "example_en": "Honey, what time are you coming back?",
-  "cov": 348
+  "cov": 348,
+  "article": "l'"
  },
  {
   "rank": 196,
@@ -1610,7 +1659,8 @@
   "english": "car",
   "example": "Andiamo in macchina o a piedi?",
   "example_en": "Are we going by car or on foot?",
-  "cov": 378
+  "cov": 378,
+  "article": "la"
  },
  {
   "rank": 198,
@@ -1635,7 +1685,8 @@
   "example": "Lavati le mani!",
   "example_en": "Wash your hands!",
   "note": "Feminine: la mano, le mani",
-  "cov": 607
+  "cov": 607,
+  "article": "la"
  },
  {
   "rank": 201,
@@ -1653,7 +1704,8 @@
   "example": "Il bambino dorme, parla piano.",
   "example_en": "The baby's sleeping, speak quietly.",
   "note": "bambina = little girl; bambini = children",
-  "cov": 754
+  "cov": 754,
+  "article": "il"
  },
  {
   "rank": 203,
@@ -1704,7 +1756,8 @@
   "example": "Ci vediamo domani sera.",
   "example_en": "See you tomorrow evening.",
   "note": "Buonasera = good evening",
-  "cov": 346
+  "cov": 346,
+  "article": "la"
  },
  {
   "rank": 209,
@@ -1713,7 +1766,8 @@
   "example": "Facciamo un giro in centro?",
   "example_en": "Shall we take a walk around downtown?",
   "note": "fare un giro = to go for a walk/drive",
-  "cov": 381
+  "cov": 381,
+  "article": "il"
  },
  {
   "rank": 210,
@@ -1754,7 +1808,8 @@
   "english": "fault; blame",
   "example": "È tutta colpa mia.",
   "example_en": "It's all my fault.",
-  "cov": 345
+  "cov": 345,
+  "article": "la"
  },
  {
   "rank": 215,
@@ -1763,7 +1818,8 @@
   "example": "Questo è il punto.",
   "example_en": "That's the point.",
   "note": "in punto = sharp (e.g. alle tre in punto)",
-  "cov": 392
+  "cov": 392,
+  "article": "il"
  },
  {
   "rank": 216,
@@ -1813,7 +1869,8 @@
   "english": "dad",
   "example": "Mio papà è in pensione.",
   "example_en": "My dad is retired.",
-  "cov": 276
+  "cov": 276,
+  "article": "il"
  },
  {
   "rank": 222,
@@ -1846,7 +1903,8 @@
   "english": "minute",
   "example": "Arrivo tra cinque minuti.",
   "example_en": "I'll be there in five minutes.",
-  "cov": 423
+  "cov": 423,
+  "article": "il"
  },
  {
   "rank": 226,
@@ -1854,7 +1912,8 @@
   "english": "earth; ground; land",
   "example": "Mi è caduto il telefono per terra.",
   "example_en": "I dropped my phone on the ground.",
-  "cov": 309
+  "cov": 309,
+  "article": "la"
  },
  {
   "rank": 227,
@@ -1862,7 +1921,8 @@
   "english": "road; street; way",
   "example": "Sei per strada?",
   "example_en": "Are you on your way?",
-  "cov": 322
+  "cov": 322,
+  "article": "la"
  },
  {
   "rank": 228,
@@ -1887,7 +1947,8 @@
   "english": "week",
   "example": "Ci sentiamo la settimana prossima.",
   "example_en": "Let's talk next week.",
-  "cov": 426
+  "cov": 426,
+  "article": "la"
  },
  {
   "rank": 231,
@@ -1921,7 +1982,8 @@
   "example": "Ha gli occhi azzurri.",
   "example_en": "She has blue eyes.",
   "note": "Occhio! = Watch out!",
-  "cov": 397
+  "cov": 397,
+  "article": "l'"
  },
  {
   "rank": 235,
@@ -1945,7 +2007,8 @@
   "english": "school",
   "example": "I bambini sono a scuola.",
   "example_en": "The kids are at school.",
-  "cov": 290
+  "cov": 290,
+  "article": "la"
  },
  {
   "rank": 238,
@@ -2020,7 +2083,8 @@
   "english": "heart",
   "example": "Grazie di cuore.",
   "example_en": "Thank you from the bottom of my heart.",
-  "cov": 278
+  "cov": 278,
+  "article": "il"
  },
  {
   "rank": 247,
@@ -2028,7 +2092,8 @@
   "english": "husband",
   "example": "Suo marito è molto simpatico.",
   "example_en": "Her husband is really nice.",
-  "cov": 266
+  "cov": 266,
+  "article": "il"
  },
  {
   "rank": 248,
@@ -2086,7 +2151,8 @@
   "example": "Ho lasciato l'auto in garage.",
   "example_en": "I left the car in the garage.",
   "note": "Feminine: l'auto (same as la macchina)",
-  "cov": 252
+  "cov": 252,
+  "article": "l'"
  },
  {
   "rank": 255,
@@ -2102,7 +2168,8 @@
   "english": "number",
   "example": "Qual è il tuo numero di telefono?",
   "example_en": "What's your phone number?",
-  "cov": 291
+  "cov": 291,
+  "article": "il"
  },
  {
   "rank": 257,
@@ -2145,7 +2212,8 @@
   "example": "Un bicchiere d'acqua, per favore.",
   "example_en": "A glass of water, please.",
   "note": "acqua frizzante / naturale = sparkling / still",
-  "cov": 261
+  "cov": 261,
+  "article": "l'"
  },
  {
   "rank": 262,
@@ -2161,7 +2229,8 @@
   "english": "room",
   "example": "La mia stanza è in fondo al corridoio.",
   "example_en": "My room is at the end of the hall.",
-  "cov": 263
+  "cov": 263,
+  "article": "la"
  },
  {
   "rank": 264,
@@ -2186,7 +2255,8 @@
   "english": "stuff; things",
   "example": "Prendi la tua roba, andiamo.",
   "example_en": "Grab your stuff, let's go.",
-  "cov": 241
+  "cov": 241,
+  "article": "la"
  },
  {
   "rank": 267,
@@ -2202,7 +2272,8 @@
   "english": "body",
   "example": "Mi fa male tutto il corpo.",
   "example_en": "My whole body hurts.",
-  "cov": 269
+  "cov": 269,
+  "article": "il"
  },
  {
   "rank": 269,
@@ -2220,7 +2291,8 @@
   "example": "Mi fai una foto?",
   "example_en": "Can you take a photo of me?",
   "note": "Feminine: la foto, le foto",
-  "cov": 234
+  "cov": 234,
+  "article": "la"
  },
  {
   "rank": 271,
@@ -2228,7 +2300,8 @@
   "english": "phone",
   "example": "Ti chiamo al telefono stasera.",
   "example_en": "I'll call you on the phone tonight.",
-  "cov": 253
+  "cov": 253,
+  "article": "il"
  },
  {
   "rank": 272,
@@ -2255,7 +2328,8 @@
   "example": "Ho un sacco di cose da fare.",
   "example_en": "I have a ton of things to do.",
   "note": "un sacco di = a lot of",
-  "cov": 246
+  "cov": 246,
+  "article": "il"
  },
  {
   "rank": 275,
@@ -2288,7 +2362,8 @@
   "english": "party; holiday",
   "example": "Sabato faccio una festa a casa.",
   "example_en": "I'm having a party at home on Saturday.",
-  "cov": 253
+  "cov": 253,
+  "article": "la"
  },
  {
   "rank": 279,
@@ -2296,7 +2371,8 @@
   "english": "sense; meaning",
   "example": "Non ha senso.",
   "example_en": "It doesn't make sense.",
-  "cov": 241
+  "cov": 241,
+  "article": "il"
  },
  {
   "rank": 280,
@@ -2305,7 +2381,8 @@
   "example": "Non mi piace quel genere di musica.",
   "example_en": "I don't like that kind of music.",
   "note": "in genere = usually",
-  "cov": 233
+  "cov": 233,
+  "article": "il"
  },
  {
   "rank": 281,
@@ -2321,7 +2398,8 @@
   "english": "moment; second",
   "example": "Un attimo e arrivo!",
   "example_en": "One second and I'm there!",
-  "cov": 222
+  "cov": 222,
+  "article": "l'"
  },
  {
   "rank": 283,
@@ -2329,7 +2407,8 @@
   "english": "sister",
   "example": "Mia sorella vive a Firenze.",
   "example_en": "My sister lives in Florence.",
-  "cov": 249
+  "cov": 249,
+  "article": "la"
  },
  {
   "rank": 284,
@@ -2354,7 +2433,8 @@
   "example": "Che film guardiamo stasera?",
   "example_en": "What movie are we watching tonight?",
   "note": "Doesn't change in plural: i film",
-  "cov": 219
+  "cov": 219,
+  "article": "il"
  },
  {
   "rank": 287,
@@ -2362,7 +2442,8 @@
   "english": "office",
   "example": "Sono ancora in ufficio.",
   "example_en": "I'm still at the office.",
-  "cov": 229
+  "cov": 229,
+  "article": "l'"
  },
  {
   "rank": 288,
@@ -2378,7 +2459,8 @@
   "english": "month",
   "example": "Ci vediamo il mese prossimo.",
   "example_en": "See you next month.",
-  "cov": 337
+  "cov": 337,
+  "article": "il"
  },
  {
   "rank": 290,
@@ -2411,7 +2493,8 @@
   "example": "Posso farti una domanda?",
   "example_en": "Can I ask you a question?",
   "note": "fare una domanda = to ask a question",
-  "cov": 361
+  "cov": 361,
+  "article": "la"
  },
  {
   "rank": 294,
@@ -2420,7 +2503,8 @@
   "example": "Devo andare dal dottore.",
   "example_en": "I have to go to the doctor.",
   "note": "Before a name: dottor Rossi",
-  "cov": 432
+  "cov": 432,
+  "article": "il"
  },
  {
   "rank": 295,
@@ -2446,7 +2530,8 @@
   "example": "Che vista stupenda!",
   "example_en": "What an amazing view!",
   "note": "punto di vista = point of view",
-  "cov": 278
+  "cov": 278,
+  "article": "la"
  },
  {
   "rank": 298,
@@ -2454,7 +2539,8 @@
   "english": "test; proof; try",
   "example": "Facciamo una prova.",
   "example_en": "Let's give it a try.",
-  "cov": 441
+  "cov": 441,
+  "article": "la"
  },
  {
   "rank": 299,
@@ -2471,7 +2557,8 @@
   "example": "Ci vediamo tra un paio di giorni.",
   "example_en": "See you in a couple of days.",
   "note": "Plural is feminine: due paia",
-  "cov": 208
+  "cov": 208,
+  "article": "il"
  },
  {
   "rank": 301,
@@ -2480,7 +2567,8 @@
   "example": "Il conto, per favore.",
   "example_en": "The check, please.",
   "note": "rendersi conto = to realize",
-  "cov": 325
+  "cov": 325,
+  "article": "il"
  },
  {
   "rank": 302,
@@ -2514,7 +2602,8 @@
   "english": "team",
   "example": "Qual è la tua squadra preferita?",
   "example_en": "What's your favorite team?",
-  "cov": 212
+  "cov": 212,
+  "article": "la"
  },
  {
   "rank": 306,
@@ -2522,7 +2611,8 @@
   "english": "word",
   "example": "Non ho capito una parola.",
   "example_en": "I didn't understand a word.",
-  "cov": 351
+  "cov": 351,
+  "article": "la"
  },
  {
   "rank": 307,
@@ -2531,7 +2621,8 @@
   "example": "Andiamo a piedi.",
   "example_en": "Let's walk. (lit. go on foot)",
   "note": "a piedi = on foot",
-  "cov": 249
+  "cov": 249,
+  "article": "il"
  },
  {
   "rank": 308,
@@ -2547,7 +2638,8 @@
   "english": "reason",
   "example": "Per quale motivo?",
   "example_en": "For what reason?",
-  "cov": 219
+  "cov": 219,
+  "article": "il"
  },
  {
   "rank": 310,
@@ -2564,7 +2656,8 @@
   "english": "game",
   "example": "È solo un gioco.",
   "example_en": "It's just a game.",
-  "cov": 265
+  "cov": 265,
+  "article": "il"
  },
  {
   "rank": 312,
@@ -2580,7 +2673,8 @@
   "english": "mind",
   "example": "Mi è venuto in mente adesso.",
   "example_en": "It just came to mind.",
-  "cov": 221
+  "cov": 221,
+  "article": "la"
  },
  {
   "rank": 314,
@@ -2596,7 +2690,8 @@
   "english": "rest; change (money)",
   "example": "Tenga pure il resto.",
   "example_en": "Keep the change.",
-  "cov": 358
+  "cov": 358,
+  "article": "il"
  },
  {
   "rank": 316,
@@ -2605,7 +2700,8 @@
   "example": "Buona fortuna!",
   "example_en": "Good luck!",
   "note": "per fortuna = luckily",
-  "cov": 186
+  "cov": 186,
+  "article": "la"
  },
  {
   "rank": 317,
@@ -2630,7 +2726,8 @@
   "english": "dinner",
   "example": "La cena è pronta!",
   "example_en": "Dinner's ready!",
-  "cov": 184
+  "cov": 184,
+  "article": "la"
  },
  {
   "rank": 320,
@@ -2647,7 +2744,8 @@
   "example": "Fatti gli affari tuoi!",
   "example_en": "Mind your own business!",
   "note": "Sing. affare = deal; che affare! = what a bargain!",
-  "cov": 176
+  "cov": 176,
+  "article": "gli"
  },
  {
   "rank": 322,
@@ -2680,7 +2778,8 @@
   "english": "guy; some guy",
   "example": "Un tizio mi ha chiesto la strada.",
   "example_en": "Some guy asked me for directions.",
-  "cov": 202
+  "cov": 202,
+  "article": "il"
  },
  {
   "rank": 326,
@@ -2688,7 +2787,8 @@
   "english": "safety; security",
   "example": "Mettiti la cintura di sicurezza.",
   "example_en": "Put on your seatbelt.",
-  "cov": 172
+  "cov": 172,
+  "article": "la"
  },
  {
   "rank": 327,
@@ -2696,7 +2796,8 @@
   "english": "wedding; marriage",
   "example": "Andiamo a un matrimonio sabato.",
   "example_en": "We're going to a wedding on Saturday.",
-  "cov": 183
+  "cov": 183,
+  "article": "il"
  },
  {
   "rank": 328,
@@ -2705,7 +2806,8 @@
   "example": "Abbassa il fuoco sotto la pasta.",
   "example_en": "Turn down the heat under the pasta.",
   "note": "a fuoco lento = on low heat",
-  "cov": 181
+  "cov": 181,
+  "article": "il"
  },
  {
   "rank": 329,
@@ -2713,7 +2815,8 @@
   "english": "beginning; start",
   "example": "All'inizio era difficile.",
   "example_en": "At the beginning it was hard.",
-  "cov": 248
+  "cov": 248,
+  "article": "l'"
  },
  {
   "rank": 330,
@@ -2722,7 +2825,8 @@
   "example": "Il treno è in ritardo a causa della neve.",
   "example_en": "The train is late because of the snow.",
   "note": "a causa di = because of",
-  "cov": 181
+  "cov": 181,
+  "article": "la"
  },
  {
   "rank": 331,
@@ -2731,7 +2835,8 @@
   "example": "Non ho voglia di uscire.",
   "example_en": "I don't feel like going out.",
   "note": "avere voglia di = to feel like",
-  "cov": 168
+  "cov": 168,
+  "article": "la"
  },
  {
   "rank": 332,
@@ -2747,7 +2852,8 @@
   "english": "parents",
   "example": "I miei genitori vengono a trovarmi.",
   "example_en": "My parents are coming to visit me.",
-  "cov": 166
+  "cov": 166,
+  "article": "i"
  },
  {
   "rank": 334,
@@ -2764,7 +2870,8 @@
   "example": "Mi piace questa città.",
   "example_en": "I like this city.",
   "note": "Doesn't change in plural: le città",
-  "cov": 326
+  "cov": 326,
+  "article": "la"
  },
  {
   "rank": 336,
@@ -2772,7 +2879,8 @@
   "english": "hospital",
   "example": "Mia zia è in ospedale.",
   "example_en": "My aunt is in the hospital.",
-  "cov": 172
+  "cov": 172,
+  "article": "l'"
  },
  {
   "rank": 337,
@@ -2781,7 +2889,8 @@
   "example": "Attenzione, il pavimento è bagnato!",
   "example_en": "Careful, the floor is wet!",
   "note": "fare attenzione = to pay attention",
-  "cov": 170
+  "cov": 170,
+  "article": "l'"
  },
  {
   "rank": 338,
@@ -2798,7 +2907,8 @@
   "english": "situation",
   "example": "La situazione è complicata.",
   "example_en": "The situation is complicated.",
-  "cov": 173
+  "cov": 173,
+  "article": "la"
  },
  {
   "rank": 340,
@@ -2814,7 +2924,8 @@
   "english": "care; cure",
   "example": "Prenditi cura di te.",
   "example_en": "Take care of yourself.",
-  "cov": 180
+  "cov": 180,
+  "article": "la"
  },
  {
   "rank": 342,
@@ -2855,7 +2966,8 @@
   "english": "country; small town",
   "example": "Mio nonno era di un piccolo paese.",
   "example_en": "My grandfather was from a small town.",
-  "cov": 170
+  "cov": 170,
+  "article": "il"
  },
  {
   "rank": 347,
@@ -2872,7 +2984,8 @@
   "example": "Lasciami in pace.",
   "example_en": "Leave me alone.",
   "note": "fare pace = to make up",
-  "cov": 157
+  "cov": 157,
+  "article": "la"
  },
  {
   "rank": 349,
@@ -2888,7 +3001,8 @@
   "english": "music",
   "example": "Che musica ascolti?",
   "example_en": "What music do you listen to?",
-  "cov": 155
+  "cov": 155,
+  "article": "la"
  },
  {
   "rank": 351,
@@ -2913,7 +3027,8 @@
   "english": "book",
   "example": "Sto leggendo un libro bellissimo.",
   "example_en": "I'm reading a great book.",
-  "cov": 213
+  "cov": 213,
+  "article": "il"
  },
  {
   "rank": 354,
@@ -2938,7 +3053,8 @@
   "english": "choice",
   "example": "Non avevo scelta.",
   "example_en": "I had no choice.",
-  "cov": 261
+  "cov": 261,
+  "article": "la"
  },
  {
   "rank": 357,
@@ -2973,7 +3089,8 @@
   "example": "Com'è andata la giornata?",
   "example_en": "How was your day?",
   "note": "giorno = day (date); giornata = the day as lived",
-  "cov": 155
+  "cov": 155,
+  "article": "la"
  },
  {
   "rank": 361,
@@ -2997,7 +3114,8 @@
   "english": "lawyer",
   "example": "Il mio avvocato è molto bravo.",
   "example_en": "My lawyer is very good.",
-  "cov": 175
+  "cov": 175,
+  "article": "l'"
  },
  {
   "rank": 364,
@@ -3013,7 +3131,8 @@
   "english": "message; text",
   "example": "Ti mando un messaggio.",
   "example_en": "I'll send you a text.",
-  "cov": 183
+  "cov": 183,
+  "article": "il"
  },
  {
   "rank": 366,
@@ -3053,7 +3172,8 @@
   "english": "sky",
   "example": "Il cielo è sereno oggi.",
   "example_en": "The sky is clear today.",
-  "cov": 153
+  "cov": 153,
+  "article": "il"
  },
  {
   "rank": 371,
@@ -3062,7 +3182,8 @@
   "example": "Scusi, dov'è il bagno?",
   "example_en": "Excuse me, where's the bathroom?",
   "note": "fare il bagno = to swim / take a bath",
-  "cov": 155
+  "cov": 155,
+  "article": "il"
  },
  {
   "rank": 372,
@@ -3079,7 +3200,8 @@
   "example": "Hai una bella voce.",
   "example_en": "You have a nice voice.",
   "note": "ad alta voce = out loud",
-  "cov": 186
+  "cov": 186,
+  "article": "la"
  },
  {
   "rank": 374,
@@ -3103,7 +3225,8 @@
   "english": "truth",
   "example": "Dimmi la verità.",
   "example_en": "Tell me the truth.",
-  "cov": 275
+  "cov": 275,
+  "article": "la"
  },
  {
   "rank": 377,
@@ -3111,7 +3234,8 @@
   "english": "dog",
   "example": "Hai un cane?",
   "example_en": "Do you have a dog?",
-  "cov": 194
+  "cov": 194,
+  "article": "il"
  },
  {
   "rank": 378,
@@ -3128,7 +3252,8 @@
   "english": "light",
   "example": "Spegni la luce, per favore.",
   "example_en": "Turn off the light, please.",
-  "cov": 191
+  "cov": 191,
+  "article": "la"
  },
  {
   "rank": 380,
@@ -3152,7 +3277,8 @@
   "english": "group",
   "example": "Viaggiamo in gruppo.",
   "example_en": "We're traveling as a group.",
-  "cov": 153
+  "cov": 153,
+  "article": "il"
  },
  {
   "rank": 383,
@@ -3168,7 +3294,8 @@
   "english": "step",
   "example": "Un passo alla volta.",
   "example_en": "One step at a time.",
-  "cov": 136
+  "cov": 136,
+  "article": "il"
  },
  {
   "rank": 385,
@@ -3186,7 +3313,8 @@
   "example": "Ti sei tagliato i capelli?",
   "example_en": "Did you cut your hair?",
   "note": "Always plural for hair on your head",
-  "cov": 135
+  "cov": 135,
+  "article": "i"
  },
  {
   "rank": 387,
@@ -3218,7 +3346,8 @@
   "english": "future",
   "example": "Chi sa cosa succederà in futuro?",
   "example_en": "Who knows what will happen in the future?",
-  "cov": 149
+  "cov": 149,
+  "article": "il"
  },
  {
   "rank": 391,
@@ -3234,7 +3363,8 @@
   "english": "food",
   "example": "Il cibo italiano è il migliore.",
   "example_en": "Italian food is the best.",
-  "cov": 137
+  "cov": 137,
+  "article": "il"
  },
  {
   "rank": 393,
@@ -3243,7 +3373,8 @@
   "example": "Scusa, vado di fretta.",
   "example_en": "Sorry, I'm in a hurry.",
   "note": "avere fretta = to be in a hurry",
-  "cov": 132
+  "cov": 132,
+  "article": "la"
  },
  {
   "rank": 394,
@@ -3294,7 +3425,8 @@
   "example": "Ho prenotato una camera doppia.",
   "example_en": "I booked a double room.",
   "note": "camera da letto = bedroom",
-  "cov": 142
+  "cov": 142,
+  "article": "la"
  },
  {
   "rank": 400,
@@ -3310,7 +3442,8 @@
   "english": "accident",
   "example": "C'è stato un incidente in autostrada.",
   "example_en": "There was an accident on the highway.",
-  "cov": 142
+  "cov": 142,
+  "article": "l'"
  },
  {
   "rank": 402,
@@ -3319,7 +3452,8 @@
   "example": "Non avevo intenzione di offenderti.",
   "example_en": "I didn't mean to offend you.",
   "note": "avere intenzione di = to intend to",
-  "cov": 148
+  "cov": 148,
+  "article": "l'"
  },
  {
   "rank": 403,
@@ -3361,7 +3495,8 @@
   "english": "look; appearance",
   "example": "Hai un ottimo aspetto oggi!",
   "example_en": "You look great today!",
-  "cov": 128
+  "cov": 128,
+  "article": "l'"
  },
  {
   "rank": 408,
@@ -3369,7 +3504,8 @@
   "english": "trip; journey",
   "example": "Buon viaggio!",
   "example_en": "Have a good trip!",
-  "cov": 152
+  "cov": 152,
+  "article": "il"
  },
  {
   "rank": 409,
@@ -3386,7 +3522,8 @@
   "english": "call (phone)",
   "example": "Ho una chiamata persa da mia madre.",
   "example_en": "I have a missed call from my mother.",
-  "cov": 127
+  "cov": 127,
+  "article": "la"
  },
  {
   "rank": 411,
@@ -3394,7 +3531,8 @@
   "english": "mouth",
   "example": "In bocca al lupo! — Crepi!",
   "example_en": "Good luck! — Thanks! (lit. into the wolf's mouth)",
-  "cov": 131
+  "cov": 131,
+  "article": "la"
  },
  {
   "rank": 412,
@@ -3403,7 +3541,8 @@
   "example": "Permesso, posso passare?",
   "example_en": "Excuse me, can I get by?",
   "note": "Said when entering someone's home or squeezing past",
-  "cov": 133
+  "cov": 133,
+  "article": "il"
  },
  {
   "rank": 413,
@@ -3420,7 +3559,8 @@
   "english": "order",
   "example": "Metti in ordine la tua stanza!",
   "example_en": "Tidy up your room!",
-  "cov": 213
+  "cov": 213,
+  "article": "l'"
  },
  {
   "rank": 415,
@@ -3444,7 +3584,8 @@
   "english": "Christmas",
   "example": "Buon Natale a tutti!",
   "example_en": "Merry Christmas, everyone!",
-  "cov": 125
+  "cov": 125,
+  "article": "il"
  },
  {
   "rank": 418,
@@ -3452,7 +3593,8 @@
   "english": "morning",
   "example": "Bevo sempre un caffè la mattina.",
   "example_en": "I always have a coffee in the morning.",
-  "cov": 166
+  "cov": 166,
+  "article": "la"
  },
  {
   "rank": 419,
@@ -3461,7 +3603,8 @@
   "example": "Il sistema non funziona oggi.",
   "example_en": "The system isn't working today.",
   "note": "Masculine: il sistema",
-  "cov": 151
+  "cov": 151,
+  "article": "il"
  },
  {
   "rank": 420,
@@ -3470,7 +3613,8 @@
   "example": "Il bagno è in fondo a destra.",
   "example_en": "The bathroom is at the end on the right.",
   "note": "in fondo = deep down / after all",
-  "cov": 155
+  "cov": 155,
+  "article": "il"
  },
  {
   "rank": 421,
@@ -3478,7 +3622,8 @@
   "english": "million",
   "example": "Ci sono più di due milioni di persone a Roma.",
   "example_en": "There are more than two million people in Rome.",
-  "cov": 164
+  "cov": 164,
+  "article": "il"
  },
  {
   "rank": 422,
@@ -3503,7 +3648,8 @@
   "english": "appointment; date",
   "example": "Ho un appuntamento dal dentista.",
   "example_en": "I have a dentist appointment.",
-  "cov": 133
+  "cov": 133,
+  "article": "l'"
  },
  {
   "rank": 425,
@@ -3519,7 +3665,8 @@
   "english": "information",
   "example": "Posso chiedere un'informazione?",
   "example_en": "Can I ask for some information?",
-  "cov": 153
+  "cov": 153,
+  "article": "l'"
  },
  {
   "rank": 427,
@@ -3535,7 +3682,8 @@
   "english": "piece",
   "example": "Vuoi un pezzo di torta?",
   "example_en": "Do you want a piece of cake?",
-  "cov": 205
+  "cov": 205,
+  "article": "il"
  },
  {
   "rank": 429,
@@ -3543,7 +3691,8 @@
   "english": "secret",
   "example": "Sai tenere un segreto?",
   "example_en": "Can you keep a secret?",
-  "cov": 212
+  "cov": 212,
+  "article": "il"
  },
  {
   "rank": 430,
@@ -3552,7 +3701,8 @@
   "example": "Mi hai fatto venire un colpo!",
   "example_en": "You gave me a heart attack! (scared me)",
   "note": "colpo di fulmine = love at first sight",
-  "cov": 114
+  "cov": 114,
+  "article": "il"
  },
  {
   "rank": 431,
@@ -3576,7 +3726,8 @@
   "english": "list",
   "example": "Faccio la lista della spesa.",
   "example_en": "I'll make the shopping list.",
-  "cov": 117
+  "cov": 117,
+  "article": "la"
  },
  {
   "rank": 434,
@@ -3624,7 +3775,8 @@
   "english": "advice",
   "example": "Mi dai un consiglio?",
   "example_en": "Can you give me some advice?",
-  "cov": 137
+  "cov": 137,
+  "article": "il"
  },
  {
   "rank": 440,
@@ -3641,7 +3793,8 @@
   "example": "Mio zio fa il cuoco.",
   "example_en": "My uncle is a cook.",
   "note": "zia = aunt",
-  "cov": 118
+  "cov": 118,
+  "article": "lo"
  },
  {
   "rank": 442,
@@ -3649,7 +3802,8 @@
   "english": "center; downtown",
   "example": "Andiamo in centro a fare un giro?",
   "example_en": "Shall we walk around downtown?",
-  "cov": 119
+  "cov": 119,
+  "article": "il"
  },
  {
   "rank": 443,
@@ -3658,7 +3812,8 @@
   "example": "È una specie di torta salata.",
   "example_en": "It's a kind of savory pie.",
   "note": "specialmente = especially",
-  "cov": 111
+  "cov": 111,
+  "article": "la"
  },
  {
   "rank": 444,
@@ -3675,7 +3830,8 @@
   "english": "dream",
   "example": "Vivere in Italia è il mio sogno.",
   "example_en": "Living in Italy is my dream.",
-  "cov": 184
+  "cov": 184,
+  "article": "il"
  },
  {
   "rank": 446,
@@ -3707,7 +3863,8 @@
   "english": "sun",
   "example": "Oggi c'è un bel sole.",
   "example_en": "It's nice and sunny today.",
-  "cov": 109
+  "cov": 109,
+  "article": "il"
  },
  {
   "rank": 450,
@@ -3715,7 +3872,8 @@
   "english": "law",
   "example": "È contro la legge.",
   "example_en": "It's against the law.",
-  "cov": 174
+  "cov": 174,
+  "article": "la"
  },
  {
   "rank": 451,
@@ -3740,7 +3898,8 @@
   "example": "Rispetto all'anno scorso, va meglio.",
   "example_en": "Compared to last year, it's going better.",
   "note": "rispetto a = compared to",
-  "cov": 121
+  "cov": 121,
+  "article": "il"
  },
  {
   "rank": 454,
@@ -3756,7 +3915,8 @@
   "english": "meeting; encounter",
   "example": "Ho un incontro di lavoro alle tre.",
   "example_en": "I have a work meeting at three.",
-  "cov": 141
+  "cov": 141,
+  "article": "l'"
  },
  {
   "rank": 456,
@@ -3764,7 +3924,8 @@
   "english": "relationship; report",
   "example": "Ho un ottimo rapporto con i miei colleghi.",
   "example_en": "I have a great relationship with my colleagues.",
-  "cov": 140
+  "cov": 140,
+  "article": "il"
  },
  {
   "rank": 457,
@@ -3772,7 +3933,8 @@
   "english": "mistake; error",
   "example": "Scusa, è stato un errore.",
   "example_en": "Sorry, it was a mistake.",
-  "cov": 141
+  "cov": 141,
+  "article": "l'"
  },
  {
   "rank": 458,
@@ -3788,7 +3950,8 @@
   "english": "surprise",
   "example": "Che bella sorpresa!",
   "example_en": "What a nice surprise!",
-  "cov": 153
+  "cov": 153,
+  "article": "la"
  },
  {
   "rank": 460,
@@ -3797,7 +3960,8 @@
   "example": "Dai un'occhiata a questo.",
   "example_en": "Take a look at this.",
   "note": "dare un'occhiata = to take a look",
-  "cov": 107
+  "cov": 107,
+  "article": "l'"
  },
  {
   "rank": 461,
@@ -3805,7 +3969,8 @@
   "english": "answer; reply",
   "example": "Aspetto ancora una risposta.",
   "example_en": "I'm still waiting for a reply.",
-  "cov": 191
+  "cov": 191,
+  "article": "la"
  },
  {
   "rank": 462,
@@ -3813,7 +3978,8 @@
   "english": "service",
   "example": "Il servizio qui è ottimo.",
   "example_en": "The service here is excellent.",
-  "cov": 145
+  "cov": 145,
+  "article": "il"
  },
  {
   "rank": 463,
@@ -3821,7 +3987,8 @@
   "english": "doctor",
   "example": "Devo chiamare il medico.",
   "example_en": "I need to call the doctor.",
-  "cov": 163
+  "cov": 163,
+  "article": "il"
  },
  {
   "rank": 464,
@@ -3830,7 +3997,8 @@
   "example": "Che schifo!",
   "example_en": "Gross!",
   "note": "fare schifo = to suck / be disgusting",
-  "cov": 105
+  "cov": 105,
+  "article": "lo"
  },
  {
   "rank": 465,
@@ -3838,7 +4006,8 @@
   "english": "pain",
   "example": "Ho un dolore alla schiena.",
   "example_en": "I have a pain in my back.",
-  "cov": 114
+  "cov": 114,
+  "article": "il"
  },
  {
   "rank": 466,
@@ -3888,7 +4057,8 @@
   "example": "In realtà non lo so.",
   "example_en": "Actually, I don't know.",
   "note": "in realtà = actually",
-  "cov": 239
+  "cov": 239,
+  "article": "la"
  },
  {
   "rank": 472,
@@ -3905,7 +4075,8 @@
   "example": "Hai fame?",
   "example_en": "Are you hungry?",
   "note": "avere fame = to be hungry",
-  "cov": 114
+  "cov": 114,
+  "article": "la"
  },
  {
   "rank": 474,
@@ -3914,7 +4085,8 @@
   "example": "Che programmi hai per il weekend?",
   "example_en": "What plans do you have for the weekend?",
   "note": "Masculine: il programma",
-  "cov": 122
+  "cov": 122,
+  "article": "il"
  },
  {
   "rank": 475,
@@ -3923,7 +4095,8 @@
   "example": "Mia nonna faceva la pasta in casa.",
   "example_en": "My grandma used to make pasta at home.",
   "note": "nonno = grandpa",
-  "cov": 111
+  "cov": 111,
+  "article": "la"
  },
  {
   "rank": 476,
@@ -3932,7 +4105,8 @@
   "example": "Ho una bella notizia!",
   "example_en": "I have some good news!",
   "note": "le notizie = the news",
-  "cov": 192
+  "cov": 192,
+  "article": "la"
  },
  {
   "rank": 477,
@@ -3949,7 +4123,8 @@
   "english": "company",
   "example": "Grazie per la compagnia.",
   "example_en": "Thanks for the company.",
-  "cov": 142
+  "cov": 142,
+  "article": "la"
  },
  {
   "rank": 479,
@@ -3958,7 +4133,8 @@
   "example": "A proposito, hai sentito Marco?",
   "example_en": "By the way, have you heard from Marco?",
   "note": "a proposito = by the way",
-  "cov": 103
+  "cov": 103,
+  "article": "il"
  },
  {
   "rank": 480,
@@ -3983,7 +4159,8 @@
   "example": "Scusa il ritardo!",
   "example_en": "Sorry I'm late!",
   "note": "in ritardo = late",
-  "cov": 103
+  "cov": 103,
+  "article": "il"
  },
  {
   "rank": 483,
@@ -4000,7 +4177,8 @@
   "example": "Prendiamo un caffè al bar?",
   "example_en": "Shall we get a coffee at the café?",
   "note": "An Italian bar is mainly a coffee place",
-  "cov": 100
+  "cov": 100,
+  "article": "il"
  },
  {
   "rank": 485,
@@ -4040,7 +4218,8 @@
   "english": "study; office",
   "example": "Lo studio del mio avvocato è a Roma.",
   "example_en": "My lawyer's office is in Rome.",
-  "cov": 130
+  "cov": 130,
+  "article": "lo"
  },
  {
   "rank": 490,
@@ -4048,7 +4227,8 @@
   "english": "exit",
   "example": "Dov'è l'uscita?",
   "example_en": "Where's the exit?",
-  "cov": 98
+  "cov": 98,
+  "article": "l'"
  },
  {
   "rank": 491,
@@ -4064,7 +4244,8 @@
   "english": "video",
   "example": "Ti mando il video.",
   "example_en": "I'll send you the video.",
-  "cov": 97
+  "cov": 97,
+  "article": "il"
  },
  {
   "rank": 493,
@@ -4097,7 +4278,8 @@
   "english": "key",
   "example": "Hai preso le chiavi di casa?",
   "example_en": "Did you take the house keys?",
-  "cov": 158
+  "cov": 158,
+  "article": "la"
  },
  {
   "rank": 497,
@@ -4105,7 +4287,8 @@
   "english": "courage; come on!",
   "example": "Coraggio, ce la puoi fare!",
   "example_en": "Come on, you can do it!",
-  "cov": 96
+  "cov": 96,
+  "article": "il"
  },
  {
   "rank": 498,
@@ -4121,7 +4304,8 @@
   "english": "sin; pity",
   "example": "Che peccato!",
   "example_en": "What a shame!",
-  "cov": 112
+  "cov": 112,
+  "article": "il"
  },
  {
   "rank": 500,
@@ -4129,7 +4313,8 @@
   "english": "matter; issue",
   "example": "È una questione di tempo.",
   "example_en": "It's a matter of time.",
-  "cov": 114
+  "cov": 114,
+  "article": "la"
  },
  {
   "rank": 501,
@@ -4145,7 +4330,8 @@
   "english": "airplane",
   "example": "Prendo l'aereo domani mattina.",
   "example_en": "I'm flying out tomorrow morning.",
-  "cov": 124
+  "cov": 124,
+  "article": "l'"
  },
  {
   "rank": 503,
@@ -4153,7 +4339,8 @@
   "english": "room; hall",
   "example": "Ti aspetto in sala d'attesa.",
   "example_en": "I'll wait for you in the waiting room.",
-  "cov": 163
+  "cov": 163,
+  "article": "la"
  },
  {
   "rank": 504,
@@ -4169,7 +4356,8 @@
   "english": "birthday",
   "example": "Buon compleanno!",
   "example_en": "Happy birthday!",
-  "cov": 98
+  "cov": 98,
+  "article": "il"
  },
  {
   "rank": 506,
@@ -4177,7 +4365,8 @@
   "english": "relationship; report",
   "example": "Sono in una relazione da due anni.",
   "example_en": "I've been in a relationship for two years.",
-  "cov": 118
+  "cov": 118,
+  "article": "la"
  },
  {
   "rank": 507,
@@ -4185,7 +4374,8 @@
   "english": "customer; client",
   "example": "Il cliente ha sempre ragione.",
   "example_en": "The customer is always right.",
-  "cov": 161
+  "cov": 161,
+  "article": "il"
  },
  {
   "rank": 508,
@@ -4193,7 +4383,8 @@
   "english": "shoulder",
   "example": "Mi fa male la spalla.",
   "example_en": "My shoulder hurts.",
-  "cov": 120
+  "cov": 120,
+  "article": "la"
  },
  {
   "rank": 509,
@@ -4211,7 +4402,8 @@
   "example": "Hai il diritto di saperlo.",
   "example_en": "You have the right to know.",
   "note": "dritto = straight",
-  "cov": 131
+  "cov": 131,
+  "article": "il"
  },
  {
   "rank": 511,
@@ -4227,7 +4419,8 @@
   "english": "apartment",
   "example": "Abbiamo affittato un appartamento a Roma.",
   "example_en": "We rented an apartment in Rome.",
-  "cov": 100
+  "cov": 100,
+  "article": "l'"
  },
  {
   "rank": 513,
@@ -4235,7 +4428,8 @@
   "english": "lunch",
   "example": "Cosa mangiamo a pranzo?",
   "example_en": "What are we having for lunch?",
-  "cov": 97
+  "cov": 97,
+  "article": "il"
  },
  {
   "rank": 514,
@@ -4244,7 +4438,8 @@
   "example": "Buona serata!",
   "example_en": "Have a nice evening!",
   "note": "sera = evening (time); serata = the evening as lived",
-  "cov": 98
+  "cov": 98,
+  "article": "la"
  },
  {
   "rank": 515,
@@ -4261,7 +4456,8 @@
   "example": "Che bel vestito!",
   "example_en": "What a nice dress!",
   "note": "vestiti = clothes",
-  "cov": 214
+  "cov": 214,
+  "article": "il"
  },
  {
   "rank": 517,
@@ -4269,7 +4465,8 @@
   "english": "paper; card",
   "example": "Posso pagare con la carta di credito?",
   "example_en": "Can I pay by credit card?",
-  "cov": 146
+  "cov": 146,
+  "article": "la"
  },
  {
   "rank": 518,
@@ -4293,7 +4490,8 @@
   "english": "area; zone",
   "example": "Abiti in questa zona?",
   "example_en": "Do you live in this area?",
-  "cov": 104
+  "cov": 104,
+  "article": "la"
  },
  {
   "rank": 521,
@@ -4309,7 +4507,8 @@
   "english": "shop; store",
   "example": "Il negozio apre alle nove.",
   "example_en": "The shop opens at nine.",
-  "cov": 104
+  "cov": 104,
+  "article": "il"
  },
  {
   "rank": 523,
@@ -4317,7 +4516,8 @@
   "english": "match; game",
   "example": "Guardiamo la partita stasera?",
   "example_en": "Shall we watch the game tonight?",
-  "cov": 157
+  "cov": 157,
+  "article": "la"
  },
  {
   "rank": 524,
@@ -4326,7 +4526,8 @@
   "example": "Cosa c'è in televisione stasera?",
   "example_en": "What's on TV tonight?",
   "note": "Often just la tv",
-  "cov": 26
+  "cov": 26,
+  "article": "la"
  },
  {
   "rank": 525,
@@ -4334,7 +4535,8 @@
   "english": "space; room",
   "example": "Non c'è spazio in macchina.",
   "example_en": "There's no room in the car.",
-  "cov": 97
+  "cov": 97,
+  "article": "lo"
  },
  {
   "rank": 526,
@@ -4342,7 +4544,8 @@
   "english": "line",
   "example": "Sono in linea con un cliente.",
   "example_en": "I'm on the line with a client.",
-  "cov": 106
+  "cov": 106,
+  "article": "la"
  },
  {
   "rank": 527,
@@ -4374,7 +4577,8 @@
   "english": "silence",
   "example": "Silenzio, per favore!",
   "example_en": "Quiet, please!",
-  "cov": 89
+  "cov": 89,
+  "article": "il"
  },
  {
   "rank": 531,
@@ -4390,7 +4594,8 @@
   "english": "calm",
   "example": "Calma, calma!",
   "example_en": "Easy, easy! / Calm down!",
-  "cov": 155
+  "cov": 155,
+  "article": "la"
  },
  {
   "rank": 533,
@@ -4399,7 +4604,8 @@
   "example": "Vale la pena provare.",
   "example_en": "It's worth trying.",
   "note": "Mi fa pena = I feel sorry for him/her",
-  "cov": 116
+  "cov": 116,
+  "article": "la"
  },
  {
   "rank": 534,
@@ -4424,7 +4630,8 @@
   "example": "È un luogo bellissimo.",
   "example_en": "It's a beautiful place.",
   "note": "Same as posto, a bit more formal",
-  "cov": 101
+  "cov": 101,
+  "article": "il"
  },
  {
   "rank": 537,
@@ -4432,7 +4639,8 @@
   "english": "letter",
   "example": "Ho ricevuto una lettera dal tribunale.",
   "example_en": "I received a letter from the court.",
-  "cov": 130
+  "cov": 130,
+  "article": "la"
  },
  {
   "rank": 538,
@@ -4448,7 +4656,8 @@
   "english": "song",
   "example": "Adoro questa canzone!",
   "example_en": "I love this song!",
-  "cov": 112
+  "cov": 112,
+  "article": "la"
  },
  {
   "rank": 540,
@@ -4457,7 +4666,8 @@
   "example": "Sto facendo un corso di italiano.",
   "example_en": "I'm taking an Italian course.",
   "note": "nel corso di = during",
-  "cov": 107
+  "cov": 107,
+  "article": "il"
  },
  {
   "rank": 541,
@@ -4465,7 +4675,8 @@
   "english": "gift; present",
   "example": "È un regalo per te.",
   "example_en": "It's a present for you.",
-  "cov": 117
+  "cov": 117,
+  "article": "il"
  },
  {
   "rank": 542,
@@ -4489,7 +4700,8 @@
   "english": "health; cheers!",
   "example": "Salute!",
   "example_en": "Cheers! / Bless you!",
-  "cov": 135
+  "cov": 135,
+  "article": "la"
  },
  {
   "rank": 545,
@@ -4505,7 +4717,8 @@
   "english": "computer",
   "example": "Il mio computer è lentissimo.",
   "example_en": "My computer is super slow.",
-  "cov": 85
+  "cov": 85,
+  "article": "il"
  },
  {
   "rank": 547,
@@ -4513,7 +4726,8 @@
   "english": "danger",
   "example": "Non c'è pericolo.",
   "example_en": "There's no danger.",
-  "cov": 90
+  "cov": 90,
+  "article": "il"
  },
  {
   "rank": 548,
@@ -4570,7 +4784,8 @@
   "english": "possibility; chance",
   "example": "C'è la possibilità di cambiare data?",
   "example_en": "Is there a chance to change the date?",
-  "cov": 163
+  "cov": 163,
+  "article": "la"
  },
  {
   "rank": 555,
@@ -4579,7 +4794,8 @@
   "example": "Che casino!",
   "example_en": "What a mess!",
   "note": "Not 'casino' — that's casinò",
-  "cov": 101
+  "cov": 101,
+  "article": "il"
  },
  {
   "rank": 556,
@@ -4603,7 +4819,8 @@
   "english": "rule",
   "example": "Sono le regole.",
   "example_en": "Those are the rules.",
-  "cov": 122
+  "cov": 122,
+  "article": "la"
  },
  {
   "rank": 559,
@@ -4619,7 +4836,8 @@
   "english": "beer",
   "example": "Due birre, per favore.",
   "example_en": "Two beers, please.",
-  "cov": 94
+  "cov": 94,
+  "article": "la"
  },
  {
   "rank": 561,
@@ -4635,7 +4853,8 @@
   "english": "kitchen; cuisine",
   "example": "Siamo in cucina.",
   "example_en": "We're in the kitchen.",
-  "cov": 89
+  "cov": 89,
+  "article": "la"
  },
  {
   "rank": 563,
@@ -4644,7 +4863,8 @@
   "example": "È una decisione difficile.",
   "example_en": "It's a hard decision.",
   "note": "prendere una decisione = to make a decision",
-  "cov": 105
+  "cov": 105,
+  "article": "la"
  },
  {
   "rank": 564,
@@ -4652,7 +4872,8 @@
   "english": "soul",
   "example": "Non c'era anima viva.",
   "example_en": "There wasn't a soul around.",
-  "cov": 112
+  "cov": 112,
+  "article": "l'"
  },
  {
   "rank": 565,
@@ -4661,7 +4882,8 @@
   "example": "Sono fuori forma.",
   "example_en": "I'm out of shape.",
   "note": "in forma = in shape",
-  "cov": 92
+  "cov": 92,
+  "article": "la"
  },
  {
   "rank": 566,
@@ -4669,7 +4891,8 @@
   "english": "example",
   "example": "Per esempio?",
   "example_en": "For example?",
-  "cov": 83
+  "cov": 83,
+  "article": "l'"
  },
  {
   "rank": 567,
@@ -4677,7 +4900,8 @@
   "english": "occasion; opportunity; bargain",
   "example": "È un'ottima occasione.",
   "example_en": "It's a great opportunity.",
-  "cov": 90
+  "cov": 90,
+  "article": "l'"
  },
  {
   "rank": 568,
@@ -4693,7 +4917,8 @@
   "english": "cell phone",
   "example": "Hai visto il mio cellulare?",
   "example_en": "Have you seen my cell phone?",
-  "cov": 93
+  "cov": 93,
+  "article": "il"
  },
  {
   "rank": 570,
@@ -4709,7 +4934,8 @@
   "english": "bag; purse",
   "example": "Ho dimenticato la borsa al ristorante.",
   "example_en": "I forgot my bag at the restaurant.",
-  "cov": 89
+  "cov": 89,
+  "article": "la"
  },
  {
   "rank": 572,
@@ -4718,7 +4944,8 @@
   "example": "Il mio bisnonno è nato in Italia.",
   "example_en": "My great-grandfather was born in Italy.",
   "note": "bisnonno = great-grandfather",
-  "cov": 79
+  "cov": 79,
+  "article": "il"
  },
  {
   "rank": 573,
@@ -4751,7 +4978,8 @@
   "example": "Mi fa male il braccio.",
   "example_en": "My arm hurts.",
   "note": "Irregular plural: le braccia",
-  "cov": 126
+  "cov": 126,
+  "article": "il"
  },
  {
   "rank": 577,
@@ -4759,7 +4987,8 @@
   "english": "church",
   "example": "Che bella chiesa!",
   "example_en": "What a beautiful church!",
-  "cov": 99
+  "cov": 99,
+  "article": "la"
  },
  {
   "rank": 578,
@@ -4783,7 +5012,8 @@
   "english": "shoe",
   "example": "Queste scarpe sono comodissime.",
   "example_en": "These shoes are super comfortable.",
-  "cov": 91
+  "cov": 91,
+  "article": "la"
  },
  {
   "rank": 581,
@@ -4791,7 +5021,8 @@
   "english": "level",
   "example": "Qual è il tuo livello di italiano?",
   "example_en": "What's your Italian level?",
-  "cov": 94
+  "cov": 94,
+  "article": "il"
  },
  {
   "rank": 582,
@@ -4799,7 +5030,8 @@
   "english": "show",
   "example": "Lo spettacolo inizia alle nove.",
   "example_en": "The show starts at nine.",
-  "cov": 83
+  "cov": 83,
+  "article": "lo"
  },
  {
   "rank": 583,
@@ -4807,7 +5039,8 @@
   "english": "visit",
   "example": "Grazie della visita!",
   "example_en": "Thanks for visiting!",
-  "cov": 100
+  "cov": 100,
+  "article": "la"
  },
  {
   "rank": 584,
@@ -4824,7 +5057,8 @@
   "english": "left",
   "example": "Giri a sinistra al semaforo.",
   "example_en": "Turn left at the traffic light.",
-  "cov": 97
+  "cov": 97,
+  "article": "la"
  },
  {
   "rank": 586,
@@ -4840,7 +5074,8 @@
   "english": "sea; beach",
   "example": "Andiamo al mare questo weekend.",
   "example_en": "Let's go to the beach this weekend.",
-  "cov": 89
+  "cov": 89,
+  "article": "il"
  },
  {
   "rank": 588,
@@ -4856,7 +5091,8 @@
   "english": "class",
   "example": "Eravamo nella stessa classe.",
   "example_en": "We were in the same class.",
-  "cov": 79
+  "cov": 79,
+  "article": "la"
  },
  {
   "rank": 590,
@@ -4864,7 +5100,8 @@
   "english": "change; exchange",
   "example": "Qual è il cambio oggi?",
   "example_en": "What's the exchange rate today?",
-  "cov": 75
+  "cov": 75,
+  "article": "il"
  },
  {
   "rank": 591,
@@ -4888,7 +5125,8 @@
   "english": "table",
   "example": "Abbiamo prenotato un tavolo per quattro.",
   "example_en": "We booked a table for four.",
-  "cov": 117
+  "cov": 117,
+  "article": "il"
  },
  {
   "rank": 594,
@@ -4896,7 +5134,8 @@
   "english": "season",
   "example": "L'autunno è la mia stagione preferita.",
   "example_en": "Fall is my favorite season.",
-  "cov": 79
+  "cov": 79,
+  "article": "la"
  },
  {
   "rank": 595,
@@ -4928,7 +5167,8 @@
   "english": "flight",
   "example": "Il mio volo è in ritardo.",
   "example_en": "My flight is delayed.",
-  "cov": 87
+  "cov": 87,
+  "article": "il"
  },
  {
   "rank": 599,
@@ -4944,7 +5184,8 @@
   "english": "difference",
   "example": "Qual è la differenza?",
   "example_en": "What's the difference?",
-  "cov": 79
+  "cov": 79,
+  "article": "la"
  },
  {
   "rank": 601,
@@ -4960,7 +5201,8 @@
   "english": "side",
   "example": "Dall'altro lato della strada.",
   "example_en": "On the other side of the street.",
-  "cov": 84
+  "cov": 84,
+  "article": "il"
  },
  {
   "rank": 603,
@@ -4969,7 +5211,8 @@
   "example": "L'hotel è vicino alla stazione.",
   "example_en": "The hotel is near the station.",
   "note": "Also albergo",
-  "cov": 73
+  "cov": 73,
+  "article": "l'"
  },
  {
   "rank": 604,
@@ -4994,7 +5237,8 @@
   "english": "meat",
   "example": "Non mangio carne.",
   "example_en": "I don't eat meat.",
-  "cov": 74
+  "cov": 74,
+  "article": "la"
  },
  {
   "rank": 607,
@@ -5011,7 +5255,8 @@
   "english": "skin; leather",
   "example": "Una giacca di pelle.",
   "example_en": "A leather jacket.",
-  "cov": 74
+  "cov": 74,
+  "article": "la"
  },
  {
   "rank": 609,
@@ -5043,7 +5288,8 @@
   "english": "afternoon",
   "example": "Ci sentiamo nel pomeriggio.",
   "example_en": "Let's talk in the afternoon.",
-  "cov": 73
+  "cov": 73,
+  "article": "il"
  },
  {
   "rank": 613,
@@ -5051,7 +5297,8 @@
   "english": "document; ID",
   "example": "Ha un documento, per favore?",
   "example_en": "Do you have ID, please?",
-  "cov": 96
+  "cov": 96,
+  "article": "il"
  },
  {
   "rank": 614,
@@ -5059,7 +5306,8 @@
   "english": "judge",
   "example": "Il giudice ha deciso a nostro favore.",
   "example_en": "The judge ruled in our favor.",
-  "cov": 88
+  "cov": 88,
+  "article": "il"
  },
  {
   "rank": 615,
@@ -5068,7 +5316,8 @@
   "example": "La farmacia è sulla destra.",
   "example_en": "The pharmacy is on the right.",
   "note": "a destra = to the right",
-  "cov": 93
+  "cov": 93,
+  "article": "la"
  },
  {
   "rank": 616,
@@ -5077,7 +5326,8 @@
   "example": "Stasera c'è la luna piena.",
   "example_en": "There's a full moon tonight.",
   "note": "luna di miele = honeymoon",
-  "cov": 74
+  "cov": 74,
+  "article": "la"
  },
  {
   "rank": 617,
@@ -5102,7 +5352,8 @@
   "example": "Questo vino è buonissimo.",
   "example_en": "This wine is excellent.",
   "note": "vino della casa = house wine",
-  "cov": 76
+  "cov": 76,
+  "article": "il"
  },
  {
   "rank": 620,
@@ -5128,7 +5379,8 @@
   "example": "Prendiamo un caffè?",
   "example_en": "Shall we grab a coffee?",
   "note": "A caffè in Italy = an espresso",
-  "cov": 70
+  "cov": 70,
+  "article": "il"
  },
  {
   "rank": 623,
@@ -5136,7 +5388,8 @@
   "english": "boat",
   "example": "Facciamo un giro in barca.",
   "example_en": "Let's take a boat ride.",
-  "cov": 79
+  "cov": 79,
+  "article": "la"
  },
  {
   "rank": 624,
@@ -5144,7 +5397,8 @@
   "english": "lesson; class",
   "example": "Ho lezione di italiano il martedì.",
   "example_en": "I have Italian class on Tuesdays.",
-  "cov": 99
+  "cov": 99,
+  "article": "la"
  },
  {
   "rank": 625,
@@ -5168,7 +5422,8 @@
   "english": "north",
   "example": "Milano è nel nord Italia.",
   "example_en": "Milan is in northern Italy.",
-  "cov": 69
+  "cov": 69,
+  "article": "il"
  },
  {
   "rank": 628,
@@ -5177,7 +5432,8 @@
   "example": "Congratulazioni per il nuovo lavoro!",
   "example_en": "Congratulations on the new job!",
   "note": "Also: Complimenti!",
-  "cov": 68
+  "cov": 68,
+  "article": "le"
  },
  {
   "rank": 629,
@@ -5186,7 +5442,8 @@
   "example": "Qual è la data di oggi?",
   "example_en": "What's today's date?",
   "note": "appuntamento = date (meeting)",
-  "cov": 68
+  "cov": 68,
+  "article": "la"
  },
  {
   "rank": 630,
@@ -5203,7 +5460,8 @@
   "english": "train",
   "example": "Prendo il treno delle otto.",
   "example_en": "I'm taking the eight o'clock train.",
-  "cov": 77
+  "cov": 77,
+  "article": "il"
  },
  {
   "rank": 632,
@@ -5212,7 +5470,8 @@
   "example": "Ascolto la radio in macchina.",
   "example_en": "I listen to the radio in the car.",
   "note": "Feminine: la radio",
-  "cov": 69
+  "cov": 69,
+  "article": "la"
  },
  {
   "rank": 633,
@@ -5270,7 +5529,8 @@
   "english": "period; time",
   "example": "È un periodo difficile.",
   "example_en": "It's a tough time.",
-  "cov": 70
+  "cov": 70,
+  "article": "il"
  },
  {
   "rank": 640,
@@ -5278,7 +5538,8 @@
   "english": "energy",
   "example": "Non ho energia oggi.",
   "example_en": "I have no energy today.",
-  "cov": 74
+  "cov": 74,
+  "article": "l'"
  },
  {
   "rank": 641,
@@ -5286,7 +5547,8 @@
   "english": "sign",
   "example": "È un buon segno.",
   "example_en": "It's a good sign.",
-  "cov": 113
+  "cov": 113,
+  "article": "il"
  },
  {
   "rank": 642,
@@ -5310,7 +5572,8 @@
   "english": "hope",
   "example": "Non perdere la speranza.",
   "example_en": "Don't lose hope.",
-  "cov": 83
+  "cov": 83,
+  "article": "la"
  },
  {
   "rank": 645,
@@ -5319,7 +5582,8 @@
   "example": "Non voglio correre rischi.",
   "example_en": "I don't want to take risks.",
   "note": "correre un rischio = to take a risk",
-  "cov": 101
+  "cov": 101,
+  "article": "il"
  },
  {
   "rank": 646,
@@ -5352,7 +5616,8 @@
   "english": "aunt",
   "example": "Mia zia cucina benissimo.",
   "example_en": "My aunt cooks really well.",
-  "cov": 66
+  "cov": 66,
+  "article": "la"
  },
  {
   "rank": 650,
@@ -5361,7 +5626,8 @@
   "example": "Mi fa male la gamba.",
   "example_en": "My leg hurts.",
   "note": "In gamba! = Smart / capable!",
-  "cov": 132
+  "cov": 132,
+  "article": "la"
  },
  {
   "rank": 651,
@@ -5369,7 +5635,8 @@
   "english": "ticket",
   "example": "Ho già comprato i biglietti.",
   "example_en": "I already bought the tickets.",
-  "cov": 106
+  "cov": 106,
+  "article": "il"
  },
  {
   "rank": 652,
@@ -5377,7 +5644,8 @@
   "english": "pressure",
   "example": "Sono sotto pressione al lavoro.",
   "example_en": "I'm under pressure at work.",
-  "cov": 73
+  "cov": 73,
+  "article": "la"
  },
  {
   "rank": 653,
@@ -5393,7 +5661,8 @@
   "english": "teacher (elementary); master",
   "example": "Il maestro di mio figlio è bravissimo.",
   "example_en": "My son's teacher is excellent.",
-  "cov": 80
+  "cov": 80,
+  "article": "il"
  },
  {
   "rank": 655,
@@ -5410,7 +5679,8 @@
   "example": "C'è un'offerta speciale oggi.",
   "example_en": "There's a special deal today.",
   "note": "in offerta = on sale",
-  "cov": 115
+  "cov": 115,
+  "article": "l'"
  },
  {
   "rank": 657,
@@ -5418,7 +5688,8 @@
   "english": "joke; prank",
   "example": "Era solo uno scherzo!",
   "example_en": "It was only a joke!",
-  "cov": 65
+  "cov": 65,
+  "article": "lo"
  },
  {
   "rank": 658,
@@ -5435,7 +5706,8 @@
   "english": "bank",
   "example": "Devo passare in banca.",
   "example_en": "I need to stop by the bank.",
-  "cov": 95
+  "cov": 95,
+  "article": "la"
  },
  {
   "rank": 660,
@@ -5443,7 +5715,8 @@
   "english": "address",
   "example": "Mi mandi l'indirizzo?",
   "example_en": "Can you send me the address?",
-  "cov": 69
+  "cov": 69,
+  "article": "l'"
  },
  {
   "rank": 661,
@@ -5468,7 +5741,8 @@
   "english": "experience",
   "example": "È stata un'esperienza bellissima.",
   "example_en": "It was a wonderful experience.",
-  "cov": 74
+  "cov": 74,
+  "article": "l'"
  },
  {
   "rank": 664,
@@ -5484,7 +5758,8 @@
   "english": "south",
   "example": "La mia famiglia viene dal sud Italia.",
   "example_en": "My family comes from southern Italy.",
-  "cov": 63
+  "cov": 63,
+  "article": "il"
  },
  {
   "rank": 666,
@@ -5501,7 +5776,8 @@
   "example": "Che serie stai guardando?",
   "example_en": "What show are you watching?",
   "note": "Doesn't change in plural",
-  "cov": 63
+  "cov": 63,
+  "article": "la"
  },
  {
   "rank": 668,
@@ -5510,7 +5786,8 @@
   "example": "Abbiamo preso una guida a Roma.",
   "example_en": "We got a guide in Rome.",
   "note": "patente di guida = driver's license",
-  "cov": 91
+  "cov": 91,
+  "article": "la"
  },
  {
   "rank": 669,
@@ -5518,7 +5795,8 @@
   "english": "price",
   "example": "Il prezzo è giusto.",
   "example_en": "The price is fair.",
-  "cov": 72
+  "cov": 72,
+  "article": "il"
  },
  {
   "rank": 670,
@@ -5543,7 +5821,8 @@
   "example": "Il viaggio di ritorno è stato lungo.",
   "example_en": "The trip back was long.",
   "note": "andata e ritorno = round trip",
-  "cov": 88
+  "cov": 88,
+  "article": "il"
  },
  {
   "rank": 673,
@@ -5551,7 +5830,8 @@
   "english": "animal",
   "example": "Ti piacciono gli animali?",
   "example_en": "Do you like animals?",
-  "cov": 104
+  "cov": 104,
+  "article": "l'"
  },
  {
   "rank": 674,
@@ -5567,7 +5847,8 @@
   "english": "project; plan",
   "example": "Sto lavorando a un nuovo progetto.",
   "example_en": "I'm working on a new project.",
-  "cov": 86
+  "cov": 86,
+  "article": "il"
  },
  {
   "rank": 676,
@@ -5592,7 +5873,8 @@
   "english": "move",
   "example": "Bella mossa!",
   "example_en": "Nice move!",
-  "cov": 82
+  "cov": 82,
+  "article": "la"
  },
  {
   "rank": 679,
@@ -5600,7 +5882,8 @@
   "english": "window",
   "example": "Chiudi la finestra, fa freddo.",
   "example_en": "Close the window, it's cold.",
-  "cov": 80
+  "cov": 80,
+  "article": "la"
  },
  {
   "rank": 680,
@@ -5616,7 +5899,8 @@
   "english": "destiny; fate",
   "example": "È il destino.",
   "example_en": "It's fate.",
-  "cov": 63
+  "cov": 63,
+  "article": "il"
  },
  {
   "rank": 682,
@@ -5649,7 +5933,8 @@
   "english": "building",
   "example": "È l'edificio più alto della città.",
   "example_en": "It's the tallest building in the city.",
-  "cov": 71
+  "cov": 71,
+  "article": "l'"
  },
  {
   "rank": 686,
@@ -5658,7 +5943,8 @@
   "example": "Cosa mangi a colazione?",
   "example_en": "What do you eat for breakfast?",
   "note": "fare colazione = to have breakfast",
-  "cov": 62
+  "cov": 62,
+  "article": "la"
  },
  {
   "rank": 687,
@@ -5666,7 +5952,8 @@
   "english": "neck",
   "example": "Ho il torcicollo.",
   "example_en": "I have a stiff neck.",
-  "cov": 69
+  "cov": 69,
+  "article": "il"
  },
  {
   "rank": 688,
@@ -5674,7 +5961,8 @@
   "english": "trust",
   "example": "Ho fiducia in te.",
   "example_en": "I trust you.",
-  "cov": 61
+  "cov": 61,
+  "article": "la"
  },
  {
   "rank": 689,
@@ -5682,7 +5970,8 @@
   "english": "restaurant",
   "example": "Conosco un ristorante fantastico.",
   "example_en": "I know a fantastic restaurant.",
-  "cov": 68
+  "cov": 68,
+  "article": "il"
  },
  {
   "rank": 690,
@@ -5699,7 +5988,8 @@
   "english": "art",
   "example": "Firenze è piena d'arte.",
   "example_en": "Florence is full of art.",
-  "cov": 75
+  "cov": 75,
+  "article": "l'"
  },
  {
   "rank": 692,
@@ -5707,7 +5997,8 @@
   "english": "half",
   "example": "Facciamo a metà?",
   "example_en": "Shall we split it?",
-  "cov": 52
+  "cov": 52,
+  "article": "la"
  },
  {
   "rank": 693,
@@ -5715,7 +6006,8 @@
   "english": "speech; conversation",
   "example": "Che discorsi fai?",
   "example_en": "What are you talking about?",
-  "cov": 74
+  "cov": 74,
+  "article": "il"
  },
  {
   "rank": 694,
@@ -5756,7 +6048,8 @@
   "english": "wall",
   "example": "Ho appeso la foto al muro.",
   "example_en": "I hung the photo on the wall.",
-  "cov": 84
+  "cov": 84,
+  "article": "il"
  },
  {
   "rank": 699,
@@ -5781,7 +6074,8 @@
   "example": "Non ho dubbi.",
   "example_en": "I have no doubt.",
   "note": "senza dubbio = without a doubt",
-  "cov": 83
+  "cov": 83,
+  "article": "il"
  },
  {
   "rank": 702,
@@ -5789,7 +6083,8 @@
   "english": "station",
   "example": "Ci vediamo alla stazione.",
   "example_en": "See you at the station.",
-  "cov": 64
+  "cov": 64,
+  "article": "la"
  },
  {
   "rank": 703,
@@ -5797,7 +6092,8 @@
   "english": "emergency",
   "example": "È un'emergenza!",
   "example_en": "It's an emergency!",
-  "cov": 64
+  "cov": 64,
+  "article": "l'"
  },
  {
   "rank": 704,
@@ -5805,7 +6101,8 @@
   "english": "justice",
   "example": "La giustizia italiana è lenta.",
   "example_en": "The Italian justice system is slow.",
-  "cov": 59
+  "cov": 59,
+  "article": "la"
  },
  {
   "rank": 705,
@@ -5821,7 +6118,8 @@
   "english": "smell",
   "example": "Che buon odore!",
   "example_en": "What a nice smell!",
-  "cov": 65
+  "cov": 65,
+  "article": "l'"
  },
  {
   "rank": 707,
@@ -5870,7 +6168,8 @@
   "english": "spirit; wit",
   "example": "Ha un grande spirito.",
   "example_en": "He has a great sense of humor.",
-  "cov": 73
+  "cov": 73,
+  "article": "lo"
  },
  {
   "rank": 713,
@@ -5887,7 +6186,8 @@
   "english": "language; tongue",
   "example": "Quante lingue parli?",
   "example_en": "How many languages do you speak?",
-  "cov": 66
+  "cov": 66,
+  "article": "la"
  },
  {
   "rank": 715,
@@ -5903,7 +6203,8 @@
   "english": "meeting",
   "example": "Sono in riunione fino alle tre.",
   "example_en": "I'm in a meeting until three.",
-  "cov": 69
+  "cov": 69,
+  "article": "la"
  },
  {
   "rank": 717,
@@ -5911,7 +6212,8 @@
   "english": "noise",
   "example": "Cos'è questo rumore?",
   "example_en": "What's that noise?",
-  "cov": 69
+  "cov": 69,
+  "article": "il"
  },
  {
   "rank": 718,
@@ -5919,7 +6221,8 @@
   "english": "cake",
   "example": "Ho fatto una torta al cioccolato.",
   "example_en": "I made a chocolate cake.",
-  "cov": 94
+  "cov": 94,
+  "article": "la"
  },
  {
   "rank": 719,
@@ -5937,7 +6240,8 @@
   "example": "Lavoro il turno di notte.",
   "example_en": "I work the night shift.",
   "note": "È il mio turno = It's my turn",
-  "cov": 67
+  "cov": 67,
+  "article": "il"
  },
  {
   "rank": 721,
@@ -5961,7 +6265,8 @@
   "english": "couple",
   "example": "Sono una bella coppia.",
   "example_en": "They're a lovely couple.",
-  "cov": 69
+  "cov": 69,
+  "article": "la"
  },
  {
   "rank": 724,
@@ -5977,7 +6282,8 @@
   "english": "break; pause",
   "example": "Facciamo una pausa?",
   "example_en": "Shall we take a break?",
-  "cov": 59
+  "cov": 59,
+  "article": "la"
  },
  {
   "rank": 726,
@@ -5993,7 +6299,8 @@
   "english": "memory",
   "example": "Ho una pessima memoria per i nomi.",
   "example_en": "I have a terrible memory for names.",
-  "cov": 60
+  "cov": 60,
+  "article": "la"
  },
  {
   "rank": 728,
@@ -6001,7 +6308,8 @@
   "english": "nose",
   "example": "Ho il naso chiuso.",
   "example_en": "I have a stuffy nose.",
-  "cov": 63
+  "cov": 63,
+  "article": "il"
  },
  {
   "rank": 729,
@@ -6009,7 +6317,8 @@
   "english": "enemy",
   "example": "Non sono il tuo nemico.",
   "example_en": "I'm not your enemy.",
-  "cov": 101
+  "cov": 101,
+  "article": "il"
  },
  {
   "rank": 730,
@@ -6033,7 +6342,8 @@
   "english": "box",
   "example": "Metti tutto in una scatola.",
   "example_en": "Put everything in a box.",
-  "cov": 72
+  "cov": 72,
+  "article": "la"
  },
  {
   "rank": 733,
@@ -6042,7 +6352,8 @@
   "example": "C'è un albero enorme nel giardino.",
   "example_en": "There's a huge tree in the garden.",
   "note": "albero di Natale = Christmas tree",
-  "cov": 85
+  "cov": 85,
+  "article": "l'"
  },
  {
   "rank": 734,
@@ -6050,7 +6361,8 @@
   "english": "court (of law)",
   "example": "La mia causa è al tribunale di Roma.",
   "example_en": "My case is at the court in Rome.",
-  "cov": 57
+  "cov": 57,
+  "article": "il"
  },
  {
   "rank": 735,
@@ -6058,7 +6370,8 @@
   "english": "ring",
   "example": "Che bell'anello!",
   "example_en": "What a beautiful ring!",
-  "cov": 67
+  "cov": 67,
+  "article": "l'"
  },
  {
   "rank": 736,
@@ -6082,7 +6395,8 @@
   "english": "feeling",
   "example": "Non nascondere i tuoi sentimenti.",
   "example_en": "Don't hide your feelings.",
-  "cov": 66
+  "cov": 66,
+  "article": "il"
  },
  {
   "rank": 739,
@@ -6090,7 +6404,8 @@
   "english": "nature",
   "example": "Amo stare a contatto con la natura.",
   "example_en": "I love being close to nature.",
-  "cov": 55
+  "cov": 55,
+  "article": "la"
  },
  {
   "rank": 740,
@@ -6098,7 +6413,8 @@
   "english": "color",
   "example": "Qual è il tuo colore preferito?",
   "example_en": "What's your favorite color?",
-  "cov": 103
+  "cov": 103,
+  "article": "il"
  },
  {
   "rank": 741,
@@ -6114,7 +6430,8 @@
   "english": "use",
   "example": "È per uso personale.",
   "example_en": "It's for personal use.",
-  "cov": 54
+  "cov": 54,
+  "article": "l'"
  },
  {
   "rank": 743,
@@ -6146,7 +6463,8 @@
   "english": "professor; teacher",
   "example": "Il professore è molto severo.",
   "example_en": "The teacher is very strict.",
-  "cov": 58
+  "cov": 58,
+  "article": "il"
  },
  {
   "rank": 747,
@@ -6155,7 +6473,8 @@
   "example": "Il mio fidanzato è di Napoli.",
   "example_en": "My boyfriend is from Naples.",
   "note": "fidanzata = girlfriend; fiancée",
-  "cov": 110
+  "cov": 110,
+  "article": "il"
  },
  {
   "rank": 748,
@@ -6163,7 +6482,8 @@
   "english": "feeling; sensation",
   "example": "Ho la sensazione che pioverà.",
   "example_en": "I have a feeling it'll rain.",
-  "cov": 59
+  "cov": 59,
+  "article": "la"
  },
  {
   "rank": 749,
@@ -6179,7 +6499,8 @@
   "english": "task; homework",
   "example": "Hai fatto i compiti?",
   "example_en": "Did you do your homework?",
-  "cov": 80
+  "cov": 80,
+  "article": "il"
  },
  {
   "rank": 751,
@@ -6187,7 +6508,8 @@
   "english": "fish",
   "example": "Il pesce è fresco oggi?",
   "example_en": "Is the fish fresh today?",
-  "cov": 97
+  "cov": 97,
+  "article": "il"
  },
  {
   "rank": 752,
@@ -6195,7 +6517,8 @@
   "english": "goal; objective",
   "example": "Il mio obiettivo è parlare bene l'italiano.",
   "example_en": "My goal is to speak Italian well.",
-  "cov": 66
+  "cov": 66,
+  "article": "l'"
  },
  {
   "rank": 753,
@@ -6235,7 +6558,8 @@
   "english": "island",
   "example": "Vorrei visitare le isole Eolie.",
   "example_en": "I'd like to visit the Aeolian Islands.",
-  "cov": 60
+  "cov": 60,
+  "article": "l'"
  },
  {
   "rank": 758,
@@ -6267,7 +6591,8 @@
   "english": "work; opera",
   "example": "È un'opera d'arte.",
   "example_en": "It's a work of art.",
-  "cov": 65
+  "cov": 65,
+  "article": "l'"
  },
  {
   "rank": 762,
@@ -6276,7 +6601,8 @@
   "example": "Un bacio e a presto!",
   "example_en": "Kisses, see you soon!",
   "note": "Baci! = Love (sign-off)",
-  "cov": 74
+  "cov": 74,
+  "article": "il"
  },
  {
   "rank": 763,
@@ -6284,7 +6610,8 @@
   "english": "edge; board",
   "example": "Benvenuti a bordo.",
   "example_en": "Welcome aboard.",
-  "cov": 54
+  "cov": 54,
+  "article": "il"
  },
  {
   "rank": 764,
@@ -6293,7 +6620,8 @@
   "example": "Scusa, è stato uno sbaglio.",
   "example_en": "Sorry, it was a mistake.",
   "note": "per sbaglio = by mistake",
-  "cov": 52
+  "cov": 52,
+  "article": "lo"
  },
  {
   "rank": 765,
@@ -6319,7 +6647,8 @@
   "english": "side; hip",
   "example": "Siediti al mio fianco.",
   "example_en": "Sit by my side.",
-  "cov": 58
+  "cov": 58,
+  "article": "il"
  },
  {
   "rank": 768,
@@ -6343,7 +6672,8 @@
   "english": "weight",
   "example": "Ho messo su un po' di peso.",
   "example_en": "I've put on a bit of weight.",
-  "cov": 69
+  "cov": 69,
+  "article": "il"
  },
  {
   "rank": 771,
@@ -6351,7 +6681,8 @@
   "english": "style",
   "example": "Ha uno stile tutto suo.",
   "example_en": "He has a style all his own.",
-  "cov": 53
+  "cov": 53,
+  "article": "lo"
  },
  {
   "rank": 772,
@@ -6360,7 +6691,8 @@
   "example": "Ho fatto una corsa per prendere il treno.",
   "example_en": "I had to run to catch the train.",
   "note": "di corsa = in a hurry",
-  "cov": 52
+  "cov": 52,
+  "article": "la"
  },
  {
   "rank": 773,
@@ -6368,7 +6700,8 @@
   "english": "entrance",
   "example": "L'entrata è dall'altra parte.",
   "example_en": "The entrance is on the other side.",
-  "cov": 52
+  "cov": 52,
+  "article": "l'"
  },
  {
   "rank": 774,
@@ -6376,7 +6709,8 @@
   "english": "solution",
   "example": "C'è sempre una soluzione.",
   "example_en": "There's always a solution.",
-  "cov": 56
+  "cov": 56,
+  "article": "la"
  },
  {
   "rank": 775,
@@ -6384,7 +6718,8 @@
   "english": "contract",
   "example": "Ho firmato il contratto.",
   "example_en": "I signed the contract.",
-  "cov": 60
+  "cov": 60,
+  "article": "il"
  },
  {
   "rank": 776,
@@ -6417,7 +6752,8 @@
   "english": "tooth",
   "example": "Mi fa male un dente.",
   "example_en": "I have a toothache.",
-  "cov": 62
+  "cov": 62,
+  "article": "il"
  },
  {
   "rank": 780,
@@ -6442,7 +6778,8 @@
   "example": "Ho messo la sveglia alle sette.",
   "example_en": "I set the alarm for seven.",
   "note": "Sveglia! = Wake up!",
-  "cov": 108
+  "cov": 108,
+  "article": "la"
  },
  {
   "rank": 783,
@@ -6474,7 +6811,8 @@
   "english": "purpose; aim",
   "example": "Qual è lo scopo del viaggio?",
   "example_en": "What's the purpose of the trip?",
-  "cov": 75
+  "cov": 75,
+  "article": "lo"
  },
  {
   "rank": 787,
@@ -6482,7 +6820,8 @@
   "english": "magic",
   "example": "Sembra una magia!",
   "example_en": "It's like magic!",
-  "cov": 54
+  "cov": 54,
+  "article": "la"
  },
  {
   "rank": 788,
@@ -6490,7 +6829,8 @@
   "english": "effect",
   "example": "Che effetto ti fa?",
   "example_en": "How does it make you feel?",
-  "cov": 129
+  "cov": 129,
+  "article": "l'"
  },
  {
   "rank": 789,
@@ -6506,7 +6846,8 @@
   "english": "pants; trousers",
   "example": "Questi pantaloni sono troppo lunghi.",
   "example_en": "These pants are too long.",
-  "cov": 50
+  "cov": 50,
+  "article": "i"
  },
  {
   "rank": 791,
@@ -6522,7 +6863,8 @@
   "english": "action",
   "example": "È un film d'azione.",
   "example_en": "It's an action movie.",
-  "cov": 91
+  "cov": 91,
+  "article": "l'"
  },
  {
   "rank": 793,
@@ -6530,7 +6872,8 @@
   "english": "faith; wedding ring",
   "example": "Ha perso la fede!",
   "example_en": "He lost his wedding ring!",
-  "cov": 51
+  "cov": 51,
+  "article": "la"
  },
  {
   "rank": 794,
@@ -6563,7 +6906,8 @@
   "english": "result",
   "example": "Aspetto i risultati.",
   "example_en": "I'm waiting for the results.",
-  "cov": 85
+  "cov": 85,
+  "article": "il"
  },
  {
   "rank": 798,
@@ -6611,7 +6955,8 @@
   "english": "corner",
   "example": "Il bar è proprio all'angolo.",
   "example_en": "The café is right on the corner.",
-  "cov": 55
+  "cov": 55,
+  "article": "l'"
  },
  {
   "rank": 804,
@@ -6620,7 +6965,8 @@
   "example": "Un cappuccino con poco latte.",
   "example_en": "A cappuccino with a little milk.",
   "note": "Ordering 'un latte' gets you a glass of milk!",
-  "cov": 52
+  "cov": 52,
+  "article": "il"
  },
  {
   "rank": 805,
@@ -6636,7 +6982,8 @@
   "english": "cat",
   "example": "Il mio gatto dorme tutto il giorno.",
   "example_en": "My cat sleeps all day.",
-  "cov": 74
+  "cov": 74,
+  "article": "il"
  },
  {
   "rank": 807,
@@ -6653,7 +7000,8 @@
   "english": "summer",
   "example": "Quest'estate andiamo in Puglia.",
   "example_en": "This summer we're going to Puglia.",
-  "cov": 51
+  "cov": 51,
+  "article": "l'"
  },
  {
   "rank": 809,
@@ -6661,7 +7009,8 @@
   "english": "condition",
   "example": "La macchina è in ottime condizioni.",
   "example_en": "The car is in excellent condition.",
-  "cov": 71
+  "cov": 71,
+  "article": "la"
  },
  {
   "rank": 810,
@@ -6677,7 +7026,8 @@
   "english": "river",
   "example": "Il Tevere è il fiume di Roma.",
   "example_en": "The Tiber is Rome's river.",
-  "cov": 54
+  "cov": 54,
+  "article": "il"
  },
  {
   "rank": 812,
@@ -6685,7 +7035,8 @@
   "english": "back (body)",
   "example": "Ho mal di schiena.",
   "example_en": "I have a backache.",
-  "cov": 49
+  "cov": 49,
+  "article": "la"
  },
  {
   "rank": 813,
@@ -6701,7 +7052,8 @@
   "english": "countryside; campaign",
   "example": "Abitano in campagna.",
   "example_en": "They live in the countryside.",
-  "cov": 51
+  "cov": 51,
+  "article": "la"
  },
  {
   "rank": 815,
@@ -6717,7 +7069,8 @@
   "english": "detail",
   "example": "Ti racconto i dettagli dopo.",
   "example_en": "I'll tell you the details later.",
-  "cov": 65
+  "cov": 65,
+  "article": "il"
  },
  {
   "rank": 817,
@@ -6741,7 +7094,8 @@
   "english": "importance",
   "example": "Non ha importanza.",
   "example_en": "It's not important.",
-  "cov": 48
+  "cov": 48,
+  "article": "l'"
  },
  {
   "rank": 820,
@@ -6774,7 +7128,8 @@
   "english": "request",
   "example": "Ho una richiesta da farti.",
   "example_en": "I have a request for you.",
-  "cov": 87
+  "cov": 87,
+  "article": "la"
  },
  {
   "rank": 824,
@@ -6806,7 +7161,8 @@
   "english": "matter; chore",
   "example": "Faccio le faccende di casa.",
   "example_en": "I'm doing the housework.",
-  "cov": 56
+  "cov": 56,
+  "article": "la"
  },
  {
   "rank": 828,
@@ -6814,7 +7170,8 @@
   "english": "wind",
   "example": "C'è tanto vento oggi.",
   "example_en": "It's really windy today.",
-  "cov": 48
+  "cov": 48,
+  "article": "il"
  },
  {
   "rank": 829,
@@ -6862,7 +7219,8 @@
   "english": "market",
   "example": "Il sabato vado al mercato.",
   "example_en": "On Saturdays I go to the market.",
-  "cov": 50
+  "cov": 50,
+  "article": "il"
  },
  {
   "rank": 835,
@@ -6870,7 +7228,8 @@
   "english": "value",
   "example": "Ha un grande valore per me.",
   "example_en": "It means a lot to me.",
-  "cov": 58
+  "cov": 58,
+  "article": "il"
  },
  {
   "rank": 836,
@@ -6902,7 +7261,8 @@
   "english": "beauty",
   "example": "Che bellezza!",
   "example_en": "How lovely!",
-  "cov": 49
+  "cov": 49,
+  "article": "la"
  },
  {
   "rank": 840,
@@ -6918,7 +7278,8 @@
   "english": "hole",
   "example": "C'è un buco nella mia calza.",
   "example_en": "There's a hole in my sock.",
-  "cov": 78
+  "cov": 78,
+  "article": "il"
  },
  {
   "rank": 842,
@@ -6926,7 +7287,8 @@
   "english": "conversation",
   "example": "Abbiamo fatto una bella conversazione.",
   "example_en": "We had a nice conversation.",
-  "cov": 54
+  "cov": 54,
+  "article": "la"
  },
  {
   "rank": 843,
@@ -6935,7 +7297,8 @@
   "example": "L'attesa è stata lunga.",
   "example_en": "The wait was long.",
   "note": "in attesa = waiting",
-  "cov": 53
+  "cov": 53,
+  "article": "l'"
  },
  {
   "rank": 844,
@@ -6943,7 +7306,8 @@
   "english": "thought",
   "example": "Che bel pensiero!",
   "example_en": "What a lovely thought!",
-  "cov": 77
+  "cov": 77,
+  "article": "il"
  },
  {
   "rank": 845,
@@ -6951,7 +7315,8 @@
   "english": "knowledge; acquaintance",
   "example": "Piacere di fare la tua conoscenza.",
   "example_en": "Nice to make your acquaintance.",
-  "cov": 56
+  "cov": 56,
+  "article": "la"
  },
  {
   "rank": 846,
@@ -6960,7 +7325,8 @@
   "example": "Facciamo il ponte a novembre.",
   "example_en": "We're taking a long weekend in November.",
   "note": "fare il ponte = take an extra day off to bridge a holiday",
-  "cov": 53
+  "cov": 53,
+  "article": "il"
  },
  {
   "rank": 847,
@@ -6976,7 +7342,8 @@
   "english": "chair",
   "example": "Prendi una sedia e siediti.",
   "example_en": "Grab a chair and sit down.",
-  "cov": 55
+  "cov": 55,
+  "article": "la"
  },
  {
   "rank": 849,
@@ -7000,7 +7367,8 @@
   "english": "ice",
   "example": "Con ghiaccio, per favore.",
   "example_en": "With ice, please.",
-  "cov": 47
+  "cov": 47,
+  "article": "il"
  },
  {
   "rank": 852,
@@ -7008,7 +7376,8 @@
   "english": "bottle",
   "example": "Una bottiglia d'acqua naturale.",
   "example_en": "A bottle of still water.",
-  "cov": 57
+  "cov": 57,
+  "article": "la"
  },
  {
   "rank": 853,
@@ -7024,7 +7393,8 @@
   "english": "look; gaze",
   "example": "Mi ha lanciato uno sguardo strano.",
   "example_en": "He gave me a strange look.",
-  "cov": 49
+  "cov": 49,
+  "article": "lo"
  },
  {
   "rank": 855,
@@ -7049,7 +7419,8 @@
   "example": "La mia pratica di cittadinanza è in corso.",
   "example_en": "My citizenship paperwork is in progress.",
   "note": "in pratica = basically",
-  "cov": 58
+  "cov": 58,
+  "article": "la"
  },
  {
   "rank": 858,
@@ -7065,7 +7436,8 @@
   "english": "theory",
   "example": "In teoria sì, in pratica no.",
   "example_en": "In theory yes, in practice no.",
-  "cov": 53
+  "cov": 53,
+  "article": "la"
  },
  {
   "rank": 860,
@@ -7073,7 +7445,8 @@
   "english": "park",
   "example": "Andiamo a correre al parco.",
   "example_en": "Let's go running in the park.",
-  "cov": 49
+  "cov": 49,
+  "article": "il"
  },
  {
   "rank": 861,
@@ -7082,7 +7455,8 @@
   "example": "Abito al terzo piano di quel palazzo.",
   "example_en": "I live on the third floor of that building.",
   "note": "Usually just an apartment building",
-  "cov": 49
+  "cov": 49,
+  "article": "il"
  },
  {
   "rank": 862,
@@ -7122,7 +7496,8 @@
   "english": "wish; desire",
   "example": "Esprimi un desiderio!",
   "example_en": "Make a wish!",
-  "cov": 77
+  "cov": 77,
+  "article": "il"
  },
  {
   "rank": 867,
@@ -7138,7 +7513,8 @@
   "english": "angel",
   "example": "Sei un angelo!",
   "example_en": "You're an angel!",
-  "cov": 85
+  "cov": 85,
+  "article": "l'"
  },
  {
   "rank": 869,
@@ -7155,7 +7531,8 @@
   "example": "Mi sono tagliato il dito.",
   "example_en": "I cut my finger.",
   "note": "Irregular plural: le dita",
-  "cov": 40
+  "cov": 40,
+  "article": "il"
  },
  {
   "rank": 871,
@@ -7163,7 +7540,8 @@
   "english": "nurse",
   "example": "L'infermiera è stata gentilissima.",
   "example_en": "The nurse was super kind.",
-  "cov": 62
+  "cov": 62,
+  "article": "l'"
  },
  {
   "rank": 872,
@@ -7171,7 +7549,8 @@
   "english": "age",
   "example": "Abbiamo la stessa età.",
   "example_en": "We're the same age.",
-  "cov": 43
+  "cov": 43,
+  "article": "l'"
  },
  {
   "rank": 873,
@@ -7179,7 +7558,8 @@
   "english": "movie theater",
   "example": "Andiamo al cinema stasera?",
   "example_en": "Shall we go to the movies tonight?",
-  "cov": 43
+  "cov": 43,
+  "article": "il"
  },
  {
   "rank": 874,
@@ -7187,7 +7567,8 @@
   "english": "star",
   "example": "Guarda quante stelle!",
   "example_en": "Look at all the stars!",
-  "cov": 87
+  "cov": 87,
+  "article": "la"
  },
  {
   "rank": 875,
@@ -7195,7 +7576,8 @@
   "english": "politics; policy",
   "example": "Non parliamo di politica a tavola.",
   "example_en": "Let's not talk politics at the table.",
-  "cov": 81
+  "cov": 81,
+  "article": "la"
  },
  {
   "rank": 876,
@@ -7228,7 +7610,8 @@
   "english": "merit; credit",
   "example": "È tutto merito tuo.",
   "example_en": "It's all thanks to you.",
-  "cov": 107
+  "cov": 107,
+  "article": "il"
  },
  {
   "rank": 880,
@@ -7236,7 +7619,8 @@
   "english": "society; company",
   "example": "Lavoro per una società americana.",
   "example_en": "I work for an American company.",
-  "cov": 43
+  "cov": 43,
+  "article": "la"
  },
  {
   "rank": 881,
@@ -7252,7 +7636,8 @@
   "english": "glass",
   "example": "Un bicchiere di vino rosso.",
   "example_en": "A glass of red wine.",
-  "cov": 54
+  "cov": 54,
+  "article": "il"
  },
  {
   "rank": 883,
@@ -7260,7 +7645,8 @@
   "english": "bus",
   "example": "L'autobus è in ritardo.",
   "example_en": "The bus is late.",
-  "cov": 42
+  "cov": 42,
+  "article": "l'"
  },
  {
   "rank": 884,
@@ -7276,7 +7662,8 @@
   "english": "company; business",
   "example": "Lavora in una grande azienda.",
   "example_en": "She works at a big company.",
-  "cov": 50
+  "cov": 50,
+  "article": "l'"
  },
  {
   "rank": 886,
@@ -7284,7 +7671,8 @@
   "english": "Saturday",
   "example": "Sabato sera usciamo?",
   "example_en": "Shall we go out Saturday night?",
-  "cov": 43
+  "cov": 43,
+  "article": "il"
  },
  {
   "rank": 887,
@@ -7292,7 +7680,8 @@
   "english": "chicken",
   "example": "Prendo il pollo arrosto.",
   "example_en": "I'll have the roast chicken.",
-  "cov": 49
+  "cov": 49,
+  "article": "il"
  },
  {
   "rank": 888,
@@ -7300,7 +7689,8 @@
   "english": "beach",
   "example": "Passiamo la giornata in spiaggia.",
   "example_en": "Let's spend the day at the beach.",
-  "cov": 42
+  "cov": 42,
+  "article": "la"
  },
  {
   "rank": 889,
@@ -7308,7 +7698,8 @@
   "english": "phone call",
   "example": "Ho ricevuto una telefonata dall'Italia.",
   "example_en": "I got a phone call from Italy.",
-  "cov": 71
+  "cov": 71,
+  "article": "la"
  },
  {
   "rank": 890,
@@ -7316,7 +7707,8 @@
   "english": "high school",
   "example": "Ci conosciamo dal liceo.",
   "example_en": "We've known each other since high school.",
-  "cov": 42
+  "cov": 42,
+  "article": "il"
  },
  {
   "rank": 891,
@@ -7324,7 +7716,8 @@
   "english": "rose; pink",
   "example": "Una rosa per te.",
   "example_en": "A rose for you.",
-  "cov": 90
+  "cov": 90,
+  "article": "la"
  },
  {
   "rank": 892,
@@ -7340,7 +7733,8 @@
   "english": "shower",
   "example": "Mi faccio una doccia e arrivo.",
   "example_en": "I'll take a shower and be right there.",
-  "cov": 42
+  "cov": 42,
+  "article": "la"
  },
  {
   "rank": 894,
@@ -7348,7 +7742,8 @@
   "english": "watch; clock",
   "example": "Che ore sono? Non ho l'orologio.",
   "example_en": "What time is it? I don't have my watch.",
-  "cov": 48
+  "cov": 48,
+  "article": "l'"
  },
  {
   "rank": 895,
@@ -7357,7 +7752,8 @@
   "example": "Ha un viso simpatico.",
   "example_en": "He has a friendly face.",
   "note": "Also: faccia",
-  "cov": 44
+  "cov": 44,
+  "article": "il"
  },
  {
   "rank": 896,
@@ -7365,7 +7761,8 @@
   "english": "distance",
   "example": "Che distanza c'è tra Roma e Napoli?",
   "example_en": "How far is it from Rome to Naples?",
-  "cov": 47
+  "cov": 47,
+  "article": "la"
  },
  {
   "rank": 897,
@@ -7381,7 +7778,8 @@
   "english": "exam; test",
   "example": "Domani ho un esame.",
   "example_en": "I have an exam tomorrow.",
-  "cov": 67
+  "cov": 67,
+  "article": "l'"
  },
  {
   "rank": 899,
@@ -7389,7 +7787,8 @@
   "english": "neighborhood",
   "example": "È un quartiere tranquillo.",
   "example_en": "It's a quiet neighborhood.",
-  "cov": 46
+  "cov": 46,
+  "article": "il"
  },
  {
   "rank": 900,
@@ -7397,7 +7796,8 @@
   "english": "hat",
   "example": "Metti il cappello, fa freddo.",
   "example_en": "Put on a hat, it's cold.",
-  "cov": 54
+  "cov": 54,
+  "article": "il"
  },
  {
   "rank": 901,
@@ -7405,7 +7805,8 @@
   "english": "page",
   "example": "Apri il libro a pagina dieci.",
   "example_en": "Open the book to page ten.",
-  "cov": 59
+  "cov": 59,
+  "article": "la"
  },
  {
   "rank": 902,
@@ -7413,7 +7814,8 @@
   "english": "exhibition",
   "example": "Andiamo a vedere la mostra?",
   "example_en": "Shall we go see the exhibition?",
-  "cov": 150
+  "cov": 150,
+  "article": "la"
  },
  {
   "rank": 903,
@@ -7421,7 +7823,8 @@
   "english": "garden; yard",
   "example": "Ceniamo in giardino.",
   "example_en": "Let's have dinner in the garden.",
-  "cov": 45
+  "cov": 45,
+  "article": "il"
  },
  {
   "rank": 904,
@@ -7437,7 +7840,8 @@
   "english": "anger",
   "example": "Che rabbia!",
   "example_en": "How annoying!",
-  "cov": 41
+  "cov": 41,
+  "article": "la"
  },
  {
   "rank": 906,
@@ -7453,7 +7857,8 @@
   "english": "victory",
   "example": "Che vittoria!",
   "example_en": "What a win!",
-  "cov": 46
+  "cov": 46,
+  "article": "la"
  },
  {
   "rank": 908,
@@ -7469,7 +7874,8 @@
   "english": "newspaper",
   "example": "Leggo il giornale la mattina.",
   "example_en": "I read the paper in the morning.",
-  "cov": 72
+  "cov": 72,
+  "article": "il"
  },
  {
   "rank": 910,
@@ -7477,7 +7883,8 @@
   "english": "teacher",
   "example": "La mia insegnante di italiano è di Bologna.",
   "example_en": "My Italian teacher is from Bologna.",
-  "cov": 53
+  "cov": 53,
+  "article": "l'"
  },
  {
   "rank": 911,
@@ -7485,7 +7892,8 @@
   "english": "talent",
   "example": "Hai talento!",
   "example_en": "You've got talent!",
-  "cov": 46
+  "cov": 46,
+  "article": "il"
  },
  {
   "rank": 912,
@@ -7573,7 +7981,8 @@
   "english": "guest; host",
   "example": "Sei mio ospite!",
   "example_en": "You're my guest!",
-  "cov": 75
+  "cov": 75,
+  "article": "l'"
  },
  {
   "rank": 923,
@@ -7581,7 +7990,8 @@
   "english": "Sunday",
   "example": "La domenica pranziamo dalla nonna.",
   "example_en": "On Sundays we have lunch at grandma's.",
-  "cov": 42
+  "cov": 42,
+  "article": "la"
  },
  {
   "rank": 924,
@@ -7629,7 +8039,8 @@
   "english": "kilometer",
   "example": "Sono dieci chilometri da qui.",
   "example_en": "It's ten kilometers from here.",
-  "cov": 46
+  "cov": 46,
+  "article": "il"
  },
  {
   "rank": 930,
@@ -7637,7 +8048,8 @@
   "english": "vacation",
   "example": "Vado in vacanza ad agosto.",
   "example_en": "I'm going on vacation in August.",
-  "cov": 58
+  "cov": 58,
+  "article": "la"
  },
  {
   "rank": 931,
@@ -7645,7 +8057,8 @@
   "english": "medicine",
   "example": "Hai preso la medicina?",
   "example_en": "Did you take your medicine?",
-  "cov": 66
+  "cov": 66,
+  "article": "la"
  },
  {
   "rank": 932,
@@ -7661,7 +8074,8 @@
   "english": "cousin",
   "example": "Mio cugino vive a Palermo.",
   "example_en": "My cousin lives in Palermo.",
-  "cov": 63
+  "cov": 63,
+  "article": "il"
  },
  {
   "rank": 934,
@@ -7669,7 +8083,8 @@
   "english": "jacket",
   "example": "Prendi la giacca, fa fresco.",
   "example_en": "Take your jacket, it's chilly.",
-  "cov": 40
+  "cov": 40,
+  "article": "la"
  },
  {
   "rank": 935,
@@ -7677,7 +8092,8 @@
   "english": "opinion",
   "example": "Qual è la tua opinione?",
   "example_en": "What's your opinion?",
-  "cov": 46
+  "cov": 46,
+  "article": "l'"
  },
  {
   "rank": 936,
@@ -7685,7 +8101,8 @@
   "english": "interest",
   "example": "Non ho nessun interesse.",
   "example_en": "I have no interest.",
-  "cov": 37
+  "cov": 37,
+  "article": "l'"
  },
  {
   "rank": 937,
@@ -7694,7 +8111,8 @@
   "example": "Ti dà fastidio la musica?",
   "example_en": "Does the music bother you?",
   "note": "dare fastidio = to bother",
-  "cov": 38
+  "cov": 38,
+  "article": "il"
  },
  {
   "rank": 938,
@@ -7702,7 +8120,8 @@
   "english": "student",
   "example": "Sono uno studente di italiano.",
   "example_en": "I'm a student of Italian.",
-  "cov": 61
+  "cov": 61,
+  "article": "lo"
  },
  {
   "rank": 939,
@@ -7710,7 +8129,8 @@
   "english": "joke; line",
   "example": "Che battuta!",
   "example_en": "What a joke! / Good one!",
-  "cov": 81
+  "cov": 81,
+  "article": "la"
  },
  {
   "rank": 940,
@@ -7726,7 +8146,8 @@
   "english": "tea",
   "example": "Preferisco il tè al caffè.",
   "example_en": "I prefer tea to coffee.",
-  "cov": 37
+  "cov": 37,
+  "article": "il"
  },
  {
   "rank": 942,
@@ -7734,7 +8155,8 @@
   "english": "friendship",
   "example": "La nostra amicizia è importante.",
   "example_en": "Our friendship is important.",
-  "cov": 41
+  "cov": 41,
+  "article": "l'"
  },
  {
   "rank": 943,
@@ -7750,7 +8172,8 @@
   "english": "bread",
   "example": "Mi passi il pane?",
   "example_en": "Can you pass me the bread?",
-  "cov": 36
+  "cov": 36,
+  "article": "il"
  },
  {
   "rank": 945,
@@ -7766,7 +8189,8 @@
   "english": "airport",
   "example": "Ti vengo a prendere all'aeroporto.",
   "example_en": "I'll pick you up at the airport.",
-  "cov": 38
+  "cov": 38,
+  "article": "l'"
  },
  {
   "rank": 947,
@@ -7774,7 +8198,8 @@
   "english": "disaster",
   "example": "Che disastro!",
   "example_en": "What a disaster!",
-  "cov": 39
+  "cov": 39,
+  "article": "il"
  },
  {
   "rank": 948,
@@ -7783,7 +8208,8 @@
   "example": "Due uova, per favore.",
   "example_en": "Two eggs, please.",
   "note": "Irregular plural: le uova",
-  "cov": 53
+  "cov": 53,
+  "article": "l'"
  },
  {
   "rank": 949,
@@ -7815,7 +8241,8 @@
   "english": "throat",
   "example": "Ho mal di gola.",
   "example_en": "I have a sore throat.",
-  "cov": 37
+  "cov": 37,
+  "article": "la"
  },
  {
   "rank": 953,
@@ -7823,7 +8250,8 @@
   "english": "smoke",
   "example": "Vietato il fumo.",
   "example_en": "No smoking.",
-  "cov": 51
+  "cov": 51,
+  "article": "il"
  },
  {
   "rank": 954,
@@ -7855,7 +8283,8 @@
   "english": "hotel",
   "example": "Abbiamo prenotato un albergo in centro.",
   "example_en": "We booked a hotel downtown.",
-  "cov": 39
+  "cov": 39,
+  "article": "l'"
  },
  {
   "rank": 958,
@@ -7871,7 +8300,8 @@
   "english": "joy",
   "example": "Che gioia vederti!",
   "example_en": "What a joy to see you!",
-  "cov": 38
+  "cov": 38,
+  "article": "la"
  },
  {
   "rank": 960,
@@ -7880,7 +8310,8 @@
   "example": "Buon weekend!",
   "example_en": "Have a nice weekend!",
   "note": "Also: fine settimana",
-  "cov": 35
+  "cov": 35,
+  "article": "il"
  },
  {
   "rank": 961,
@@ -7888,7 +8319,8 @@
   "english": "ambulance",
   "example": "Chiamate un'ambulanza!",
   "example_en": "Call an ambulance!",
-  "cov": 37
+  "cov": 37,
+  "article": "l'"
  },
  {
   "rank": 962,
@@ -7896,7 +8328,8 @@
   "english": "pizza",
   "example": "Stasera pizza?",
   "example_en": "Pizza tonight?",
-  "cov": 40
+  "cov": 40,
+  "article": "la"
  },
  {
   "rank": 963,
@@ -7904,7 +8337,8 @@
   "english": "stomach",
   "example": "Ho mal di stomaco.",
   "example_en": "I have a stomachache.",
-  "cov": 34
+  "cov": 34,
+  "article": "lo"
  },
  {
   "rank": 964,
@@ -7921,7 +8355,8 @@
   "english": "promise",
   "example": "Una promessa è una promessa.",
   "example_en": "A promise is a promise.",
-  "cov": 50
+  "cov": 50,
+  "article": "la"
  },
  {
   "rank": 966,
@@ -7937,7 +8372,8 @@
   "english": "stairs; ladder",
   "example": "Prendiamo le scale.",
   "example_en": "Let's take the stairs.",
-  "cov": 63
+  "cov": 63,
+  "article": "la"
  },
  {
   "rank": 968,
@@ -7969,7 +8405,8 @@
   "english": "couch; sofa",
   "example": "Stasera divano e film.",
   "example_en": "Tonight it's couch and a movie.",
-  "cov": 35
+  "cov": 35,
+  "article": "il"
  },
  {
   "rank": 972,
@@ -7985,7 +8422,8 @@
   "english": "traffic",
   "example": "C'è un traffico pazzesco.",
   "example_en": "The traffic is insane.",
-  "cov": 35
+  "cov": 35,
+  "article": "il"
  },
  {
   "rank": 974,
@@ -8010,7 +8448,8 @@
   "english": "smile",
   "example": "Hai un bel sorriso.",
   "example_en": "You have a nice smile.",
-  "cov": 37
+  "cov": 37,
+  "article": "il"
  },
  {
   "rank": 977,
@@ -8018,7 +8457,8 @@
   "english": "plate; dish",
   "example": "Qual è il piatto del giorno?",
   "example_en": "What's the dish of the day?",
-  "cov": 57
+  "cov": 57,
+  "article": "il"
  },
  {
   "rank": 978,
@@ -8042,7 +8482,8 @@
   "english": "lie",
   "example": "Non dire bugie!",
   "example_en": "Don't tell lies!",
-  "cov": 64
+  "cov": 64,
+  "article": "la"
  },
  {
   "rank": 981,
@@ -8050,7 +8491,8 @@
   "english": "soccer; kick",
   "example": "Guardi il calcio?",
   "example_en": "Do you watch soccer?",
-  "cov": 60
+  "cov": 60,
+  "article": "il"
  },
  {
   "rank": 982,
@@ -8058,7 +8500,8 @@
   "english": "lake",
   "example": "Siamo stati al lago di Como.",
   "example_en": "We went to Lake Como.",
-  "cov": 34
+  "cov": 34,
+  "article": "il"
  },
  {
   "rank": 983,
@@ -8066,7 +8509,8 @@
   "english": "theater",
   "example": "Stasera andiamo a teatro.",
   "example_en": "Tonight we're going to the theater.",
-  "cov": 34
+  "cov": 34,
+  "article": "il"
  },
  {
   "rank": 984,
@@ -8074,7 +8518,8 @@
   "english": "rain",
   "example": "Che pioggia!",
   "example_en": "What rain! / It's pouring!",
-  "cov": 32
+  "cov": 32,
+  "article": "la"
  },
  {
   "rank": 985,
@@ -8083,7 +8528,8 @@
   "example": "Dove sono i miei occhiali?",
   "example_en": "Where are my glasses?",
   "note": "occhiali da sole = sunglasses",
-  "cov": 32
+  "cov": 32,
+  "article": "gli"
  },
  {
   "rank": 986,
@@ -8091,7 +8537,8 @@
   "english": "parking; parking lot",
   "example": "Non trovo parcheggio.",
   "example_en": "I can't find parking.",
-  "cov": 36
+  "cov": 36,
+  "article": "il"
  },
  {
   "rank": 987,
@@ -8099,7 +8546,8 @@
   "english": "mountain",
   "example": "D'inverno andiamo in montagna.",
   "example_en": "In winter we go to the mountains.",
-  "cov": 53
+  "cov": 53,
+  "article": "la"
  },
  {
   "rank": 988,
@@ -8107,7 +8555,8 @@
   "english": "cheese",
   "example": "Mi piace il formaggio stagionato.",
   "example_en": "I like aged cheese.",
-  "cov": 34
+  "cov": 34,
+  "article": "il"
  },
  {
   "rank": 989,
@@ -8115,7 +8564,8 @@
   "english": "retirement; pension; guesthouse",
   "example": "Mio padre è in pensione.",
   "example_en": "My father is retired.",
-  "cov": 33
+  "cov": 33,
+  "article": "la"
  },
  {
   "rank": 990,
@@ -8124,7 +8574,8 @@
   "example": "L'affitto è troppo alto.",
   "example_en": "The rent is too high.",
   "note": "in affitto = for rent",
-  "cov": 34
+  "cov": 34,
+  "article": "l'"
  },
  {
   "rank": 991,
@@ -8132,7 +8583,8 @@
   "english": "snow",
   "example": "Domani è prevista neve.",
   "example_en": "Snow is forecast for tomorrow.",
-  "cov": 32
+  "cov": 32,
+  "article": "la"
  },
  {
   "rank": 992,
@@ -8140,7 +8592,8 @@
   "english": "ice cream",
   "example": "Prendiamo un gelato?",
   "example_en": "Shall we get some gelato?",
-  "cov": 37
+  "cov": 37,
+  "article": "il"
  },
  {
   "rank": 993,
@@ -8149,7 +8602,8 @@
   "example": "Che vergogna!",
   "example_en": "How embarrassing!",
   "note": "Mi vergogno = I'm embarrassed",
-  "cov": 46
+  "cov": 46,
+  "article": "la"
  },
  {
   "rank": 994,
@@ -8158,7 +8612,8 @@
   "example": "Pazienza!",
   "example_en": "Oh well! / Never mind!",
   "note": "Also literally: patience",
-  "cov": 30
+  "cov": 30,
+  "article": "la"
  },
  {
   "rank": 995,
@@ -8167,7 +8622,8 @@
   "example": "Ho sonno.",
   "example_en": "I'm sleepy.",
   "note": "avere sonno = to be sleepy",
-  "cov": 32
+  "cov": 32,
+  "article": "il"
  },
  {
   "rank": 996,
@@ -8183,7 +8639,8 @@
   "english": "compliments; well done!",
   "example": "Complimenti, è buonissimo!",
   "example_en": "My compliments, it's delicious!",
-  "cov": 30
+  "cov": 30,
+  "article": "i"
  },
  {
   "rank": 998,
@@ -8191,7 +8648,8 @@
   "english": "best wishes",
   "example": "Tanti auguri!",
   "example_en": "Best wishes! / Happy birthday!",
-  "cov": 29
+  "cov": 29,
+  "article": "gli"
  },
  {
   "rank": 999,
@@ -8207,6 +8665,7 @@
   "english": "university; college",
   "example": "Dove hai fatto l'università?",
   "example_en": "Where did you go to college?",
-  "cov": 29
+  "cov": 29,
+  "article": "l'"
  }
 ]

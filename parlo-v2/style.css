@@ -3758,3 +3758,30 @@ textarea:focus-visible {
     color: #8a8a9a;
 }
 .heatmap-legend { display: inline-flex; align-items: center; gap: 3px; color: #6a6a7a; }
+
+/* ---- Flag a card for review ---- */
+.flag-btn {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #6a6a7a;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+.flag-btn:hover { color: #b0b0c0; background: rgba(255, 255, 255, 0.08); }
+.flag-btn--on, .flag-btn--on:hover {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.12);
+    border-color: rgba(248, 113, 113, 0.35);
+}
+.flag-btn--on svg { fill: currentColor; }
+.flag-count { font-size: 0.8rem; color: #f87171; align-self: center; }

@@ -9,6 +9,7 @@ const MODE_KEY      = 'parlo_v2_study_mode';
 const DECK_KEY      = 'parlo_v2_deck';
 const CUSTOM_KEY    = 'parlo_v2_custom';
 const ACTIVITY_KEY  = 'parlo_v2_activity'; // { 'YYYY-MM-DD': cards studied }
+const FLAGS_KEY     = 'parlo_v2_flags';    // cards flagged as wrong/awkward, for Claude to review
 const HEATMAP_WEEKS = 26;
 const NEW_PER_DAY   = 5;
 const KNOWN_INTERVAL = 60; // "I already know this" — check back in ~2 months
@@ -17,7 +18,7 @@ const KNOWN_INTERVAL = 60; // "I already know this" — check back in ~2 months
 // phrases are shuffled.
 const DECKS = {
     phrases: { file: 'phrases.json?v=3',   srsKey: SRS_KEY,       name: 'Phrases' },
-    words:   { file: 'top1000.json?v=4',   srsKey: WORDS_SRS_KEY, name: 'Top 1000' },
+    words:   { file: 'top1000.json?v=5',   srsKey: WORDS_SRS_KEY, name: 'Top 1000' },
 };
 
 let deck            = 'phrases';
@@ -31,6 +32,7 @@ let sessionPos   = 0;
 let studyMode    = 'italian-to-english';
 let italianTextForSpeech = '';
 let speechText   = '';
+let answerAlternates = []; // extra accepted type-in answers (word without its article)
 let isFlipped    = false;
 let sessionReviewed = 0;
 let vocabInited  = false;
@@ -57,6 +59,8 @@ const knowBtn         = document.getElementById('knowBtn');
 const wordsKnownEl    = document.getElementById('wordsKnown');
 const wordsTotalEl    = document.getElementById('wordsTotal');
 const wordsFill       = document.getElementById('wordsFill');
+const flagButtons     = document.querySelectorAll('#tab-vocab .flag-btn');
+const flagCountEl     = document.getElementById('flagCount');
 const heatmapEl       = document.getElementById('heatmap');
 const heatmapSummary  = document.getElementById('heatmapSummary');
 const srsReveal       = document.getElementById('srsReveal');
@@ -324,6 +328,8 @@ function showCard(phraseIndex) {
     italianTextForSpeech = phrase.italian;
     speechText = isWord ? `${phrase.italian.replace(' / ', ', ')}. ${phrase.example}` : phrase.italian;
     typeInInput.placeholder = isWord ? 'Type the Italian word…' : 'Type the Italian phrase…';
+    answerAlternates = isWord && phrase.bare !== phrase.italian ? [phrase.bare] : [];
+    updateFlagButtons();
     knowRow.classList.toggle('hidden', !(isWord && getCard(phraseIndex).nextReview === null));
     const lookupUrl = `https://translate.google.com/?sl=it&tl=en&text=${encodeURIComponent(phrase.italian)}&op=translate`;
     forvoBtnFront.href = lookupUrl;
@@ -422,7 +428,7 @@ function vocabSpeak(text) {
 // ── Events ────────────────────────────────────────────────────────────────
 
 flashcard.addEventListener('click', e => {
-    if (e.target.closest('.speaker-btn')) return;
+    if (e.target.closest('.speaker-btn, .flag-btn')) return;
     if (!isFlipped) revealAnswer(); else { isFlipped = false; flashcard.classList.remove('flipped'); }
 });
 
@@ -520,7 +526,7 @@ function checkTypeIn() {
     const typed   = typeInInput.value;
     const correct = italianTextForSpeech;
     // Some words list alternatives ("il / la") — any one counts
-    const answers = correct.split(' / ');
+    const answers = correct.split(' / ').concat(answerAlternates);
     const isExact = answers.some(a => normalizeAnswer(typed) === normalizeAnswer(a));
     const isClose = !isExact && answers.some(a => normalizeLoose(typed) === normalizeLoose(a));
 
@@ -623,6 +629,47 @@ function renderHeatmap() {
     heatmapEl.parentElement.scrollLeft = heatmapEl.parentElement.scrollWidth;
 }
 
+// ── Flags ─────────────────────────────────────────────────────────────────
+
+function loadFlags() {
+    try { return JSON.parse(localStorage.getItem(FLAGS_KEY)) || []; } catch { return []; }
+}
+
+function saveFlags(flags) {
+    try { localStorage.setItem(FLAGS_KEY, JSON.stringify(flags)); } catch {}
+}
+
+function isFlagged(flags, i) {
+    return flags.some(f => f.deck === deck && f.index === i);
+}
+
+function updateFlagButtons() {
+    const flags = loadFlags();
+    const on = sessionPos < sessionQueue.length && isFlagged(flags, sessionQueue[sessionPos]);
+    flagButtons.forEach(b => {
+        b.classList.toggle('flag-btn--on', on);
+        b.title = on ? 'Flagged — tap to unflag' : 'Flag this card for review';
+    });
+    flagCountEl.textContent = `🚩 ${flags.length} flagged`;
+    flagCountEl.classList.toggle('hidden', flags.length === 0);
+}
+
+function toggleFlag() {
+    if (sessionPos >= sessionQueue.length) return;
+    const i = sessionQueue[sessionPos];
+    let flags = loadFlags();
+    if (isFlagged(flags, i)) {
+        flags = flags.filter(f => !(f.deck === deck && f.index === i));
+    } else {
+        const p = phrases[i];
+        flags.push({ deck, index: i, italian: p.italian, english: p.english, date: vocabToday() });
+    }
+    saveFlags(flags);
+    updateFlagButtons();
+}
+
+flagButtons.forEach(b => b.addEventListener('click', toggleFlag));
+
 // ── Export / Import ───────────────────────────────────────────────────────
 
 exportBtn.addEventListener('click', () => {
@@ -634,6 +681,7 @@ exportBtn.addEventListener('click', () => {
         wordData: read(WORDS_SRS_KEY, {}),
         customCards: read(CUSTOM_KEY, []),
         activity: read(ACTIVITY_KEY, {}),
+        flags: read(FLAGS_KEY, []),
     };
     const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -665,6 +713,7 @@ importFile.addEventListener('change', e => {
             if (raw.activity && typeof raw.activity === 'object') {
                 localStorage.setItem(ACTIVITY_KEY, JSON.stringify(raw.activity));
             }
+            if (Array.isArray(raw.flags)) saveFlags(raw.flags);
             const count = await loadDeck();
             if (count === 0) sessionSummary.textContent = "Progress restored! All caught up for today.";
         } catch { alert('Could not import: invalid or corrupted file.'); }
@@ -687,12 +736,18 @@ async function initVocab() {
     await loadDeck();
 }
 
+// "il problema", "l'acqua" — nouns are shown with their article so the gender sticks
+function withArticle(w) {
+    if (!w.article) return w.word;
+    return w.article.endsWith("'") ? w.article + w.word : `${w.article} ${w.word}`;
+}
+
 async function fetchDeck(name) {
     if (!deckCache[name]) {
         const res = await fetch(DECKS[name].file);
         const data = await res.json();
         deckCache[name] = name === 'words'
-            ? data.map(w => ({ italian: w.word, english: w.english, example: w.example, example_en: w.example_en, note: w.note, rank: w.rank, isWord: true }))
+            ? data.map(w => ({ italian: withArticle(w), bare: w.word, english: w.english, example: w.example, example_en: w.example_en, note: w.note, rank: w.rank, isWord: true }))
             : data;
     }
     return deckCache[name];
@@ -730,6 +785,7 @@ async function loadDeck() {
         showCard(sessionQueue[0]);
     }
     renderProgress();
+    updateFlagButtons();
     return count;
 }
 
