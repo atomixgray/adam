@@ -54,9 +54,9 @@ const modeButtons     = document.querySelectorAll('#tab-vocab .mode-btn[data-mod
 const deckButtons     = document.querySelectorAll('#tab-vocab .mode-btn[data-deck]');
 const knowRow         = document.getElementById('knowRow');
 const knowBtn         = document.getElementById('knowBtn');
-const coveragePct     = document.getElementById('coveragePct');
-const coverageFill    = document.getElementById('coverageFill');
-const coverageSub     = document.getElementById('coverageSub');
+const wordsKnownEl    = document.getElementById('wordsKnown');
+const wordsTotalEl    = document.getElementById('wordsTotal');
+const wordsFill       = document.getElementById('wordsFill');
 const heatmapEl       = document.getElementById('heatmap');
 const heatmapSummary  = document.getElementById('heatmapSummary');
 const srsReveal       = document.getElementById('srsReveal');
@@ -558,7 +558,7 @@ function checkTypeIn() {
 typeInInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); checkTypeIn(); } });
 typeInCheckBtn.addEventListener('click', checkTypeIn);
 
-// ── Progress: coverage meter + activity heatmap ──────────────────────────
+// ── Progress: words known + activity heatmap ─────────────────────────────
 
 function loadActivity() {
     try { return JSON.parse(localStorage.getItem(ACTIVITY_KEY)) || {}; } catch { return {}; }
@@ -571,9 +571,8 @@ function logActivity() {
     try { localStorage.setItem(ACTIVITY_KEY, JSON.stringify(activity)); } catch {}
 }
 
-// Each Top 1000 word carries `cov`: its share of spoken Italian in parts per
-// million (from subtitle frequency counts, all forms merged). A word counts as
-// known once it has left the learning steps.
+// A Top 1000 word counts as known once it has left the learning steps
+// (or was marked "I already know this").
 async function renderProgress() {
     let words;
     try { words = await fetchDeck('words'); } catch { return; }
@@ -582,14 +581,10 @@ async function renderProgress() {
         try { wordData = JSON.parse(localStorage.getItem(WORDS_SRS_KEY)) || {}; } catch { wordData = {}; }
     }
 
-    let known = 0, ppm = 0;
-    words.forEach((w, i) => {
-        if (wordData[i]?.nextReview) { known++; ppm += w.cov; }
-    });
-    const pct = ppm / 1e4;
-    coveragePct.textContent  = `${pct < 10 && pct > 0 ? pct.toFixed(1) : Math.round(pct)}%`;
-    coverageFill.style.width = `${Math.min(100, pct)}%`;
-    coverageSub.textContent  = `${known.toLocaleString()} of ${words.length.toLocaleString()} top words known`;
+    const known = words.filter((_, i) => wordData[i]?.nextReview).length;
+    wordsKnownEl.textContent = known.toLocaleString();
+    wordsTotalEl.textContent = `of ${words.length.toLocaleString()} words known`;
+    wordsFill.style.width    = `${(known / words.length) * 100}%`;
 
     renderHeatmap();
 }
@@ -697,7 +692,7 @@ async function fetchDeck(name) {
         const res = await fetch(DECKS[name].file);
         const data = await res.json();
         deckCache[name] = name === 'words'
-            ? data.map(w => ({ italian: w.word, english: w.english, example: w.example, example_en: w.example_en, note: w.note, rank: w.rank, cov: w.cov || 0, isWord: true }))
+            ? data.map(w => ({ italian: w.word, english: w.english, example: w.example, example_en: w.example_en, note: w.note, rank: w.rank, isWord: true }))
             : data;
     }
     return deckCache[name];
