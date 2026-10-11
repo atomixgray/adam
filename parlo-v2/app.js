@@ -8,7 +8,10 @@ const EL_KEY_STORE   = 'parlo_v2_el_key';
 const EL_VOICE_ID    = 'pNInz6obpgDQGcFmaJgB'; // Adam — free tier compatible
 const SYNC_META_KEY  = 'parlo_v2_synced_at';
 const SYNC_ACTIVITY_KEY   = 'parlo_v2_activity';
-const SYNC_DATA_KEYS = ['parlo_v2_srs', 'parlo_v2_srs_words', 'parlo_v2_custom', 'parlo_v2_streak', 'parlo_v2_words', SYNC_ACTIVITY_KEY, 'parlo_v2_flags'];
+const SYNC_FLAGS_KEY = 'parlo_v2_flags';
+const SYNC_SRS_KEYS  = ['parlo_v2_srs', 'parlo_v2_srs_words'];
+const SYNC_DATA_KEYS = [...SYNC_SRS_KEYS, 'parlo_v2_custom', 'parlo_v2_streak', 'parlo_v2_words', SYNC_ACTIVITY_KEY, SYNC_FLAGS_KEY];
+const LAST_PUSH_KEY  = 'parlo_v2_last_push'; // what this device last uploaded, to skip no-op pushes
 
 let activeStop = null; // set by speakItalian while audio/speech is playing; lets stopSpeaking() interrupt it
 
@@ -311,6 +314,31 @@ function initSettings() {
 
 // ── Cross-device sync ─────────────────────────────────────────────────────
 
+// Which version of one card's SRS state to keep: the most recently studied
+// (`t`, stamped on every rating), falling back to whichever has more progress
+// for cards rated before timestamps existed.
+function compareCards(a, b) {
+    if ((a.t || 0) !== (b.t || 0)) return (a.t || 0) - (b.t || 0);
+    if (!!a.nextReview !== !!b.nextReview) return a.nextReview ? 1 : -1;
+    const reviews = c => (c.reps || 0) + (c.lapses || 0);
+    if (reviews(a) !== reviews(b)) return reviews(a) - reviews(b);
+    return String(a.nextReview || '').localeCompare(String(b.nextReview || ''));
+}
+
+function mergeCards(local, remote) {
+    const merged = { ...local };
+    for (const [i, r] of Object.entries(remote || {})) {
+        if (!merged[i] || compareCards(r, merged[i]) > 0) merged[i] = r;
+    }
+    return merged;
+}
+
+function readJSON(key, fallback) {
+    try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
+}
+
+// Card progress, activity, the word counter and flags are merged so no device
+// loses work. Custom cards and the streak are still newest-upload-wins.
 async function syncPull() {
     try {
         const res = await parlo.callSync('syncPull');
@@ -318,11 +346,20 @@ async function syncPull() {
 
         const remoteSyncedAt = res.data.syncedAt || 0;
         const localSyncedAt  = parseInt(localStorage.getItem(SYNC_META_KEY) || '0', 10);
-        if (remoteSyncedAt <= localSyncedAt) return; // local is already up to date
+        const remoteNewer    = remoteSyncedAt > localSyncedAt;
+        const before = SYNC_DATA_KEYS.map(k => localStorage.getItem(k)).join('\u0000');
 
         for (const key of SYNC_DATA_KEYS) {
             if (res.data[key] == null) continue;
-            if (key === WORDS_KEY) {
+            if (SYNC_SRS_KEYS.includes(key)) {
+                localStorage.setItem(key, JSON.stringify(mergeCards(readJSON(key, {}), res.data[key])));
+            } else if (key === SYNC_FLAGS_KEY) {
+                const flags = readJSON(key, []);
+                for (const f of res.data[key]) {
+                    if (!flags.some(x => x.deck === f.deck && x.index === f.index)) flags.push(f);
+                }
+                localStorage.setItem(key, JSON.stringify(flags));
+            } else if (key === WORDS_KEY) {
                 // Words can only grow — take the max across devices
                 const remoteVal = parseInt(res.data[key], 10) || 0;
                 const localVal  = parseInt(localStorage.getItem(key) || '0', 10);
@@ -334,12 +371,15 @@ async function syncPull() {
                 const merged = { ...local };
                 for (const [day, n] of Object.entries(res.data[key])) merged[day] = Math.max(n, merged[day] || 0);
                 localStorage.setItem(key, JSON.stringify(merged));
-            } else {
+            } else if (remoteNewer) {
                 const val = res.data[key];
                 localStorage.setItem(key, typeof val === 'string' ? val : JSON.stringify(val));
             }
         }
-        localStorage.setItem(SYNC_META_KEY, String(remoteSyncedAt));
+        if (remoteNewer) localStorage.setItem(SYNC_META_KEY, String(remoteSyncedAt));
+
+        const after = SYNC_DATA_KEYS.map(k => localStorage.getItem(k)).join('\u0000');
+        if (after !== before) window.dispatchEvent(new Event('parlo:synced'));
     } catch (e) {
         console.warn('Sync pull failed:', e);
     }
@@ -354,8 +394,14 @@ async function syncPush() {
             if (raw == null) continue;
             try { data[key] = JSON.parse(raw); } catch { data[key] = raw; }
         }
+        // Skip the upload if nothing changed since this device last pushed — an
+        // idle tab shouldn't overwrite progress made on another device
+        const { syncedAt, ...payload } = data;
+        const fingerprint = JSON.stringify(payload);
+        if (fingerprint === localStorage.getItem(LAST_PUSH_KEY)) return;
         await parlo.callSync('syncPush', { data }, { keepalive: true });
         localStorage.setItem(SYNC_META_KEY, String(now));
+        try { localStorage.setItem(LAST_PUSH_KEY, fingerprint); } catch {}
     } catch (e) {
         console.warn('Sync push failed:', e);
     }
@@ -364,6 +410,7 @@ async function syncPush() {
 function initSync() {
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'hidden') syncPush();
+        else syncPull(); // coming back to the tab — pick up work done on other devices
     });
     window.addEventListener('pagehide', syncPush);
 }

@@ -441,7 +441,7 @@ speakerBack.addEventListener('click',  () => vocabSpeak(speechText));
 function markKnown() {
     const i = sessionQueue[sessionPos];
     const nextReview = parlo.localDateStr(addDays(KNOWN_INTERVAL));
-    cardData[i] = { interval: KNOWN_INTERVAL, ease: 2.8, reps: 3, lapses: 0, nextReview, learningStep: 0 };
+    cardData[i] = { interval: KNOWN_INTERVAL, ease: 2.8, reps: 3, lapses: 0, nextReview, learningStep: 0, t: Date.now() };
     saveSRS();
     parlo.incrementWords();
     // Drop any in-session repeats of this card, then backfill today's new slot
@@ -456,7 +456,9 @@ knowBtn.addEventListener('click', markKnown);
 
 document.querySelectorAll('#tab-vocab [data-rating]').forEach(btn => {
     btn.addEventListener('click', () => {
-        scheduleCard(sessionQueue[sessionPos], parseInt(btn.dataset.rating));
+        const i = sessionQueue[sessionPos];
+        scheduleCard(i, parseInt(btn.dataset.rating));
+        if (cardData[i]) { cardData[i].t = Date.now(); saveSRS(); } // lets sync pick the newest version
         sessionReviewed++;
         logActivity();
         nextCard();
@@ -669,6 +671,15 @@ function toggleFlag() {
 }
 
 flagButtons.forEach(b => b.addEventListener('click', toggleFlag));
+
+// Another device's progress was merged in — reload it so we don't save stale state over it
+window.addEventListener('parlo:synced', () => {
+    if (!vocabInited || !phrases.length) return;
+    loadSRS();
+    updateStats();
+    renderProgress();
+    updateFlagButtons();
+});
 
 // ── Export / Import ───────────────────────────────────────────────────────
 
