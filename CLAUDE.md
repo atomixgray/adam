@@ -34,8 +34,6 @@ Static personal portfolio site for Adam Larkin (adamlarkin.com), hosted on GitHu
 
 Current SPA (loaded by `index.html`): `app.js` (shell/auth/shared `window.parlo` API), `chat.js` (scenario + free chat + Repeat & Translate drill), `vocab.js` (SM-2 SRS flashcards, state in `localStorage` as `parlo_v2_srs`), `translate.js` (EN↔IT + auto-conjugation), `immerse.js` (Krashen-style comprehensible-input narration), `worker.js` (Cloudflare Worker proxy to the Claude API, not Groq/Gemini). `phrases.json` has **377** Italian phrases with metadata (Italian, English, pronunciation, difficulty, tense) — not 1600+.
 
-**Legacy v1 files still present and publicly reachable in this directory but not linked from `index.html`:** `flashcards.html/js`, `practice.html/js` (the old Groq/Gemini-based AI feedback flow, user API key in `localStorage` as `parlo_v2_groq_key`), `conversation.html/js`, `alphabet.js`, `phrases.json.bak`. These are dead weight from before the v2 rewrite — safe to delete, not part of the current app.
-
 ## Security
 
 ### DOM XSS — the primary ongoing risk
@@ -78,7 +76,7 @@ JS and CSS files use `?v=X` version strings in `<script>` and `<link>` tags. Whe
 
 ## External Dependencies
 
-- **Claude API** — via `parlo-v2/worker.js` proxy (chat, translate, conjugate, repeat, narrate); Groq is legacy-only, used by the unlinked v1 `parlo-v2/practice.js`
+- **Claude API** — via `parlo-v2/worker.js` proxy (chat, translate, conjugate, repeat, hint, syncPull, syncPush)
 - **ElevenLabs API** — client-side Italian TTS in `parlo-v2/app.js`, falls back to Web Speech API
 - **Web Speech API** — Italian pronunciation fallback + speech recognition (dictation) in `parlo-v2/chat.js`
 - No npm packages, no bundler, no transpilation
