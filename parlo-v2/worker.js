@@ -113,6 +113,8 @@ async function clearFailures(env, ip) {
 // ── System prompts ────────────────────────────────────────────────────────────
 
 const MAX_SCENARIO_CHARS = 400;
+const MAX_VOCAB_WORDS = 30;
+const MAX_VOCAB_WORD_CHARS = 30;
 
 const SYSTEM_PROMPTS = {
   chat: `You are Marco, a young Italian guy living in Milan. You're chatting with a foreign friend who is learning Italian. You speak naturally — not like a teacher. Keep replies short and conversational (1-3 sentences).
@@ -432,6 +434,20 @@ export default {
         const role = s.ai_role.slice(0, 80);
         const userRole = typeof s.user_role === 'string' ? s.user_role.slice(0, 80) : 'student';
         systemPrompt += `\n\nActive scenario: ${ctx}\nYour role: ${role}\nUser's role: ${userRole}`;
+      }
+    }
+
+    // Optional list of words the user is learning — Marco weaves a few in naturally
+    if ((action === 'chat' || action === 'hint') && Array.isArray(body.vocab)) {
+      const words = body.vocab
+        .filter(w => typeof w === 'string')
+        .map(w => w.trim().slice(0, MAX_VOCAB_WORD_CHARS))
+        .filter(w => /^[\p{L}' \/]+$/u.test(w))
+        .slice(0, MAX_VOCAB_WORDS);
+      if (words.length) {
+        systemPrompt += action === 'chat'
+          ? `\n\nThe user is currently learning these Italian words: ${words.join(', ')}. When one fits naturally, use it in your reply — at most one or two per turn. Never force them, list them, or mention that you're doing this.`
+          : `\n\nThe student is currently learning these Italian words: ${words.join(', ')}. Where one fits naturally, use it in a suggestion. Never force them.`;
       }
     }
 

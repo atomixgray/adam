@@ -418,6 +418,41 @@ function chatRestart() {
 
 // ── Turn submission ───────────────────────────────────────────────────────
 
+// ── Request options ───────────────────────────────────────────────────────
+
+const CHAT_VOCAB_LIMIT = 30;
+
+// Top 1000 words currently being learned (introduced but not yet mastered),
+// most recently introduced first — Marco works these into the conversation.
+async function chatLearningWords() {
+    try {
+        const srs = JSON.parse(localStorage.getItem(WORDS_SRS_KEY)) || {};
+        const words = await fetchDeck('words');
+        return Object.keys(srs)
+            .map(Number)
+            .filter(i => words[i] && srs[i].nextReview && srs[i].interval < 21)
+            .sort((a, b) => b - a)
+            .slice(0, CHAT_VOCAB_LIMIT)
+            .map(i => words[i].bare);
+    } catch {
+        return [];
+    }
+}
+
+async function chatRequestOptions() {
+    const options = {};
+    if (chatCurrentScenario.context) {
+        options.scenario = {
+            context:   chatCurrentScenario.context,
+            ai_role:   chatCurrentScenario.ai_role,
+            user_role: chatCurrentScenario.user_role,
+        };
+    }
+    const vocab = await chatLearningWords();
+    if (vocab.length) options.vocab = vocab;
+    return options;
+}
+
 function chatOnSend() {
     const text = document.getElementById('chatInput').value.trim();
     if (!text || chatState !== 'idle') return;
@@ -433,13 +468,7 @@ async function chatSubmit(text) {
     const thinking = chatAppendThinking();
 
     try {
-        const options = chatCurrentScenario.context ? {
-            scenario: {
-                context:   chatCurrentScenario.context,
-                ai_role:   chatCurrentScenario.ai_role,
-                user_role: chatCurrentScenario.user_role,
-            },
-        } : {};
+        const options = await chatRequestOptions();
         const data = await parlo.callClaude('chat', chatHistory, options);
 
         thinking.remove();
@@ -482,13 +511,7 @@ async function chatOnHint() {
     const thinking = chatAppendThinking();
 
     try {
-        const options = chatCurrentScenario.context ? {
-            scenario: {
-                context:   chatCurrentScenario.context,
-                ai_role:   chatCurrentScenario.ai_role,
-                user_role: chatCurrentScenario.user_role,
-            },
-        } : {};
+        const options = await chatRequestOptions();
         const data = await parlo.callClaude('hint', chatHistory, options);
         thinking.remove();
 
